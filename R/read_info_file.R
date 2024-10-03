@@ -6,6 +6,8 @@
 #' @export
 #'
 #' @examples
+#' farm_info_filepath <- "data/farm_file_bay_x.csv"
+#' read_farm_info_file(farm_info_filepath)
 read_farm_info_file <- function(filepath) {
   farm_info <- read.table(
     filepath,
