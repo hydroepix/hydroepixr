@@ -16,6 +16,8 @@ data.frame of the csv file
 Read in a farm information file
 }
 \examples{
-farm_info_filepath <- "data/farm_file_bay_x.csv"
-read_farm_info_file(farm_info_filepath)
+test1 <- c(1:5, "6,7", "8,9,10")
+tf <- tempfile()
+writeLines(test1, tf)
+read_farm_info_file(tf)
 }
