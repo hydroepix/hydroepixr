@@ -5,20 +5,7 @@
 #' @return data frame of type info from types file
 #' @export
 #' @importFrom utils read.table
-#'
-#' @examples
-#' test_types_file <- c(
-#'   1,
-#'   "Fish1",
-#'   "c(0.000001,0.000001,0.0001,0.01,0.1,0.25,0.339898,0.3)",
-#'   "c(0.249995,0.50,0.25,0.000001,0.000001,0.000001,0.000001,0.000001)",
-#'   "c(0.125,0.125,0.125,0.125,0.125,0.125,0.125,0.125)",
-#'   "rpert(n,0.14,0.4,0.8)",
-#'   1
-#' )
-#' tf <- tempfile()
-#' writeLines(test_types_file, tf)
-#' read_farm_info_file(tf)
+
 read_types_file <- function(filepath) {
   type_info <- as.list(utils::read.table(
     filepath,

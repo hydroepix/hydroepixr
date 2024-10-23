@@ -5,12 +5,7 @@
 #' @return data.frame of the csv file
 #' @export
 #' @importFrom utils read.table
-#'
-#' @examples
-#' test1 <- c(1:5, "6,7", "8,9,10")
-#' tf <- tempfile()
-#' writeLines(test1, tf)
-#' read_farm_info_file(tf)
+
 read_farm_info_file <- function(filepath) {
   farm_info <- utils::read.table(
     filepath,
