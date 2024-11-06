@@ -13,7 +13,7 @@
 #'
 #' @examples
 #' rpert(10, 0.14, 0.4, 0.8)
-rpert <- function(n, a, l, b) {
+he_rpert <- function(n, a, l, b) {
   mu <- (a + 4 * l + b) / 6
 
   if (mu == l) {

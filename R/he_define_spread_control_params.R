@@ -1,5 +1,5 @@
-define_spread_control_params <-
-  function(new_infection_functions = c("BCSpread()", "DBinf()"),
+he_define_spread_control_params <-
+  function(new_infection_functions = c("BCSpread()", "DBinf()"), # TODO: Is there a better way to provide these?
            t_stochastic = FALSE, # TODO: options are stochastic or just 1 - rework to better represent this choice?
            rf_stochastic = FALSE, # TODO: options are binomial chain model or Reed-Frost model - rework to better represent this choice?
            index_herd_function = "selectIndexHerd",
@@ -9,11 +9,9 @@ define_spread_control_params <-
            first_det_para_2 = 0.00255, # TODO: How are these distinct? Are they both necessary?
            case_fatality = 0.89,
            days_dead_infectious = 2,
-           dead_impact = 1,
-           impact_dead_time = 1, #??
            farm_to_farm = 0.42,
            cage_to_cage = 0.052,
            vaccine_efficacy = 0
            ) {
-
+    # TODO: Convert strings to functions
   }

@@ -6,7 +6,7 @@
 #' @export
 #' @importFrom utils read.table
 
-read_farm_info_file <- function(filepath) {
+he_read_farm_info_file <- function(filepath) {
   farm_info <- utils::read.table(
     filepath,
     sep = ",",

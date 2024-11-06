@@ -6,7 +6,7 @@
 #' @export
 #' @importFrom utils read.table
 
-read_types_file <- function(filepath) {
+he_read_types_file <- function(filepath) {
   type_info <- as.list(utils::read.table(
     filepath,
     sep = ",",
