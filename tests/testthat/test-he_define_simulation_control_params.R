@@ -1,4 +1,4 @@
-test_that("default population parameters are stored in the environment", {
+test_that("default simulation control parameters are stored in the environment", {
   test_env <- rlang::env(parent = emptyenv())
   he_define_depopulation_control_params(test_env)
   expect_equal(test_env$culling_capacity, c(20000))
@@ -6,7 +6,7 @@ test_that("default population parameters are stored in the environment", {
   expect_equal(test_env$cull_farm_if_cage_infection, FALSE)
 })
 
-test_that("user-defined population parameters stored in the environment", {
+test_that("user-defined simulation control parameters stored in the environment", {
   test_culling_capacity <- c(10000)
   test_cull_types <- c(1:15)
   test_cull_farm_if_cage_infection <- TRUE
