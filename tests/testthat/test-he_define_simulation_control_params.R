@@ -1,21 +1,45 @@
 test_that("default simulation control parameters are stored in the environment", {
-  test_env <- rlang::env(parent = emptyenv())
-  he_define_depopulation_control_params(test_env)
-  expect_equal(test_env$culling_capacity, c(20000))
-  expect_equal(test_env$cull_types, c(1:18))
-  expect_equal(test_env$cull_farm_if_cage_infection, FALSE)
+  test_env <- rlang::new_environment()
+
+  he_define_simulation_control_params(test_env)
+
+  expect_equal(test_env$n, 1)
+  expect_equal(test_env$run_id, NULL)
+  expect_equal(test_env$step_in_file, NULL)
+  expect_equal(test_env$max_outbreak_length, 365)
+  expect_equal(test_env$random_seed, -10)
+  expect_equal(test_env$ignore_disease_status_input, TRUE)
+  expect_equal(test_env$verbose, FALSE)
+  expect_equal(test_env$summary_function, "HEsum")
 })
 
 test_that("user-defined simulation control parameters stored in the environment", {
-  test_culling_capacity <- c(10000)
-  test_cull_types <- c(1:15)
-  test_cull_farm_if_cage_infection <- TRUE
-  test_env <- rlang::env(parent = emptyenv())
-  he_define_depopulation_control_params(test_env,
-                                        culling_capacity = test_culling_capacity,
-                                        cull_types = test_cull_types,
-                                        cull_farm_if_cage_infection = test_cull_farm_if_cage_infection)
-  expect_equal(test_env$culling_capacity, test_culling_capacity)
-  expect_equal(test_env$cull_types, test_cull_types)
-  expect_equal(test_env$cull_farm_if_cage_infection, test_cull_farm_if_cage_infection)
+  test_n <- 1
+  test_run_id <- 10
+  test_step_in_file <- "test_file.txt"
+  test_max_outbreak_length <- 730
+  test_random_seed <- 123987234
+  test_ignore_disease_status_input <- FALSE
+  test_verbose <- TRUE
+  test_summary_function <- "none"
+
+  test_env <- rlang::new_environment()
+  he_define_simulation_control_params(test_env,
+                                      test_n,
+                                      test_run_id,
+                                      test_step_in_file,
+                                      test_max_outbreak_length,
+                                      test_random_seed,
+                                      test_ignore_disease_status_input,
+                                      test_verbose,
+                                      test_summary_function)
+
+  expect_equal(test_env$n, test_n)
+  expect_equal(test_env$run_id, test_run_id)
+  expect_equal(test_env$step_in_file, test_step_in_file)
+  expect_equal(test_env$max_outbreak_length, test_max_outbreak_length)
+  expect_equal(test_env$random_seed, test_random_seed)
+  expect_equal(test_env$ignore_disease_status_input, test_ignore_disease_status_input)
+  expect_equal(test_env$verbose, test_verbose)
+  expect_equal(test_env$summary_function, test_summary_function)
 })
