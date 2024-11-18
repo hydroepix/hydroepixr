@@ -12,7 +12,7 @@
 #' @export
 #'
 #' @examples
-#' rpert(10, 0.14, 0.4, 0.8)
+#' he_rpert(10, 0.14, 0.4, 0.8)
 he_rpert <- function(n, a, l, b) {
   mu <- (a + 4 * l + b) / 6
 
