@@ -2,6 +2,7 @@
 
 export(he_define_depopulation_control_params)
 export(he_define_simulation_control_params)
+export(he_define_surveillance_control_params)
 export(he_read_dist_mat_file)
 export(he_read_farm_info_file)
 export(he_read_types_file)

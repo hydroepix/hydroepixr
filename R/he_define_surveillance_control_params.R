@@ -1,6 +1,22 @@
+#' Define simulation variables related to depopulation control
+#'
+#' @param environment environment in which simulation variables are stored and managed
+#' @param control_functions functions which define infection control methods
+#' @param prob_diagnosis probability of diagnosis given an infected individual is surveyed
+#' @param mortality_increase_1 ?
+#' @param mortality_increase_2 ?
+#' @param time_between_visits_within_zone length of time between visits within a surveillance zone
+#' @param protection_zone_duration length of time that an implemented protection zone lasts
+#' @param past_days_for_dead_animal_surveillance ?
+#' @param daily_farm_survey_limit maximum number of farms that can be surveyed in a day
+#' @param output_surveillance_details logical indicating whether to output detailed surveillance information
+#'
+#' @return NA
+#' @export
+#'
 he_define_surveillance_control_params <-
   function(environment,
-           control_functions = c("SurvZone(label='SZ"),
+           control_functions = c("SurvZone(label='SZ')"),
            # TODO: Is there a better way to provide these?
            prob_diagnosis = 1,
            # TODO: renaming of ProbSelDiag - OK?
