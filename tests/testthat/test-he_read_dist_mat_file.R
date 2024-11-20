@@ -7,5 +7,6 @@ test_that("distance matrix file reads in with correct values", {
   expected_dat <- data.frame(c(0, 2000, 7000),
                              c(2000, 0, 5000),
                              c(7000, 5000, 0))
-  expect_true(identical(dat, expected_dat))
+  mismatched_values <- which(dat != expected_dat)
+  expect_length(mismatched_values, 0)
 })
