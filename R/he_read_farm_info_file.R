@@ -13,11 +13,35 @@ he_read_farm_info_file <- function(filepath) {
     dec = ".",
     header = TRUE
   )
-  # TODO: check for expected columns and names
+  # Check for expected columns and names
+  # TODO: Confirm whether all of these columns are necessary for the model
+  # or is a specific subset sufficient? The check should change accordingly.
+  farm_info_columns <- names(farm_info)
+  expected_columns <- list(
+    "cage_id",
+    "farm_id",
+    "cage_size",
+    "baseline_mort",
+    "farm_type",
+    "bmaid"
+  )
+  mismatched_columns <-
+    setdiff(
+      union(farm_info_columns, expected_columns),
+      intersect(farm_info_columns, expected_columns)
+    )
+  if (length(mismatched_columns > 0)) {
+    stop(
+      "Unexpected column headers. Expected headers are: ",
+      paste(expected_columns, collapse = ", "),
+      "Headers in the provided file that do not match are: ",
+      paste(mismatched_columns, collapse = ", ")
+    )
+  }
   # Check for non-unique IDs
   if (length(unique(farm_info$cage_id)) < length(farm_info$cage_id)) {
     stop("Cage ID numbers are not unique. Simulations Fails. Duplicate Value: ",
-         paste(unique(farm_info$cage_id[duplicated(farm_info$cage_id)]),collapse=", "))
+         paste(unique(farm_info$cage_id[duplicated(farm_info$cage_id)]), collapse = ", "))
   }
   farm_info
 }

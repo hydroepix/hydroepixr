@@ -35,5 +35,3 @@ he_read_types_file <- function(filepath) {
   }
   type_info
 }
-
-#test <- read_types_file("data/types_file_bay_x.csv")
