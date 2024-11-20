@@ -8,8 +8,8 @@
 he_read_dist_mat_file <- function(filepath) {
   dist_mat <- utils::read.table(
     filepath,
-    sep = ";",
+    sep = ",",
     dec = ".",
-    header = TRUE
+    header = FALSE
   )
 }
