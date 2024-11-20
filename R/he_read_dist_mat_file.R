@@ -12,4 +12,7 @@ he_read_dist_mat_file <- function(filepath) {
     dec = ".",
     header = FALSE
   )
+  # TODO: Add check to see if the distance matrix is symmetrical
+    # TODO: check that number of rows is the same as the number of columns
+    # TODO: check that the values in the matrix are symmetrical
 }

@@ -13,6 +13,29 @@ he_read_types_file <- function(filepath) {
     as.is = TRUE,
     header = TRUE
   ))
+  type_info_columns <- names(type_info)
+  expected_columns <- list(
+    "farm_type_id",
+    "farm_type_name",
+    "lat_dur_freq",
+    "sub_dur_freq",
+    "cli_dur_freq",
+    "within_pen_transmission",
+    "rel_susceptibility"
+  )
+  mismatched_columns <-
+    setdiff(
+      union(type_info_columns, expected_columns),
+      intersect(type_info_columns, expected_columns)
+    )
+  if (length(mismatched_columns > 0)) {
+    stop(
+      "Unexpected column headers. Expected headers are: ",
+      paste(expected_columns, collapse = ", "),
+      "Headers in the provided file that do not match are: ",
+      paste(mismatched_columns, collapse = ", ")
+    )
+  }
   # TODO: Figure out how this might need to be modified if tornado plot option
   # is selected?
   # Code should likely go elsewhere
@@ -30,8 +53,8 @@ he_read_types_file <- function(filepath) {
   # TODO: Can we modify the inputs so that we don't have to store these as
   # expressions? Can we have functions to manage these distributions?
   ## Parsing verbatim code in input file
-  for (i in 3:length(type_info)) {
-    type_info[[i]] <- eval(parse(text = type_info[[i]]))
-  }
+  # for (i in 3:length(type_info)) {
+  #   type_info[[i]] <- eval(parse(text = type_info[[i]]))
+  # }
   type_info
 }
