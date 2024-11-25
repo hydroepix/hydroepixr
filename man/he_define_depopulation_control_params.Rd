@@ -7,18 +7,21 @@
 he_define_depopulation_control_params(
   environment,
   culling_capacity = c(20000),
-  cull_types = c(1:18),
-  cull_farm_if_cage_infection = FALSE
+  species_to_cull = c(1:18),
+  cull_farm_if_cage_infected = FALSE
 )
 }
 \arguments{
-\item{environment}{environment in which simulation variables are stored and managed}
+\item{environment}{environment in which simulation variables are stored and
+managed}
 
-\item{culling_capacity}{vector of integer values indicating the number of individuals which can be culled??}
+\item{culling_capacity}{vector of integer values indicating the number of
+individuals which can be culled??}
 
-\item{cull_types}{vector of indices to indicate which species can be culled??}
+\item{species_to_cull}{vector of indices to indicate which species can be culled??}
 
-\item{cull_farm_if_cage_infection}{boolean indicating whether the entire farm should be culled if an infection is detected in a cage}
+\item{cull_farm_if_cage_infected}{boolean indicating whether the entire farm
+should be culled if an infection is detected in a cage}
 }
 \value{
 NA

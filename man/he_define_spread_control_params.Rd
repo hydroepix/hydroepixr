@@ -2,19 +2,19 @@
 % Please edit documentation in R/he_define_spread_control_params.R
 \name{he_define_spread_control_params}
 \alias{he_define_spread_control_params}
-\title{Define simulation variables related to depopulation control}
+\title{Define simulation variables related to spread control}
 \usage{
 he_define_spread_control_params(
   environment,
   new_infection_functions = c("BCSpread()", "DBinf()"),
-  t_stochastic = FALSE,
-  rf_stochastic = FALSE,
+  random_num_initially_infected_fish = FALSE,
+  intrafarm_disease_transmission_model = "binomial chain",
   index_farm_function = "selectIndexFarm",
   index_farm_select = list(farm_type = 1:18),
   index_direct = FALSE,
-  first_det_para_1 = 0.00255,
-  first_det_para_2 = 0.00255,
-  case_fatality = 0.89,
+  mort_threshold_for_first_investigation = 0.00255,
+  mort_threshold_for_subsequent_investigation = 0.00255,
+  case_fatality_prop = 0.89,
   days_dead_infectious = 2,
   farm_to_farm = 0.42,
   cage_to_cage = 0.052,
@@ -22,25 +22,25 @@ he_define_spread_control_params(
 )
 }
 \arguments{
-\item{environment}{environment in which simulation variables are stored and managed}
+\item{environment}{environment in which simulation variables are stored and
+managed}
 
 \item{new_infection_functions}{functions which define infection spread}
 
-\item{t_stochastic}{?}
+\item{random_num_initially_infected_fish}{logical indicating whether to
+randomize the initial number of infected fish}
 
-\item{rf_stochastic}{?}
+\item{intrafarm_disease_transmission_model}{defines which intrafarm disease
+transmission model is used, options are "binomial chain" and "reed-frost"}
 
-\item{index_farm_function}{function which defines how the index farm is selected}
+\item{index_farm_function}{function which defines how the index farm is
+selected}
 
 \item{index_farm_select}{arguments provided to the index_farm_function}
 
 \item{index_direct}{?}
 
-\item{first_det_para_1}{?}
-
-\item{first_det_para_2}{?}
-
-\item{case_fatality}{proportion of the infected population that will die}
+\item{case_fatality_prop}{proportion of the infected population that will die}
 
 \item{days_dead_infectious}{number of days dead animals remain infectious}
 
@@ -48,11 +48,16 @@ he_define_spread_control_params(
 
 \item{cage_to_cage}{rate of infection between cages}
 
-\item{vaccine_efficacy}{proportion of the vaccinated population that will survive if infected?}
+\item{vaccine_efficacy}{proportion of the vaccinated population that will
+survive if infected?}
+
+\item{first_det_para_1}{?}
+
+\item{first_det_para_2}{?}
 }
 \value{
 NA
 }
 \description{
-Define simulation variables related to depopulation control
+Define simulation variables related to spread control
 }

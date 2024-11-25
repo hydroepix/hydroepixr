@@ -1,14 +1,17 @@
-#' Define simulation variables related to depopulation control
+#' Define simulation variables related to simulation control
 #'
-#' @param environment environment in which simulation variables are stored and managed
+#' @param environment environment in which simulation variables are stored and
+#'   managed
 #' @param n number of iterations?
 #' @param run_id identifier for this run of the model
 #' @param step_in_file filename for step-wise information?
 #' @param max_outbreak_length maximum length of a disease outbreak
 #' @param random_seed random seed to use for the simulation
-#' @param ignore_disease_status_input boolean indicating whether or not to ignore disease status input?
+#' @param ignore_disease_status_input boolean indicating whether or not to
+#'   ignore disease status input?
 #' @param verbose boolean indicating whether verbose output should be generated
-#' @param summary_function text indicating which summary function should be used to summarize simulation outputs
+#' @param summary_function text indicating which summary function should be used
+#'   to summarize simulation outputs
 #'
 #' @return NA
 #' @export

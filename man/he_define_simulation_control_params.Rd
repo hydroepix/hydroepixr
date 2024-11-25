@@ -2,7 +2,7 @@
 % Please edit documentation in R/he_define_simulation_control_params.R
 \name{he_define_simulation_control_params}
 \alias{he_define_simulation_control_params}
-\title{Define simulation variables related to depopulation control}
+\title{Define simulation variables related to simulation control}
 \usage{
 he_define_simulation_control_params(
   environment,
@@ -17,7 +17,8 @@ he_define_simulation_control_params(
 )
 }
 \arguments{
-\item{environment}{environment in which simulation variables are stored and managed}
+\item{environment}{environment in which simulation variables are stored and
+managed}
 
 \item{n}{number of iterations?}
 
@@ -29,15 +30,17 @@ he_define_simulation_control_params(
 
 \item{random_seed}{random seed to use for the simulation}
 
-\item{ignore_disease_status_input}{boolean indicating whether or not to ignore disease status input?}
+\item{ignore_disease_status_input}{boolean indicating whether or not to
+ignore disease status input?}
 
 \item{verbose}{boolean indicating whether verbose output should be generated}
 
-\item{summary_function}{text indicating which summary function should be used to summarize simulation outputs}
+\item{summary_function}{text indicating which summary function should be used
+to summarize simulation outputs}
 }
 \value{
 NA
 }
 \description{
-Define simulation variables related to depopulation control
+Define simulation variables related to simulation control
 }

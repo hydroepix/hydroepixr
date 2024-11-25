@@ -10,3 +10,7 @@ test_that("distance matrix file reads in with correct values", {
   mismatched_values <- which(dat != expected_dat)
   expect_length(mismatched_values, 0)
 })
+
+test_that("distance matrix file provides symmetrical matrix", {
+  # TODO
+})
