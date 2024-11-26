@@ -11,8 +11,8 @@
 #'   selected
 #' @param index_farm_select arguments provided to the index_farm_function
 #' @param index_direct ?
-#' @param first_det_para_1 ?
-#' @param first_det_para_2 ?
+#' @param mort_threshold_for_first_investigation ?
+#' @param mort_threshold_for_subsequent_investigation ?
 #' @param case_fatality_prop proportion of the infected population that will die
 #' @param days_dead_infectious number of days dead animals remain infectious
 #' @param farm_to_farm rate of infection between farms

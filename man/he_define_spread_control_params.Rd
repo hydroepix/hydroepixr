@@ -40,6 +40,10 @@ selected}
 
 \item{index_direct}{?}
 
+\item{mort_threshold_for_first_investigation}{?}
+
+\item{mort_threshold_for_subsequent_investigation}{?}
+
 \item{case_fatality_prop}{proportion of the infected population that will die}
 
 \item{days_dead_infectious}{number of days dead animals remain infectious}
@@ -50,10 +54,6 @@ selected}
 
 \item{vaccine_efficacy}{proportion of the vaccinated population that will
 survive if infected?}
-
-\item{first_det_para_1}{?}
-
-\item{first_det_para_2}{?}
 }
 \value{
 NA
