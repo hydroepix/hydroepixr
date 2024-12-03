@@ -33,26 +33,8 @@ he_initialize_simulation_env <-
         environment$farm_info$farm_type %in% environment$species_to_cull
     }
 
-    # TODO: Check which functions to use? Maybe better elsewhere
-    # eval.parent(expression(
-    #   RFtrans <- switch(RFstoch + 1,
-    #                     function(z,nn,pp){ nn*pp }, # if False
-    #                     rbinom                      # if True
-    #   )
-    # ))
-    #
-    # eval.parent(expression(
-    #   Tinfs <- switch(Tstoch + 1,
-    #                   function(contactHerds,dProbInfection,Sus) {
-    #                     rbinom(length(contactHerds),1,dProbInfection)
-    #                   },
-    #                   function(contactHerds,dProbInfection,Sus) {
-    #                     rbinom(length(contactHerds),aHerd$Sus[contactHerds],
-    #                            1 - (1 - dProbInfection) ^ (1 / Sus[contactHerds]))
-    #                   })
-    # ))
-
     # TODO: Move output generation into a different function?
+    # TODO: Allow custom naming of output files?
 
     # Set up infected cage matrix and output file
     environment$all_inf_cages <- matrix(numeric(0), ncol = 10)
@@ -63,7 +45,6 @@ he_initialize_simulation_env <-
     # Set up result matrix?? and output file
     environment$result_summary_output <-
       matrix(numeric(0), ncol = 10)
-    # TODO: Allow custom naming of this file?
     environment$result_summary_file_name <- paste(run_id, "isa.txt")
     write.table(environment$result_summary_output,
                 environment$result_summary_file_name,
