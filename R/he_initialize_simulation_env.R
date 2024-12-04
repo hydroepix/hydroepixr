@@ -15,9 +15,9 @@ he_initialize_simulation_env <-
     environment$dist_mat <-
       he_read_dist_mat_file("inst/testdata/dist_mat_bay_x.csv")
 
+    # Initialize other internal simulation variables
+    he_initialize_internal_simulation_variables()
 
-    # TODO: Function to initialize these variables?
-    #he_expand_farm_info? he_initialize_simulation_farm_info?
     # Add new simulation-relevant variables from farm info file
     # Determine number of farms?
     environment$num_farms <- length(farm_info$farm_type)
@@ -33,55 +33,14 @@ he_initialize_simulation_env <-
         environment$farm_info$farm_type %in% environment$species_to_cull
     }
 
-    # TODO: Move output generation into a different function?
-    # TODO: Allow custom naming of output files?
-
-    # Set up infected cage matrix and output file
-    environment$all_inf_cages <- matrix(numeric(0), ncol = 10)
-    environment$infected_output_file_name <-
-      paste(run_id, "all_inf_cages.txt", sep = "-")
-    write.table(all_inf_cages, infected_output_file_name, sep = " ")
-
-    # Set up result matrix?? and output file
-    environment$result_summary_output <-
-      matrix(numeric(0), ncol = 10)
-    environment$result_summary_file_name <- paste(run_id, "isa.txt")
-    write.table(environment$result_summary_output,
-                environment$result_summary_file_name,
-                sep = " ")
+    # Set up output variables and corresponding output files
+    he_initialize_infected_cage_output()
+    he_initialize_result_summary_output()
 
     if (environment$detailed) {
-      environment$surveyed_matrix_output <- matrix(numeric(0), ncol = 3)
-      environment$depopulated_matrix_output <-
-        matrix(numeric(0), ncol = 3)
+      he_initialize_survey_output()
+      he_initialize_depopulation_output()
       # TODO: Figure out what this is
-      environment$preempted_matrix_output <-
-        matrix(numeric(0), ncol = 3)
-
-      surveyed_output_file_name <-
-        paste(run_id, "surveyed_farms.txt", sep = "-")
-      depopulated_output_file_name <-
-        paste(run_id, "depopulated_farms.txt", sep = "-")
-      preempted_output_file_name <-
-        paste(run_id, "preempted_farms.txt", sep = "-")
-
-      write.table(
-        surveyed_matrix_output,
-        surveyed_output_file_name,
-        col.names = FALSE,
-        row.names = FALSE
-      )
-      write.table(
-        depopulated_matrix_output,
-        depopulated_output_file_name,
-        col.names = FALSE,
-        row.names = FALSE
-      )
-      write.table(
-        preempted_matrix_output,
-        preempted_output_file_name,
-        col.names = FALSE,
-        row.names = FALSE
-      )
+      he_initialize_preemption_output()
     }
   }
