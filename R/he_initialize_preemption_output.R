@@ -1,12 +1,12 @@
-he_initialize_preemption_output <- function() {
-  environment$preempted_matrix_output <-
+he_initialize_preemption_output <- function(environment, filepath) {
+  environment$preemption_output <-
     matrix(numeric(0), ncol = 3)
-  preempted_output_file_name <-
-    paste(run_id, "preempted_farms.txt", sep = "-")
+  preemption_output_file_name <-
+    paste(environment$run_id, "preempted.txt", sep = "-")
 
   write.table(
-    preempted_matrix_output,
-    preempted_output_file_name,
+    environment$preemption_output,
+    environment$preemption_output_file_name,
     col.names = FALSE,
     row.names = FALSE
   )
