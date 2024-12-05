@@ -19,7 +19,7 @@ test_that("check initialized non-default values for infected cage output file", 
 
 test_that("check initialized values in infected cage matrix", {
   test_environment <- rlang::new_environment()
-  filepath <- withr::local_tempfile(pattern = "depopulated_farms",
+  filepath <- withr::local_tempfile(pattern = "infected_cages",
                                     fileext = ".txt")
   he_initialize_infected_cage_output(test_environment, filepath)
   expect_equal(test_environment$infected_cages,
