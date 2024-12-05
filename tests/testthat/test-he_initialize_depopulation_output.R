@@ -25,3 +25,6 @@ test_that("check initialized values in depopulation matrix", {
   expect_equal(test_environment$depopulation_matrix_output,
                matrix(numeric(0), ncol = 3))
 })
+
+# TODO: Tests to see whether the file is written?
+# TODO: Tests to see whether the values in the file are as expected?
