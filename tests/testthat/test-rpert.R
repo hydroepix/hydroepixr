@@ -16,3 +16,5 @@ test_that("rpert generates values between min and max", {
   true_vec <- rep(TRUE, n)
   expect_equal(dist_output_in_range, true_vec)
 })
+
+#TODO: Option to set seed and test exact values?

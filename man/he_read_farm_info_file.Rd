@@ -4,7 +4,7 @@
 \alias{he_read_farm_info_file}
 \title{Read in a farm information file}
 \usage{
-he_read_farm_info_file(filepath)
+he_read_farm_info_file(filepath, verbose = FALSE)
 }
 \arguments{
 \item{filepath}{a filepath to read a csv file from}

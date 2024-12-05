@@ -32,7 +32,7 @@ he_read_types_file <- function(filepath) {
     stop(
       "Unexpected column headers. Expected headers are: ",
       paste(expected_columns, collapse = ", "),
-      "Headers in the provided file that do not match are: ",
+      "\nHeaders in the provided file that do not match are: ",
       paste(mismatched_columns, collapse = ", ")
     )
   }
