@@ -1,5 +1,3 @@
-##  with min a, mode l, and max
-## b.
 #' Generate n PERT beta random variates
 #'
 #' @param n number of PERT beta random variates to generate

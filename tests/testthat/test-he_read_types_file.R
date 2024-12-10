@@ -23,3 +23,14 @@ test_that("types file without correct headers throws error", {
   )),
   regexp = "Unexpected column headers. Expected headers are: ")
 })
+
+
+test_that("farm type ids are unique", {
+  # TODO
+  # filepath <- system.file("testdata", package = "hydroepixr")
+  # expect_error(he_read_farm_info_file(paste0(
+  #   filepath,
+  #   "/farm_file_bay_x_duplicate_cage_ids.csv"
+  # )),
+  # regexp = "Cage ID numbers are not unique. Simulations Fails. Duplicate Value: ")
+})

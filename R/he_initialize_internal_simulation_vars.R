@@ -1,3 +1,10 @@
+#' Initialize internal simulation variables
+#'
+#' @param environment simulation environment
+#'
+#' @return NA
+#' @export
+#'
 he_initialize_internal_simulation_vars <- function(environment) {
   # Declare additional variables
   # TODO: distinction between these two variables?

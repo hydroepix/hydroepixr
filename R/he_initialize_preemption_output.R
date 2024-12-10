@@ -1,12 +1,23 @@
-he_initialize_preemption_output <- function() {
-  environment$preempted_matrix_output <-
+#' Initialize preemption output
+#'
+#' @param environment simulation environment
+#' @param filepath path in which to store the preemption output file
+#'
+#' @return NA
+#' @export
+#'
+he_initialize_preemption_output <- function(environment, filepath) {
+  environment$preemption_output <-
     matrix(numeric(0), ncol = 3)
-  preempted_output_file_name <-
-    paste(run_id, "preempted_farms.txt", sep = "-")
-
+  if (!is.null(environment$run_id)) {
+    environment$preemption_output_file_name <-
+      paste(environment$run_id, "preempted.txt", sep = "-")
+  } else {
+    environment$preemption_output_file_name <- "preempted.txt"
+  }
   write.table(
-    preempted_matrix_output,
-    preempted_output_file_name,
+    environment$preemption_output,
+    environment$preemption_output_file_name,
     col.names = FALSE,
     row.names = FALSE
   )

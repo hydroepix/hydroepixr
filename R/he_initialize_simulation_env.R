@@ -1,3 +1,13 @@
+#' Initialize simulation environment
+#'
+#' @param environment simulation environment
+#' @param farm_info_filepath filepath to farm info file
+#' @param types_filepath filepath to types file
+#' @param dist_mat_filepath filepath to distance matrix file
+#'
+#' @return NA
+#' @export
+#'
 he_initialize_simulation_env <-
   function(environment,
            farm_info_filepath,

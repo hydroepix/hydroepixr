@@ -1,7 +1,19 @@
-he_initialize_infected_cage_output <- function(run_id, filename) {
+#' Initialize infected cage output
+#'
+#' @param environment simulation environment
+#' @param filepath path in which to store the infected cage output file
+#'
+#' @return NA
+#' @export
+#'
+he_initialize_infected_cage_output <- function(environment, filename) {
   # Set up infected cage matrix and output file
-  environment$all_inf_cages <- matrix(numeric(0), ncol = 10)
-  environment$infected_output_file_name <-
-    paste(run_id, "all_inf_cages.txt", sep = "-")
-  write.table(all_inf_cages, infected_output_file_name, sep = " ")
+  environment$infected_cages <- matrix(numeric(0), ncol = 10)
+  if (!is.null(environment$run_id)) {
+    environment$infected_output_file_name <-
+      paste(environment$run_id, "infected_cages.txt", sep = "-")
+  } else {
+    environment$infected_output_file_name <- "infected_cages.txt"
+  }
+  write.table(environment$infected_cages, environment$infected_output_file_name, sep = " ")
 }

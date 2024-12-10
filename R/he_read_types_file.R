@@ -23,16 +23,12 @@ he_read_types_file <- function(filepath) {
     "within_pen_transmission",
     "rel_susceptibility"
   )
-  mismatched_columns <-
-    setdiff(
-      union(type_info_columns, expected_columns),
-      intersect(type_info_columns, expected_columns)
-    )
+  mismatched_columns <- setdiff(type_info_columns, expected_columns)
   if (length(mismatched_columns > 0)) {
     stop(
       "Unexpected column headers. Expected headers are: ",
       paste(expected_columns, collapse = ", "),
-      "Headers in the provided file that do not match are: ",
+      "\nHeaders in the provided file that do not match are: ",
       paste(mismatched_columns, collapse = ", ")
     )
   }
