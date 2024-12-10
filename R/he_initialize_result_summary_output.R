@@ -1,3 +1,11 @@
+#' Initialize result summary output
+#'
+#' @param environment simulation environment
+#' @param filepath path in which to store the results summary output file
+#'
+#' @return NA
+#' @export
+#'
 he_initialize_result_summary_output <-
   function(environment, filepath) {
     environment$result_summary <-

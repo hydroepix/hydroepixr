@@ -1,5 +1,14 @@
+#' Initialize infection as a single random fish
+#'
+#' @param contact_farms which farms have had contact with the vector of infection?
+#' @param prob_infection probability of infection of ...?
+#' @param susceptibility susceptibility? to infection? logical yes/no?
+#'
+#' @return ?
+#' @export
+#'
 he_initialize_infected_fish_single <-
-  function(contact_herds,
+  function(contact_farms,
            prob_infection,
            susceptibility) {
     rbinom(length(contact_herds),

@@ -1,3 +1,11 @@
+#' Initialize infected cage output
+#'
+#' @param environment simulation environment
+#' @param filepath path in which to store the infected cage output file
+#'
+#' @return NA
+#' @export
+#'
 he_initialize_infected_cage_output <- function(environment, filename) {
   # Set up infected cage matrix and output file
   environment$infected_cages <- matrix(numeric(0), ncol = 10)

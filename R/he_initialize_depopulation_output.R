@@ -1,3 +1,11 @@
+#' Initialize depopulation output
+#'
+#' @param environment simulation environment
+#' @param filepath path in which to store the depopulation output file
+#'
+#' @return NA
+#' @export
+#'
 he_initialize_depopulation_output <- function(environment, filepath) {
   environment$depopulation_matrix_output <-
     matrix(numeric(0), ncol = 3)

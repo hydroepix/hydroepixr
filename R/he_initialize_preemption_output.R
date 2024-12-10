@@ -1,3 +1,11 @@
+#' Initialize preemption output
+#'
+#' @param environment simulation environment
+#' @param filepath path in which to store the preemption output file
+#'
+#' @return NA
+#' @export
+#'
 he_initialize_preemption_output <- function(environment, filepath) {
   environment$preemption_output <-
     matrix(numeric(0), ncol = 3)
