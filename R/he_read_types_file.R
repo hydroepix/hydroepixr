@@ -17,9 +17,9 @@ he_read_species_info_file <- function(filepath) {
   expected_columns <- list(
     "species_id",
     "species_name",
-    "lat_dur_freq",
-    "sub_dur_freq",
-    "cli_dur_freq",
+    "latent_dur_freq",
+    "subclinical_dur_freq",
+    "clinical_dur_freq",
     "within_pen_transmission",
     "rel_susceptibility"
   )

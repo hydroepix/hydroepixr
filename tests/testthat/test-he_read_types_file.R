@@ -6,9 +6,9 @@ test_that("species file reads in with correct values", {
   expect_no_error(dat)
   expected_dat <- data.frame(species_id = 1,
                              species_name = "Fish1",
-                             lat_dur_freq = "c(0.000001,0.000001,0.0001,0.01,0.1,0.25,0.339898,0.3)",
-                             sub_dur_freq = "c(0.249995,0.50,0.25,0.000001,0.000001,0.000001,0.000001,0.000001)",
-                             cli_dur_freq = "c(0.125,0.125,0.125,0.125,0.125,0.125,0.125,0.125)",
+                             latent_dur_freq = "c(0.000001,0.000001,0.0001,0.01,0.1,0.25,0.339898,0.3)",
+                             subclinical_dur_freq = "c(0.249995,0.50,0.25,0.000001,0.000001,0.000001,0.000001,0.000001)",
+                             clinical_dur_freq = "c(0.125,0.125,0.125,0.125,0.125,0.125,0.125,0.125)",
                              within_pen_transmission = "rpert(n,0.14,0.4,0.8)",
                              rel_susceptibility = 1)
   mismatched_values <- which(dat != expected_dat)
