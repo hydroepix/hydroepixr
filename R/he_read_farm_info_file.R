@@ -21,7 +21,7 @@ he_read_farm_info_file <- function(filepath, verbose = FALSE) {
                            "netpen_size",
                            "baseline_mort",
                            "species",
-                           "bmaid")
+                           "bay_management_id")
   optional_columns <- list("initial_infection_status",
                            "initial_time_infected")
   mismatched_columns <-
