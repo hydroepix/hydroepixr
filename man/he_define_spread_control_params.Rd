@@ -17,7 +17,7 @@ he_define_spread_control_params(
   case_fatality_prop = 0.89,
   days_dead_infectious = 2,
   farm_to_farm = 0.42,
-  cage_to_cage = 0.052,
+  netpen_to_netpen = 0.052,
   vaccine_efficacy = 0
 )
 }
@@ -50,7 +50,7 @@ selected}
 
 \item{farm_to_farm}{rate of infection between farms}
 
-\item{cage_to_cage}{rate of infection between cages}
+\item{netpen_to_netpen}{rate of infection between cages}
 
 \item{vaccine_efficacy}{proportion of the vaccinated population that will
 survive if infected?}

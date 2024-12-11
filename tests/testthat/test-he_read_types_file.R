@@ -30,7 +30,7 @@ test_that("species ids are unique", {
   # filepath <- system.file("testdata", package = "hydroepixr")
   # expect_error(he_read_farm_info_file(paste0(
   #   filepath,
-  #   "/farm_file_bay_x_duplicate_cage_ids.csv"
+  #   "/farm_file_bay_x_duplicate_netpen_ids.csv"
   # )),
-  # regexp = "Cage ID numbers are not unique. Simulations Fails. Duplicate Value: ")
+  # regexp = "Netpen ID numbers are not unique. Simulations Fails. Duplicate Value: ")
 })

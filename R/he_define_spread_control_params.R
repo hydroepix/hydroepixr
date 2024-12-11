@@ -16,7 +16,7 @@
 #' @param case_fatality_prop proportion of the infected population that will die
 #' @param days_dead_infectious number of days dead animals remain infectious
 #' @param farm_to_farm rate of infection between farms
-#' @param cage_to_cage rate of infection between cages
+#' @param netpen_to_netpen rate of infection between cages
 #' @param vaccine_efficacy proportion of the vaccinated population that will
 #'   survive if infected?
 #'
@@ -38,7 +38,7 @@ he_define_spread_control_params <-
            case_fatality_prop = 0.89,
            days_dead_infectious = 2,
            farm_to_farm = 0.42,
-           cage_to_cage = 0.052,
+           netpen_to_netpen = 0.052,
            vaccine_efficacy = 0) {
     # TODO: Add check for valid options for intrafarm_disease_transmission_model
     environment$new_infection_functions <- new_infection_functions
@@ -56,6 +56,6 @@ he_define_spread_control_params <-
     environment$case_fatality_prop <- case_fatality_prop
     environment$days_dead_infectious <- days_dead_infectious
     environment$farm_to_farm <- farm_to_farm
-    environment$cage_to_cage <- cage_to_cage
+    environment$netpen_to_netpen <- netpen_to_netpen
     environment$vaccine_efficacy <- vaccine_efficacy
   }

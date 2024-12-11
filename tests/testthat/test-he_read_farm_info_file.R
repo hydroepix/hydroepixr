@@ -4,9 +4,9 @@ test_that("farm info file reads in with correct values", {
   dat <- he_read_farm_info_file(paste0(filepath, "/farm_file_bay_x.csv"))
 
   expect_no_error(dat)
-  expected_dat <- data.frame(cage_id = c(1:60),
+  expected_dat <- data.frame(netpen_id = c(1:60),
                              farm_id = c(rep(1, 20), rep(2, 20), rep(3, 20)),
-                             cage_size = rep(25000, 60),
+                             netpen_size = rep(25000, 60),
                              baseline_mort = c(
                                0.000107248,
                                0.000121311,
@@ -84,11 +84,11 @@ test_that("farm info file without correct headers throws error", {
   regexp = "Unexpected column headers. Expected headers are: ")
 })
 
-test_that("farm info file with duplicate cage identifiers throws error", {
+test_that("farm info file with duplicate netpen identifiers throws error", {
   filepath <- system.file("testdata", package = "hydroepixr")
   expect_error(he_read_farm_info_file(paste0(
     filepath,
-    "/farm_file_bay_x_duplicate_cage_ids.csv"
+    "/farm_file_bay_x_duplicate_netpen_ids.csv"
   )),
-  regexp = "Cage ID numbers are not unique. Simulations Fails. Duplicate Value: ")
+  regexp = "Netpen ID numbers are not unique. Simulations Fails. Duplicate Value: ")
 })

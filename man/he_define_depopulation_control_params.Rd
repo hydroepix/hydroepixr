@@ -6,22 +6,22 @@
 \usage{
 he_define_depopulation_control_params(
   environment,
-  depop_capacity = c(20000),
+  depop_capacity = 20000,
   species_to_depop = c(1:18),
-  depop_farm_if_cage_infected = FALSE
+  depop_farm_if_netpen_infected = FALSE
 )
 }
 \arguments{
 \item{environment}{environment in which simulation variables are stored and
 managed}
 
-\item{depop_capacity}{nteger value indicating the number of individuals
+\item{depop_capacity}{integer value indicating the number of individuals
 which can be depopulated on a given day}
 
 \item{species_to_depop}{vector of indices to indicate which species can be depopulated??}
 
-\item{depop_farm_if_cage_infected}{boolean indicating whether the entire farm
-should be depopulated if an infection is detected in a cage}
+\item{depop_farm_if_netpen_infected}{boolean indicating whether the entire farm
+should be depopulated if an infection is detected in a netpen}
 }
 \value{
 NA

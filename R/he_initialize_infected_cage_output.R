@@ -1,19 +1,19 @@
-#' Initialize infected cage output
+#' Initialize infected netpen output
 #'
 #' @param environment simulation environment
-#' @param filepath path in which to store the infected cage output file
+#' @param filepath path in which to store the infected netpen output file
 #'
 #' @return NA
 #' @export
 #'
-he_initialize_infected_cage_output <- function(environment, filename) {
-  # Set up infected cage matrix and output file
-  environment$infected_cages <- matrix(numeric(0), ncol = 10)
+he_initialize_infected_netpen_output <- function(environment, filename) {
+  # Set up infected netpen matrix and output file
+  environment$infected_netpens <- matrix(numeric(0), ncol = 10)
   if (!is.null(environment$run_id)) {
     environment$infected_output_file_name <-
-      paste(environment$run_id, "infected_cages.txt", sep = "-")
+      paste(environment$run_id, "infected_netpens.txt", sep = "-")
   } else {
-    environment$infected_output_file_name <- "infected_cages.txt"
+    environment$infected_output_file_name <- "infected_netpens.txt"
   }
-  write.table(environment$infected_cages, environment$infected_output_file_name, sep = " ")
+  write.table(environment$infected_netpens, environment$infected_output_file_name, sep = " ")
 }

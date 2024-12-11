@@ -16,9 +16,9 @@ he_read_farm_info_file <- function(filepath, verbose = FALSE) {
   # TODO: Confirm whether all of these columns are necessary for the model
   # or is a specific subset sufficient? The check should change accordingly.
   farm_info_columns <- names(farm_info)
-  expected_columns <- list("cage_id",
+  expected_columns <- list("netpen_id",
                            "farm_id",
-                           "cage_size",
+                           "netpen_size",
                            "baseline_mort",
                            "species",
                            "bmaid")
@@ -62,10 +62,10 @@ he_read_farm_info_file <- function(filepath, verbose = FALSE) {
   }
 
   # Check for non-unique IDs
-  if (length(unique(farm_info$cage_id)) < length(farm_info$cage_id)) {
+  if (length(unique(farm_info$netpen_id)) < length(farm_info$netpen_id)) {
     stop(
-      "Cage ID numbers are not unique. Simulations Fails. Duplicate Value: ",
-      paste(unique(farm_info$cage_id[duplicated(farm_info$cage_id)]), collapse = ", ")
+      "Netpen ID numbers are not unique. Simulations Fails. Duplicate Value: ",
+      paste(unique(farm_info$netpen_id[duplicated(farm_info$netpen_id)]), collapse = ", ")
     )
   }
   farm_info

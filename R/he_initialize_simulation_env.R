@@ -44,7 +44,7 @@ he_initialize_simulation_env <-
     }
 
     # Set up output variables and corresponding output files
-    he_initialize_infected_cage_output()
+    he_initialize_infected_netpen_output()
     he_initialize_result_summary_output()
 
     if (environment$detailed) {

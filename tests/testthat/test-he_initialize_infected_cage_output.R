@@ -1,28 +1,28 @@
-test_that("check initialized default values for infected cage output file", {
+test_that("check initialized default values for infected netpen output file", {
   test_environment <- rlang::new_environment()
-  filepath <- withr::local_tempfile(pattern = "infected_cages",
+  filepath <- withr::local_tempfile(pattern = "infected_netpens",
                                     fileext = ".txt")
-  he_initialize_infected_cage_output(test_environment, filepath)
+  he_initialize_infected_netpen_output(test_environment, filepath)
   expect_equal(test_environment$infected_output_file_name,
-               "infected_cages.txt")
+               "infected_netpens.txt")
 })
 
-test_that("check initialized non-default values for infected cage output file", {
+test_that("check initialized non-default values for infected netpen output file", {
   test_environment <- rlang::new_environment()
   test_environment$run_id <- 1
-  filepath <- withr::local_tempfile(pattern = "infected_cages",
+  filepath <- withr::local_tempfile(pattern = "infected_netpens",
                                     fileext = ".txt")
-  he_initialize_infected_cage_output(test_environment, filepath)
+  he_initialize_infected_netpen_output(test_environment, filepath)
   expect_equal(test_environment$infected_output_file_name,
-               "1-infected_cages.txt")
+               "1-infected_netpens.txt")
 })
 
-test_that("check initialized values in infected cage matrix", {
+test_that("check initialized values in infected netpen matrix", {
   test_environment <- rlang::new_environment()
-  filepath <- withr::local_tempfile(pattern = "infected_cages",
+  filepath <- withr::local_tempfile(pattern = "infected_netpens",
                                     fileext = ".txt")
-  he_initialize_infected_cage_output(test_environment, filepath)
-  expect_equal(test_environment$infected_cages,
+  he_initialize_infected_netpen_output(test_environment, filepath)
+  expect_equal(test_environment$infected_netpens,
                matrix(numeric(0), ncol = 10))
 })
 
