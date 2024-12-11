@@ -69,7 +69,7 @@ test_that("farm info file reads in with correct values", {
                                0.000162843,
                                0.000137203
                              ),
-                             farm_type = rep(1, 60),
+                             species = rep(1, 60),
                              bmaid = rep(1, 60))
   mismatched_values <- which(dat != expected_dat)
   expect_length(mismatched_values, 0)

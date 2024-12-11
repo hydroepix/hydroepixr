@@ -1,2 +1,2 @@
-﻿farm_type_id,farmTypeName,lat_dur_freq,sub_dur_freq,cli_dur_freq,within_pen_transmission,rel_susceptibility
+﻿species_id,farmTypeName,lat_dur_freq,sub_dur_freq,cli_dur_freq,within_pen_transmission,rel_susceptibility
 1,Fish1,"c(0.000001,0.000001,0.0001,0.01,0.1,0.25,0.339898,0.3)","c(0.249995,0.50,0.25,0.000001,0.000001,0.000001,0.000001,0.000001)","c(0.125,0.125,0.125,0.125,0.125,0.125,0.125,0.125)","rpert(n,0.14,0.4,0.8)",1

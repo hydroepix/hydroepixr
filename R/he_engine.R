@@ -8,6 +8,7 @@ he_engine <- function() {
         # "HElimitmovements()"
         # "SurvHerds()"
       # Update relative effect of measures on DC, IMC and ILC (what are these abbreviations?)
+      # Replaced by BCinf(), DBspread()
         # run function from "controlMethods" -> function representing a day??
         # run function from "InterMethods" -> function representing a day??
       # Identify infectious herds

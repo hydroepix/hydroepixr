@@ -11,7 +11,7 @@ he_read_farm_info_file <- function(filepath, verbose = FALSE) {
                                  sep = ",",
                                  dec = ".",
                                  header = TRUE)
-  num_farms <- length(farm_info$farm_type)
+  num_farms <- length(farm_info$species)
   # Check for expected columns and names
   # TODO: Confirm whether all of these columns are necessary for the model
   # or is a specific subset sufficient? The check should change accordingly.
@@ -20,7 +20,7 @@ he_read_farm_info_file <- function(filepath, verbose = FALSE) {
                            "farm_id",
                            "cage_size",
                            "baseline_mort",
-                           "farm_type",
+                           "species",
                            "bmaid")
   optional_columns <- list("initial_infection_status",
                            "initial_time_infected")

@@ -7,7 +7,7 @@
 he_initialize_simulation_env(
   environment,
   farm_info_filepath,
-  types_filepath,
+  species_info_filepath,
   dist_mat_filepath
 )
 }
@@ -16,7 +16,7 @@ he_initialize_simulation_env(
 
 \item{farm_info_filepath}{filepath to farm info file}
 
-\item{types_filepath}{filepath to types file}
+\item{species_info_filepath}{filepath to species info file}
 
 \item{dist_mat_filepath}{filepath to distance matrix file}
 }

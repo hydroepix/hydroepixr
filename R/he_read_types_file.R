@@ -1,29 +1,29 @@
-#' Read Types File
+#' Read Species Info File
 #'
-#' @param filepath to types file
+#' @param filepath to species info file
 #'
-#' @return data frame of type info from types file
+#' @return data frame of species info
 #' @export
 #' @importFrom utils read.table
 
-he_read_types_file <- function(filepath) {
-  type_info <- as.list(utils::read.table(
+he_read_species_info_file <- function(filepath) {
+  species_info <- as.list(utils::read.table(
     filepath,
     sep = ",",
     as.is = TRUE,
     header = TRUE
   ))
-  type_info_columns <- names(type_info)
+  species_info_columns <- names(species_info)
   expected_columns <- list(
-    "farm_type_id",
-    "farm_type_name",
+    "species_id",
+    "species_name",
     "lat_dur_freq",
     "sub_dur_freq",
     "cli_dur_freq",
     "within_pen_transmission",
     "rel_susceptibility"
   )
-  mismatched_columns <- setdiff(type_info_columns, expected_columns)
+  mismatched_columns <- setdiff(species_info_columns, expected_columns)
   if (length(mismatched_columns > 0)) {
     stop(
       "Unexpected column headers. Expected headers are: ",
@@ -52,5 +52,5 @@ he_read_types_file <- function(filepath) {
   # for (i in 3:length(type_info)) {
   #   type_info[[i]] <- eval(parse(text = type_info[[i]]))
   # }
-  type_info
+  species_info
 }

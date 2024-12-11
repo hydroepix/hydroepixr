@@ -30,7 +30,7 @@ he_define_spread_control_params <-
            random_num_initially_infected_fish = FALSE,
            intrafarm_disease_transmission_model = "binomial chain",
            index_farm_function = "selectIndexFarm",
-           index_farm_select = list(farm_type = 1:18),
+           index_farm_select = list(species = 1:18),
            # TODO: argument provided to index_farm_function - better way to represent or name?
            index_direct = FALSE,
            mort_threshold_for_first_investigation = 0.00255,

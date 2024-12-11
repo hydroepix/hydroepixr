@@ -16,7 +16,7 @@ he_define_depopulation_control_params(
 managed}
 
 \item{culling_capacity}{vector of integer values indicating the number of
-individuals which can be culled??}
+individuals which can be culled on a given day}
 
 \item{species_to_cull}{vector of indices to indicate which species can be culled??}
 

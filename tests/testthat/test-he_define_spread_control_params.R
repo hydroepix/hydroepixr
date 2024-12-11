@@ -5,7 +5,7 @@ test_that("default spread parameters are stored in the environment", {
   expect_equal(test_environment$random_num_initially_infected_fish, FALSE)
   expect_equal(test_environment$intrafarm_disease_transmission_model, "binomial chain")
   expect_equal(test_environment$index_farm_function, "selectIndexFarm")
-  expect_equal(test_environment$index_farm_select, list(farm_type = 1:18))
+  expect_equal(test_environment$index_farm_select, list(species = 1:18))
   expect_equal(test_environment$index_direct, FALSE)
   expect_equal(test_environment$mort_threshold_for_first_investigation, 0.00255)
   expect_equal(test_environment$mort_threshold_for_subsequent_investigation, 0.00255)

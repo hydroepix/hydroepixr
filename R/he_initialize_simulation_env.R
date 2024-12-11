@@ -2,7 +2,7 @@
 #'
 #' @param environment simulation environment
 #' @param farm_info_filepath filepath to farm info file
-#' @param types_filepath filepath to types file
+#' @param species_info_filepath filepath to species info file
 #' @param dist_mat_filepath filepath to distance matrix file
 #'
 #' @return NA
@@ -11,7 +11,7 @@
 he_initialize_simulation_env <-
   function(environment,
            farm_info_filepath,
-           types_filepath,
+           species_info_filepath,
            dist_mat_filepath) {
     # Define farm object within environment to manage farm-related variables
     simulation_env$farm_info <-
@@ -19,7 +19,7 @@ he_initialize_simulation_env <-
 
     # Define species object within environment to manage species-related variables
     environment$species_info <-
-      he_read_types_file("inst/testdata/types_file_bay_x.csv")
+      he_read_species_info_file("inst/testdata/types_file_bay_x.csv")
 
     # Define distance matrix within environment
     environment$dist_mat <-
@@ -30,7 +30,7 @@ he_initialize_simulation_env <-
 
     # Add new simulation-relevant variables from farm info file
     # Determine number of farms?
-    environment$num_farms <- length(farm_info$farm_type)
+    environment$num_farms <- length(farm_info$species)
     # TODO: Confirm "sus" does stand for susceptible?
     environment$farm_info$susceptible <- rep(NA, g_max_farms)
     environment$farm_info$k <- rep(NA, g_max_farms)
@@ -40,7 +40,7 @@ he_initialize_simulation_env <-
     # Check cull-eligibility by species
     if (!identical(environment$species_to_cull, "all")) {
       environment$farm_info$cull_eligible <-
-        environment$farm_info$farm_type %in% environment$species_to_cull
+        environment$farm_info$species %in% environment$species_to_cull
     }
 
     # Set up output variables and corresponding output files
