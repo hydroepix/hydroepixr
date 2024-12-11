@@ -34,13 +34,13 @@ he_initialize_simulation_env <-
     # TODO: Confirm "sus" does stand for susceptible?
     environment$farm_info$susceptible <- rep(NA, g_max_farms)
     environment$farm_info$k <- rep(NA, g_max_farms)
-    environment$farm_info$cull_eligible <- rep(NA, g_max_farms)
+    environment$farm_info$depop_eligible <- rep(NA, g_max_farms)
 
     # TODO: Check that this isn't a logical argument instead of a string?
-    # Check cull-eligibility by species
-    if (!identical(environment$species_to_cull, "all")) {
-      environment$farm_info$cull_eligible <-
-        environment$farm_info$species %in% environment$species_to_cull
+    # Check depop-eligibility by species
+    if (!identical(environment$species_to_depop, "all")) {
+      environment$farm_info$depop_eligible <-
+        environment$farm_info$species %in% environment$species_to_depop
     }
 
     # Set up output variables and corresponding output files
