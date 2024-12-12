@@ -16,12 +16,12 @@ he_define_depopulation_control_params(
 managed}
 
 \item{depop_capacity}{integer value indicating the number of individuals
-which can be depopulated on a given day}
+which can be depopulated per day}
 
 \item{species_to_depop}{vector of indices to indicate which species can be depopulated??}
 
 \item{depop_farm_if_netpen_infected}{boolean indicating whether the entire farm
-should be depopulated if an infection is detected in a netpen}
+should be depopulated if an infection is detected in at least one netpen}
 }
 \value{
 NA

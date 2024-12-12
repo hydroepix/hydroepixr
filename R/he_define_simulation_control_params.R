@@ -2,7 +2,7 @@
 #'
 #' @param environment environment in which simulation variables are stored and
 #'   managed
-#' @param n number of iterations?
+#' @param n_simulations number of simulations (i.e., individual simulated epidemics) to be run
 #' @param run_id identifier for this run of the model
 #' @param step_in_file filename for step-wise information?
 #' @param max_outbreak_length maximum length of a disease outbreak
@@ -18,7 +18,7 @@
 
 he_define_simulation_control_params <-
   function(environment,
-           n = 1,
+           n_simulations = 1,
            run_id = NULL,
            step_in_file = NULL,
            max_outbreak_length = 365,
@@ -26,7 +26,7 @@ he_define_simulation_control_params <-
            ignore_disease_status_input = TRUE,
            verbose = FALSE,
            summary_function = "HEsum") {
-    environment$n <- n
+    environment$n_simulations <- n_simulations
     environment$run_id <- run_id
     environment$step_in_file <- step_in_file
     environment$max_outbreak_length <- max_outbreak_length

@@ -48,12 +48,14 @@ selected}
 
 \item{days_dead_infectious}{number of days dead animals remain infectious}
 
-\item{farm_to_farm}{rate of infection between farms}
+\item{farm_to_farm}{scaling parameter for distance-based between-farm
+infection transmission}
 
-\item{netpen_to_netpen}{rate of infection between cages}
+\item{netpen_to_netpen}{daily probability for between-netpen infection
+transmission within a marine site}
 
-\item{vaccine_efficacy}{proportion of the vaccinated population that will
-survive if infected?}
+\item{vaccine_efficacy}{product of the manufacturer-reported vaccine efficacy
+and the population coverage of the vaccine}
 }
 \value{
 NA

@@ -3,10 +3,10 @@
 #' @param environment environment in which simulation variables are stored and
 #'   managed
 #' @param depop_capacity integer value indicating the number of individuals
-#'   which can be depopulated on a given day
+#'   which can be depopulated per day
 #' @param species_to_depop vector of indices to indicate which species can be depopulated??
 #' @param depop_farm_if_netpen_infected boolean indicating whether the entire farm
-#'   should be depopulated if an infection is detected in a netpen
+#'   should be depopulated if an infection is detected in at least one netpen
 #'
 #' @return NA
 #' @export

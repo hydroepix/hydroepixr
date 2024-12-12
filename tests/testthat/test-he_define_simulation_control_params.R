@@ -3,7 +3,7 @@ test_that("default simulation control parameters are stored in the environment",
 
   he_define_simulation_control_params(test_environment)
 
-  expect_equal(test_environment$n, 1)
+  expect_equal(test_environment$n_simulations, 1)
   expect_equal(test_environment$run_id, NULL)
   expect_equal(test_environment$step_in_file, NULL)
   expect_equal(test_environment$max_outbreak_length, 365)
@@ -14,7 +14,7 @@ test_that("default simulation control parameters are stored in the environment",
 })
 
 test_that("user-defined simulation control parameters stored in the environment", {
-  test_n <- 1
+  test_n_simulations <- 1
   test_run_id <- 10
   test_step_in_file <- "test_file.txt"
   test_max_outbreak_length <- 730
@@ -25,7 +25,7 @@ test_that("user-defined simulation control parameters stored in the environment"
 
   test_environment <- rlang::new_environment()
   he_define_simulation_control_params(test_environment,
-                                      test_n,
+                                      test_n_simulations,
                                       test_run_id,
                                       test_step_in_file,
                                       test_max_outbreak_length,
@@ -34,7 +34,7 @@ test_that("user-defined simulation control parameters stored in the environment"
                                       test_verbose,
                                       test_summary_function)
 
-  expect_equal(test_environment$n, test_n)
+  expect_equal(test_environment$n_simulations, test_n_simulations)
   expect_equal(test_environment$run_id, test_run_id)
   expect_equal(test_environment$step_in_file, test_step_in_file)
   expect_equal(test_environment$max_outbreak_length, test_max_outbreak_length)

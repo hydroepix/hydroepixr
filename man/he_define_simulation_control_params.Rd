@@ -6,7 +6,7 @@
 \usage{
 he_define_simulation_control_params(
   environment,
-  n = 1,
+  n_simulations = 1,
   run_id = NULL,
   step_in_file = NULL,
   max_outbreak_length = 365,
@@ -20,7 +20,7 @@ he_define_simulation_control_params(
 \item{environment}{environment in which simulation variables are stored and
 managed}
 
-\item{n}{number of iterations?}
+\item{n_simulations}{number of simulations (i.e., individual simulated epidemics) to be run}
 
 \item{run_id}{identifier for this run of the model}
 

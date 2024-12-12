@@ -15,10 +15,12 @@
 #' @param mort_threshold_for_subsequent_investigation ?
 #' @param case_fatality_prop proportion of the infected population that will die
 #' @param days_dead_infectious number of days dead animals remain infectious
-#' @param farm_to_farm rate of infection between farms
-#' @param netpen_to_netpen rate of infection between cages
-#' @param vaccine_efficacy proportion of the vaccinated population that will
-#'   survive if infected?
+#' @param farm_to_farm scaling parameter for distance-based between-farm
+#'    infection transmission
+#' @param netpen_to_netpen daily probability for between-netpen infection
+#'    transmission within a marine site
+#' @param vaccine_efficacy product of the manufacturer-reported vaccine efficacy
+#'    and the population coverage of the vaccine
 #'
 #' @return NA
 #' @export
