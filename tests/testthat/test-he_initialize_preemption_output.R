@@ -23,7 +23,7 @@ test_that("check initialized values in preemption matrix", {
                                     fileext = ".txt")
   he_initialize_preemption_output(test_environment, filepath)
   expect_equal(test_environment$preemption_output,
-               matrix(numeric(0), ncol = 10))
+               matrix(numeric(0), ncol = 3))
 })
 
 # TODO: Tests to see whether the file is written?
