@@ -15,10 +15,5 @@ he_initialize_depopulation_output <- function(environment, filepath) {
   } else {
     environment$depopulation_output_file_name <- "depopulated_farms.txt"
   }
-  write.table(
-    environment$depopulation_matrix_output,
-    paste0(filepath, environment$depopulation_output_file_name),
-    col.names = FALSE,
-    row.names = FALSE
-  )
+  he_write_depopulation_output(environment)
 }
