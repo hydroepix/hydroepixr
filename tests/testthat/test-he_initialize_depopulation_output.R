@@ -7,8 +7,7 @@ test_that("check initialized default values for depopulation output file", {
       test_environment$filepath <-
         file.path(test_dir, "depopulated_farms.txt")
       expect_no_error(he_initialize_depopulation_output(test_environment,
-                                                        test_environment$filepath,
-                                                        append = FALSE))
+                                                        test_environment$filepath))
       expect_true(file.exists(test_environment$filepath))
       expect_equal(test_environment$depopulation_output_file_name,
                    "depopulated_farms.txt")
@@ -26,8 +25,7 @@ test_that("check initialized non-default values for depopulation output file", {
       test_environment$filepath <-
         file.path(test_dir, "depopulated_farms.txt")
       expect_no_error(he_initialize_depopulation_output(test_environment,
-                                                        test_environment$filepath,
-                                                        append = FALSE))
+                                                        test_environment$filepath))
       he_initialize_depopulation_output(test_environment, filepath)
       expect_equal(test_environment$depopulation_output_file_name,
                    "1-depopulated_farms.txt")
@@ -44,8 +42,7 @@ test_that("check initialized values in depopulation matrix", {
       test_environment$filepath <-
         file.path(test_dir, "depopulated_farms.txt")
       expect_no_error(he_initialize_depopulation_output(test_environment,
-                                                        test_environment$filepath,
-                                                        append = FALSE))
+                                                        test_environment$filepath))
       he_initialize_depopulation_output(test_environment, filepath)
       expect_equal(test_environment$depopulation_matrix_output,
                    matrix(numeric(0), ncol = 3))

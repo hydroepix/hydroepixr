@@ -7,8 +7,7 @@ test_that("check initialized default values for infected netpen output file", {
       test_environment$filepath <-
         file.path(test_dir, "infected_netpens.txt")
       expect_no_error(he_initialize_depopulation_output(test_environment,
-                                                        test_environment$filepath,
-                                                        append = FALSE))
+                                                        test_environment$filepath))
       he_initialize_infected_netpen_output(test_environment, filepath)
       expect_equal(test_environment$infected_output_file_name,
                    "infected_netpens.txt")
@@ -26,8 +25,7 @@ test_that("check initialized non-default values for infected netpen output file"
       test_environment$filepath <-
         file.path(test_dir, "infected_netpens.txt")
       expect_no_error(he_initialize_depopulation_output(test_environment,
-                                                        test_environment$filepath,
-                                                        append = FALSE))
+                                                        test_environment$filepath))
       he_initialize_infected_netpen_output(test_environment, filepath)
       expect_equal(test_environment$infected_output_file_name,
                    "1-infected_netpens.txt")
@@ -44,8 +42,7 @@ test_that("check initialized values in infected netpen matrix", {
       test_environment$filepath <-
         file.path(test_dir, "infected_netpens.txt")
       expect_no_error(he_initialize_depopulation_output(test_environment,
-                                                        test_environment$filepath,
-                                                        append = FALSE))
+                                                        test_environment$filepath))
       he_initialize_infected_netpen_output(test_environment, filepath)
       expect_equal(test_environment$infected_netpens,
                    matrix(numeric(0), ncol = 10))
