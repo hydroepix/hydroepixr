@@ -20,9 +20,9 @@ he_write_depopulation_output <- function(environment, output_dir = "", append = 
           a custom or default name to the output file.")
   }
 
-  message(paste0("Writing to ",
-                 file.path(output_dir,
-                           environment$depopulation_output_file_name)))
+  output_file_path <- file.path(output_dir,
+                                environment$depopulation_output_file_name)
+
   write.table(
     environment$depopulation_matrix_output,
     file.path(output_dir, environment$depopulation_output_file_name),
