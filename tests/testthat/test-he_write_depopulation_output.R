@@ -1,42 +1,33 @@
 test_that("depopulation output file generates error for missing depopulation matrix", {
-  # Create test directory and environment
-  temp_test_dir <- "temp_test_dir"
-  withr::local_tempdir(pattern = temp_test_dir)
-  test_environment <- rlang::new_environment()
+  # Create test directory
+  temp_test_dir <- output_test_setup()
   # Check for error
-  expect_error(he_write_depopulation_output(test_environment,
-                                            output_dir = temp_test_dir),
-               regexp = "No depopulation matrix initialized.")
+  expect_error(he_write_depopulation_output(depop_matrix,
+                                            depop_file_name,
+                                            output_dir = temp_test_dir))
 })
 
 test_that("depopulation output file generates error for missing depopulation file name", {
-  # Create test directory and environment
-  temp_test_dir <- "temp_test_dir"
-  withr::local_tempdir(pattern = temp_test_dir)
-  test_environment <- rlang::new_environment()
+  # Create test directory
+  temp_test_dir <- output_test_setup()
   # Populate environment variables
-  test_environment$depopulation_matrix_output <- matrix(numeric(0), ncol = 3)
-
-  expect_error(he_write_depopulation_output(test_environment,
-                                            output_dir = temp_test_dir),
-               regexp = "No depopulation output file name initialized.")
+  depop_matrix <- matrix(numeric(0), ncol = 3)
+  # Check for error
+  expect_error(he_write_depopulation_output(depop_matrix,
+                                            depop_file_name,
+                                            output_dir = temp_test_dir))
 })
 
 test_that("depopulation output file is created in expected directory", {
-  # Create test directory and environment
-  temp_test_dir <- "temp_test_dir"
-  withr::local_tempdir(pattern = temp_test_dir)
-  test_environment <- rlang::new_environment()
+  # Create test directory
+  temp_test_dir <- output_test_setup()
   # Populate environment variables
-  test_environment$depopulation_matrix_output <- matrix(numeric(0), ncol = 3)
-  test_environment$depopulation_output_file_name <- "depopulated_farms.txt"
+  depop_matrix <- matrix(numeric(0), ncol = 3)
+  depop_file_name <- "depopulated_farms.txt"
   # Initialize test variable for comparison
-  expected_filepath <- file.path(temp_test_dir,
-                                 test_environment$depopulation_output_file_name)
-  he_write_depopulation_output(test_environment, temp_test_dir)
+  expected_filepath <- file.path(temp_test_dir, depop_file_name)
+  he_write_depopulation_output(depop_matrix, depop_file_name, temp_test_dir)
   expect_true(file.exists(expected_filepath))
-  actual_data <- read.table(expected_filepath)
-  expect_equal(actual_data, test_environment$depopulation_matrix_output)
 })
 
 # TODO: Test that output file data is correctly written

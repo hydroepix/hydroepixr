@@ -1,7 +1,6 @@
-output_test_setup <- function(temp_test_dir = "temp_test_dir") {
-  dir.create(temp_test_dir)
-}
-
-output_test_teardown <- function(temp_test_dir = "temp_test_dir") {
-  unlink(temp_test_dir, recursive = TRUE)
+output_test_setup <- function() {
+  temp_test_dir <- tempdir()
+  withr::defer(unlink(temp_test_dir, recursive = TRUE),
+               teardown_env())
+  temp_test_dir
 }
