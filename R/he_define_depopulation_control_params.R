@@ -14,7 +14,7 @@
 he_define_depopulation_control_params <-
   function(environment,
            depop_capacity = 20000,
-           species_to_depop = c(1:18), # possibly no longer used
+           species_to_depop = c(1:18), # possibly no longer used but error if removed?
            depop_farm_if_netpen_infected = FALSE) {
     environment$depop_capacity <- depop_capacity
     environment$species_to_depop <- species_to_depop

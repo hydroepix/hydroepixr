@@ -2,7 +2,7 @@ test_that("default surveillance parameters are stored in the environment", {
   test_environment <- rlang::new_environment()
   he_define_surveillance_control_params(test_environment)
   expect_equal(test_environment$control_functions, c("SurvZone(label='SZ')"))
-  expect_equal(test_environment$prob_diagnosis, 1)
+  expect_equal(test_environment$prob_diagnosis, 0.95)
   expect_equal(test_environment$mort_increase_factor_for_first_investigation, 2)
   expect_equal(test_environment$mort_increase_factor_for_subsequent_investigation, 2)
   expect_equal(test_environment$time_between_survey_days, 4)

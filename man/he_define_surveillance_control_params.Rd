@@ -7,7 +7,7 @@
 he_define_surveillance_control_params(
   environment,
   control_functions = c("SurvZone(label='SZ')"),
-  prob_diagnosis = 1,
+  prob_diagnosis = 0.95,
   mort_increase_factor_for_first_investigation = 2,
   mort_increase_factor_for_subsequent_investigation = 2,
   time_between_survey_days = 4,

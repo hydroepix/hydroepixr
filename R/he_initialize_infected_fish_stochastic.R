@@ -11,5 +11,9 @@ he_initialize_infected_fish_stochastic <-
   function(contact_herds,
            prob_infection,
            susceptibility) {
+    # TODO: Clarify how initially infected fish are calculated
+    # Existing code contained:
     rbinom(length(contact_herds), 1, prob_infection)
+    # IG said initially infected fish are modelled in BCSpread() as:
+    #rpert(1, 10, 100)
   }

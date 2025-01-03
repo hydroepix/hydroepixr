@@ -11,7 +11,7 @@ he_define_spread_control_params(
   intrafarm_disease_transmission_model = "binomial chain",
   index_farm_function = "selectIndexFarm",
   index_farm_select = list(species = 1:18),
-  index_direct = FALSE,
+  index_direct = TRUE,
   mort_threshold_for_first_investigation = 0.00255,
   mort_threshold_for_subsequent_investigation = 0.00255,
   case_fatality_prop = 0.89,
@@ -48,11 +48,11 @@ selected}
 
 \item{days_dead_infectious}{number of days dead animals remain infectious}
 
-\item{farm_to_farm}{scaling parameter for distance-based between-farm
-infection transmission}
+\item{farm_to_farm}{scaling parameter for between-farm infection transmission,
+based on the inputted distance matrix}
 
 \item{netpen_to_netpen}{daily probability for between-netpen infection
-transmission within a marine site}
+transmission within a farm}
 
 \item{vaccine_efficacy}{product of the manufacturer-reported vaccine efficacy
 and the population coverage of the vaccine}

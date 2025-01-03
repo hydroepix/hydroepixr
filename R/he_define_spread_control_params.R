@@ -15,10 +15,10 @@
 #' @param mort_threshold_for_subsequent_investigation ?
 #' @param case_fatality_prop proportion of the infected population that will die
 #' @param days_dead_infectious number of days dead animals remain infectious
-#' @param farm_to_farm scaling parameter for distance-based between-farm
-#'    infection transmission
+#' @param farm_to_farm scaling parameter for between-farm infection transmission,
+#'    based on the inputted distance matrix
 #' @param netpen_to_netpen daily probability for between-netpen infection
-#'    transmission within a marine site
+#'    transmission within a farm
 #' @param vaccine_efficacy product of the manufacturer-reported vaccine efficacy
 #'    and the population coverage of the vaccine
 #'
@@ -34,7 +34,7 @@ he_define_spread_control_params <-
            index_farm_function = "selectIndexFarm",
            index_farm_select = list(species = 1:18),
            # TODO: argument provided to index_farm_function - better way to represent or name?
-           index_direct = FALSE,
+           index_direct = TRUE, # note that all fish and farms are direct?
            mort_threshold_for_first_investigation = 0.00255,
            mort_threshold_for_subsequent_investigation = 0.00255,
            case_fatality_prop = 0.89,

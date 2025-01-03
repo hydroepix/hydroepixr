@@ -1,23 +1,23 @@
-#' Initialize preemption output
+#' Initialize preemptive depopulation output
 #'
 #' @param environment simulation environment
-#' @param filepath path in which to store the preemption output file
+#' @param filepath path in which to store the preemption depopulation output file
 #'
 #' @return NA
 #' @export
 #'
-he_initialize_preemption_output <- function(environment, filepath) {
-  environment$preemption_output <-
+he_initialize_preemptive_depop_output <- function(environment, filepath) {
+  environment$preemptive_depop_output <-
     matrix(numeric(0), ncol = 3)
   if (!is.null(environment$run_id)) {
-    environment$preemption_output_file_name <-
-      paste(environment$run_id, "preempted.txt", sep = "-")
+    environment$preemptive_depop_output_file_name <-
+      paste(environment$run_id, "preemptive_depop.txt", sep = "-")
   } else {
-    environment$preemption_output_file_name <- "preempted.txt"
+    environment$preemption_output_file_name <- "preemptive_depop.txt"
   }
   write.table(
-    environment$preemption_output,
-    environment$preemption_output_file_name,
+    environment$preemptive_depop_output,
+    environment$preemptive_depop_output_file_name,
     col.names = FALSE,
     row.names = FALSE
   )

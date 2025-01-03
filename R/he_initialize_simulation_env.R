@@ -51,6 +51,6 @@ he_initialize_simulation_env <-
       he_initialize_survey_output()
       he_initialize_depopulation_output()
       # TODO: Figure out what this is
-      he_initialize_preemption_output()
+      he_initialize_preemptive_depop_output()
     }
   }

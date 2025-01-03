@@ -4,7 +4,7 @@
 \alias{he_write_depopulation_output}
 \title{Write depopulation output to file}
 \usage{
-he_write_depopulation_output(environment, append = FALSE)
+he_write_depopulation_output(environment, output_dir = "", append = FALSE)
 }
 \arguments{
 \item{environment}{simulation environment}

@@ -1,22 +1,22 @@
-test_that("check initialized default values for preemption output file", {
+test_that("check initialized default values for preemptive depop output file", {
   test_environment <- rlang::new_environment()
   test_dir <- "temp_test_dir"
   withr::local_tempfile(
     test_dir,
     {
       test_environment$filepath <-
-        file.path(test_dir, "preempted.txt")
-      expect_no_error(he_initialize_preemption_output(test_environment,
-                                                        test_environment$filepath))
-      he_initialize_preemption_output(test_environment, filepath)
-      expect_equal(test_environment$preemption_output_file_name,
-                   "preempted.txt")
+        file.path(test_dir, "preemptive_depop.txt")
+      expect_no_error(he_initialize_preemptive_depop_output(test_environment,
+                                                            test_environment$filepath))
+      he_initialize_preemptive_depop_output(test_environment, filepath)
+      expect_equal(test_environment$preemptive_depop_output_file_name,
+                   "preemptive_depop.txt")
     }
   )
 })
 
 
-test_that("check initialized non-default values for preemption output file", {
+test_that("check initialized non-default values for preemptive depop output file", {
   test_environment <- rlang::new_environment()
   test_environment$run_id <- 1
   test_dir <- "temp_test_dir"
@@ -24,28 +24,28 @@ test_that("check initialized non-default values for preemption output file", {
     test_dir,
     {
       test_environment$filepath <-
-        file.path(test_dir, "preempted.txt")
-      expect_no_error(he_initialize_preemption_output(test_environment,
+        file.path(test_dir, "preemptive_depop.txt")
+      expect_no_error(he_initialize_preemptive_depop_output(test_environment,
                                                       test_environment$filepath))
-      he_initialize_preemption_output(test_environment, filepath)
-      expect_equal(test_environment$preemption_output_file_name,
-                   "1-preempted.txt")
+      he_initialize_preemptive_depop_output(test_environment, filepath)
+      expect_equal(test_environment$preemptive_depop_output_file_name,
+                   "1-preemptive_depop.txt")
     }
   )
 })
 
-test_that("check initialized values in preemption matrix", {
+test_that("check initialized values in preemptive depop matrix", {
   test_environment <- rlang::new_environment()
   test_dir <- "temp_test_dir"
   withr::local_tempfile(
     test_dir,
     {
       test_environment$filepath <-
-        file.path(test_dir, "preempted.txt")
-      expect_no_error(he_initialize_preemption_output(test_environment,
+        file.path(test_dir, "preemptive_depop.txt")
+      expect_no_error(he_initialize_preemptive_depop_output(test_environment,
                                                       test_environment$filepath))
-      he_initialize_preemption_output(test_environment, filepath)
-      expect_equal(test_environment$preemption_output,
+      he_initialize_preemptive_depop_output(test_environment, filepath)
+      expect_equal(test_environment$preemptive_depop_output,
                    matrix(numeric(0), ncol = 3))
     }
   )

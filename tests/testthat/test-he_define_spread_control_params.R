@@ -6,7 +6,7 @@ test_that("default spread parameters are stored in the environment", {
   expect_equal(test_environment$intrafarm_disease_transmission_model, "binomial chain")
   expect_equal(test_environment$index_farm_function, "selectIndexFarm")
   expect_equal(test_environment$index_farm_select, list(species = 1:18))
-  expect_equal(test_environment$index_direct, FALSE)
+  expect_equal(test_environment$index_direct, TRUE)
   expect_equal(test_environment$mort_threshold_for_first_investigation, 0.00255)
   expect_equal(test_environment$mort_threshold_for_subsequent_investigation, 0.00255)
   expect_equal(test_environment$case_fatality_prop, 0.89)
@@ -22,7 +22,7 @@ test_that("user-defined spread parameters stored in the environment", {
   test_intrafarm_disease_transmission_model = "reed-frost"
   test_index_farm_function = "none"
   test_index_farm_select = c()
-  test_index_direct = TRUE
+  test_index_direct = FALSE
   test_mort_threshold_for_first_investigation = 0.003
   test_mort_threshold_for_subsequent_investigation = 0.0015
   test_case_fatality_prop = 0.75
