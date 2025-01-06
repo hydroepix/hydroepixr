@@ -4,10 +4,21 @@
 \alias{he_write_depopulation_output}
 \title{Write depopulation output to file}
 \usage{
-he_write_depopulation_output(environment, output_dir = "", append = FALSE)
+he_write_depopulation_output(
+  depop_matrix,
+  depop_file_name = "depopulated_farms.txt",
+  output_dir = "",
+  append = FALSE
+)
 }
 \arguments{
-\item{environment}{simulation environment}
+\item{depop_matrix}{matrix containing depopulation variables, initialized
+and updated over the course of a simulation run}
+
+\item{depop_file_name}{string to name the depopulation output file}
+
+\item{output_dir}{string to indicate the directory in which the output file
+should be written}
 
 \item{append}{logical indicating whether to overwrite an existing file or
 append data}

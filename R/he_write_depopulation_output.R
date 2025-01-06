@@ -15,18 +15,6 @@ he_write_depopulation_output <- function(depop_matrix,
                                          depop_file_name = "depopulated_farms.txt",
                                          output_dir = "",
                                          append = FALSE) {
-  if (!exists("depop_matrix")) {
-    stop("No depopulation matrix initialized. Run
-          `he_initialize_depopulation_output()` to initialize before attempting
-          to write output.")
-  }
-
-  if (!exists("depop_file_name")) {
-    stop("No depopulation output file name initialized.
-          Run `he_initialize_depopulation_output()` to assign
-          a custom or default name to the output file.")
-  }
-
   write.table(
     depop_matrix,
     file.path(output_dir,
