@@ -4,12 +4,19 @@
 \alias{he_initialize_depopulation_output}
 \title{Initialize depopulation output}
 \usage{
-he_initialize_depopulation_output(environment, filepath)
+he_initialize_depopulation_output(
+  environment,
+  filepath,
+  file_name = "depopulated_farms.txt"
+)
 }
 \arguments{
 \item{environment}{simulation environment}
 
 \item{filepath}{path in which to store the depopulation output file}
+
+\item{file_name}{name to use for creating and writing the depopulation
+output file}
 }
 \value{
 NA
