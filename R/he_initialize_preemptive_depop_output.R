@@ -2,11 +2,13 @@
 #'
 #' @param environment simulation environment
 #' @param filepath path in which to store the preemption depopulation output file
+#' @param file_name name to use for creating and writing the preemptive depopulation
+#'    output file
 #'
 #' @return NA
 #' @export
 #'
-he_initialize_preemptive_depop_output <- function(environment, filepath) {
+he_initialize_preemptive_depop_output <- function(environment, filepath, file_name) {
   environment$preemptive_depop_output <-
     matrix(numeric(0), ncol = 3)
   if (!is.null(environment$run_id)) {
