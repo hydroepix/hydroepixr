@@ -11,10 +11,10 @@
 #' @return NA
 #' @export
 #'
-he_write_depopulation_output <- function(preemptive_depop_matrix,
-                                         preemptive_depop_file_name = "preemptive_depop.txt",
-                                         output_dir = "",
-                                         append = FALSE) {
+he_write_preemptive_depop_output <- function(preemptive_depop_matrix,
+                                             preemptive_depop_file_name = "preemptive_depop.txt",
+                                             output_dir = "",
+                                             append = FALSE) {
   write.table(
     preemptive_depop_matrix,
     file.path(output_dir,

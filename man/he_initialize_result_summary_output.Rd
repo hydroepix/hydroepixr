@@ -10,6 +10,9 @@ he_initialize_result_summary_output(environment, filepath)
 \item{environment}{simulation environment}
 
 \item{filepath}{path in which to store the results summary output file}
+
+\item{file_name}{name to use for creating and writing the result summary
+output file}
 }
 \value{
 NA

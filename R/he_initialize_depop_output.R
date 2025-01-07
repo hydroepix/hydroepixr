@@ -22,7 +22,7 @@ he_initialize_depop_output <-
       environment$depop_output_file_name <- depop_file_name
     }
     # Write file for storing output
-    he_write_depopulation_output(
+    he_write_depop_output(
       environment$depop_matrix_output,
       environment$depop_output_file_name,
       output_dir = filepath
