@@ -11,7 +11,7 @@
 #' @return NA
 #' @export
 #'
-he_define_depopulation_control_params <-
+he_define_depop_control_params <-
   function(environment,
            depop_capacity = 20000,
            species_to_depop = c(1:18), # possibly no longer used but error if removed?

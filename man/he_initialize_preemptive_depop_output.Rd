@@ -4,12 +4,15 @@
 \alias{he_initialize_preemptive_depop_output}
 \title{Initialize preemptive depopulation output}
 \usage{
-he_initialize_preemptive_depop_output(environment, filepath)
+he_initialize_preemptive_depop_output(environment, filepath, file_name)
 }
 \arguments{
 \item{environment}{simulation environment}
 
 \item{filepath}{path in which to store the preemption depopulation output file}
+
+\item{file_name}{name to use for creating and writing the preemptive depopulation
+output file}
 }
 \value{
 NA
