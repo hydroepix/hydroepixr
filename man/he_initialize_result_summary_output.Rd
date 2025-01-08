@@ -4,15 +4,19 @@
 \alias{he_initialize_result_summary_output}
 \title{Initialize result summary output}
 \usage{
-he_initialize_result_summary_output(environment, filepath)
+he_initialize_result_summary_output(
+  environment,
+  filepath,
+  result_summary_output_file_name = "result_summary.txt"
+)
 }
 \arguments{
 \item{environment}{simulation environment}
 
 \item{filepath}{path in which to store the results summary output file}
 
-\item{file_name}{name to use for creating and writing the result summary
-output file}
+\item{result_summary_file_name}{name to use for creating and writing the
+result summary output file}
 }
 \value{
 NA

@@ -1,54 +1,57 @@
 test_that("check initialized default values for result summary output file", {
+  # Create test directory and test simulation environment
   test_environment <- rlang::new_environment()
-  test_dir <- "temp_test_dir"
-  withr::local_tempfile(
-    test_dir,
-    {
-      test_environment$filepath <-
-        file.path(test_dir, "result_summary_farms.txt")
-      expect_no_error(he_initialize_result_summary_output(test_environment,
-                                                        test_environment$filepath))
-      he_initialize_result_summary_output(test_environment, filepath)
-      expect_equal(test_environment$result_summary_file_name,
-                   "result_summary.txt")
-    }
+  test_environment$filepath <- output_test_setup()
+  # Check function runs without errors
+  expect_no_error(
+    he_initialize_result_summary_output(test_environment,
+                                        test_environment$filepath)
   )
+  # Check result summary output file name is initialized to the default value
+  expect_equal(test_environment$result_summary_output_file_name,
+               "result_summary.txt")
+  # Check if file has been written according to file name
+  expect_true(file.exists(file.path(test_environment$filepath,
+                                    "result_summary.txt")))
 })
 
-test_that("check initialized non-default values for result summary output file", {
+test_that("check initialized non-default values for result summary output
+          file", {
+  # Create test directory and test simulation environment
   test_environment <- rlang::new_environment()
+  test_environment$filepath <- output_test_setup()
   test_environment$run_id <- 1
-  test_dir <- "temp_test_dir"
-  withr::local_tempfile(
-    test_dir,
-    {
-      test_environment$filepath <-
-        file.path(test_dir, "1-result_summary.txt")
-      expect_no_error(he_initialize_result_summary_output(test_environment,
-                                                          test_environment$filepath))
-      he_initialize_result_summary_output(test_environment, filepath)
-      expect_equal(test_environment$result_summary_file_name,
-                   "1-result_summary.txt")
-    }
+  test_environment$result_summary_output_file_name <- "result_summary.txt"
+  # Check function runs without errors
+  expect_no_error(
+    he_initialize_result_summary_output(
+      test_environment,
+      test_environment$filepath,
+      test_environment$result_summary_output_file_name
+    )
   )
+  # Check result summary output file name is initialized to the custom value
+  expect_equal(test_environment$result_summary_output_file_name,
+               "1-result_summary.txt")
+  # Check if file has been written according to file name
+  expect_true(file.exists(file.path(test_environment$filepath,
+                                    "1-result_summary.txt")))
 })
 
-test_that("check initialized values in result summary output matrix", {
+# TODO: Add tests for cases where run ID is provided but custom name is not
+# and vice versa
+
+test_that("check initialized values in result summary matrix", {
+  # Create test directory and test simulation environment
   test_environment <- rlang::new_environment()
-  test_dir <- "temp_test_dir"
-  withr::local_tempfile(
-    test_dir,
-    {
-      test_environment$filepath <-
-        file.path(test_dir, "result_summary.txt")
-      expect_no_error(he_initialize_result_summary_output(test_environment,
-                                                          test_environment$filepath))
-      he_initialize_result_summary_output(test_environment, filepath)
-      expect_equal(test_environment$result_summary,
-                   matrix(numeric(0), ncol = 10))
-    }
-  )
-})
+  test_environment$filepath <- output_test_setup()
 
-# TODO: Tests to see whether the file is written?
-# TODO: Tests to see whether the values in the file are as expected?
+  # Check function runs without errors
+  expect_no_error(
+    he_initialize_result_summary_output(test_environment,
+                                        test_environment$filepath)
+  )
+  # Check depopulation matrix is initialized to default values
+  expect_equal(test_environment$result_summary_matrix_output,
+               matrix(numeric(0), ncol = 10))
+})
