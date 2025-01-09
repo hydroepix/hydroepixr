@@ -2,18 +2,25 @@
 #'
 #' @param environment simulation environment
 #' @param filepath path in which to store the infected netpen output file
+#' @param inf_netpen_output_file_name
 #'
 #' @return NA
 #' @export
 #'
-he_initialize_infected_netpen_output <- function(environment, filename) {
+he_initialize_inf_netpen_output <-
+  function(environment,
+           filepath,
+           inf_netpen_output_file_name = "infected_netpens.txt") {
+
   # Set up infected netpen matrix and output file
-  environment$infected_netpens <- matrix(numeric(0), ncol = 10)
+  environment$inf_netpen_matrix_output <- matrix(numeric(0), ncol = 10)
   if (!is.null(environment$run_id)) {
-    environment$infected_output_file_name <-
-      paste(environment$run_id, "infected_netpens.txt", sep = "-")
+    environment$inf_netpen_output_file_name <-
+      paste(environment$run_id, inf_netpen_output_file_name, sep = "-")
   } else {
-    environment$infected_output_file_name <- "infected_netpens.txt"
+    environment$inf_netpen_output_file_name <- inf_netpen_output_file_name
   }
-  write.table(environment$infected_netpens, environment$infected_output_file_name, sep = " ")
+  he_write_inf_netpen_output(environment$inf_netpen_matrix,
+                             environment$inf_netpen_output_file_name,
+                             output_dir = filepath)
 }

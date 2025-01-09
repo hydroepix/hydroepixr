@@ -1,54 +1,52 @@
 test_that("check initialized default values for infected netpen output file", {
+  # Create test directory and test simulation environment
   test_environment <- rlang::new_environment()
-  test_dir <- "temp_test_dir"
-  withr::local_tempfile(
-    test_dir,
-    {
-      test_environment$filepath <-
-        file.path(test_dir, "infected_netpens.txt")
-      expect_no_error(he_initialize_depopulation_output(test_environment,
-                                                        test_environment$filepath))
-      he_initialize_infected_netpen_output(test_environment, filepath)
-      expect_equal(test_environment$infected_output_file_name,
-                   "infected_netpens.txt")
-    }
-  )
+  test_environment$filepath <- output_test_setup()
+  # Check function runs without errors
+  expect_no_error(he_initialize_inf_netpen_output(test_environment,
+                                                  test_environment$filepath))
+  # Check depopulation output file name is initialized to the default value
+  expect_equal(test_environment$inf_netpen_output_file_name,
+               "infected_netpens.txt")
+  # Check if file has been written according to file name
+  expect_true(file.exists(file.path(test_environment$filepath,
+                                    "infected_netpens.txt")))
 })
 
 test_that("check initialized non-default values for infected netpen output file", {
+  # Create test directory and test simulation environment
   test_environment <- rlang::new_environment()
+  test_environment$filepath <- output_test_setup()
   test_environment$run_id <- 1
-  test_dir <- "temp_test_dir"
-  withr::local_tempfile(
-    test_dir,
-    {
-      test_environment$filepath <-
-        file.path(test_dir, "infected_netpens.txt")
-      expect_no_error(he_initialize_depopulation_output(test_environment,
-                                                        test_environment$filepath))
-      he_initialize_infected_netpen_output(test_environment, filepath)
-      expect_equal(test_environment$infected_output_file_name,
-                   "1-infected_netpens.txt")
-    }
+  test_environment$inf_netpen_output_file_name <- "infected_netpens.txt"
+  # Check function runs without errors
+  expect_no_error(
+    he_initialize_inf_netpen_output(
+      test_environment,
+      test_environment$filepath,
+      test_environment$inf_netpen_output_file_name
+    )
   )
+  # Check depopulation output file name is initialized to the custom value
+  expect_equal(test_environment$inf_netpen_output_file_name,
+               "1-infected_netpens.txt")
+  # Check if file has been written according to file name
+  expect_true(file.exists(file.path(test_environment$filepath,
+                                    "1-infected_netpens.txt")))
 })
+
+# TODO: Add tests for cases where run ID is provided but custom name is not
+# and vice versa
 
 test_that("check initialized values in infected netpen matrix", {
+  # Create test directory and test simulation environment
   test_environment <- rlang::new_environment()
-  test_dir <- "temp_test_dir"
-  withr::local_tempfile(
-    test_dir,
-    {
-      test_environment$filepath <-
-        file.path(test_dir, "infected_netpens.txt")
-      expect_no_error(he_initialize_depopulation_output(test_environment,
-                                                        test_environment$filepath))
-      he_initialize_infected_netpen_output(test_environment, filepath)
-      expect_equal(test_environment$infected_netpens,
-                   matrix(numeric(0), ncol = 10))
-    }
-  )
-})
+  test_environment$filepath <- output_test_setup()
 
-# TODO: Tests to see whether the file is written?
-# TODO: Tests to see whether the values in the file are as expected?
+  # Check function runs without errors
+  expect_no_error(he_initialize_inf_netpen_output(test_environment,
+                                                  test_environment$filepath))
+  # Check depopulation matrix is initialized to default values
+  expect_equal(test_environment$inf_netpen_matrix_output,
+               matrix(numeric(0), ncol = 10))
+})
