@@ -4,12 +4,19 @@
 \alias{he_initialize_survey_output}
 \title{Initialize survey output}
 \usage{
-he_initialize_survey_output(environment, filepath)
+he_initialize_survey_output(
+  environment,
+  filepath,
+  survey_output_file_name = "surveyed_farms.txt"
+)
 }
 \arguments{
 \item{environment}{simulation environment}
 
 \item{filepath}{path in which to store the survey output file}
+
+\item{survey_output_file_name}{name to use for creating and writing the
+surveyed farm output file}
 }
 \value{
 NA
