@@ -2,7 +2,8 @@
 #'
 #' @param environment simulation environment
 #' @param filepath path in which to store the infected netpen output file
-#' @param inf_netpen_output_file_name
+#' @param inf_netpen_output_file_name name to use for creating and writing the
+#'    infected netpen output file
 #'
 #' @return NA
 #' @export

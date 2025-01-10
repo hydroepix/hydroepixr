@@ -15,7 +15,8 @@ he_initialize_inf_netpen_output(
 
 \item{filepath}{path in which to store the infected netpen output file}
 
-\item{inf_netpen_output_file_name}{}
+\item{inf_netpen_output_file_name}{name to use for creating and writing the
+infected netpen output file}
 }
 \value{
 NA

@@ -21,13 +21,13 @@ test_that("check initialized non-default values for result summary output
   test_environment <- rlang::new_environment()
   test_environment$filepath <- output_test_setup()
   test_environment$run_id <- 1
-  test_environment$result_summary_output_file_name <- "result_summary.txt"
+  result_summary_output_file_name <- "result_summary.txt"
   # Check function runs without errors
   expect_no_error(
     he_initialize_result_summary_output(
       test_environment,
       test_environment$filepath,
-      test_environment$result_summary_output_file_name
+      result_summary_output_file_name
     )
   )
   # Check result summary output file name is initialized to the custom value

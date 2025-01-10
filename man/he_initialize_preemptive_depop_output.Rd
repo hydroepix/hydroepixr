@@ -4,7 +4,11 @@
 \alias{he_initialize_preemptive_depop_output}
 \title{Initialize preemptive depopulation output}
 \usage{
-he_initialize_preemptive_depop_output(environment, filepath, file_name)
+he_initialize_preemptive_depop_output(
+  environment,
+  filepath,
+  file_name = "preemptive_depop.txt"
+)
 }
 \arguments{
 \item{environment}{simulation environment}

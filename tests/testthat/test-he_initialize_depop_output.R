@@ -4,7 +4,7 @@ test_that("check initialized default values for depop output file", {
   test_environment$filepath <- output_test_setup()
   # Check function runs without errors
   expect_no_error(he_initialize_depop_output(test_environment,
-                                                    test_environment$filepath))
+                                             test_environment$filepath))
   # Check depopulation output file name is initialized to the default value
   expect_equal(test_environment$depop_output_file_name,
                "depop.txt")
@@ -18,13 +18,13 @@ test_that("check initialized non-default values for depop output file", {
   test_environment <- rlang::new_environment()
   test_environment$filepath <- output_test_setup()
   test_environment$run_id <- 1
-  test_environment$depop_output_file_name <- "depop.txt"
+  depop_output_file_name <- "depop.txt"
   # Check function runs without errors
   expect_no_error(
     he_initialize_depop_output(
       test_environment,
       test_environment$filepath,
-      test_environment$depop_output_file_name
+      depop_output_file_name
     )
   )
   # Check depopulation output file name is initialized to the custom value
@@ -42,7 +42,6 @@ test_that("check initialized values in depopulation matrix", {
   # Create test directory and test simulation environment
   test_environment <- rlang::new_environment()
   test_environment$filepath <- output_test_setup()
-
   # Check function runs without errors
   expect_no_error(he_initialize_depop_output(test_environment,
                                       test_environment$filepath))

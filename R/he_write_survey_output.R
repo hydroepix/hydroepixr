@@ -1,6 +1,6 @@
 #' Write survey output to file
 #'
-#' @param survey_matrix matrix containing surveyed farm variables, initialized
+#' @param surveyed_output_matrix matrix containing surveyed farm variables, initialized
 #'    and updated over the course of a simulation run
 #' @param survey_output_file_name string to name the depopulation output file
 #' @param output_dir string to indicate the directory in which the output file

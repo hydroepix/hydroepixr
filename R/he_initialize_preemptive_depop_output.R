@@ -8,19 +8,19 @@
 #' @return NA
 #' @export
 #'
-he_initialize_preemptive_depop_output <- function(environment, filepath, file_name) {
-  environment$preemptive_depop_output <-
+he_initialize_preemptive_depop_output <-
+  function(environment, filepath, file_name = "preemptive_depop.txt") {
+  environment$preemptive_depop_matrix_output <-
     matrix(numeric(0), ncol = 3)
   if (!is.null(environment$run_id)) {
     environment$preemptive_depop_output_file_name <-
-      paste(environment$run_id, "preemptive_depop.txt", sep = "-")
+      paste(environment$run_id, file_name, sep = "-")
   } else {
-    environment$preemption_output_file_name <- "preemptive_depop.txt"
+    environment$preemptive_depop_output_file_name <- file_name
   }
-  write.table(
-    environment$preemptive_depop_output,
+  he_write_preemptive_depop_output(
+    environment$preemptive_depop_matrix_output,
     environment$preemptive_depop_output_file_name,
-    col.names = FALSE,
-    row.names = FALSE
+    output_dir = filepath
   )
 }

@@ -12,6 +12,9 @@ he_write_survey_output(
 )
 }
 \arguments{
+\item{surveyed_output_matrix}{matrix containing surveyed farm variables, initialized
+and updated over the course of a simulation run}
+
 \item{survey_output_file_name}{string to name the depopulation output file}
 
 \item{output_dir}{string to indicate the directory in which the output file
@@ -19,9 +22,6 @@ should be written}
 
 \item{append}{logical indicating whether to overwrite an existing file or
 append data}
-
-\item{survey_matrix}{matrix containing surveyed farm variables, initialized
-and updated over the course of a simulation run}
 }
 \value{
 NA

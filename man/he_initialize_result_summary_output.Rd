@@ -15,7 +15,7 @@ he_initialize_result_summary_output(
 
 \item{filepath}{path in which to store the results summary output file}
 
-\item{result_summary_file_name}{name to use for creating and writing the
+\item{result_summary_output_file_name}{name to use for creating and writing the
 result summary output file}
 }
 \value{

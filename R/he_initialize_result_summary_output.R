@@ -2,7 +2,7 @@
 #'
 #' @param environment simulation environment
 #' @param filepath path in which to store the results summary output file
-#' @param result_summary_file_name name to use for creating and writing the
+#' @param result_summary_output_file_name name to use for creating and writing the
 #'    result summary output file
 #'
 #' @return NA
