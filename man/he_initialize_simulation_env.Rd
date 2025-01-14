@@ -8,7 +8,11 @@ he_initialize_simulation_env(
   environment,
   farm_info_filepath,
   species_info_filepath,
-  dist_mat_filepath
+  dist_mat_filepath,
+  output_filepath = "/output",
+  detailed_survey_output = FALSE,
+  detailed_depop_output = FALSE,
+  detailed_preemptive_depop_output = FALSE
 )
 }
 \arguments{

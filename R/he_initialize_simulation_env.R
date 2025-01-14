@@ -55,7 +55,7 @@ he_initialize_simulation_env <-
       he_initialize_survey_output(environment, output_filepath)
     }
     if (detailed_depop_output) {
-      he_initialize_depopulation_output(environment, output_filepath)
+      he_initialize_depop_output(environment, output_filepath)
     }
     if (detailed_preemptive_depop_output) {
       he_initialize_preemptive_depop_output(environment, output_filepath)

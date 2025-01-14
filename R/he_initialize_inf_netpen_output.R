@@ -21,7 +21,7 @@ he_initialize_inf_netpen_output <-
   } else {
     environment$inf_netpen_output_file_name <- inf_netpen_output_file_name
   }
-  he_write_inf_netpen_output(environment$inf_netpen_matrix,
+  he_write_inf_netpen_output(environment$inf_netpen_matrix_output,
                              environment$inf_netpen_output_file_name,
                              output_dir = filepath)
 }
