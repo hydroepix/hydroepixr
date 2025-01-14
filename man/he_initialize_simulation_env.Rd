@@ -23,6 +23,15 @@ he_initialize_simulation_env(
 \item{species_info_filepath}{filepath to species info file}
 
 \item{dist_mat_filepath}{filepath to distance matrix file}
+
+\item{detailed_survey_output}{logical value indicating whether to generate
+detailed surveillance output}
+
+\item{detailed_depop_output}{logical value indicating whether to generate
+detailed depopulation output}
+
+\item{detailed_preemptive_depop_output}{logical value indicating whether to
+generate detailed preemptive depopulation output}
 }
 \value{
 NA

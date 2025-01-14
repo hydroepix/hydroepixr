@@ -4,6 +4,12 @@
 #' @param farm_info_filepath filepath to farm info file
 #' @param species_info_filepath filepath to species info file
 #' @param dist_mat_filepath filepath to distance matrix file
+#' @param detailed_survey_output logical value indicating whether to generate
+#'    detailed surveillance output
+#' @param detailed_depop_output logical value indicating whether to generate
+#'    detailed depopulation output
+#' @param detailed_preemptive_depop_output logical value indicating whether to
+#'    generate detailed preemptive depopulation output
 #'
 #' @return NA
 #' @export
