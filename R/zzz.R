@@ -12,6 +12,5 @@
   Note that this package is distributed under the GNU GPLv3. This stipulates
   that no closed versions of this package may be distributed, regardless of
   modifications made to the code. For additional details on the GNU GPLv3
-  license, view the enter `packageDescription(\"hydroepixr\")$License` in the
-  console.")
+  license, enter `packageDescription(\"hydroepixr\")$License` in the console.")
 }
