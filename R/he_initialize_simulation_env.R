@@ -1,69 +1,46 @@
-#' Initialize simulation environment
-#'
-#' @param environment simulation environment
-#' @param farm_info_filepath filepath to farm info file
-#' @param species_info_filepath filepath to species info file
-#' @param dist_mat_filepath filepath to distance matrix file
-#' @param detailed_survey_output logical value indicating whether to generate
-#'    detailed surveillance output
-#' @param detailed_depop_output logical value indicating whether to generate
-#'    detailed depopulation output
-#' @param detailed_preemptive_depop_output logical value indicating whether to
-#'    generate detailed preemptive depopulation output
-#'
-#' @return NA
-#' @export
-#'
-he_initialize_simulation_env <-
-  function(environment,
-           farm_info_filepath,
-           species_info_filepath,
-           dist_mat_filepath,
-           output_filepath = "/output",
-           detailed_survey_output = FALSE,
-           detailed_depop_output = FALSE,
-           detailed_preemptive_depop_output = FALSE) {
-    # Define farm object within environment to manage farm-related variables
-    environment$farm_info <-
-      he_read_farm_info_file(farm_info_filepath)
+he_initialize_simulation_env <- function(environment, num_farms) {
+  # gDaysUntilBaseline - determine the day the first detection will happen
+  environment$days_until_baseline_mort <- 0
 
-    # Define species object within environment to manage species-related variables
-    environment$species_info <-
-      he_read_species_info_file(species_info_filepath)
+  # TotNumQueue - output variable to calculate the number of "herds" queueing
+  # for surveillance per day
+  # does not affect anything (TH) ?
+  environment$total_num_queued <- 0
 
-    # Define distance matrix within environment
-    environment$dist_mat <-
-      he_read_dist_mat_file(dist_mat_filepath)
+  # Initialize waiting periods and transmission probabilities
+  environment$farm_info$tagged_duration <- rep(0, num_farms) # aHerd$taggedDur
+  # New additions TH
+  environment$farm_info$detected_tagged_dep <- rep(FALSE, num_farms) #aHerd$DetTaggedDep
+  environment$farm_info$time_visited <- rep(0, num_farms) #aHerd$timeVisited
+  environment$farm_info$immune_time <- rep(0, num_farms) #aHerd$immuneTime
+  environment$farm_info$time_culled <- rep(0, num_farms) #aHerd$timeCulled
+  environment$farm_info$to_surv_dead <- rep(0, num_farms) #aHerd$toSurvDead
+  environment$farm_info$dead_sample_tes <- rep(0, num_farms) #aHerd$DeadSampTest
+  environment$farm_info$sampled_dead <- rep(0, num_farms) #aHerd$SampledDead
+  environment$farm_info$diagnosed_surveyed_dead <- rep(FALSE, num_farms) #aHerd$DiagSurvDead
+  environment$farm_info$sub_dead_sample <- rep(0, num_farms) #aHerd$SubDeadSamp
+  environment$farm_info$susceptible_again <- rep(0, num_farms) #aHerd$SusAgain
+  environment$farm_info$survived <- rep(0, num_farms) #aHerd$Survived
+  environment$farm_info$in_surveillance_zone <- rep(0, num_farms) #aHerd$inSurZone
 
-    # Initialize other internal simulation variables
-    he_initialize_internal_simulation_vars(environment)
+  # New variables TA and DP
+  environment$farm_info$infectiousness <- rep(0, num_farms) #aHerd$Infectiousness
+  environment$farm_info$infection_mode <- rep(0, num_farms) #aHerd$infMode
+  environment$farm_info$cage_size_variable <- farm_info$cage_size #aHerd$CageSizeVar
+  environment$farm_info$cage_size_cull <- farm_info$cage_size #aHerd$CageSizeCull
+  environment$farm_info$diagnosis_mode <- rep(0, num_farms) #aHerd$DiagMode
+  environment$farm_info$time_to_first_surveillance_visit <- rep(0, num_farms) #aHerd$timeToFSV
+  environment$farm_info$time_to_subsequent_surveillance_visit <- rep(0, num_farms) #aHerd$timeToSSV
+  environment$farm_infO$time_to_asv <- rep(0, num_farms) #aHerd$timeToASV
+  environment$farm_infO$farm_diagnosis <- rep(FALSE, num_farms) #aHerd$FarmDiag
+  # number of samples for surveillance - to be checked by DP
+  environment$farm_info$number_of_samples <- round(rtriang(num_farms, 5, 10, 20)) #aHerd$NumSamp
+  environment$farm_info$number_of_samples_surveyed <- rep(0, num_farms) #aHerd$NumSamSurv
+  environment$farm_info$farm_size_surveyed <- rep(0, num_farms) #aHerd$herdSizeSurv
+  environment$farm_info$visit_count <- rep(0, num_farms) #aHerd$visitCount
+  farm_a_s_visit <- round(runif(unique(environment$farm_info$farm_id)), 1, 90)
+  environment$farm_info$time_to_asv <- farm_a_s_visit[environment$farm_info$farm_id]
 
-    # Add new simulation-relevant variables from farm info file
-    # Determine number of farms?
-    environment$num_farms <- length(environment$farm_info$species)
-    # TODO: Confirm "sus" does stand for susceptible?
-    environment$farm_info$susceptible <- rep(NA, environment$num_farms)
-    environment$farm_info$k <- rep(NA, environment$num_farms)
-    environment$farm_info$depop_eligible <- rep(NA, environment$num_farms)
 
-    # TODO: Check that this isn't a logical argument instead of a string?
-    # Check depop-eligibility by species
-    if (!identical(environment$species_to_depop, "all")) {
-      environment$farm_info$depop_eligible <-
-        environment$farm_info$species %in% environment$species_to_depop
-    }
 
-    # Set up output variables and corresponding output files
-    he_initialize_inf_netpen_output(environment, output_filepath)
-    he_initialize_result_summary_output(environment, output_filepath)
-
-    if (detailed_survey_output) {
-      he_initialize_survey_output(environment, output_filepath)
-    }
-    if (detailed_depop_output) {
-      he_initialize_depop_output(environment, output_filepath)
-    }
-    if (detailed_preemptive_depop_output) {
-      he_initialize_preemptive_depop_output(environment, output_filepath)
-    }
-  }
+}
