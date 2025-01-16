@@ -1,5 +1,5 @@
 he_engine <- function() {
-  # TODO: Iterate over specified length of simulation (passed as param?)
+  # TODO: Iterate over specified length of simulation
     # Set up iteration? ("initializeHEvars()")
       # Update simulation/farm status variables
         # farm status, time, outbreak detected, infectious farms, farm production time
@@ -7,7 +7,7 @@ he_engine <- function() {
         # "updateHerds()"
         # "HElimitmovements()"
         # "SurvHerds()"
-      # Update relative effect of measures on DC, IMC and ILC (what are these abbreviations?)
+      # Update relative effect of measures on DC, IMC and ILC
       # Replaced by BCinf(), DBspread()
         # run function from "controlMethods" -> function representing a day??
         # run function from "InterMethods" -> function representing a day??

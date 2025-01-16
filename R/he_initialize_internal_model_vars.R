@@ -5,7 +5,7 @@
 #' @return NA
 #' @export
 #'
-he_initialize_internal_simulation_vars <- function(environment) {
+he_initialize_internal_model_vars <- function(environment) {
   # Declare additional variables
   # TODO: distinction between these two variables?
   environment$outbreak_detected_last <-

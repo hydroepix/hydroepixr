@@ -1,9 +1,9 @@
-test_that("simulation environment variables are initialized", {
-  # Create test directory and test simulation environment
+test_that("model environment variables are initialized", {
+  # Create test directory and test model environment
   test_environment <- rlang::new_environment()
   temp_test_dir <- output_test_setup()
   test_environment$verbose <- TRUE
-  expect_no_error(he_initialize_simulation_env(
+  expect_no_error(he_initialize_model_env(
     test_environment,
     farm_info_filepath = test_farm_info_filepath,
     species_info_filepath = test_species_info_filepath,
@@ -16,8 +16,8 @@ test_that("simulation environment variables are initialized", {
   expect_true(exists("species_info", where = test_environment))
   expect_true(exists("dist_mat", where = test_environment))
 
-  # Check internal simulation variables are initialized
-  expect_no_error(he_initialize_internal_simulation_vars(test_environment))
+  # Check internal model variables are initialized
+  expect_no_error(he_initialize_internal_model_vars(test_environment))
   expect_true(is.null(test_environment$outbreak_detected_last))
   expect_true(is.null(test_environment$outbreak_detected))
   expect_true(is.null(test_environment$depopulation_queue))
@@ -32,7 +32,6 @@ test_that("simulation environment variables are initialized", {
   expect_true(exists("susceptible", where = test_environment$farm_info))
   expect_true(exists("k", where = test_environment$farm_info))
   expect_true(exists("depop_eligible", where = test_environment$farm_info))
-  # TODO: Check depop eligibility var?
 
   # Check default outputs are initialized
   # Infected netpen output
@@ -54,13 +53,12 @@ test_that("simulation environment variables are initialized", {
   expect_false(exists("preemptive_depop_output_file_name", where = test_environment))
 })
 
-# TODO: Test to check if additional output details are initialized
-test_that("simulation environment variables are initialized", {
-  # Create test directory and test simulation environment
+test_that("additional model output variables are initialized", {
+  # Create test directory and test model environment
   test_environment <- rlang::new_environment()
   temp_test_dir <- output_test_setup()
   test_environment$verbose <- TRUE
-  expect_no_error(he_initialize_simulation_env(
+  expect_no_error(he_initialize_model_env(
     test_environment,
     farm_info_filepath = test_farm_info_filepath,
     species_info_filepath = test_species_info_filepath,
