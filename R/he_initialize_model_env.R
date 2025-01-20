@@ -52,6 +52,16 @@ he_initialize_model_env <-
         environment$farm_info$species %in% environment$species_to_depop
     }
 
+    # Set initial farm infection status to 1 for every farm unless values
+    # are taken from the file
+    if (ignore_status) {
+      environment$farm_info$initial_status <- rep(1, num_farms)
+      environment$farm_info$initial_time_infected <- rep(Inf, num_farms)
+    } else {
+      environment$farm_info$initial_status <- environment$farm_info$status
+      environment$farm_info$initial_time_infected <- environment$farm_info$time_infected
+    }
+
     # Set up output variables and corresponding output files
     he_initialize_inf_netpen_output(environment, output_filepath)
     he_initialize_result_summary_output(environment, output_filepath)
