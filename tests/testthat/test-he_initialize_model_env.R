@@ -79,3 +79,5 @@ test_that("additional model output variables are initialized", {
   expect_true(exists("preemptive_depop_matrix_output", where = test_environment))
   expect_true(exists("preemptive_depop_output_file_name", where = test_environment))
 })
+
+# TODO: Add tests for ignore status, species to depop
