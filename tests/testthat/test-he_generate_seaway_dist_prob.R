@@ -1,9 +1,5 @@
 test_that("seaway distance values are calculated correctly", {
-  test_dist_mat <- matrix(c(0, 2000, 7000, 2000, 0, 5000, 7000, 5000, 0),
-                          nrow = 3,
-                          ncol = 3)
-  test_farm_id <- 1
-  test_dist <- test_dist_mat[test_farm_id,]
+  test_dist <- c(0, 2000, 7000)
   test_farm_to_farm <- 0.5
   test_vaccine_efficacy <- 0
   expected <- c(0.0333333333333333,
