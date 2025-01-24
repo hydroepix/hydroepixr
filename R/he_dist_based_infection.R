@@ -1,7 +1,7 @@
 # Determines infection based on distance to infected farms for a given day
 he_dist_based_infection <- function(farm_info,
                                     g_time,
-                                    connectivity_matrix_type = "seaway distance",
+                                    inf_prob_matrix,
                                     label = 1,
                                     t_start = 0,
                                     t_end = Inf) {
@@ -27,15 +27,5 @@ he_dist_based_infection <- function(farm_info,
                           farm_info$farm_id,
                           any)
 
-    # Define probability matrix based on seaway distance or particle contact hours
-    if (connectivity_matrix_type == "seaway distance") {
-      prob_matrix <- sapply(farm_ids, he_generate_seaway_dist_prob_matrix())
-    } else if (connectivity_matrix_mode == "particle contact hours") {
-      prob_matrix <- dist_mat[farm_ids,]
-    } else {
-      stop("Invalid probability matrix type for distance-based infection
-           calculation. Valid types are 'seaway distance' and 'particle contact
-           hours'")
-    }
   }
 }

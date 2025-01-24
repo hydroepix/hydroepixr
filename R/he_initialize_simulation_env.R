@@ -64,7 +64,7 @@ he_initialize_simulation_env <- function(environment, num_farms, farm_info) {
   farm_info <- he_reset_simulation_env(environment,
                                        environment$num_farms,
                                        environment$farm_info)
-  # move below into simulation reset?
+  # move into simulation reset?
   farm_info$status <- init_status
   farm_info$time_infected <- init_time_infected
 
