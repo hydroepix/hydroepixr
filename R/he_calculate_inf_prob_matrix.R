@@ -31,7 +31,7 @@ he_calculate_inf_prob_matrix <- function(dist_mat,
   # Reset diagonal to 0 for symmetrical matrix
   diag(prob_matrix) <- 0.0
   # Apply farm activity, infection susceptibility and farm infectiousness
-  # to probability matrix
+  # to probability matrix, column by column
   prob_matrix <- apply(prob_matrix, 2, function(prob_col) {
     prob_col * farm_active * farm_susceptibility * farm_infectiousness
   })
