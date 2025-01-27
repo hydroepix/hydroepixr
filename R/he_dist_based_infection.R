@@ -1,7 +1,10 @@
 # Determines infection based on distance to infected farms for a given day
 he_dist_based_infection <- function(farm_info,
                                     g_time,
-                                    inf_prob_matrix,
+                                    dist_mat,
+                                    farm_to_farm,
+                                    vaccine_efficacy,
+                                    dist_mat_type = "seaway distance",
                                     label = 1,
                                     t_start = 0,
                                     t_end = Inf) {
@@ -26,6 +29,30 @@ he_dist_based_infection <- function(farm_info,
     farm_active <- tapply(farm_info$farm_active,
                           farm_info$farm_id,
                           any)
+    # Calculate infection probability vector for each farm using the specified
+    # method
+    inf_prob_vec <- he_calculate_inf_prob_vec(
+      he_calculate_inf_prob_matrix(
+        dist_mat,
+        farm_ids,
+        farm_to_farm,
+        vaccine_efficacy,
+        farm_active,
+        farm_susceptibility,
+        farm_infectiousness,
+        dist_mat_type,
+      )
+    )
+
+    # Apply infection probability vector to determine newly infected farms
+    newly_infected_farms <- rbinom(length(farm_ids), 1, inf_prob_vec)
+    newly_infected_farm_ids <- farm_ids[newly_infected_farms]
+
+    # Infect cages in any farms selected to be newly infected
+    # TODO: What is g_time? Why does it need to be greater than 60?
+    if (length(newly_infected_farms > 0) & g_time > 60) {
+      newly_infected_cages <- he_infect_cages()
+    }
 
   }
 }
