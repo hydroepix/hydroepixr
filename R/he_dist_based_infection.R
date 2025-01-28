@@ -48,10 +48,10 @@ he_dist_based_infection <- function(farm_info,
     newly_infected_farms <- rbinom(length(farm_ids), 1, inf_prob_vec)
     newly_infected_farm_ids <- farm_ids[newly_infected_farms]
 
-    # Infect cages in any farms selected to be newly infected
+    # Infect netpens in any farms selected to be newly infected
     # TODO: What is g_time? Why does it need to be greater than 60?
     if (length(newly_infected_farms > 0) & g_time > 60) {
-      newly_infected_cages <- he_infect_cages()
+      newly_infected_cages <- he_infect_netpens()
     }
 
   }

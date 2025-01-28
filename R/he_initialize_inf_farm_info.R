@@ -1,7 +1,7 @@
 he_initialize_inf_farm_info <- function() {
   inf_farm_cols <- c("susceptible",
                      "latent",
-                     "subclinical3",
+                     "subclinical",
                      "clinical",
                      "immune",
                      "total", #???
@@ -11,7 +11,7 @@ he_initialize_inf_farm_info <- function() {
                      "latent_duration", # Length of time in latent stage?
                      "subclinical_duration", # Length of time in subclinical stage?
                      "clinical_time", # time the herd showed clinical signs of infection
-                     "TDiag13",
+                     "time_of_diagnosis",
                      "diagnosed",
                      "infected_by_direct_contact",
                      "time_infected", # is this a duration or a time?
@@ -25,12 +25,12 @@ he_initialize_inf_farm_info <- function() {
   dead_animal_matrix_sur <- matrix(numeric(0), ncol = days_sur_dead)
 
   # What's the difference between iteration and day here? What is mort?
-  mort_mat_cols <- c("iteration",
+  mort_matrix_cols <- c("iteration",
                      "inf_farm_id",
                      "inf_netpen_id",
                      "mort",
                      "day")
-  mortality_matrix <- matrix(numeric(0), ncol = 5)
+  mort_matrix <- matrix(numeric(0), ncol = 5)
   deleted_herd_matrix <- matrix(numeric(0), length(inf_farm_cols))
 
 
