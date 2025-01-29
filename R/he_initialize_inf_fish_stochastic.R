@@ -8,7 +8,7 @@
 #' @export
 #'
 he_initialize_infected_fish_stochastic <-
-  function(contact_herds,
+  function(contact_farms,
            prob_infection,
            susceptibility) {
     # TODO: Clarify how initially infected fish are calculated

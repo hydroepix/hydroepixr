@@ -1,13 +1,21 @@
-# Read in data, set up farms, and initialize infection
-#he_setup()
-# "initialize"
+# Read data and initialize variables
+#he_initialize_model_env
 # summarize initialization?
-# "he_construct_infected_farm"
 # initialize new infection functions?
 
-# Run simulation
-#he_engine()
+# TODO: Iterate over number of simulations and run simulation
+# for (sim in n_sim) {
+#   if (verbose) {
+#     cat("Simulation ", sim, "\n")
+#   }
+#   #set seed?
+#   # Initialize simulation state
+#   # "he_construct_infected_farm"
+#   # Set up
+#   # Run simulation
+#   he_engine()
+# }
 
-# summarize final results?
+# summarize aggregated results from all simulations
 
 

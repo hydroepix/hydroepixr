@@ -1,4 +1,4 @@
-netpen_id,farm_id,netpen_size,baseline_mort,species,bay_management_id
+netpen_id,farm_id,netpen_size,baseline_mort,species_id,bay_management_id
 1,1,25000,0.000107248,1,1
 2,1,25000,0.000121311,1,1
 3,1,25000,0.000175868,1,1

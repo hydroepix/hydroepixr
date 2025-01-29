@@ -5,17 +5,17 @@
 \title{Initialize infection as a randomized number of random fish}
 \usage{
 he_initialize_infected_fish_stochastic(
-  contact_herds,
+  contact_farms,
   prob_infection,
   susceptibility
 )
 }
 \arguments{
+\item{contact_farms}{which farms have had contact with the vector of infection?}
+
 \item{prob_infection}{probability of infection of ...?}
 
 \item{susceptibility}{susceptibility? to infection? logical yes/no?}
-
-\item{contact_farms}{which farms have had contact with the vector of infection?}
 }
 \value{
 NA

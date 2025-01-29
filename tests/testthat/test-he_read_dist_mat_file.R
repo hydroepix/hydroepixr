@@ -14,3 +14,5 @@ test_that("distance matrix file reads in with correct values", {
 test_that("distance matrix file provides symmetrical matrix", {
   # TODO
 })
+
+# TODO: Add checks for invalid values e.g. negative numbers, non-numerics
