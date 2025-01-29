@@ -1,6 +1,8 @@
 #' Read in a farm information file
 #'
 #' @param filepath a filepath to read a csv file from
+#' @param verbose a logical value indicating whether to provide additional
+#'    output messages on function progress
 #'
 #' @return data.frame of the csv file
 #' @export
@@ -20,7 +22,7 @@ he_read_farm_info_file <- function(filepath, verbose = FALSE) {
                            "farm_id",
                            "netpen_size",
                            "baseline_mort",
-                           "species",
+                           "species_id",
                            "bay_management_id")
   optional_columns <- list("initial_infection_status",
                            "initial_time_infected")

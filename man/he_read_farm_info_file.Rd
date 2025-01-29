@@ -8,6 +8,9 @@ he_read_farm_info_file(filepath, verbose = FALSE)
 }
 \arguments{
 \item{filepath}{a filepath to read a csv file from}
+
+\item{verbose}{a logical value indicating whether to provide additional
+output messages on function progress}
 }
 \value{
 data.frame of the csv file

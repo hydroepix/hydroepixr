@@ -12,7 +12,8 @@ he_initialize_model_env(
   output_filepath = "/output",
   detailed_survey_output = FALSE,
   detailed_depop_output = FALSE,
-  detailed_preemptive_depop_output = FALSE
+  detailed_preemptive_depop_output = FALSE,
+  ignore_status = TRUE
 )
 }
 \arguments{
@@ -24,6 +25,8 @@ he_initialize_model_env(
 
 \item{dist_mat_filepath}{filepath to distance matrix file}
 
+\item{output_filepath}{filepath to the directory in which to write output files}
+
 \item{detailed_survey_output}{logical value indicating whether to generate
 detailed surveillance output}
 
@@ -32,6 +35,9 @@ detailed depopulation output}
 
 \item{detailed_preemptive_depop_output}{logical value indicating whether to
 generate detailed preemptive depopulation output}
+
+\item{ignore_status}{logical value indicating whether to ignore infection
+status values provided in input files or not}
 }
 \value{
 NA
