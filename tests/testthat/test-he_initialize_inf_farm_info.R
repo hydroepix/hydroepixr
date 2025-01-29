@@ -7,25 +7,25 @@ test_that("infected farm info is initialized correctly", {
   expect_no_error(he_initialize_inf_farm_info(test_environment))
   # Set complex expected values
   expected_inf_farm_cols <- c(
+    "farm_id",
+    "species_id",
     "susceptible",
     "latent",
     "subclinical",
     "clinical",
     "immune",
-    "total",
-    "status",
-    "farm_id",
-    "p",
-    "latent_duration",
-    "subclinical_duration",
-    "clinical_time",
+    "total", #???
+    "infection_status", #???
+    #"p", # Reed-Frost probability?
+    "latent_duration", # Length of time in latent stage?
+    "subclinical_duration", # Length of time in subclinical stage?
+    "clinical_time", # time the herd showed clinical signs of infection
     "time_of_diagnosis",
     "diagnosed",
     "infected_by_direct_contact",
-    "time_infected",
-    "species",
-    "vaccinated",
-    "TLastAnCli19"
+    "time_infected", # appears to refer to the timestep of infection
+    "vaccinated"#,
+    #"TLastAnCli19" #???
   )
   expected_mort_matrix_cols <-
     c("iteration", "inf_farm_id", "inf_netpen_id", "mort", "day")

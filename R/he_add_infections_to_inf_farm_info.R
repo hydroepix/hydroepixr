@@ -19,26 +19,27 @@ he_add_infections_to_inf_farm_info <-
     if (length(new_inf_farm_ids) > 0) {
       new_inf_rows <-
         cbind(
-          farm_info$susceptibility[new_inf_farm_ids],
-          0,
-          0,
-          0,
-          0,
-          farm_info$susceptibility[new_inf_farm_ids],
-          1,
-          new_inf_farm_ids,
-          farm_info$p[new_inf_farm_ids],
-          0,
-          0,
-          Inf,
-          Inf,
-          0,
-          0,
-          #DC,
-          g_time,
-          farm_info$species_id[new_inf_farm_ids],
-          0,
-          0
+          new_inf_farm_ids, # farm_id
+          farm_info$species_id[new_inf_farm_ids], # species_id
+          farm_info$susceptibility[new_inf_farm_ids], # susceptible
+          0, # latent
+          0, # subclinical
+          0, # clinical
+          0, # immune
+          farm_info$susceptibility[new_inf_farm_ids], # total number of still-susceptible animals
+          # i.e. not immune and not infected
+          1, # infection_status?
+          #farm_info$p[new_inf_farm_ids], #p?
+          0, # latent_duration
+          0, # subclinical_duration
+          Inf, # clinical_time
+          Inf, # time of diagnosis
+          0, # diagnosed
+          0, # infected_by_direct_contact
+          g_time, # time_infected
+          0, # vaccinated - shouldn't this come from somewhere
+          #instead of a default of 0?
+          #0 # "TLastAnCli19"
         )
       new_inf_rows[, 1:4] <-
         new_inf_rows[, 1:4] + cbind(-rowSums(num_inf_animals), num_inf_animals)
@@ -50,7 +51,6 @@ he_add_infections_to_inf_farm_info <-
       # Updating diagnosis (time?) if initial status is 4 (Clinical) ??)
       # TODO: Why are we calling the browser?? This can likely be removed
       #if (is.na(new_inf_rows[1,1])) browser()
-
       if (any(new_inf_rows_index <- (new_inf_rows[,7] == 4))) {
         new_inf_rows[new_inf_rows_index, 12] <- g_time
       }
