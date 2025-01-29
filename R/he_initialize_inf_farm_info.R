@@ -7,7 +7,7 @@ he_initialize_inf_farm_info <- function(environment) {
     "immune",
     "total", #???
     "status", #???
-    "id", # Which id is this? farm or netpen?
+    "farm_id",
     "p", # Reed-Frost probability?
     "latent_duration", # Length of time in latent stage?
     "subclinical_duration", # Length of time in subclinical stage?

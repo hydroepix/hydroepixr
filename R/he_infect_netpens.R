@@ -1,4 +1,4 @@
-he_infect_cages <-
+he_infect_netpens <-
   function(farm_info,
            inf_farm_info,
            species_info,
@@ -38,6 +38,5 @@ he_infect_cages <-
                                        species_info,
                                        new_inf_farm_ids,
                                        num_inf_animals)
-    aInfHerd$addInf(AllNewInfs, cbind(AllNewAnimals, 0, 0), 0)
   }
 }

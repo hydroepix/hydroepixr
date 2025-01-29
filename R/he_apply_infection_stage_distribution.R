@@ -13,6 +13,7 @@ he_apply_infection_stage_distribution <- function(new_inf_rows, species_info, st
     stop("Invalid infection stage entered.")
   }
   # TODO: Can this be reworked or extracted into a separate function?
+  # and why is the transpose necessary?
   t(apply(cbind(new_inf_rows[, col_index],
                 species_info$col_name[new_inf_rows[, 17], , drop = FALSE])))
 }

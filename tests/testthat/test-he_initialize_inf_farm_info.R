@@ -14,7 +14,7 @@ test_that("infected farm info is initialized correctly", {
     "immune",
     "total",
     "status",
-    "id",
+    "farm_id",
     "p",
     "latent_duration",
     "subclinical_duration",
