@@ -1,3 +1,11 @@
+#' Initialize matrix to store and track infected farm information
+#'
+#' @param environment simulation environment in which to store the infected
+#'    farm info
+#'
+#' @return NA
+#' @export
+#'
 he_initialize_inf_farm_info <- function(environment) {
   environment$inf_farm_cols <- c(
     "farm_id",

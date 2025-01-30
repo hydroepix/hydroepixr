@@ -1,4 +1,20 @@
-# Determines infection based on distance to infected farms for a given day
+#' Determines infection based on distance to infected farms for a given day
+#'
+#' @param farm_info matrix of farm and netpen information
+#' @param g_time timestep of the simulation?
+#' @param dist_mat symmetrical matrix of distances between farms in kilometers?
+#' @param farm_to_farm scaling parameter for between-farm infection transmission
+#' @param vaccine_efficacy product of the manufacturer-reported vaccine efficacy
+#'    and the population coverage of the vaccine
+#' @param dist_mat_type type of distance matrix provided (i.e. is this a distance
+#'    matrix or a matrix with using a different measure of connectivity)
+#' @param label ? seems to apply to infection mode somehow? (direct or indirect)?
+#' @param t_start ? presumably some sort of start time
+#' @param t_end ? presumably some sort of end time
+#'
+#' @return ?
+#' @export
+#'
 he_dist_based_infection <- function(farm_info,
                                     g_time,
                                     dist_mat,
@@ -51,6 +67,7 @@ he_dist_based_infection <- function(farm_info,
     # Infect netpens in any farms selected to be newly infected
     # TODO: What is g_time? Why does it need to be greater than 60?
     if (length(newly_infected_farms > 0) & g_time > 60) {
+      # TODO: Complete call to he_infect_netpens()
       newly_infected_cages <- he_infect_netpens()
     }
 

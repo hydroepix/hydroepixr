@@ -1,4 +1,14 @@
-# TODO: Check if DC argument is necessary?
+#' Add new infections to farm info matrix
+#'
+#' @param inf_farm_info matrix of information on infected farms
+#' @param species_info matrix of information on species
+#' @param new_inf_farm_ids list of newly infected farm ids
+#' @param num_inf_animals number of animals infected in the infection process
+#'
+#' @return matrix of information on infected farms, appended with rows to
+#'    represent new infections
+#' @export
+#'
 he_add_infections_to_inf_farm_info <-
   function(inf_farm_info,
            species_info,

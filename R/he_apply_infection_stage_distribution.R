@@ -1,4 +1,12 @@
-# Generates rows indicating animals entering a specified stage
+#' Applies distribution to determine infection stage of newly infected animals
+#'
+#' @param new_inf_rows matrix with rows representing newly infected netpens
+#' @param species_info matrix of information on species
+#' @param stage infection stage the newly infected animals are entering
+#'
+#' @return ?
+#' @export
+#'
 he_apply_infection_stage_distribution <- function(new_inf_rows, species_info, stage) {
   if (stage == "latent") {
     col_index <- 2

@@ -1,3 +1,16 @@
+#' Infect new netpens
+#'
+#' @param farm_info matrix of farm information
+#' @param inf_farm_info matrix of information on infected farms
+#' @param species_info matrix of species information
+#' @param newly_infected_farm_ids farm identifiers which should have newly
+#'    infected netpens
+#' @param g_time simulation timestep?
+#' @param label ? contact method potentially?
+#'
+#' @return ?
+#' @export
+#'
 he_infect_netpens <-
   function(farm_info,
            inf_farm_info,
