@@ -48,8 +48,7 @@ selected}
 
 \item{days_dead_infectious}{number of days dead animals remain infectious}
 
-\item{farm_to_farm}{scaling parameter for between-farm infection transmission,
-based on the inputted distance matrix}
+\item{farm_to_farm}{scaling parameter for between-farm infection transmission}
 
 \item{netpen_to_netpen}{daily probability for between-netpen infection
 transmission within a farm}

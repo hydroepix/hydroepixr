@@ -1,3 +1,19 @@
+#' Calculates a symmetrical matrix of farm infection probabilities
+#'
+#' @param dist_mat symmetrical matrix of distances between farms in kilometers?
+#' @param farm_ids farm identifiers for which to calculate infection probabilities
+#' @param farm_to_farm scaling parameter for between-farm infection transmission
+#' @param vaccine_efficacy product of the manufacturer-reported vaccine efficacy
+#'    and the population coverage of the vaccine
+#' @param farm_active logical indicating whether or not the farm is actively producing?
+#' @param farm_susceptibility logical indicating whether or not the farm is susceptible
+#' @param farm_infectiousness logical indicating whether or not the farm is infectious
+#' @param dist_mat_type type of distance matrix provided (i.e. is this a distance
+#'    matrix or a matrix with using a different measure of connectivity)
+#'
+#' @return a symmetrical matrix of farm infection probabilities
+#' @export
+#'
 he_calculate_inf_prob_matrix <- function(dist_mat,
                                          farm_ids,
                                          farm_to_farm,

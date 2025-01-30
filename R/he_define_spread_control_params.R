@@ -15,8 +15,7 @@
 #' @param mort_threshold_for_subsequent_investigation ?
 #' @param case_fatality_prop proportion of the infected population that will die
 #' @param days_dead_infectious number of days dead animals remain infectious
-#' @param farm_to_farm scaling parameter for between-farm infection transmission,
-#'    based on the inputted distance matrix
+#' @param farm_to_farm scaling parameter for between-farm infection transmission
 #' @param netpen_to_netpen daily probability for between-netpen infection
 #'    transmission within a farm
 #' @param vaccine_efficacy product of the manufacturer-reported vaccine efficacy

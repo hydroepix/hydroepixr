@@ -1,3 +1,10 @@
+#' RPoly2 ?
+#'
+#' @param np ?
+#'
+#' @return ?
+#' @export
+#'
 he_rpoly2 <- function(np) {
   tabulate(bin =
              sample(
