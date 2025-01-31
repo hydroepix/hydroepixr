@@ -1,6 +1,6 @@
-#' Initialize simulation environment
+#' Initialize model variables
 #'
-#' @param environment simulation environment
+#' @param environment environment in which to store model level variables
 #' @param farm_info_filepath filepath to farm info file
 #' @param species_info_filepath filepath to species info file
 #' @param dist_mat_filepath filepath to distance matrix file
@@ -28,45 +28,39 @@ he_initialize_model_env <-
            detailed_depop_output = FALSE,
            detailed_preemptive_depop_output = FALSE,
            ignore_status = TRUE) {
-    # Define farm object within environment to manage farm-related variables
+    # Read in farm info data frame to store and manage farm-related variables
     environment$farm_info <-
       he_read_farm_info_file(farm_info_filepath)
 
-    # Define species object within environment to manage species-related variables
+    # Read in species info data frame to store and manage species-related variables
     environment$species_info <-
       he_read_species_info_file(species_info_filepath)
 
+    # TODO? Should this distinguish b/w distance vs. hydroconnectivity matrix
+    # yet? If not, should probably be renamed more generically
+    # (e.g. intra_farm_transmission_matrix)
+    # Maybe good to check earlier, i.e. on read-in to catch errors early
     # Define distance matrix within environment
     environment$dist_mat <-
       he_read_dist_mat_file(dist_mat_filepath)
 
     # Initialize other internal simulation variables
-    he_initialize_internal_model_vars(environment)
+    # TODO: Confirm if and where these are used - these can likely at least
+    # be pared down for the basic model with only infection transmission
+    # functionality
+    #he_initialize_internal_model_vars(environment)
 
-    # Add new simulation-relevant variables from farm info file
-    environment$num_farms <- length(environment$farm_info$species)
-    environment$farm_info$susceptible <- rep(NA, environment$num_farms)
-    environment$farm_info$k <- rep(NA, environment$num_farms)
-    environment$farm_info$depop_eligible <- rep(TRUE, environment$num_farms)
+    # Initialize additional variables in farm_info table and pull in relevant
+    # species info
+    environment$farm_info <-
+      he_initialize_farm_info(environment$farm_info, environment$species_info)
 
-    # TODO: Check that this isn't a logical argument instead of a string?
-    # Check depop-eligibility by species
-    if (!identical(environment$species_to_depop, "all")) {
-      environment$farm_info$depop_eligible <-
-        environment$farm_info$species %in% environment$species_to_depop
-    }
-
-    # Set initial farm infection status to 1 for every farm unless values
-    # are taken from the file
-    if (ignore_status) {
-      environment$farm_info$initial_status <- rep(1, environment$num_farms)
-      environment$farm_info$initial_time_infected <- rep(Inf, environment$num_farms)
-    } else {
-      environment$farm_info$initial_status <- environment$farm_info$status
-      environment$farm_info$initial_time_infected <- environment$farm_info$time_infected
-    }
+    # Store number of farms as a separate variable due to frequent referencing
+    # throughout the model
+    environment$num_farms <- length(environment$farm_info$farm_id)
 
     # Set up output variables and corresponding output files
+    # TODO: Review to see how much of this initialization is truly necessary
     he_initialize_inf_netpen_output(environment, output_filepath)
     he_initialize_result_summary_output(environment, output_filepath)
 
