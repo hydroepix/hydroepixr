@@ -22,4 +22,9 @@ he_initialize_internal_model_vars <- function(environment) {
   environment$g_time <- 0
   # TODO: Delete? Looks like an unused variable
   #environment$init_hide_map <- hide_map
+  # TODO: Are these useful matrices to keep? If so, pull into separate functions?
+  environment$dead_animal_matrix <-
+    matrix(numeric(0), ncol = environment$days_dead_infectious)
+  environment$deleted_farm_matrix <-
+    matrix(numeric(0), length(environment$inf_farm_cols))
 }
