@@ -20,7 +20,7 @@ he_read_species_info_file <- function(filepath) {
     "latent_dur_freq",
     "subclinical_dur_freq",
     "clinical_dur_freq",
-    "within_pen_transmission",
+    "within_netpen_transmission",
     "rel_susceptibility"
   )
   mismatched_columns <- setdiff(species_info_columns, expected_columns)
@@ -32,19 +32,6 @@ he_read_species_info_file <- function(filepath) {
       paste(mismatched_columns, collapse = ", ")
     )
   }
-  # TODO: Figure out how this might need to be modified if tornado plot option
-  # is selected?
-  # Code should likely go elsewhere
-  ## modify one column of herdtypes table if tornado plot option is selected
-  # if (!is.null(tornCol)) {
-  #
-  #   if (is.numeric(herdtypes[[tornCol]])) {
-  #     herdtypes[[tornCol]] <<- 0.9 * herdtypes[[tornCol]]
-  #   } else {
-  #     herdtypes[[tornCol]] <<- paste(as.character(tornMult),
-  #                                    "*",herdtypes[[tornCol]])
-  #   }
-  # }
   #
   # TODO: Can we modify the inputs so that we don't have to store these as
   # expressions? Can we have functions to manage these distributions?
