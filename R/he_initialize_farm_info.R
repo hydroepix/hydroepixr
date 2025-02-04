@@ -16,6 +16,11 @@ he_initialize_farm_info <- function(farm_info, species_info) {
   initialized_farm_info <- merge(farm_info,
                                  species_info_subset,
                                  all.x = TRUE)
-  # TODO: check for farm_info rows without matches
+  if (any(sapply(initialized_farm_info$within_netpen_transmission, is.na)) |
+      any(sapply(initialized_farm_info$rel_susceptibility, is.na))) {
+    stop("Missing species info for species_id in farm_info.
+         Please check files to ensure all species_id in the farm_info file have
+         corresponding information in the species_info file.")
+  }
   initialized_farm_info
 }
