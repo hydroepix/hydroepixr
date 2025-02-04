@@ -24,9 +24,6 @@ he_initialize_model_env <-
            species_info_filepath,
            dist_mat_filepath,
            output_filepath = "/output",
-           detailed_survey_output = FALSE,
-           detailed_depop_output = FALSE,
-           detailed_preemptive_depop_output = FALSE,
            ignore_status = TRUE) {
     # Read in farm info data frame to store and manage farm-related variables
     environment$farm_info <-
@@ -38,7 +35,7 @@ he_initialize_model_env <-
 
     # TODO? Should this distinguish b/w distance vs. hydroconnectivity matrix
     # yet? If not, should probably be renamed more generically
-    # (e.g. intra_farm_transmission_matrix)
+    # (e.g. connectivity_matrix
     # Maybe good to check earlier, i.e. on read-in to catch errors early
     # Define distance matrix within environment
     environment$dist_mat <-
@@ -48,7 +45,7 @@ he_initialize_model_env <-
     # TODO: Confirm if and where these are used - these can likely at least
     # be pared down for the basic model with only infection transmission
     # functionality
-    #he_initialize_internal_model_vars(environment)
+    he_initialize_internal_model_vars(environment)
 
     # Initialize additional variables in farm_info table and pull in relevant
     # species info
@@ -63,14 +60,4 @@ he_initialize_model_env <-
     # TODO: Review to see how much of this initialization is truly necessary
     he_initialize_inf_netpen_output(environment, output_filepath)
     he_initialize_result_summary_output(environment, output_filepath)
-
-    if (detailed_survey_output) {
-      he_initialize_survey_output(environment, output_filepath)
-    }
-    if (detailed_depop_output) {
-      he_initialize_depop_output(environment, output_filepath)
-    }
-    if (detailed_preemptive_depop_output) {
-      he_initialize_preemptive_depop_output(environment, output_filepath)
-    }
   }

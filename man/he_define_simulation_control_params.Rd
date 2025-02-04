@@ -6,14 +6,12 @@
 \usage{
 he_define_simulation_control_params(
   environment,
-  n_simulations = 1,
+  n_simulations = 10,
   run_id = NULL,
-  step_in_file = NULL,
   max_outbreak_length = 365,
   random_seed = -10,
   ignore_disease_status_input = TRUE,
-  verbose = FALSE,
-  summary_function = "HEsum"
+  verbose = FALSE
 )
 }
 \arguments{
@@ -22,9 +20,7 @@ managed}
 
 \item{n_simulations}{number of simulations (i.e., individual simulated epidemics) to be run}
 
-\item{run_id}{identifier for this run of the model}
-
-\item{step_in_file}{filename for step-wise information?}
+\item{run_id}{identifier for this run of the model (or the run of the simulation??)}
 
 \item{max_outbreak_length}{maximum length of a disease outbreak}
 
@@ -34,9 +30,6 @@ managed}
 ignore disease status input?}
 
 \item{verbose}{boolean indicating whether verbose output should be generated}
-
-\item{summary_function}{text indicating which summary function should be used
-to summarize simulation outputs}
 }
 \value{
 NA

@@ -2,7 +2,7 @@
 % Please edit documentation in R/he_initialize_model_env.R
 \name{he_initialize_model_env}
 \alias{he_initialize_model_env}
-\title{Initialize simulation environment}
+\title{Initialize model variables}
 \usage{
 he_initialize_model_env(
   environment,
@@ -10,14 +10,11 @@ he_initialize_model_env(
   species_info_filepath,
   dist_mat_filepath,
   output_filepath = "/output",
-  detailed_survey_output = FALSE,
-  detailed_depop_output = FALSE,
-  detailed_preemptive_depop_output = FALSE,
   ignore_status = TRUE
 )
 }
 \arguments{
-\item{environment}{simulation environment}
+\item{environment}{environment in which to store model level variables}
 
 \item{farm_info_filepath}{filepath to farm info file}
 
@@ -27,6 +24,9 @@ he_initialize_model_env(
 
 \item{output_filepath}{filepath to the directory in which to write output files}
 
+\item{ignore_status}{logical value indicating whether to ignore infection
+status values provided in input files or not}
+
 \item{detailed_survey_output}{logical value indicating whether to generate
 detailed surveillance output}
 
@@ -35,13 +35,10 @@ detailed depopulation output}
 
 \item{detailed_preemptive_depop_output}{logical value indicating whether to
 generate detailed preemptive depopulation output}
-
-\item{ignore_status}{logical value indicating whether to ignore infection
-status values provided in input files or not}
 }
 \value{
 NA
 }
 \description{
-Initialize simulation environment
+Initialize model variables
 }
