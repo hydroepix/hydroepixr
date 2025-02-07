@@ -10,6 +10,7 @@
 #'
 #' @return NA
 #' @export
+#' @importFrom utils write.table
 #'
 he_write_preemptive_depop_output <- function(preemptive_depop_matrix,
                                              preemptive_depop_file_name =

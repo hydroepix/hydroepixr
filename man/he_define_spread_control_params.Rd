@@ -29,6 +29,9 @@ transmission model is used, options are "binomial chain" and "reed-frost"}
 
 \item{index_farm_id}{identifier of the index farm}
 
+\item{index_direct}{logical indicating whether the index farm gets infected
+directly, as opposed to indirectly}
+
 \item{case_fatality_prop}{proportion of the infected population that will die}
 
 \item{days_dead_infectious}{number of days dead animals remain infectious}

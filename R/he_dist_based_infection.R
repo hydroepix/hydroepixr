@@ -15,6 +15,7 @@
 #'
 #' @return ?
 #' @export
+#' @importFrom stats rbinom
 #'
 he_dist_based_infection <- function(farm_info,
                                     g_time,

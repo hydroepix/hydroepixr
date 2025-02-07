@@ -1,3 +1,13 @@
+#' Initialize simulation environment with necessary variables
+#'
+#' @param environment environment in which simulation variables are stored
+#' @param num_farms number of farms
+#' @param farm_info data frame of farm and netpen information
+#'
+#' @return NA
+#' @export
+#' @importFrom stats runif
+#'
 he_initialize_simulation_env <- function(environment, num_farms, farm_info) {
   # gDaysUntilBaseline - determine the day the first detection will happen
   environment$days_until_baseline_mort <- 0

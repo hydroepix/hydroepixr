@@ -7,6 +7,8 @@
 #' @param intrafarm_disease_transmission_model defines which intrafarm disease
 #'   transmission model is used, options are "binomial chain" and "reed-frost"
 #' @param index_farm_id identifier of the index farm
+#' @param index_direct logical indicating whether the index farm gets infected
+#'    directly, as opposed to indirectly
 #' @param case_fatality_prop proportion of the infected population that will die
 #' @param days_dead_infectious number of days dead animals remain infectious
 #' @param farm_to_farm scaling parameter for between-farm infection transmission

@@ -6,6 +6,7 @@
 #'
 #' @return NA
 #' @export
+#' @importFrom stats rbinom
 #'
 he_initialize_infected_fish_stochastic <-
   function(contact_farms,
