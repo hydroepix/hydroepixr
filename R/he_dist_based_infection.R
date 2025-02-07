@@ -1,26 +1,27 @@
-#' Determines infection based on distance to infected farms for a given day
+#' Determines infection spread between farms for a given day?
 #'
 #' @param farm_info matrix of farm and netpen information
 #' @param g_time timestep of the simulation?
-#' @param dist_mat symmetrical matrix of distances between farms in kilometers?
+#' @param connectivity_matrix connectivity matrix in the form of a seaway
+#'    distance matrix (in kilometers)or a hydroconnectivity matrix
 #' @param farm_to_farm scaling parameter for between-farm infection transmission
 #' @param vaccine_efficacy product of the manufacturer-reported vaccine efficacy
 #'    and the population coverage of the vaccine
-#' @param dist_mat_type type of distance matrix provided (i.e. is this a distance
-#'    matrix or a matrix with using a different measure of connectivity)
+#' @param connectivity_matrix_type type of connectivity matrix provided, either
+#'    distance matrix or hydroconnectivity matrix
 #' @param label ? seems to apply to infection mode somehow? (direct or indirect)?
-#' @param t_start ? presumably some sort of start time
-#' @param t_end ? presumably some sort of end time
+#' @param t_start threshold of earliest possible infection spread
+#' @param t_end threshold for latest possible infection spread
 #'
 #' @return ?
 #' @export
 #'
 he_dist_based_infection <- function(farm_info,
                                     g_time,
-                                    dist_mat,
+                                    connectivity_matrix,
                                     farm_to_farm,
                                     vaccine_efficacy,
-                                    dist_mat_type = "seaway distance",
+                                    connectivity_matrix_type = "distance",
                                     label = 1,
                                     t_start = 0,
                                     t_end = Inf) {
@@ -49,14 +50,14 @@ he_dist_based_infection <- function(farm_info,
     # method
     inf_prob_vec <- he_calculate_inf_prob_vec(
       he_calculate_inf_prob_matrix(
-        dist_mat,
+        connectivity_matrix,
         farm_ids,
         farm_to_farm,
         vaccine_efficacy,
         farm_active,
         farm_susceptibility,
         farm_infectiousness,
-        dist_mat_type,
+        connectivity_matrix_type,
       )
     )
 

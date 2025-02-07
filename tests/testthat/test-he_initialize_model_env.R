@@ -7,14 +7,14 @@ test_that("model environment variables are initialized", {
     test_environment,
     farm_info_filepath = test_farm_info_filepath,
     species_info_filepath = test_species_info_filepath,
-    dist_mat_filepath = test_dist_mat_filepath,
+    connectivity_matrix_filepath = test_dist_matrix_filepath,
     output_filepath = temp_test_dir
   ))
 
   # Check files are read in
   expect_true(exists("farm_info", where = test_environment))
   expect_true(exists("species_info", where = test_environment))
-  expect_true(exists("dist_mat", where = test_environment))
+  expect_true(exists("connectivity_matrix", where = test_environment))
 
   # Check internal model variables are initialized
   expect_true(is.null(test_environment$outbreak_detected_last))

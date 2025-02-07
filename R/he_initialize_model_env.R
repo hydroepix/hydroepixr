@@ -3,14 +3,8 @@
 #' @param environment environment in which to store model level variables
 #' @param farm_info_filepath filepath to farm info file
 #' @param species_info_filepath filepath to species info file
-#' @param dist_mat_filepath filepath to distance matrix file
+#' @param connectivity_matrix_filepath filepath to connectivity matrix file
 #' @param output_filepath filepath to the directory in which to write output files
-#' @param detailed_survey_output logical value indicating whether to generate
-#'    detailed surveillance output
-#' @param detailed_depop_output logical value indicating whether to generate
-#'    detailed depopulation output
-#' @param detailed_preemptive_depop_output logical value indicating whether to
-#'    generate detailed preemptive depopulation output
 #' @param ignore_status logical value indicating whether to ignore infection
 #'    status values provided in input files or not
 #'
@@ -22,7 +16,7 @@ he_initialize_model_env <-
   function(environment,
            farm_info_filepath,
            species_info_filepath,
-           dist_mat_filepath,
+           connectivity_matrix_filepath,
            output_filepath = "/output",
            ignore_status = TRUE) {
     # Read in farm info data frame to store and manage farm-related variables
@@ -33,13 +27,8 @@ he_initialize_model_env <-
     environment$species_info <-
       he_read_species_info_file(species_info_filepath)
 
-    # TODO? Should this distinguish b/w distance vs. hydroconnectivity matrix
-    # yet? If not, should probably be renamed more generically
-    # (e.g. connectivity_matrix
-    # Maybe good to check earlier, i.e. on read-in to catch errors early
-    # Define distance matrix within environment
-    environment$dist_mat <-
-      he_read_dist_mat_file(dist_mat_filepath)
+    environment$connectivity_matrix <-
+      he_read_connectivity_matrix_file(connectivity_matrix_filepath)
 
     # Initialize other internal simulation variables
     # TODO: Confirm if and where these are used - these can likely at least

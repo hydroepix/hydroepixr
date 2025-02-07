@@ -8,7 +8,7 @@ he_initialize_model_env(
   environment,
   farm_info_filepath,
   species_info_filepath,
-  dist_mat_filepath,
+  connectivity_matrix_filepath,
   output_filepath = "/output",
   ignore_status = TRUE
 )
@@ -20,21 +20,12 @@ he_initialize_model_env(
 
 \item{species_info_filepath}{filepath to species info file}
 
-\item{dist_mat_filepath}{filepath to distance matrix file}
+\item{connectivity_matrix_filepath}{filepath to connectivity matrix file}
 
 \item{output_filepath}{filepath to the directory in which to write output files}
 
 \item{ignore_status}{logical value indicating whether to ignore infection
 status values provided in input files or not}
-
-\item{detailed_survey_output}{logical value indicating whether to generate
-detailed surveillance output}
-
-\item{detailed_depop_output}{logical value indicating whether to generate
-detailed depopulation output}
-
-\item{detailed_preemptive_depop_output}{logical value indicating whether to
-generate detailed preemptive depopulation output}
 }
 \value{
 NA

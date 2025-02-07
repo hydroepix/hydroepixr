@@ -1,39 +1,39 @@
 #' Calculates a symmetrical matrix of farm infection probabilities
 #'
-#' @param dist_mat symmetrical matrix of distances between farms in kilometers?
+#' @param connectivity_matrix connectivity matrix in the form of a seaway
+#'    distance matrix (in kilometers)or a hydroconnectivity matrix
 #' @param farm_ids farm identifiers for which to calculate infection probabilities
 #' @param farm_to_farm scaling parameter for between-farm infection transmission
 #' @param vaccine_efficacy product of the manufacturer-reported vaccine efficacy
 #'    and the population coverage of the vaccine
-#' @param farm_active logical indicating whether or not the farm is actively producing?
+#' @param farm_active logical indicating whether or not the farm is active
 #' @param farm_susceptibility logical indicating whether or not the farm is susceptible
 #' @param farm_infectiousness logical indicating whether or not the farm is infectious
-#' @param dist_mat_type type of distance matrix provided (i.e. is this a distance
-#'    matrix or a matrix with using a different measure of connectivity)
+#' @param connectivity_matrix_type type of connectivity matrix provided, either
+#'    distance matrix or hydroconnectivity matrix
 #'
-#' @return a symmetrical matrix of farm infection probabilities
+#' @return a symmetrical(?) matrix of farm infection probabilities
 #' @export
 #'
-he_calculate_inf_prob_matrix <- function(dist_mat,
+he_calculate_inf_prob_matrix <- function(connectivity_matrix,
                                          farm_ids,
                                          farm_to_farm,
                                          vaccine_efficacy,
                                          farm_active,
                                          farm_susceptibility,
                                          farm_infectiousness,
-                                         dist_mat_type = "seaway distance") {
+                                         connectivity_matrix_type = "distance") {
   # Define probability matrix based on seaway distance or particle contact hours
-  if (dist_mat_type == "seaway distance") {
-    # seaway distance involves a calculation
+  if (connectivity_matrix_type == "distance") {
+    # seaway distance matrix requires a scaling calculation
     prob_matrix <- sapply(farm_ids,
                           FUN = he_generate_seaway_dist_prob,
-                          dist_mat,
+                          connectivity_matrix,
                           farm_to_farm,
                           vaccine_efficacy)
-  } else if (connectivity_matrix_mode == "particle contact hours") {
-    # particle contact hours means a hydroconnectivity matrix as input
-    # matrix just needs to be subset with farm_ids
-    prob_matrix <- dist_mat[farm_ids,]
+  } else if (connectivity_matrix_mode == "hydroconnectivity") {
+    # hydrconnectivity matrix just needs to be subset with farm_ids
+    prob_matrix <- connectivity_matrix[farm_ids,]
   } else {
     stop("Invalid probability matrix type for distance-based infection
            calculation. Valid types are 'seaway distance' and 'particle contact

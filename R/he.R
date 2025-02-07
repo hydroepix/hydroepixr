@@ -13,7 +13,7 @@
 # he_initialize_model_env(simulation_env,
 #                              farm_info_filepath,
 #                              types_filepath,
-#                              dist_mat_filepath)
+#                              connectivity_matrix_filepath)
 
 #he_run(n_sim)
 

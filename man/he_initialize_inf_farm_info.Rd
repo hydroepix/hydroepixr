@@ -7,7 +7,7 @@
 he_initialize_inf_farm_info(farm_info)
 }
 \arguments{
-\item{farm_info}{}
+\item{farm_info}{data frame of farm and netpen information}
 }
 \value{
 NA

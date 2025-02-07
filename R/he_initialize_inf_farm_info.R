@@ -1,6 +1,6 @@
 #' Initialize matrix to store and track infected farm information
 #'
-#' @param farm_info
+#' @param farm_info data frame of farm and netpen information
 #'
 #' @return NA
 #' @export

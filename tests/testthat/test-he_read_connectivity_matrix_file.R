@@ -1,7 +1,8 @@
 test_that("distance matrix file reads in with correct values", {
   filepath <- system.file("testdata", package = "hydroepixr")
 
-  dat <- he_read_dist_mat_file(paste0(filepath, "/dist_mat_bay_x.csv"))
+  dat <- he_read_connectivity_matrix_file(paste0(filepath, "/dist_mat_bay_x.csv"),
+                                          "distance")
 
   expect_no_error(dat)
   expected_dat <- data.frame(c(0, 2000, 7000),
