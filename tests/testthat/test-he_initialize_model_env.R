@@ -22,7 +22,7 @@ test_that("model environment variables are initialized", {
   expect_true(is.na(test_environment$index_farm))
   expect_true(is.null(test_environment$iteration))
   expect_true(is.null(test_environment$infected_farm_nums))
-  expect_equal(test_environment$g_time, 0)
+  expect_equal(test_environment$sim_day, 0)
 
   # Check variables pulled from farm_info_file have been initialized
   expect_true(exists("num_farms", where = test_environment))

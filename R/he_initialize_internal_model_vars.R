@@ -17,8 +17,6 @@ he_initialize_internal_model_vars <- function(environment) {
   # TODO: is this the correctly interpretation of infHerdNums?
   environment$infected_farm_nums <- NULL
   # TODO: what does g stand for?
-  environment$g_time <- 0
-  # TODO: Delete? Looks like an unused variable
-  #environment$init_hide_map <- hide_map
+  environment$sim_day <- 0
   # TODO: Are these useful matrices to keep? If so, pull into separate functions?
 }

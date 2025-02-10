@@ -7,5 +7,5 @@ test_that("internal model environment variables are initialized", {
   expect_true(is.na(test_environment$index_farm))
   expect_true(is.null(test_environment$iteration))
   expect_true(is.null(test_environment$infected_farm_nums))
-  expect_equal(test_environment$g_time, 0)
+  expect_equal(test_environment$sim_day, 0)
 })

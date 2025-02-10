@@ -5,7 +5,7 @@
 #' @param species_info matrix of species information
 #' @param newly_infected_farm_ids farm identifiers which should have newly
 #'    infected netpens
-#' @param g_time simulation timestep?
+#' @param sim_day day timestep in the simulation
 #' @param label ? contact method potentially?
 #'
 #' @return ?
@@ -16,7 +16,7 @@ he_infect_netpens <-
            inf_farm_info,
            species_info,
            newly_infected_farm_ids,
-           g_time,
+           sim_day,
            label
   ) {
   # Identify valid netpens for infection within farms
@@ -44,7 +44,7 @@ he_infect_netpens <-
     all_new_animals <- c(all_new_animals,
                          new_inf_animals[as.logical(new_inf_animals)])
     farm_info$status[inf_netpen_ids] <- 2
-    farm_info$time_infected[inf_netpen_ids] <- g_time
+    farm_info$time_infected[inf_netpen_ids] <- sim_day
     farm_info$infection_mode[inf_netpen_ids] <- label
     # Replace this with a call to a new function, not a method
     he_add_infections_to_inf_farm_info(inf_farm_info,

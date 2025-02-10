@@ -8,7 +8,7 @@
 #' @export
 #'
 he_reset_simulation_env <- function(environment, num_farms, farm_info) {
-  environment$g_time <- 0
+  environment$sim_day <- 0
   farm_info$time_to_tagged_for_depop <- rep(Inf, num_farms)
   farm_infO$diagnosis_time <- rep(Inf, num_farms)
   farm_info$diagnosed <- rep(F, num_farms)
