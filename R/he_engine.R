@@ -1,6 +1,8 @@
 he_engine <- function() {
   # TODO: Iterate over specified length of simulation
-    # Set up iteration? ("initializeHEvars()")
+    # Create and initialize simulation environment
+    #sim_env <- he_create_simulation_env(model_env)
+    #he_initialize_simulation_env(sim_env)
       # Update simulation/farm status variables
         # farm status, time, outbreak detected, infectious farms, farm production time
       # Run simulation iteration
