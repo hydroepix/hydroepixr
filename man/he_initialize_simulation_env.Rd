@@ -4,7 +4,7 @@
 \alias{he_initialize_simulation_env}
 \title{Initialize simulation environment with necessary variables}
 \usage{
-he_initialize_simulation_env(environment, num_farms, farm_info)
+he_initialize_simulation_env(environment, num_farms, farm_info, species_info)
 }
 \arguments{
 \item{environment}{environment in which simulation variables are stored}
