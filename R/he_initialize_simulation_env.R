@@ -8,33 +8,12 @@
 #' @export
 #' @importFrom stats runif
 #'
-he_initialize_simulation_env <- function(environment, num_farms, farm_info, species_info) {
+he_initialize_simulation_env <- function(simulation_env, num_farms, farm_info, species_info) {
   # Initialize simulation-level farm information variables
   farm_info$susceptible_again <- rep(0, num_farms)
   farm_info$survived <- rep(0, num_farms)
   farm_info$infectiousness <- rep(0, num_farms)
   farm_info$infection_mode <- rep(0, num_farms)
-
-  # TODO: Check if this overlaps with he_initialize_farm_info?
-  # iterate over species to set waiting periods and transmission probabilities
-  # by species
-  for (id in species_info$species_id) {
-    farm_index <- farm_info$species_id == id
-    num_type <- sum(farm_index)
-    species_index <- species_info$species_id
-    # intra-farm interaction rate
-    # TODO
-    # Assign k value to farm based on k value of species
-    environment$farm_info$k[farm_index] <- species_info$k[species_index]
-    # Assign relative susceptibility to farm based on relative susceptibility
-    # of species
-    environment$farm_info$rel_susceptibility[farm_index] <-
-      environment$species_info$rel_susceptibility[species_index]
-  }
-
-  # assign reed-frost probability?
-  environment$farm_info$p <- environment$farm_info$k
-  environment$farm_info$p[environment$farm_info$p > 1] <- 1
 
   farm_info <- he_reset_simulation_env(environment,
                                        environment$num_farms,
@@ -46,7 +25,7 @@ he_initialize_simulation_env <- function(environment, num_farms, farm_info, spec
   # select index herds for next simulation?
   if (ignore_status) {
     # TODO: Select index farm based on index farm selection function
-    environment$index_farm <- select_index_herd()
+    environment$index_farm <- select_index_farm()
     # apply infected status to the index farm
     farm_info$status[environment$index_farm]
     farm_info$time_infected[environment$index_farm] <- 0

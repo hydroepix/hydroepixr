@@ -5,7 +5,7 @@
 \title{Initialize model variables}
 \usage{
 he_initialize_model_env(
-  environment,
+  model_env,
   farm_info_filepath,
   species_info_filepath,
   connectivity_matrix_filepath,
@@ -14,7 +14,7 @@ he_initialize_model_env(
 )
 }
 \arguments{
-\item{environment}{environment in which to store model level variables}
+\item{model_env}{environment in which to store model level variables}
 
 \item{farm_info_filepath}{filepath to farm info file}
 

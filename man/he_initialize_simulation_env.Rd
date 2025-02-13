@@ -4,14 +4,19 @@
 \alias{he_initialize_simulation_env}
 \title{Initialize simulation environment with necessary variables}
 \usage{
-he_initialize_simulation_env(environment, num_farms, farm_info, species_info)
+he_initialize_simulation_env(
+  simulation_env,
+  num_farms,
+  farm_info,
+  species_info
+)
 }
 \arguments{
-\item{environment}{environment in which simulation variables are stored}
-
 \item{num_farms}{number of farms}
 
 \item{farm_info}{data frame of farm and netpen information}
+
+\item{environment}{environment in which simulation variables are stored}
 }
 \value{
 NA
