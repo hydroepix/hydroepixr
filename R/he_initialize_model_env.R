@@ -17,8 +17,7 @@ he_initialize_model_env <-
            farm_info_filepath,
            species_info_filepath,
            connectivity_matrix_filepath,
-           output_filepath = "/output",
-           ignore_status = TRUE) {
+           output_filepath = "/output") {
     # Read in files data
     model_env$farm_info <-
       he_read_farm_info_file(farm_info_filepath)
@@ -42,7 +41,7 @@ he_initialize_model_env <-
 
     # Store number of farms as a separate variable due to frequent referencing
     # throughout the model
-    model_env$num_farms <- length(model_env$farm_info$farm_id)
+    model_env$num_netpens <- length(model_env$farm_info$netpen_id)
 
     # Set up output variables and corresponding output files
     # TODO: Review to see how much of this initialization is truly necessary

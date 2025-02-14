@@ -6,17 +6,17 @@
 \usage{
 he_initialize_simulation_env(
   simulation_env,
-  num_farms,
+  num_netpens,
   farm_info,
   species_info
 )
 }
 \arguments{
-\item{num_farms}{number of farms}
+\item{simulation_env}{environment in which simulation variables are stored}
+
+\item{num_netpens}{number of netpens}
 
 \item{farm_info}{data frame of farm and netpen information}
-
-\item{environment}{environment in which simulation variables are stored}
 }
 \value{
 NA

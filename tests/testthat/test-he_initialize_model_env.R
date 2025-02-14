@@ -23,11 +23,20 @@ test_that("model environment variables are initialized", {
   expect_equal(test_environment$sim_day, 0)
 
   # Check variables pulled from farm_info_file have been initialized
-  expect_true(exists("num_farms", where = test_environment))
+  expect_true(exists("num_netpens", where = test_environment))
   expect_true(exists("rel_susceptibility", where = test_environment$farm_info))
   expect_true(exists("within_netpen_transmission", where = test_environment$farm_info))
 
-  # Check default outputs are initialized
+  # Check farm_info has been initialized with proper values from species_info
+  expect_true(all(
+    test_environment$farm_info$rel_susceptibility == 1))
+  expect_true(all(
+    test_environment$farm_info$within_netpen_transmission == "rpert(n,0.14,0.4,0.8)"))
+
+  # Check number of farms is stored correctly
+  expect_equal(test_environment$num_netpens, 60)
+
+  # Check outputs are initialized
   # Infected netpen output
   expect_true(exists("inf_netpen_matrix_output", where = test_environment))
   expect_true(exists("inf_netpen_output_file_name", where = test_environment))

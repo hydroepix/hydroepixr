@@ -9,8 +9,7 @@ he_initialize_model_env(
   farm_info_filepath,
   species_info_filepath,
   connectivity_matrix_filepath,
-  output_filepath = "/output",
-  ignore_status = TRUE
+  output_filepath = "/output"
 )
 }
 \arguments{
