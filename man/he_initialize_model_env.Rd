@@ -22,9 +22,6 @@ he_initialize_model_env(
 \item{connectivity_matrix_filepath}{filepath to connectivity matrix file}
 
 \item{output_filepath}{filepath to the directory in which to write output files}
-
-\item{ignore_status}{logical value indicating whether to ignore infection
-status values provided in input files or not}
 }
 \value{
 NA

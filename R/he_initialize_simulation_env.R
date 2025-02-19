@@ -3,6 +3,7 @@
 #' @param simulation_env environment in which simulation variables are stored
 #' @param num_netpens number of netpens
 #' @param farm_info data frame of farm and netpen information
+#' @param species_info data frame of species information
 #'
 #' @return NA
 #' @export

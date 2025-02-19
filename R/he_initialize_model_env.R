@@ -5,8 +5,6 @@
 #' @param species_info_filepath filepath to species info file
 #' @param connectivity_matrix_filepath filepath to connectivity matrix file
 #' @param output_filepath filepath to the directory in which to write output files
-#' @param ignore_status logical value indicating whether to ignore infection
-#'    status values provided in input files or not
 #'
 #' @return NA
 #' @export

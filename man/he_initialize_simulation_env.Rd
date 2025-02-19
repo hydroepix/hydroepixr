@@ -17,6 +17,8 @@ he_initialize_simulation_env(
 \item{num_netpens}{number of netpens}
 
 \item{farm_info}{data frame of farm and netpen information}
+
+\item{species_info}{data frame of species information}
 }
 \value{
 NA

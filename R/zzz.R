@@ -1,5 +1,5 @@
 .onAttach <- function(libname, pkgname) {
-  message("DISCLAIMER - PLEASE READ PRIOR TO USE: \n
+  packageStartupMessage("DISCLAIMER - PLEASE READ PRIOR TO USE: \n
   The hydroepixr model is for use by professionals trained in aquatic animal
   health (e.g., veterinarians and fish health managers) and provides information
   to assist decision-making related to waterborne spread of fish pathogens.
