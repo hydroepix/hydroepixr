@@ -9,7 +9,7 @@ he_infect_netpens(
   inf_farm_info,
   species_info,
   newly_infected_farm_ids,
-  g_time,
+  sim_day,
   label
 )
 }
@@ -23,7 +23,7 @@ he_infect_netpens(
 \item{newly_infected_farm_ids}{farm identifiers which should have newly
 infected netpens}
 
-\item{g_time}{simulation timestep?}
+\item{sim_day}{day timestep in the simulation}
 
 \item{label}{? contact method potentially?}
 }

@@ -10,6 +10,7 @@
 #'
 #' @return NA
 #' @export
+#' @importFrom utils write.table
 #'
 he_write_depop_output <- function(depop_matrix,
                                   depop_file_name = "depop.txt",

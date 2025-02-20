@@ -4,11 +4,10 @@
 \alias{he_initialize_inf_farm_info}
 \title{Initialize matrix to store and track infected farm information}
 \usage{
-he_initialize_inf_farm_info(environment)
+he_initialize_inf_farm_info(farm_info)
 }
 \arguments{
-\item{environment}{simulation environment in which to store the infected
-farm info}
+\item{farm_info}{data frame of farm and netpen information}
 }
 \value{
 NA

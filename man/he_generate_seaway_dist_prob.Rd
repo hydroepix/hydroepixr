@@ -4,12 +4,17 @@
 \alias{he_generate_seaway_dist_prob}
 \title{Calculates probability of infection given a set of seaway distances}
 \usage{
-he_generate_seaway_dist_prob(farm_id, dist_mat, farm_to_farm, vaccine_efficacy)
+he_generate_seaway_dist_prob(
+  farm_id,
+  dist_matrix,
+  farm_to_farm,
+  vaccine_efficacy
+)
 }
 \arguments{
 \item{farm_id}{farm identifiers to apply the calculation to}
 
-\item{dist_mat}{matrix of seaway distances}
+\item{dist_matrix}{symmetrical matrix of seaway distances in kilometers}
 
 \item{farm_to_farm}{scaling parameter for between-farm infection transmission}
 

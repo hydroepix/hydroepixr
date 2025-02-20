@@ -46,7 +46,7 @@ he_add_infections_to_inf_farm_info <-
           Inf, # time of diagnosis
           0, # diagnosed
           0, # infected_by_direct_contact
-          g_time, # time_infected
+          sim_timestep, # time_infected
           0, # vaccinated - shouldn't this come from somewhere
           #instead of a default of 0?
           #0 # "TLastAnCli19"
@@ -62,7 +62,7 @@ he_add_infections_to_inf_farm_info <-
       # TODO: Why are we calling the browser?? This can likely be removed
       #if (is.na(new_inf_rows[1,1])) browser()
       if (any(new_inf_rows_index <- (new_inf_rows[,7] == 4))) {
-        new_inf_rows[new_inf_rows_index, 12] <- g_time
+        new_inf_rows[new_inf_rows_index, 12] <- sim_day
       }
 
       # Add generated newly infected rows into infected farm data

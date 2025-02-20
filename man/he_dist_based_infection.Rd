@@ -2,15 +2,15 @@
 % Please edit documentation in R/he_dist_based_infection.R
 \name{he_dist_based_infection}
 \alias{he_dist_based_infection}
-\title{Determines infection based on distance to infected farms for a given day}
+\title{Determines infection spread between farms for a given day?}
 \usage{
 he_dist_based_infection(
   farm_info,
-  g_time,
-  dist_mat,
+  sim_day,
+  connectivity_matrix,
   farm_to_farm,
   vaccine_efficacy,
-  dist_mat_type = "seaway distance",
+  connectivity_matrix_type = "distance",
   label = 1,
   t_start = 0,
   t_end = Inf
@@ -19,27 +19,28 @@ he_dist_based_infection(
 \arguments{
 \item{farm_info}{matrix of farm and netpen information}
 
-\item{g_time}{timestep of the simulation?}
+\item{sim_day}{day timestep in the simulation}
 
-\item{dist_mat}{symmetrical matrix of distances between farms in kilometers?}
+\item{connectivity_matrix}{connectivity matrix in the form of a seaway
+distance matrix (in kilometers)or a hydroconnectivity matrix}
 
 \item{farm_to_farm}{scaling parameter for between-farm infection transmission}
 
 \item{vaccine_efficacy}{product of the manufacturer-reported vaccine efficacy
 and the population coverage of the vaccine}
 
-\item{dist_mat_type}{type of distance matrix provided (i.e. is this a distance
-matrix or a matrix with using a different measure of connectivity)}
+\item{connectivity_matrix_type}{type of connectivity matrix provided, either
+distance matrix or hydroconnectivity matrix}
 
 \item{label}{? seems to apply to infection mode somehow? (direct or indirect)?}
 
-\item{t_start}{? presumably some sort of start time}
+\item{t_start}{threshold of earliest possible infection spread}
 
-\item{t_end}{? presumably some sort of end time}
+\item{t_end}{threshold for latest possible infection spread}
 }
 \value{
 ?
 }
 \description{
-Determines infection based on distance to infected farms for a given day
+Determines infection spread between farms for a given day?
 }

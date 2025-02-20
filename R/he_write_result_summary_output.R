@@ -10,6 +10,7 @@
 #'
 #' @return NA
 #' @export
+#' @importFrom utils write.table
 #'
 he_write_result_summary_output <-
   function(result_summary_matrix,

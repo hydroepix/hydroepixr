@@ -32,7 +32,7 @@ test_that("seaway distance infection probability matrix is calculated correctly"
     test_farm_active,
     test_farm_susceptibility,
     test_farm_infectiousness,
-    dist_mat_type = "seaway distance"
+    connectivity_matrix_type = "distance"
   )
   # Check that matrix is symmetrical (must also be square by definition)
   expect_true(isSymmetric(actual_matrix))

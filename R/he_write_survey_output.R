@@ -10,6 +10,7 @@
 #'
 #' @return NA
 #' @export
+#' @importFrom utils write.table
 #'
 he_write_survey_output <- function(surveyed_output_matrix,
                                    survey_output_file_name =

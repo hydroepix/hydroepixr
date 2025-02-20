@@ -11,6 +11,7 @@
 #'
 #' @return NA
 #' @export
+#' @importFrom utils write.table
 #'
 he_write_inf_netpen_output <- function(inf_netpen_matrix,
                                        inf_netpen_output_file_name =

@@ -5,18 +5,19 @@
 \title{Calculates a symmetrical matrix of farm infection probabilities}
 \usage{
 he_calculate_inf_prob_matrix(
-  dist_mat,
+  connectivity_matrix,
   farm_ids,
   farm_to_farm,
   vaccine_efficacy,
   farm_active,
   farm_susceptibility,
   farm_infectiousness,
-  dist_mat_type = "seaway distance"
+  connectivity_matrix_type = "distance"
 )
 }
 \arguments{
-\item{dist_mat}{symmetrical matrix of distances between farms in kilometers?}
+\item{connectivity_matrix}{connectivity matrix in the form of a seaway
+distance matrix (in kilometers)or a hydroconnectivity matrix}
 
 \item{farm_ids}{farm identifiers for which to calculate infection probabilities}
 
@@ -25,17 +26,17 @@ he_calculate_inf_prob_matrix(
 \item{vaccine_efficacy}{product of the manufacturer-reported vaccine efficacy
 and the population coverage of the vaccine}
 
-\item{farm_active}{logical indicating whether or not the farm is actively producing?}
+\item{farm_active}{logical indicating whether or not the farm is active}
 
 \item{farm_susceptibility}{logical indicating whether or not the farm is susceptible}
 
 \item{farm_infectiousness}{logical indicating whether or not the farm is infectious}
 
-\item{dist_mat_type}{type of distance matrix provided (i.e. is this a distance
-matrix or a matrix with using a different measure of connectivity)}
+\item{connectivity_matrix_type}{type of connectivity matrix provided, either
+distance matrix or hydroconnectivity matrix}
 }
 \value{
-a symmetrical matrix of farm infection probabilities
+a symmetrical(?) matrix of farm infection probabilities
 }
 \description{
 Calculates a symmetrical matrix of farm infection probabilities

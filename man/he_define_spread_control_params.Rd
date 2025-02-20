@@ -6,14 +6,10 @@
 \usage{
 he_define_spread_control_params(
   environment,
-  new_infection_functions = c("BCSpread()", "DBinf()"),
   random_num_initially_infected_fish = FALSE,
   intrafarm_disease_transmission_model = "binomial chain",
-  index_farm_function = "selectIndexFarm",
-  index_farm_select = list(species = 1:18),
+  index_farm_id = NULL,
   index_direct = TRUE,
-  mort_threshold_for_first_investigation = 0.00255,
-  mort_threshold_for_subsequent_investigation = 0.00255,
   case_fatality_prop = 0.89,
   days_dead_infectious = 2,
   farm_to_farm = 0.42,
@@ -25,24 +21,16 @@ he_define_spread_control_params(
 \item{environment}{environment in which simulation variables are stored and
 managed}
 
-\item{new_infection_functions}{functions which define infection spread}
-
 \item{random_num_initially_infected_fish}{logical indicating whether to
 randomize the initial number of infected fish}
 
 \item{intrafarm_disease_transmission_model}{defines which intrafarm disease
 transmission model is used, options are "binomial chain" and "reed-frost"}
 
-\item{index_farm_function}{function which defines how the index farm is
-selected}
+\item{index_farm_id}{identifier of the index farm}
 
-\item{index_farm_select}{arguments provided to the index_farm_function}
-
-\item{index_direct}{?}
-
-\item{mort_threshold_for_first_investigation}{?}
-
-\item{mort_threshold_for_subsequent_investigation}{?}
+\item{index_direct}{logical indicating whether the index farm gets infected
+directly, as opposed to indirectly}
 
 \item{case_fatality_prop}{proportion of the infected population that will die}
 

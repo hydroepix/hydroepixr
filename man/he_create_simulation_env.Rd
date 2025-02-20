@@ -4,10 +4,14 @@
 \alias{he_create_simulation_env}
 \title{Create hydroepix simulation environment}
 \usage{
-he_create_simulation_env()
+he_create_simulation_env(model_env)
+}
+\arguments{
+\item{model_env}{environment to be used as the environment parent, which
+should be the model environment in the hydroepix context}
 }
 \value{
-environment with no parent environment
+environment with provided argument environment as a parent
 }
 \description{
 Create hydroepix simulation environment

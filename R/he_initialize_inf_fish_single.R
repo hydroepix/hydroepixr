@@ -6,6 +6,7 @@
 #'
 #' @return ?
 #' @export
+#' @importFrom stats rbinom
 #'
 he_initialize_infected_fish_single <-
   function(contact_farms,

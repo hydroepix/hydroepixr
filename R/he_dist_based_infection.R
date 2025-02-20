@@ -1,30 +1,32 @@
-#' Determines infection based on distance to infected farms for a given day
+#' Determines infection spread between farms for a given day?
 #'
 #' @param farm_info matrix of farm and netpen information
-#' @param g_time timestep of the simulation?
-#' @param dist_mat symmetrical matrix of distances between farms in kilometers?
+#' @param sim_day day timestep in the simulation
+#' @param connectivity_matrix connectivity matrix in the form of a seaway
+#'    distance matrix (in kilometers)or a hydroconnectivity matrix
 #' @param farm_to_farm scaling parameter for between-farm infection transmission
 #' @param vaccine_efficacy product of the manufacturer-reported vaccine efficacy
 #'    and the population coverage of the vaccine
-#' @param dist_mat_type type of distance matrix provided (i.e. is this a distance
-#'    matrix or a matrix with using a different measure of connectivity)
+#' @param connectivity_matrix_type type of connectivity matrix provided, either
+#'    distance matrix or hydroconnectivity matrix
 #' @param label ? seems to apply to infection mode somehow? (direct or indirect)?
-#' @param t_start ? presumably some sort of start time
-#' @param t_end ? presumably some sort of end time
+#' @param t_start threshold of earliest possible infection spread
+#' @param t_end threshold for latest possible infection spread
 #'
 #' @return ?
 #' @export
+#' @importFrom stats rbinom
 #'
 he_dist_based_infection <- function(farm_info,
-                                    g_time,
-                                    dist_mat,
+                                    sim_day,
+                                    connectivity_matrix,
                                     farm_to_farm,
                                     vaccine_efficacy,
-                                    dist_mat_type = "seaway distance",
+                                    connectivity_matrix_type = "distance",
                                     label = 1,
                                     t_start = 0,
                                     t_end = Inf) {
-  if (g_time > t_start & g_time < t_end) {
+  if (sim_day > t_start & sim_day < t_end) {
     all_new_infections <- NULL
     all_new_animals <- NULL
 
@@ -49,14 +51,14 @@ he_dist_based_infection <- function(farm_info,
     # method
     inf_prob_vec <- he_calculate_inf_prob_vec(
       he_calculate_inf_prob_matrix(
-        dist_mat,
+        connectivity_matrix,
         farm_ids,
         farm_to_farm,
         vaccine_efficacy,
         farm_active,
         farm_susceptibility,
         farm_infectiousness,
-        dist_mat_type,
+        connectivity_matrix_type
       )
     )
 
@@ -65,8 +67,9 @@ he_dist_based_infection <- function(farm_info,
     newly_infected_farm_ids <- farm_ids[newly_infected_farms]
 
     # Infect netpens in any farms selected to be newly infected
-    # TODO: What is g_time? Why does it need to be greater than 60?
-    if (length(newly_infected_farms > 0) & g_time > 60) {
+    # TODO: Confirm simulation day threshold to ensure infection does not happen
+    # before 60 days into simulation
+    if (length(newly_infected_farms > 0) & sim_day > 60) {
       # TODO: Complete call to he_infect_netpens()
       newly_infected_cages <- he_infect_netpens()
     }
