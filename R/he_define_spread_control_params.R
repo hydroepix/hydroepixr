@@ -1,11 +1,12 @@
 #' Define simulation variables related to spread control
 #'
-#' @param environment environment in which simulation variables are stored and
+#' @param model_env environment in which simulation variables are stored and
 #'   managed
 #' @param random_num_initially_infected_fish logical indicating whether to
 #'   randomize the initial number of infected fish
 #' @param intrafarm_disease_transmission_model defines which intrafarm disease
 #'   transmission model is used, options are "binomial chain" and "reed-frost"
+#' @param index_netpen_ids identifiers of the index netpens
 #' @param index_farm_id identifier of the index farm
 #' @param index_direct logical indicating whether the index farm gets infected
 #'    directly, as opposed to indirectly
@@ -21,26 +22,28 @@
 #' @export
 #'
 he_define_spread_control_params <-
-  function(environment,
+  function(model_env,
            random_num_initially_infected_fish = FALSE,
            intrafarm_disease_transmission_model = "binomial chain",
+           index_netpen_ids = NULL,
            index_farm_id = NULL,
-           # TODO: argument provided to index_farm_function - better way to represent or name?
-           index_direct = TRUE, # note that all fish and farms are direct?
+           index_direct = TRUE, # TODO: Is this indicating whether the initial infection was direct?
            case_fatality_prop = 0.89,
            days_dead_infectious = 2,
            farm_to_farm = 0.42,
            netpen_to_netpen = 0.052,
            vaccine_efficacy = 0) {
-    # TODO: Add check for valid options for intrafarm_disease_transmission_model
-    environment$random_num_initially_infected_fish <-
+    # TODO: Confirm whether intrafarm_disease_transmission_model is relevant
+    # TODO: Add check for valid options for intrafarm_disease_transmission_model?
+    model_env$random_num_initially_infected_fish <-
       random_num_initially_infected_fish
-    environment$intrafarm_disease_transmission_model <-
+    model_env$intrafarm_disease_transmission_model <-
       intrafarm_disease_transmission_model
-    environment$index_farm_id <- index_farm_id
-    environment$case_fatality_prop <- case_fatality_prop
-    environment$days_dead_infectious <- days_dead_infectious
-    environment$farm_to_farm <- farm_to_farm
-    environment$netpen_to_netpen <- netpen_to_netpen
-    environment$vaccine_efficacy <- vaccine_efficacy
+    model_env$index_netpen_ids <- index_netpen_ids
+    model_env$index_farm_id <- index_farm_id
+    model_env$case_fatality_prop <- case_fatality_prop
+    model_env$days_dead_infectious <- days_dead_infectious
+    model_env$farm_to_farm <- farm_to_farm
+    model_env$netpen_to_netpen <- netpen_to_netpen
+    model_env$vaccine_efficacy <- vaccine_efficacy
   }

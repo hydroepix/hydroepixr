@@ -11,8 +11,10 @@ he_run <- function(model_env) {
     he_initialize_simulation_environment(simulation_env)
     # Set random seed for the simulation
     random_seed <- he_set_random_seed(random_seed_input, simulation)
-    # Select an index farm for this simulation
-    he_infect_index_farm()
+    # Select index netpens for this simulation
+    model_env$index_netpens <- he_select_index_netpens(model_env$farm_info,
+                                                       model_env$index_netpen_ids,
+                                                       model_env$index_farm_id)
 
   }
 

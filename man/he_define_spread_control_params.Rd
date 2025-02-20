@@ -5,9 +5,10 @@
 \title{Define simulation variables related to spread control}
 \usage{
 he_define_spread_control_params(
-  environment,
+  model_env,
   random_num_initially_infected_fish = FALSE,
   intrafarm_disease_transmission_model = "binomial chain",
+  index_netpen_ids = NULL,
   index_farm_id = NULL,
   index_direct = TRUE,
   case_fatality_prop = 0.89,
@@ -18,7 +19,7 @@ he_define_spread_control_params(
 )
 }
 \arguments{
-\item{environment}{environment in which simulation variables are stored and
+\item{model_env}{environment in which simulation variables are stored and
 managed}
 
 \item{random_num_initially_infected_fish}{logical indicating whether to
@@ -26,6 +27,8 @@ randomize the initial number of infected fish}
 
 \item{intrafarm_disease_transmission_model}{defines which intrafarm disease
 transmission model is used, options are "binomial chain" and "reed-frost"}
+
+\item{index_netpen_ids}{identifiers of the index netpens}
 
 \item{index_farm_id}{identifier of the index farm}
 

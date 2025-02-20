@@ -5,7 +5,7 @@
 \title{Define simulation variables related to simulation control}
 \usage{
 he_define_simulation_control_params(
-  environment,
+  model_env,
   n_simulations = 10,
   run_id = NULL,
   max_outbreak_length = 365,
@@ -15,7 +15,7 @@ he_define_simulation_control_params(
 )
 }
 \arguments{
-\item{environment}{environment in which simulation variables are stored and
+\item{model_env}{environment in which simulation variables are stored and
 managed}
 
 \item{n_simulations}{number of simulations (i.e., individual simulated epidemics) to be run}
