@@ -4,8 +4,10 @@ test_that("farm info values are initialized correctly", {
   initialized_farm_info <- he_initialize_farm_info(farm_info, species_info)
   expect_true(all(
     initialized_farm_info$rel_susceptibility == 1))
-  # expect_true(all(
-  #   initialized_farm_info$within_netpen_transmission == "rpert(n,0.14,0.4,0.8)"))
+  # Confirm within netpen transmission distribution values are within the
+  # expected range
+  expect_true(all(initialized_farm_info$within_netpen_transmission >= 0.14))
+  expect_true(all(initialized_farm_info$within_netpen_transmission <= 0.8))
 })
 
 test_that("farm info species with missing species info causes an error", {
