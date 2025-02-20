@@ -7,12 +7,12 @@
 #' @importFrom utils read.table
 
 he_read_species_info_file <- function(filepath) {
-  species_info <- as.list(utils::read.table(
+  species_info <- utils::read.table(
     filepath,
     sep = ",",
     as.is = TRUE,
     header = TRUE
-  ))
+  )
   species_info_columns <- names(species_info)
   expected_columns <- list(
     "species_id",
@@ -20,7 +20,9 @@ he_read_species_info_file <- function(filepath) {
     "latent_dur_freq",
     "subclinical_dur_freq",
     "clinical_dur_freq",
-    "within_netpen_transmission",
+    "within_netpen_transmission_min",
+    "within_netpen_transmission_mode",
+    "within_netpen_transmission_max",
     "rel_susceptibility"
   )
   mismatched_columns <- setdiff(species_info_columns, expected_columns)
@@ -32,12 +34,8 @@ he_read_species_info_file <- function(filepath) {
       paste(mismatched_columns, collapse = ", ")
     )
   }
-  #
-  # TODO: Can we modify the inputs so that we don't have to store these as
-  # expressions? Can we have functions to manage these distributions?
-  ## Parsing verbatim code in input file
-  # for (i in 3:length(type_info)) {
-  #   type_info[[i]] <- eval(parse(text = type_info[[i]]))
-  # }
+  # Parsing R-code style vectors in input file
+  # Note that this assumes a single row of species info data
+  species_info <- he_parse_disease_stage_distributions(species_info)
   species_info
 }
