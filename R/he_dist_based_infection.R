@@ -58,7 +58,7 @@ he_dist_based_infection <- function(farm_info,
         farm_active,
         farm_susceptibility,
         farm_infectiousness,
-        connectivity_matrix_type,
+        connectivity_matrix_type
       )
     )
 
