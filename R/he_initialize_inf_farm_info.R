@@ -1,12 +1,11 @@
-#' Initialize matrix to store and track infected farm information
+#' Initialize data frame to store and track infected farm information
 #'
-#' @param farm_info data frame of farm and netpen information
-#'
-#' @return NA
+#' @return empty data frame with appropriate column headers and types to store
+#'    infected farm and netpen information
 #' @export
 #'
-he_initialize_inf_farm_info <- function(farm_info) {
-  environment$inf_farm_info <- data.frame(
+he_initialize_inf_farm_info <- function() {
+  data.frame(
     farm_id = integer(),
     species_id = integer(),
     susceptible = integer(),

@@ -37,6 +37,9 @@ he_initialize_model_env <-
     model_env$farm_info <-
       he_initialize_farm_info(model_env$farm_info, model_env$species_info)
 
+    # Create data frame to store infected farm and netpen information
+    model_env$inf_farm_info <- he_initialize_inf_farm_info()
+
     # Store number of farms as a separate variable due to frequent referencing
     # throughout the model
     model_env$num_netpens <- length(model_env$farm_info$netpen_id)
