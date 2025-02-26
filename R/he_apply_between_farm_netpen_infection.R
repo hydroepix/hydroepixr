@@ -11,7 +11,7 @@
 #' @return ?
 #' @export
 #'
-he_infect_netpens <-
+he_apply_between_farm_netpen_infection <-
   function(farm_info,
            inf_farm_info,
            species_info,
