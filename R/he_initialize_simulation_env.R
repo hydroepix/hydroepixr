@@ -4,6 +4,8 @@
 #' @param num_netpens number of netpens
 #' @param farm_info data frame of farm and netpen information
 #' @param species_info data frame of species information
+#' @param index_netpens netpen identifiers for netpens which will start
+#'    the outbreak
 #'
 #' @return NA
 #' @export

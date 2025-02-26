@@ -8,7 +8,8 @@ he_initialize_simulation_env(
   simulation_env,
   num_netpens,
   farm_info,
-  species_info
+  species_info,
+  index_netpens
 )
 }
 \arguments{
@@ -19,6 +20,9 @@ he_initialize_simulation_env(
 \item{farm_info}{data frame of farm and netpen information}
 
 \item{species_info}{data frame of species information}
+
+\item{index_netpens}{netpen identifiers for netpens which will start
+the outbreak}
 }
 \value{
 NA
