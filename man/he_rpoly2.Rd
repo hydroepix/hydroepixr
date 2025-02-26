@@ -4,13 +4,15 @@
 \alias{he_rpoly2}
 \title{RPoly2 ?}
 \usage{
-he_rpoly2(np)
+he_rpoly2(sample_num, probability)
 }
 \arguments{
-\item{np}{?}
+\item{sample_num}{number of samples to take}
+
+\item{probability}{numeric probability or vector of probabilities}
 }
 \value{
-?
+number of samples distributed into each bin by probability
 }
 \description{
 RPoly2 ?
