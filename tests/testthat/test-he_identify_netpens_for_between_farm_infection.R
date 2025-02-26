@@ -6,12 +6,12 @@ test_that("potentially infected netpens are correctly identified", {
                                status = c(1, 1, 0, 1, 1, 1, 1, 0, 1),
                                farm_active = c(T, T, F, T, F, T, T, T, T)))
   test_inf_farm_id <- 1
-  actual <- he_identify_netpens_for_infection(test_farm_info, test_inf_farm_id)
+  actual <- he_identify_netpens_for_between_farm_infection(test_farm_info, test_inf_farm_id)
   expected <-  c(1, 2)
   expect_equal(actual, expected)
 
   test_inf_farm_id <- 2
-  actual <- he_identify_netpens_for_infection(test_farm_info, test_inf_farm_id)
+  actual <- he_identify_netpens_for_between_farm_infection(test_farm_info, test_inf_farm_id)
   expected <- c(4, 6)
   expect_equal(actual, expected)
 })

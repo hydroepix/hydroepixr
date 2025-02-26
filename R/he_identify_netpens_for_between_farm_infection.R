@@ -7,7 +7,7 @@
 #'    can be validly infected
 #' @export
 #'
-he_identify_netpens_for_infection <- function(farm_info, inf_farm_id) {
+he_identify_netpens_for_between_farm_infection <- function(farm_info, inf_farm_id) {
   # Netpens must be in a newly infected farm, have infection status of 1,
   # and be active
   # TODO: Is farm_active actually netpen_active?

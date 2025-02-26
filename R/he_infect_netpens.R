@@ -24,7 +24,7 @@ he_infect_netpens <-
   inf_netpen_ids <-
     unlist(sapply(
       farm_info,
-      he_identify_netpens_for_infection,
+      he_identify_netpens_for_between_farm_infection,
       newly_infected_farm_ids
     ))
     # TODO: This seems to select a single netpen for infection from the valid
@@ -46,10 +46,9 @@ he_infect_netpens <-
     farm_info$status[inf_netpen_ids] <- 2
     farm_info$time_infected[inf_netpen_ids] <- sim_day
     farm_info$infection_mode[inf_netpen_ids] <- label
-    # Replace this with a call to a new function, not a method
-    he_add_infections_to_inf_farm_info(inf_farm_info,
-                                       species_info,
-                                       new_inf_farm_ids,
-                                       num_inf_animals)
+    he_add_infected_netpen(inf_farm_info,
+                           species_info,
+                           new_inf_farm_ids,
+                           num_inf_animals)
   }
 }
