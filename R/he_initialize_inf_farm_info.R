@@ -6,6 +6,7 @@
 #'
 he_initialize_inf_farm_info <- function() {
   data.frame(
+    netpen_id = integer(),
     farm_id = integer(),
     species_id = integer(),
     susceptible = integer(),

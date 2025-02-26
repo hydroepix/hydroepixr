@@ -12,7 +12,8 @@
 he_initialize_simulation_env <- function(simulation_env,
                                          num_netpens,
                                          farm_info,
-                                         species_info) {
+                                         species_info,
+                                         index_netpens) {
   # Initialize simulation-level farm information variables
   farm_info$susceptible_again <- rep(0, num_netpens)
   farm_info$survived <- rep(0, num_netpens)
@@ -22,6 +23,7 @@ he_initialize_simulation_env <- function(simulation_env,
   farm_info <- he_reset_simulation_env(simulation_env,
                                        num_netpens,
                                        farm_info)
+
 
   # select index herds for next simulation?
   # if (ignore_status) {
@@ -51,21 +53,5 @@ he_initialize_simulation_env <- function(simulation_env,
   #     #                 0)
   #   }
   # }
-
-  # TODO: Review these variables - what are these bay management area vars for?
-  temp_bay_management <- round(runif(unique(farm_info$bay_management_id)))
-  farm_info$bay_management_time <- rep(0, num_farms)
-  farm_info$productive_time <- rep(0, num_farms)
-  farm_info$farm_active <- rep(FALSE, num_farms)
-  farm_info$bay_management_time <- temp_bay_management[farm_info$bay_management_id]
-  farm_info$productive_time <-
-    farm_info$bay_management_time - round(runif(length(farm_info$bay_management_time), 0, 120))
-
-  # Set the index farm to be active
-  index_farm_id <- farm_info$farm_id[index_farm]
-  farm_info$productive_time[farm_info$farm_id %in% index_farm_id] <-
-    round(runif(sum(farm_info$farm_id %in% index_farm_id), 0, 120))
-  farm_info$productive_time[index_farm]
-
   farm_info
 }

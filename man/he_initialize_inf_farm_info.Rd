@@ -2,16 +2,14 @@
 % Please edit documentation in R/he_initialize_inf_farm_info.R
 \name{he_initialize_inf_farm_info}
 \alias{he_initialize_inf_farm_info}
-\title{Initialize matrix to store and track infected farm information}
+\title{Initialize data frame to store and track infected farm information}
 \usage{
-he_initialize_inf_farm_info(farm_info)
-}
-\arguments{
-\item{farm_info}{data frame of farm and netpen information}
+he_initialize_inf_farm_info()
 }
 \value{
-NA
+empty data frame with appropriate column headers and types to store
+infected farm and netpen information
 }
 \description{
-Initialize matrix to store and track infected farm information
+Initialize data frame to store and track infected farm information
 }
