@@ -1,24 +1,49 @@
-#' Add new infections to farm info matrix
+#' Add new infection to infected farm info data frame
 #'
-#' @param inf_farm_info matrix of information on infected farms
-#' @param species_info matrix of information on species
-#' @param new_inf_farm_ids list of newly infected farm ids
-#' @param num_inf_animals number of animals infected in the infection process
+#' @param inf_farm_info data frame of information on infected farms
+#' @param species_info data frame of information on species
+#' @param netpen_ids_to_infect list of newly infected netpen ids
+#' @param num_inf_animals_by_stage vector of three numeric values indicating the
+#'    of infected animals in each stage of infection (latent, clinical, and
+#'    subclinical)
+#' @param type_of_contact type of contact that resulted in the infection, can be
+#'    either direct (within/between netpens) or indirect (between farms)
 #'
-#' @return matrix of information on infected farms, appended with rows to
+#' @return data frame of information on infected farms, appended with rows to
 #'    represent new infections
 #' @export
 #'
-he_add_infections_to_inf_farm_info <-
+he_add_infection_to_inf_farm_info <-
   function(inf_farm_info,
            species_info,
-           new_inf_farm_ids,
-           num_inf_animals
-           #DC?
+           netpen_ids_to_infect,
+           num_inf_animals_by_stage,
+           type_of_contact
            ) {
+
+    #   # TODO: infect index farm with number of fish according to type of
+    #   # initial infection
+    #   if (index_direct) {
+    #     # TODO: construct an infected farm
+    #     # aInfHerd$addInf(indexHerd,
+    #     #                 matrix(c(0, 1, 0),
+    #     #                        byrow = TRUE,
+    #     #                        ncol = 3,
+    #     #                        nrow = length(indexHerd)),
+    #     #                 1)
+    #   } else {
+    #     # TODO: construct an infected farm
+    #     # aInfHerd$addInf(indexHerd,
+    #     #                 matrix(c(1, 0, 0),
+    #     #                        byrow = TRUE,
+    #     #                        ncol = 3,
+    #     #                        nrow = length(indexHerd)),
+    #     #                 0)
+    #   }
+
     # Filter new infection ids to remove those already infected
     # TODO: Double check column indexing
-    already_inf_ids <- new_inf_farm_ids %in% inf_farm_info[, 8]
+    already_inf_ids <- new_inf_farm_ids %in% inf_farm_info$farm_id
     if (any(already_inf_ids)) {
       new_inf_farm_ids <- new_inf_farm_ids[!already_inf_ids]
       num_inf_animals <- num_inf_animals[!already_inf_ids,, drop = FALSE]
