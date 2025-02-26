@@ -1,4 +1,4 @@
-#' Add new infection to infected farm info data frame
+#' Add infected netpen to the infected farm info data frame
 #'
 #' @param inf_farm_info data frame of information on infected farms
 #' @param species_info data frame of information on species
@@ -13,7 +13,7 @@
 #'    represent new infections
 #' @export
 #'
-he_add_infection_to_inf_farm_info <-
+he_add_infected_netpen <-
   function(inf_farm_info,
            species_info,
            netpen_ids_to_infect,
