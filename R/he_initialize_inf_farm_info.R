@@ -9,6 +9,7 @@ he_initialize_inf_farm_info <- function() {
     netpen_id = integer(),
     farm_id = integer(),
     species_id = integer(),
+    within_netpen_transmission = double(),
     susceptible = integer(),
     latent = integer(),
     subclinical = integer(),
@@ -16,7 +17,6 @@ he_initialize_inf_farm_info <- function() {
     immune = integer(),
     total = integer(), #???
     infection_status = integer(), #???
-    #"p", # Reed-Frost probability?
     latent_duration = double(), # Length of time in latent stage?
     subclinical_duration = double(), # Length of time in subclinical stage?
     clinical_time = double(), # time the herd showed clinical signs of infection

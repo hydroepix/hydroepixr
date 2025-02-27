@@ -6,6 +6,7 @@ test_that("infected farm info is initialized correctly", {
     netpen_id = integer(),
     farm_id = integer(),
     species_id = integer(),
+    within_netpen_transmission = double(),
     susceptible = integer(),
     latent = integer(),
     subclinical = integer(),
