@@ -7,7 +7,6 @@
 #' @param num_animals_to_distribute number of animals to distribute into time
 #'    spent in the specified disease stage
 #'
-#' @return
 #' @export
 #'
 he_add_disease_stage_duration <-
@@ -16,5 +15,5 @@ he_add_disease_stage_duration <-
            num_animals_to_distribute) {
     distributed_animals <- he_rpoly2(num_animals_to_distribute,
                                      disease_stage_distribution)
-    rbind(duration_matrix, distributed_animals)
+    rbind(duration_matrix, distributed_animals, deparse.level = 0)
   }
