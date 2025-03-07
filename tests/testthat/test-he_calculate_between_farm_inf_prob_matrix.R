@@ -24,7 +24,7 @@ test_that("seaway distance infection probability matrix is calculated correctly"
     nrow = 3,
     ncol = 3
   )
-  actual_matrix <- he_calculate_inf_prob_matrix(
+  actual_matrix <- he_calculate_between_farm_inf_prob_matrix(
     test_dist_mat,
     test_farm_ids,
     test_farm_to_farm,

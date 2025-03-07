@@ -1,4 +1,4 @@
-#' Calculates a symmetrical matrix of farm infection probabilities
+#' Calculates a symmetrical matrix of between farm infection probabilities
 #'
 #' @param connectivity_matrix connectivity matrix in the form of a seaway
 #'    distance matrix (in kilometers)or a hydroconnectivity matrix
@@ -15,7 +15,7 @@
 #' @return a symmetrical(?) matrix of farm infection probabilities
 #' @export
 #'
-he_calculate_inf_prob_matrix <- function(connectivity_matrix,
+he_calculate_between_farm_inf_prob_matrix <- function(connectivity_matrix,
                                          farm_ids,
                                          farm_to_farm,
                                          vaccine_efficacy,
