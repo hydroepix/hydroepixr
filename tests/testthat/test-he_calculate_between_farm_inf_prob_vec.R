@@ -4,6 +4,6 @@ test_that("probability matrix to infection probability vector calculation
                              nrow = 3,
                              ncol = 3)
   expected_vec <- c(0.625, 0.75, 0.875)
-  actual_vec <- he_calculate_inf_prob_vec(test_prob_matrix)
+  actual_vec <- he_calculate_between_farm_inf_prob_vec(test_prob_matrix)
   expect_equal(actual_vec, expected_vec)
 })
