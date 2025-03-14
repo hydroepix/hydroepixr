@@ -6,25 +6,28 @@
 \usage{
 he_add_infected_netpen(
   inf_farm_info,
-  species_info,
-  netpen_ids_to_infect,
+  farm_info,
+  new_inf_netpen_ids,
   num_inf_animals_by_stage,
-  type_of_contact
+  type_of_contact,
+  sim_timestep
 )
 }
 \arguments{
 \item{inf_farm_info}{data frame of information on infected farms}
 
-\item{species_info}{data frame of information on species}
+\item{farm_info}{data frame of information on netpens}
 
-\item{netpen_ids_to_infect}{list of newly infected netpen ids}
+\item{new_inf_netpen_ids}{list of newly infected netpen ids}
 
-\item{num_inf_animals_by_stage}{vector of three numeric values indicating the
+\item{num_inf_animals_by_stage}{vector of numeric values indicating the
 of infected animals in each stage of infection (latent, clinical, and
 subclinical)}
 
 \item{type_of_contact}{type of contact that resulted in the infection, can be
 either direct (within/between netpens) or indirect (between farms)}
+
+\item{sim_timestep}{timestep or day of simulation that infection is occurring}
 }
 \value{
 data frame of information on infected farms, appended with rows to
