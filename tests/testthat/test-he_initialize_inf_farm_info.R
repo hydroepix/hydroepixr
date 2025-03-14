@@ -19,9 +19,9 @@ test_that("infected farm info is initialized correctly", {
     clinical_time = double(),
     time_of_diagnosis = double(),
     diagnosed = logical(),
-    infected_by_direct_contact = logical(),
+    infected_by_direct_contact = character(),
     time_infected = double(),
-    vaccinated = logical()
+    vaccinated = numeric()
   )
   expect_equal(names(test_inf_farm_info),
                names(inf_farm_info_columns))

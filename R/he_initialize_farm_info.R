@@ -43,7 +43,7 @@ he_initialize_farm_info <- function(farm_info, species_info) {
 
   # Calculate random variates for within netpen transmission
   # from triangular distribution
-  initialized_farm_info$within_netpen_transmission <- purrr::pmap(
+  initialized_farm_info$within_netpen_transmission <- unlist(purrr::pmap(
     list(
       1,
       initialized_farm_info$within_netpen_transmission_min,
@@ -51,7 +51,7 @@ he_initialize_farm_info <- function(farm_info, species_info) {
       initialized_farm_info$within_netpen_transmission_max
     ),
     he_rpert
-  )
+  ))
   # Remove intermediate columns
   subset(initialized_farm_info,
          select = -c(within_netpen_transmission_min,

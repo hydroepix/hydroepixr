@@ -15,16 +15,15 @@ he_initialize_inf_farm_info <- function() {
     subclinical = integer(),
     clinical = integer(),
     immune = integer(),
-    total = integer(), #???
+    total = integer(),
     infection_status = integer(), #???
     latent_duration = double(), # Length of time in latent stage?
     subclinical_duration = double(), # Length of time in subclinical stage?
     clinical_time = double(), # time the herd showed clinical signs of infection
     time_of_diagnosis = double(),
     diagnosed = logical(),
-    infected_by_direct_contact = logical(),
+    infected_by_direct_contact = character(),
     time_infected = double(), # appears to refer to the timestep of infection
-    vaccinated = logical()#,
-    #"TLastAnCli19" #???
+    vaccinated = double()
   )
 }
