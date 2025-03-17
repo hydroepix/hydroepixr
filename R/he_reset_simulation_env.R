@@ -8,8 +8,5 @@
 #' @export
 #'
 he_reset_simulation_env <- function(environment, num_farms, farm_info) {
-  environment$sim_day <- 0
-  environment$outbreak_detected_last <- environment$outbreak_detected <- FALSE
 
-  farm_info
 }

@@ -4,25 +4,12 @@
 \alias{he_initialize_simulation_env}
 \title{Initialize simulation environment with necessary variables}
 \usage{
-he_initialize_simulation_env(
-  simulation_env,
-  num_netpens,
-  farm_info,
-  species_info,
-  index_netpens
-)
+he_initialize_simulation_env(simulation_env, species_info)
 }
 \arguments{
 \item{simulation_env}{environment in which simulation variables are stored}
 
-\item{num_netpens}{number of netpens}
-
-\item{farm_info}{data frame of farm and netpen information}
-
 \item{species_info}{data frame of species information}
-
-\item{index_netpens}{netpen identifiers for netpens which will start
-the outbreak}
 }
 \value{
 NA
