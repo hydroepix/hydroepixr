@@ -6,8 +6,8 @@ test_that("disease stage duration values are updated correctly", {
   test_num_animals_to_distribute <- 50000
   test_result_duration_matrix <-
     he_update_disease_stage_duration_matrix(
-      test_disease_stage_distribution,
       test_duration_matrix,
+      test_disease_stage_distribution,
       test_num_animals_to_distribute
     )
   # Numbers in updated row should sum to the number of animals to distribute

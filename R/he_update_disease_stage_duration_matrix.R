@@ -10,8 +10,8 @@
 #' @export
 #'
 he_update_disease_stage_duration_matrix <-
-  function(disease_stage_distribution,
-           disease_stage_matrix,
+  function(disease_stage_matrix,
+           disease_stage_distribution,
            num_animals_to_distribute) {
   # Generate a new set of durations for incoming animals to spend in this
   # disease stage before transitioning
