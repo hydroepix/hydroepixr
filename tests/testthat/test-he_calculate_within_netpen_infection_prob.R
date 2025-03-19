@@ -2,7 +2,7 @@ test_that("within netpen transmission probability is zero when no animals are
           subclinically infected", {
   test_inf_farm_info <- readRDS(paste0(test_data_filepath,
                                        "/inf_farm_info_dummy_data_latent_only.rds"))
-  test_vaccine_efficacy = 0
+  test_vaccine_efficacy <- 0
   test_infection_prob <-
     he_calculate_within_netpen_infection_prob(test_inf_farm_info,
                                               test_vaccine_efficacy)
@@ -14,7 +14,7 @@ test_that("within netpen transmission probability is calculated correctly for
   test_inf_farm_info <-
     readRDS(paste0(test_data_filepath,
                    "/inf_farm_info_dummy_data_single_row_with_infection.rds"))
-  test_vaccine_efficacy = 0
+  test_vaccine_efficacy <- 0
   test_infection_prob <-
     he_calculate_within_netpen_infection_prob(test_inf_farm_info,
                                               test_vaccine_efficacy)
@@ -27,7 +27,7 @@ test_that("within netpen transmission probability is calculated correctly for
   test_inf_farm_info <-
     readRDS(paste0(test_data_filepath,
                    "/inf_farm_info_dummy_data_with_infection.rds"))
-  test_vaccine_efficacy = 0
+  test_vaccine_efficacy <- 0
   test_infection_prob <-
     he_calculate_within_netpen_infection_prob(test_inf_farm_info,
                                               test_vaccine_efficacy)
