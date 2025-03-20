@@ -15,10 +15,12 @@ he_update_disease_stage_duration_matrix <-
            num_animals_to_distribute) {
   # Generate a new set of durations for incoming animals to spend in this
   # disease stage before transitioning
-  newly_distributed_animals <-
-    t(he_rpoly2(num_animals_to_distribute,
-                disease_stage_distribution))
-
+    newly_distributed_animals <-
+      purrr::map2(
+        num_animals_to_distribute,
+        disease_stage_distribution,
+        \(x, y) t(he_rpoly2(x, y))
+      )
   # Slide window along durations
   # First index, i.e. "today" is dropped, since these animals will transition
   # to the next stage
@@ -26,5 +28,7 @@ he_update_disease_stage_duration_matrix <-
   # duration set
   # New durations are then added columnwise
   disease_stage_matrix <-
-    cbind(disease_stage_matrix[,-1, drop = FALSE], 0) + newly_distributed_animals
+    purrr::map2(disease_stage_matrix,
+                newly_distributed_animals,
+                \(x, y) cbind(x[,-1, drop = FALSE], 0) + y)
 }
