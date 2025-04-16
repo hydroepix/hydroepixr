@@ -7,7 +7,15 @@
 #' @export
 #' @importFrom stats runif
 #'
-he_initialize_simulation_env <- function(simulation_env, species_info) {
+he_initialize_simulation_env <-
+  function(simulation_env,
+           species_info,
+           output_dir,
+           inf_netpen_output_file_name) {
+
+  # Create data frame and file to store infected farm and netpen information
+  simulation_env$inf_farm_info <-
+    he_initialize_inf_farm_info(output_dir, inf_netpen_output_file_name)
   # Initialize simulation-level farm information variables
   #farm_info$susceptible_again <- rep(0, num_netpens)
   #farm_info$survived <- rep(0, num_netpens)

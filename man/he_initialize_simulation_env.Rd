@@ -4,7 +4,12 @@
 \alias{he_initialize_simulation_env}
 \title{Initialize simulation environment with necessary variables}
 \usage{
-he_initialize_simulation_env(simulation_env, species_info)
+he_initialize_simulation_env(
+  simulation_env,
+  species_info,
+  output_dir,
+  inf_netpen_output_file_name
+)
 }
 \arguments{
 \item{simulation_env}{environment in which simulation variables are stored}

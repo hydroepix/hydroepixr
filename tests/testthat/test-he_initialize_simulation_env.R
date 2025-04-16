@@ -1,8 +1,45 @@
 test_that("simulation environment variables are correctly initialized", {
   test_simulation_env <- rlang::new_environment()
+  # Create test directory
+  temp_test_dir <- output_test_setup()
+  test_inf_netpen_output_file_name <- "infected_netpens.csv"
   test_species_info <- readRDS(paste0(test_data_filepath,
                                       "/parsed_species_info_bay_x.rds"))
-  he_initialize_simulation_env(test_simulation_env, test_species_info)
+  he_initialize_simulation_env(
+    test_simulation_env,
+    test_species_info,
+    output_dir = temp_test_dir,
+    test_inf_netpen_output_file_name
+  )
+
+  expected_filepath <- file.path(temp_test_dir, test_inf_netpen_output_file_name)
+  expect_true(file.exists(expected_filepath))
+
+  # Check that column names have been written to output file
+  inf_farm_info_columns <- data.frame(
+    netpen_id = integer(),
+    farm_id = integer(),
+    species_id = integer(),
+    within_netpen_transmission = double(),
+    susceptible = integer(),
+    latent = integer(),
+    subclinical = integer(),
+    clinical = integer(),
+    immune = integer(),
+    total = integer(),
+    infection_status = integer(),
+    latent_duration = double(),
+    subclinical_duration = double(),
+    clinical_time = double(),
+    time_of_diagnosis = double(),
+    diagnosed = logical(),
+    infected_by_direct_contact = character(),
+    time_infected = double(),
+    vaccinated = numeric()
+  )
+  test_output_file_data <- read.csv(file.path(temp_test_dir,
+                                              test_inf_netpen_output_file_name))
+  expect_equal(names(test_output_file_data), names(inf_farm_info_columns))
 
   expect_true(exists("disease_stage_duration_matrices",
                      test_simulation_env))
