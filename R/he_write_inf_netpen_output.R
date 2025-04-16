@@ -8,8 +8,6 @@
 #'    file
 #' @param output_dir string to indicate the directory in which the output file
 #'    should be written
-#' @param append logical indicating whether to overwrite an existing file or
-#'    append data
 #'
 #' @return NA
 #' @export
@@ -19,15 +17,14 @@ he_write_inf_netpen_output <- function(simulation_day,
                                        inf_farm_info,
                                        inf_netpen_output_file_name =
                                          "infected_netpens.csv",
-                                       output_dir = "",
-                                       append = FALSE) {
+                                       output_dir = "") {
   write.table(
     cbind(data.frame(simulation_day = 0), inf_farm_info),
     file.path(output_dir,
               inf_netpen_output_file_name),
-    append = append,
+    append = TRUE,
     sep = ",",
-    col.names = TRUE,
+    col.names = FALSE,
     row.names = FALSE
   )
 }

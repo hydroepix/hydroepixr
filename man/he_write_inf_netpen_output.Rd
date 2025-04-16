@@ -8,8 +8,7 @@ he_write_inf_netpen_output(
   simulation_day,
   inf_farm_info,
   inf_netpen_output_file_name = "infected_netpens.csv",
-  output_dir = "",
-  append = TRUE
+  output_dir = ""
 )
 }
 \arguments{
@@ -24,9 +23,6 @@ file}
 
 \item{output_dir}{string to indicate the directory in which the output file
 should be written}
-
-\item{append}{logical indicating whether to overwrite an existing file or
-append data}
 }
 \value{
 NA
