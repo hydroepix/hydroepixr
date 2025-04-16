@@ -1,11 +1,17 @@
 #' Initialize data frame to store and track infected farm information
 #'
+#' @param output_dir file path where the infected farm information output should
+#'    be stored
+#' @param output_file_name name of the file in which the infected farm information
+#'    should be stored
+#'
 #' @return empty data frame with appropriate column headers and types to store
 #'    infected farm and netpen information
 #' @export
 #'
-he_initialize_inf_farm_info <- function() {
-  data.frame(
+he_initialize_inf_farm_info <- function(output_dir,
+                                        output_file_name) {
+  inf_farm_info <- data.frame(
     netpen_id = integer(),
     farm_id = integer(),
     species_id = integer(),
@@ -26,4 +32,8 @@ he_initialize_inf_farm_info <- function() {
     time_infected = double(), # appears to refer to the timestep of infection
     vaccinated = double()
   )
+  he_write_output_columns(names(inf_farm_info),
+                          output_dir,
+                          output_file_name)
+  inf_farm_info
 }

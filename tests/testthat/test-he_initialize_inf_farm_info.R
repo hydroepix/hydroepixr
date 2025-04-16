@@ -1,5 +1,10 @@
 test_that("infected farm info is initialized correctly", {
-  test_inf_farm_info <- he_initialize_inf_farm_info()
+  # Create test directory
+  temp_test_dir <- output_test_setup()
+  test_output_file_name <- "infected_netpens.csv"
+
+  test_inf_farm_info <- he_initialize_inf_farm_info(temp_test_dir,
+                                                    test_output_file_name)
   expect_no_error(test_inf_farm_info)
   # Check column names and types
   inf_farm_info_columns <- data.frame(
@@ -23,8 +28,13 @@ test_that("infected farm info is initialized correctly", {
     time_infected = double(),
     vaccinated = numeric()
   )
+  # Check that column names and types are correct
   expect_equal(names(test_inf_farm_info),
                names(inf_farm_info_columns))
   expect_equal(sapply(test_inf_farm_info, class),
                sapply(inf_farm_info_columns, class))
+  # Check that column names have been written to output file
+  test_output_file_data <- read.csv(file.path(temp_test_dir,
+                                              test_output_file_name))
+  expect_equal(names(test_output_file_data), names(inf_farm_info_columns))
 })

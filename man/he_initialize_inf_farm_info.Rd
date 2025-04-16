@@ -4,7 +4,14 @@
 \alias{he_initialize_inf_farm_info}
 \title{Initialize data frame to store and track infected farm information}
 \usage{
-he_initialize_inf_farm_info()
+he_initialize_inf_farm_info(output_dir, output_file_name)
+}
+\arguments{
+\item{output_dir}{file path where the infected farm information output should
+be stored}
+
+\item{output_file_name}{name of the file in which the infected farm information
+should be stored}
 }
 \value{
 empty data frame with appropriate column headers and types to store
