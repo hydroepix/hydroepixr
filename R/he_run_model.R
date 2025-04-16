@@ -7,16 +7,16 @@
 #'
 he_run_model <- function(model_env) {
   # TODO: Check that all required variables are initialized in the model env
-  # Create simulation environment, will be recycled for each simulation
-  simulation_env <- he_create_simulation_env(model_env)
   # Iterate over the specified number of simulations
   for (simulation_num in n_simulations) {
     # Inside here is analogous to HEengine.R
     if (verbose) {
-      cat("Simulation ", simulation, "\n")
+      cat("Simulation ", simulation_num, "\n")
     }
-    # Initialize simulation environment
+    # Create and initialize simulation environment
+    simulation_env <- he_create_simulation_env(model_env)
     he_initialize_simulation_environment(simulation_env)
+
     # Set random seed for the simulation
     model_env$random_seed <- he_set_random_seed(random_seed_input, simulation)
     # Select index netpens for this simulation
@@ -24,18 +24,24 @@ he_run_model <- function(model_env) {
                                                        model_env$index_netpen_ids,
                                                        model_env$index_farm_id)
 
-    # TODO: Fill in arguments
-    he_initialize_index_infection()
+    simulation_env$inf_farm_info <-
+      he_initialize_infection(simulation_env$inf_farm_info,
+                              simulation_env,
+                              model_env$species_info,
+                              model_env$farm_info,
+                              model_env$index_netpens)
 
-    # loop over simulation days for as long as there are farms that are not
-    # in an infection stage?
-    for (simulation_day in max_outbreak_length) {
-      model_env$simulation
+    # loop over simulation days for as long as there are still farms with an
+    # active infection
+    while(simulation_day < max_outbreak_length #&
+          #any(inf_farm_info$infection_status %in% c(2, 3, 4))
+          ) {
+      he_simulate_day(inf_farm_info, simulation_env)
     }
-
+    # TODO: Generate output for a simulation - entire inf farm info for now
+    he_write_inf_netpen_output(inf_farm_info,
+                               output_dir = "output")
   }
-
-  # summarize aggregated results from all simulations
-  # TODO: Reset simulation environment? or is this covered in initialization?
+  # TODO: Generate output for results from all simulations
 }
 

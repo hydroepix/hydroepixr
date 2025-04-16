@@ -45,7 +45,9 @@ he_simulate_day <- function(inf_farm_info,
     # TODO: Update overall netpen infection statuses
     #inf_farm_info <- he_update_netpen_infection_status()
 
-    # TODO: Generate output for a day
+    # Generate output for a day
+    # he_write_inf_netpen_output(simulation_env$simulation_day,
+    #                            inf_farm_info)
 
     simulation_env$simulation_day <- simulation_env$simulation_day + 1
   } else {
