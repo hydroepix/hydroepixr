@@ -7,7 +7,6 @@
 he_define_simulation_control_params(
   model_env,
   n_simulations = 10,
-  run_id = NULL,
   max_outbreak_length = 365,
   random_seed = -10,
   ignore_disease_status_input = TRUE,
@@ -19,8 +18,6 @@ he_define_simulation_control_params(
 managed}
 
 \item{n_simulations}{number of simulations (i.e., individual simulated epidemics) to be run}
-
-\item{run_id}{identifier for this run of the model (or the run of the simulation??)}
 
 \item{max_outbreak_length}{maximum length of a disease outbreak}
 
