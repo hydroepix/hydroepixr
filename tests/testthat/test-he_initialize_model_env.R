@@ -8,7 +8,7 @@ test_that("model environment variables are initialized", {
     farm_info_filepath = test_farm_info_filepath,
     species_info_filepath = test_species_info_filepath,
     connectivity_matrix_filepath = test_dist_matrix_filepath,
-    output_filepath = temp_test_dir
+    output_dir = temp_test_dir
   ))
 
   # Check files are read in
@@ -21,7 +21,7 @@ test_that("model environment variables are initialized", {
   expect_equal(test_environment$simulation_num, 0)
   expect_true(is.null(test_environment$infected_netpens))
   expect_equal(test_environment$sim_day, 0)
-  expect_equal(test_environment$output_filepath, temp_test_dir)
+  expect_equal(test_environment$output_dir, temp_test_dir)
 
   # Check variables pulled from farm_info_file have been initialized
   expect_true(exists("num_netpens", where = test_environment))

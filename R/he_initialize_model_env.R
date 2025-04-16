@@ -4,7 +4,7 @@
 #' @param farm_info_filepath filepath to farm info file
 #' @param species_info_filepath filepath to species info file
 #' @param connectivity_matrix_filepath filepath to connectivity matrix file
-#' @param output_filepath filepath to the directory in which to write output files
+#' @param output_dir filepath to the directory in which to write output files
 #'
 #' @return NA
 #' @export
@@ -15,7 +15,7 @@ he_initialize_model_env <-
            farm_info_filepath,
            species_info_filepath,
            connectivity_matrix_filepath,
-           output_filepath = "output") {
+           output_dir = "output") {
     # Read in files data
     model_env$farm_info <-
       he_read_farm_info_file(farm_info_filepath)
@@ -31,15 +31,12 @@ he_initialize_model_env <-
     model_env$simulation_num <- 0
     model_env$infected_netpens <- NULL
     model_env$sim_day <- 0
-    model_env$output_filepath <- output_filepath
+    model_env$output_dir <- output_dir
 
     # Initialize additional variables in farm_info table and pull in relevant
     # species info
     model_env$farm_info <-
       he_initialize_farm_info(model_env$farm_info, model_env$species_info)
-
-    # Create data frame to store infected farm and netpen information
-    model_env$inf_farm_info <- he_initialize_inf_farm_info()
 
     # Store number of farms as a separate variable due to frequent referencing
     # throughout the model
