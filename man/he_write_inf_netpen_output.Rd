@@ -5,14 +5,18 @@
 \title{Write infected netpen output to file}
 \usage{
 he_write_inf_netpen_output(
-  inf_netpen_matrix,
-  inf_netpen_output_file_name = "infected_netpens.txt",
+  simulation_day,
+  inf_farm_info,
+  inf_netpen_output_file_name = "infected_netpens.csv",
   output_dir = "",
   append = FALSE
 )
 }
 \arguments{
-\item{inf_netpen_matrix}{matrix containing infected netpen data, initialized
+\item{simulation_day}{day of the simulation from which the output is being
+generated}
+
+\item{inf_farm_info}{data frame containing infected netpen data, initialized
 and updated over the course of a simulation run}
 
 \item{inf_netpen_output_file_name}{string to name the infected netpen output

@@ -43,9 +43,4 @@ he_initialize_model_env <-
     # Store number of farms as a separate variable due to frequent referencing
     # throughout the model
     model_env$num_netpens <- length(model_env$farm_info$netpen_id)
-
-    # Set up output variables and corresponding output files
-    # TODO: Review to see how much of this initialization is truly necessary
-    he_initialize_inf_netpen_output(model_env, output_filepath)
-    he_initialize_result_summary_output(model_env, output_filepath)
   }

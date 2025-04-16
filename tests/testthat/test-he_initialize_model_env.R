@@ -37,14 +37,6 @@ test_that("model environment variables are initialized", {
 
   # Check number of farms is stored correctly
   expect_equal(test_environment$num_netpens, 60)
-
-  # Check outputs are initialized
-  # Infected netpen output
-  expect_true(exists("inf_netpen_matrix_output", where = test_environment))
-  expect_true(exists("inf_netpen_output_file_name", where = test_environment))
-  # Result summary output
-  expect_true(exists("result_summary_matrix_output", where = test_environment))
-  expect_true(exists("result_summary_output_file_name", where = test_environment))
 })
 
 

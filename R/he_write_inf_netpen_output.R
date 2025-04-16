@@ -1,6 +1,8 @@
 #' Write infected netpen output to file
 #'
-#' @param inf_netpen_matrix matrix containing infected netpen data, initialized
+#' @param simulation_day day of the simulation from which the output is being
+#'    generated
+#' @param inf_farm_info data frame containing infected netpen data, initialized
 #'    and updated over the course of a simulation run
 #' @param inf_netpen_output_file_name string to name the infected netpen output
 #'    file
@@ -13,18 +15,19 @@
 #' @export
 #' @importFrom utils write.table
 #'
-he_write_inf_netpen_output <- function(inf_netpen_matrix,
+he_write_inf_netpen_output <- function(simulation_day,
+                                       inf_farm_info,
                                        inf_netpen_output_file_name =
-                                         "infected_netpens.txt",
+                                         "infected_netpens.csv",
                                        output_dir = "",
                                        append = FALSE) {
   write.table(
-    inf_netpen_matrix,
+    cbind(data.frame(simulation_day = 0), inf_farm_info),
     file.path(output_dir,
               inf_netpen_output_file_name),
     append = append,
-    sep = " ",
-    col.names = FALSE,
+    sep = ",",
+    col.names = TRUE,
     row.names = FALSE
   )
 }
