@@ -15,7 +15,7 @@ he_initialize_model_env <-
            farm_info_filepath,
            species_info_filepath,
            connectivity_matrix_filepath,
-           output_filepath = "/output") {
+           output_filepath = "output") {
     # Read in files data
     model_env$farm_info <-
       he_read_farm_info_file(farm_info_filepath)
@@ -31,6 +31,7 @@ he_initialize_model_env <-
     model_env$simulation_num <- 0
     model_env$infected_netpens <- NULL
     model_env$sim_day <- 0
+    model_env$output_filepath <- output_filepath
 
     # Initialize additional variables in farm_info table and pull in relevant
     # species info

@@ -9,7 +9,7 @@ he_write_inf_netpen_output(
   inf_farm_info,
   inf_netpen_output_file_name = "infected_netpens.csv",
   output_dir = "",
-  append = FALSE
+  append = TRUE
 )
 }
 \arguments{
