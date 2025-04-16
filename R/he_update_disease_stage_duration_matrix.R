@@ -19,7 +19,7 @@ he_update_disease_stage_duration_matrix <-
       purrr::map2(
         num_animals_to_distribute,
         disease_stage_distribution,
-        \(x, y) t(he_rpoly2(x, y))
+        \(x, y) t(he_rpoly2(x, y[[1]]))
       )
   # Slide window along durations
   # First index, i.e. "today" is dropped, since these animals will transition
@@ -31,4 +31,5 @@ he_update_disease_stage_duration_matrix <-
     purrr::map2(disease_stage_matrix,
                 newly_distributed_animals,
                 \(x, y) cbind(x[,-1, drop = FALSE], 0) + y)
+  disease_stage_matrix
 }

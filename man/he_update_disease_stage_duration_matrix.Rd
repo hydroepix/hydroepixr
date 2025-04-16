@@ -5,17 +5,17 @@
 \title{Update disease duration stage matrices by with newly distributed animals}
 \usage{
 he_update_disease_stage_duration_matrix(
-  disease_stage_distribution,
   disease_stage_matrix,
+  disease_stage_distribution,
   num_animals_to_distribute
 )
 }
 \arguments{
-\item{disease_stage_distribution}{data frame of species information}
-
 \item{disease_stage_matrix}{matrix representing a disease stage, recording
 the number of animals that will spend a given number of days in that
 disease stage}
+
+\item{disease_stage_distribution}{data frame of species information}
 
 \item{num_animals_to_distribute}{number of animals which are newly entering
 the given disease stage}

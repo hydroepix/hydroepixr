@@ -7,6 +7,8 @@
 #' @return probability of within-netpen infection transmission
 #' @export
 #'
+# TODO: Set vaccine efficacy to default to 0, since it may not be provided
+# where vaccination has not been performed?
 he_calculate_within_netpen_infection_prob <-
   function(inf_farm_info,
            vaccine_efficacy) {
