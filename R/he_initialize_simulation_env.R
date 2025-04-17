@@ -2,6 +2,10 @@
 #'
 #' @param simulation_env environment in which simulation variables are stored
 #' @param species_info data frame of species information
+#' @param output_dir file path where the infected farm information output should
+#'    be stored
+#' @param inf_netpen_output_file_name name of the file in which the infected
+#'    farm information should be stored
 #'
 #' @return NA
 #' @export

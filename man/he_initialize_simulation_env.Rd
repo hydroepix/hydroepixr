@@ -15,6 +15,12 @@ he_initialize_simulation_env(
 \item{simulation_env}{environment in which simulation variables are stored}
 
 \item{species_info}{data frame of species information}
+
+\item{output_dir}{file path where the infected farm information output should
+be stored}
+
+\item{inf_netpen_output_file_name}{name of the file in which the infected
+farm information should be stored}
 }
 \value{
 NA
