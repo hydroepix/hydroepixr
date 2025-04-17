@@ -4,15 +4,11 @@ test_that("invalid contact type produces error", {
   test_species_info <-
     readRDS(paste0(test_data_filepath, "/parsed_species_info_bay_x.rds"))
   test_simulation_env <- rlang::new_environment()
-  # Create test directory
-  temp_test_dir <- output_test_setup()
-  test_inf_netpen_output_file_name <- "infected_netpens.csv"
-  he_initialize_simulation_env(
-    test_simulation_env,
-    test_species_info,
-    temp_test_dir,
-    test_inf_netpen_output_file_name
-  )
+  temp_test_dir <-
+    output_and_simulation_env_test_setup(test_simulation_env,
+                                         test_species_info,
+                                         test_output_file_name = "infected_netpens.csv")
+
   test_farm_info <-
     readRDS(paste0(test_data_filepath, "/initialized_farm_info_bay_x.rds"))
   test_index_netpen_ids <- 1
@@ -36,17 +32,11 @@ test_that("direct contact initializes infection correctly", {
   test_species_info <-
     readRDS(paste0(test_data_filepath, "/parsed_species_info_bay_x.rds"))
   test_simulation_env <- rlang::new_environment()
-  # TODO: Remove direct call to he_initialize_simulation_env and replace
-  # with specific initialization steps?
-  # Create test directory
-  temp_test_dir <- output_test_setup()
-  test_inf_netpen_output_file_name <- "infected_netpens.csv"
-  he_initialize_simulation_env(
-    test_simulation_env,
-    test_species_info,
-    temp_test_dir,
-    test_inf_netpen_output_file_name
-  )
+  temp_test_dir <-
+    output_and_simulation_env_test_setup(test_simulation_env,
+                                         test_species_info,
+                                         test_output_file_name = "infected_netpens.csv")
+
   test_farm_info <-
     readRDS(paste0(test_data_filepath, "/initialized_farm_info_bay_x.rds"))
   test_index_netpen_ids <- 1
@@ -104,17 +94,11 @@ test_that("indirect contact initializes infection correctly", {
   test_species_info <-
     readRDS(paste0(test_data_filepath, "/parsed_species_info_bay_x.rds"))
   test_simulation_env <- rlang::new_environment()
-  # TODO: Remove direct call to he_initialize_simulation_env and replace
-  # with specific initialization steps?
-  # Create test directory
-  temp_test_dir <- output_test_setup()
-  test_inf_netpen_output_file_name <- "infected_netpens.csv"
-  he_initialize_simulation_env(
-    test_simulation_env,
-    test_species_info,
-    temp_test_dir,
-    test_inf_netpen_output_file_name
-  )
+  temp_test_dir <-
+    output_and_simulation_env_test_setup(test_simulation_env,
+                                         test_species_info,
+                                         test_output_file_name = "infected_netpens.csv")
+
   test_farm_info <-
     readRDS(paste0(test_data_filepath, "/initialized_farm_info_bay_x.rds"))
   test_index_netpen_ids <- 1
