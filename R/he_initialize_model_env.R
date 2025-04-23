@@ -28,9 +28,7 @@ he_initialize_model_env <-
 
     # Initialize variables for internal tracking
     model_env$index_netpens <- NA
-    model_env$simulation_num <- 0
     model_env$infected_netpens <- NULL
-    model_env$sim_day <- 0
     model_env$output_dir <- output_dir
 
     # Initialize additional variables in farm_info table and pull in relevant

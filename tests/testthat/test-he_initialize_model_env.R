@@ -18,9 +18,7 @@ test_that("model environment variables are initialized", {
 
   # Check internal model variables are initialized
   expect_true(is.na(test_environment$index_netpens))
-  expect_equal(test_environment$simulation_num, 0)
   expect_true(is.null(test_environment$infected_netpens))
-  expect_equal(test_environment$sim_day, 0)
   expect_equal(test_environment$output_dir, temp_test_dir)
 
   # Check variables pulled from farm_info_file have been initialized
