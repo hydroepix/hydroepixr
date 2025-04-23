@@ -8,7 +8,9 @@ he_initialize_simulation_env(
   simulation_env,
   species_info,
   output_dir,
-  inf_netpen_output_file_name
+  model_run_id,
+  inf_netpen_output_file_name,
+  simulation_num
 )
 }
 \arguments{
@@ -19,8 +21,13 @@ he_initialize_simulation_env(
 \item{output_dir}{file path where the infected farm information output should
 be stored}
 
+\item{model_run_id}{identifier for this run of the model}
+
 \item{inf_netpen_output_file_name}{name of the file in which the infected
 farm information should be stored}
+
+\item{simulation_num}{identifies which simulation of the model run this
+this environment belongs to}
 }
 \value{
 NA

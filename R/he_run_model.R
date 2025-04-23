@@ -8,17 +8,23 @@
 he_run_model <- function(model_env) {
   # TODO: Check that all required variables are initialized in the model env
   # Iterate over the specified number of simulations
-  for (simulation_num in n_simulations) {
+  for (simulation_num in model_env$num_simulations) {
     # Inside here is analogous to HEengine.R
     if (verbose) {
       cat("Simulation ", simulation_num, "\n")
     }
     # Create and initialize simulation environment
     simulation_env <- he_create_simulation_env(model_env)
-    he_initialize_simulation_environment(simulation_env)
+    he_initialize_simulation_env(simulation_env,
+                                 model_env$species_info,
+                                 model_env$output_dir,
+                                 model_env$model_run_id,
+                                 model_env$inf_netpen_output_file_name,
+                                 simulation_num)
 
     # Set random seed for the simulation
-    model_env$random_seed <- he_set_random_seed(random_seed_input, simulation)
+    model_env$random_seed <- he_set_random_seed(random_seed_input,
+                                                simulation_num)
     # Select index netpens for this simulation
     model_env$index_netpens <- he_select_index_netpens(model_env$farm_info,
                                                        model_env$index_netpen_ids,

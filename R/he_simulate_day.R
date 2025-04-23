@@ -10,7 +10,7 @@ he_simulate_day <- function(inf_farm_info,
     prob_within_netpen_infection <-
       he_calculate_within_netpen_infection_prob(inf_farm_info,
                                                 vaccine_efficacy = 0)
-    # TODO: Sampling should only be down for netpens with remaining susceptible
+    # TODO: Sampling should only be done for netpens with remaining susceptible
     # animals - nrow(inf_farm_info) yields all infected farms
     # Does this generate NAs because of sampling a 0 from farms with no remaining
     # susceptible animals?

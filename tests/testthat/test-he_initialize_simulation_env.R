@@ -5,14 +5,28 @@ test_that("simulation environment variables are correctly initialized", {
   test_inf_netpen_output_file_name <- "infected_netpens.csv"
   test_species_info <- readRDS(paste0(test_data_filepath,
                                       "/parsed_species_info_bay_x.rds"))
+  test_model_run_id <- "testmodel"
+  test_simulation_num <- 10
   he_initialize_simulation_env(
     test_simulation_env,
     test_species_info,
     output_dir = temp_test_dir,
-    test_inf_netpen_output_file_name
+    test_model_run_id,
+    test_inf_netpen_output_file_name,
+    test_simulation_num
   )
 
-  expected_filepath <- file.path(temp_test_dir, test_inf_netpen_output_file_name)
+  expected_filepath <-
+    file.path(
+      temp_test_dir,
+      paste(
+        test_model_run_id,
+        test_simulation_num,
+        test_inf_netpen_output_file_name,
+        sep = "_"
+      )
+    )
+
   expect_true(file.exists(expected_filepath))
 
   # Check that column names have been written to output file
@@ -37,8 +51,7 @@ test_that("simulation environment variables are correctly initialized", {
     time_infected = double(),
     vaccinated = numeric()
   )
-  test_output_file_data <- read.csv(file.path(temp_test_dir,
-                                              test_inf_netpen_output_file_name))
+  test_output_file_data <- read.csv(expected_filepath)
   expect_equal(names(test_output_file_data), names(inf_farm_info_columns))
 
   expect_true(exists("disease_stage_duration_matrices",
