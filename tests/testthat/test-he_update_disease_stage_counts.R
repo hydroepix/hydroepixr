@@ -72,6 +72,56 @@ test_that("disease stage count values are updated correctly for multiple netpens
                expected_updated_disease_stage_counts)
 })
 
+# TODO: Check subsequent updates
+test_that("disease stage count values are sequentially updated correctly for multiple netpens", {
+  test_disease_stage_counts <- data.frame(
+    susceptible = c(25000, 10000),
+    latent = c(10000, 5000),
+    subclinical = c(10000, 2500),
+    clinical = c(5000, 1000),
+    immune = c(500, 0)
+  )
+  test_disease_stage_duration_matrices <- list(
+    matrix(c(50, 0, 0, 0, 0, 0, 0, 0,
+             25, 0, 0, 0, 0, 0, 0, 0),
+           ncol = 8,
+           byrow = TRUE),
+    matrix(c(25, 0, 0, 0, 0, 0, 0, 0,
+             10, 0, 0, 0, 0, 0, 0, 0),
+           ncol = 8,
+           byrow = TRUE),
+    matrix(c(10, 0, 0, 0, 0, 0, 0, 0,
+             5, 0, 0, 0, 0, 0, 0, 0),
+           ncol = 8,
+           byrow = TRUE)
+  )
+  test_num_newly_infected <- c(2000, 1000)
+  test_updated_disease_stage_counts <-
+    he_update_disease_stage_counts(test_disease_stage_counts,
+                                   test_disease_stage_duration_matrices,
+                                   test_num_newly_infected)
+  # Update a second time
+  test_updated_disease_stage_counts <-
+    he_update_disease_stage_counts(test_updated_disease_stage_counts,
+                                   test_disease_stage_duration_matrices,
+                                   test_num_newly_infected)
+  expected_updated_disease_stage_counts <-
+    test_disease_stage_counts <- data.frame(
+      susceptible = c(25000 - 4000,
+                      10000 - 2000),
+      latent = c(10000 + 4000 - 100,
+                 5000 + 2000 - 50),
+      subclinical = c(10000 + 100 - 50,
+                      2500 + 50 - 20),
+      clinical = c(5000 + 50 - 20,
+                   1000 + 20 - 10),
+      immune = c(500 + 20,
+                 0 + 10)
+    )
+  expect_equal(test_updated_disease_stage_counts,
+               expected_updated_disease_stage_counts)
+})
+
 test_that("providing fewer than 3 columns for disease stage counts generates an
           error", {
   test_disease_stage_counts <- data.frame(
