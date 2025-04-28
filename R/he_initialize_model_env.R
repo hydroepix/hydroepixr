@@ -4,7 +4,6 @@
 #' @param farm_info_filepath filepath to farm info file
 #' @param species_info_filepath filepath to species info file
 #' @param connectivity_matrix_filepath filepath to connectivity matrix file
-#' @param output_dir filepath to the directory in which to write output files
 #'
 #' @return NA
 #' @export
@@ -14,8 +13,7 @@ he_initialize_model_env <-
   function(model_env,
            farm_info_filepath,
            species_info_filepath,
-           connectivity_matrix_filepath,
-           output_dir = "output") {
+           connectivity_matrix_filepath) {
     # Read in files data
     model_env$farm_info <-
       he_read_farm_info_file(farm_info_filepath)
@@ -29,7 +27,6 @@ he_initialize_model_env <-
     # Initialize variables for internal tracking
     model_env$index_netpens <- NA
     model_env$infected_netpens <- NULL
-    model_env$output_dir <- output_dir
 
     # Initialize additional variables in farm_info table and pull in relevant
     # species info

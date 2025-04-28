@@ -8,8 +8,7 @@ he_initialize_model_env(
   model_env,
   farm_info_filepath,
   species_info_filepath,
-  connectivity_matrix_filepath,
-  output_dir = "output"
+  connectivity_matrix_filepath
 )
 }
 \arguments{
@@ -20,8 +19,6 @@ he_initialize_model_env(
 \item{species_info_filepath}{filepath to species info file}
 
 \item{connectivity_matrix_filepath}{filepath to connectivity matrix file}
-
-\item{output_dir}{filepath to the directory in which to write output files}
 }
 \value{
 NA

@@ -1,14 +1,12 @@
 test_that("model environment variables are initialized", {
   # Create test directory and test model environment
   test_environment <- rlang::new_environment()
-  temp_test_dir <- output_test_setup()
   test_environment$verbose <- TRUE
   expect_no_error(he_initialize_model_env(
     test_environment,
     farm_info_filepath = test_farm_info_filepath,
     species_info_filepath = test_species_info_filepath,
-    connectivity_matrix_filepath = test_dist_matrix_filepath,
-    output_dir = temp_test_dir
+    connectivity_matrix_filepath = test_dist_matrix_filepath
   ))
 
   # Check files are read in
@@ -19,7 +17,6 @@ test_that("model environment variables are initialized", {
   # Check internal model variables are initialized
   expect_true(is.na(test_environment$index_netpens))
   expect_true(is.null(test_environment$infected_netpens))
-  expect_equal(test_environment$output_dir, temp_test_dir)
 
   # Check variables pulled from farm_info_file have been initialized
   expect_true(exists("num_netpens", where = test_environment))
