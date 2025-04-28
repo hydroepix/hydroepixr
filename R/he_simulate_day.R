@@ -46,10 +46,13 @@ he_simulate_day <- function(inf_farm_info,
     #inf_farm_info <- he_update_netpen_infection_status()
 
     # Generate output for a day
-    # he_write_inf_netpen_output(simulation_env$simulation_day,
-    #                            inf_farm_info)
+    he_write_inf_netpen_output(simulation_env$simulation_day,
+                               inf_farm_info,
+                               simulation_env$inf_netpen_output_file_name,
+                               simulation_env$output_dir)
 
     simulation_env$simulation_day <- simulation_env$simulation_day + 1
+    inf_farm_info
   } else {
     stop("No remaining infected netpens. Simulation should have terminated.")
   }

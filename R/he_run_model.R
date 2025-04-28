@@ -2,13 +2,14 @@
 #'
 #' @param model_env environment containing variables for all essential hydroepix
 #'    model parameters
+#' @param verbose logical indicating whether to produce verbose outputs
 #'
 #' @export
 #'
-he_run_model <- function(model_env) {
+he_run_model <- function(model_env, verbose = FALSE) {
   # TODO: Check that all required variables are initialized in the model env
   # Iterate over the specified number of simulations
-  for (simulation_num in model_env$num_simulations) {
+  for (simulation_num in model_env$n_simulations) {
     # Inside here is analogous to HEengine.R
     if (verbose) {
       cat("Simulation ", simulation_num, "\n")
