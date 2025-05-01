@@ -31,15 +31,15 @@ model_env <- he_create_model_env()
 ## Define simulation parameters in the model environment
 ```{r}
 he_define_simulation_control_params(model_env,
-                                     n_simulations = 1,
-                                     max_outbreak_length = 365,
-                                     random_seed = -10,
-                                     ignore_disease_status_input = TRUE,
-                                     verbose = FALSE)
+                                    n_simulations = 1,
+                                    max_outbreak_length = 365,
+                                    random_seed = -10,
+                                    ignore_disease_status_input = TRUE,
+                                    verbose = FALSE)
 he_define_spread_control_params(model_env,
                                 random_num_initially_infected_fish = FALSE,
                                 intrafarm_disease_transmission_model = "binomial chain",
-                                index_netpen_ids = NULL,
+                                index_netpen_ids = 1,
                                 index_farm_id = NULL,
                                 index_direct = TRUE,
                                 case_fatality_prop = 0.9,

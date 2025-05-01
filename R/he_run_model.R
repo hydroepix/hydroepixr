@@ -24,7 +24,7 @@ he_run_model <- function(model_env, verbose = FALSE) {
                                  simulation_num)
 
     # Set random seed for the simulation
-    model_env$random_seed <- he_set_random_seed(random_seed_input,
+    model_env$random_seed <- he_set_random_seed(model_env$random_seed,
                                                 simulation_num)
     # Select index netpens for this simulation
     model_env$index_netpens <- he_select_index_netpens(model_env$farm_info,
@@ -40,14 +40,16 @@ he_run_model <- function(model_env, verbose = FALSE) {
 
     # loop over simulation days for as long as there are still farms with an
     # active infection
-    while(simulation_day < max_outbreak_length #&
-          #any(inf_farm_info$infection_status %in% c(2, 3, 4))
-          ) {
-      he_simulate_day(inf_farm_info, simulation_env)
+    for(simulation_day in 1:model_env$max_outbreak_length) {
+      inf_farm_info <- he_simulate_day(
+        simulation_env$inf_farm_info,
+        simulation_env,
+        simulation_day,
+        model_env$species_info
+      )
+      # TODO: Add termination condition in case where no animals are infected:
+      #any(inf_farm_info$infection_status %in% c(2, 3, 4))
     }
-    # TODO: Generate output for a simulation - entire inf farm info for now
-    he_write_inf_netpen_output(inf_farm_info,
-                               output_dir = "output")
   }
   # TODO: Generate output for results from all simulations
 }

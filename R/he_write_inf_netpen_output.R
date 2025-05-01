@@ -15,11 +15,10 @@
 #'
 he_write_inf_netpen_output <- function(simulation_day,
                                        inf_farm_info,
-                                       inf_netpen_output_file_name =
-                                         "infected_netpens.csv",
-                                       output_dir = "") {
+                                       inf_netpen_output_file_name,
+                                       output_dir) {
   write.table(
-    cbind(data.frame(simulation_day = 0), inf_farm_info),
+    cbind(data.frame(simulation_day), inf_farm_info),
     file.path(output_dir,
               inf_netpen_output_file_name),
     append = TRUE,
