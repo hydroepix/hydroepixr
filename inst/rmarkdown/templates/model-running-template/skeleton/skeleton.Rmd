@@ -1,0 +1,65 @@
+---
+title: "Example Basic Model Run"
+author: "Rachel Woodside"
+date: "2025-05-01"
+output: 
+  html_document:
+    toc: FALSE
+    
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# EXAMPLE TEMPLATE FOR A HYDROEPIX MODEL RUN
+
+## Package setup
+```{r}
+# TODO: Update this to work from GitHub package installation
+# This should just be the installation of the package
+library(devtools)
+load_all('../../../../')
+
+```
+
+## Set up simulation environment for simulation variable management
+```{r}
+model_env <- he_create_model_env()
+```
+
+## Define simulation parameters in the model environment
+```{r}
+he_define_simulation_control_params(model_env,
+                                     n_simulations = 1,
+                                     max_outbreak_length = 365,
+                                     random_seed = -10,
+                                     ignore_disease_status_input = TRUE,
+                                     verbose = FALSE)
+he_define_spread_control_params(model_env,
+                                random_num_initially_infected_fish = FALSE,
+                                intrafarm_disease_transmission_model = "binomial chain",
+                                index_netpen_ids = NULL,
+                                index_farm_id = NULL,
+                                index_direct = TRUE,
+                                case_fatality_prop = 0.9,
+                                days_dead_infectious = 2,
+                                farm_to_farm = 0.5,
+                                netpen_to_netpen = 0.05,
+                                vaccine_efficacy = 0)
+he_define_output_params(model_env,
+                        output_dir = "output",
+                        model_run_id = "test-model-run",
+                        inf_netpen_output_file_name = "infected_netpens.csv")
+
+# Set up model environment based on data files and parameters
+he_initialize_model_env(model_env,
+                        farm_info_filepath = "../../../../testdata/farm_file_bay_x.csv",
+                        species_info_filepath = "../../../../testdata/species_info_file_bay_x.csv",
+                        connectivity_matrix_filepath = "../../../../testdata/dist_mat_bay_x.csv")
+```
+
+## Run model
+```{r}
+he_run_model(model_env, verbose = TRUE)
+```
