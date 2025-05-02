@@ -12,8 +12,6 @@ output:
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-# EXAMPLE TEMPLATE FOR A HYDROEPIX MODEL RUN
-
 ## Package setup
 ```{r}
 # TODO: Update this to work from GitHub package installation
@@ -32,7 +30,7 @@ model_env <- he_create_model_env()
 ```{r}
 he_define_simulation_control_params(model_env,
                                     n_simulations = 1,
-                                    max_outbreak_length = 365,
+                                    max_outbreak_length = 30,
                                     random_seed = -10,
                                     ignore_disease_status_input = TRUE,
                                     verbose = FALSE)
@@ -61,5 +59,5 @@ he_initialize_model_env(model_env,
 
 ## Run model
 ```{r}
-he_run_model(model_env, verbose = TRUE)
+he_run_model(model_env)
 ```

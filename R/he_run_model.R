@@ -2,16 +2,15 @@
 #'
 #' @param model_env environment containing variables for all essential hydroepix
 #'    model parameters
-#' @param verbose logical indicating whether to produce verbose outputs
 #'
 #' @export
 #'
-he_run_model <- function(model_env, verbose = FALSE) {
+he_run_model <- function(model_env) {
   # TODO: Check that all required variables are initialized in the model env
   # Iterate over the specified number of simulations
   for (simulation_num in model_env$n_simulations) {
     # Inside here is analogous to HEengine.R
-    if (verbose) {
+    if (model_env$verbose) {
       cat("Simulation ", simulation_num, "\n")
     }
     # Create and initialize simulation environment
@@ -41,11 +40,15 @@ he_run_model <- function(model_env, verbose = FALSE) {
     # loop over simulation days for as long as there are still farms with an
     # active infection
     for(simulation_day in 1:model_env$max_outbreak_length) {
-      inf_farm_info <- he_simulate_day(
+      if (model_env$verbose) {
+        message(paste0("Simulation Day: ", simulation_day))
+      }
+      simulation_env$inf_farm_info <- he_simulate_day(
         simulation_env$inf_farm_info,
         simulation_env,
         simulation_day,
-        model_env$species_info
+        model_env$species_info,
+        model_env$verbose
       )
       # TODO: Add termination condition in case where no animals are infected:
       #any(inf_farm_info$infection_status %in% c(2, 3, 4))
