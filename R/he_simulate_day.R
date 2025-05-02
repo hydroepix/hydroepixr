@@ -39,8 +39,12 @@ he_simulate_day <- function(inf_farm_info,
 
     # Update disease stage duration matrices for animals entering a new stage
     num_animals_transitioning_by_stage <-
-      lapply(simulation_env$disease_stage_duration_matrices,
-             FUN = \(matrix) matrix[, 1])
+      c(num_newly_infected,
+        lapply(
+          head(simulation_env$disease_stage_duration_matrices,-1),
+          FUN = \(matrix) matrix[, 1]
+        ))
+
     disease_stage_distributions <-
       species_info[c("latent_dur_freq",
                      "subclinical_dur_freq",
