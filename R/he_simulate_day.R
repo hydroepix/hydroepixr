@@ -1,3 +1,16 @@
+#' Simulate a day of infection transmission dynamics
+#'
+#' @param inf_farm_info data frame of information on infected farms
+#' @param simulation_env environment containing simulation variables
+#' @param simulation_day day of simulation that infection is occurring
+#' @param species_info matrix of species information
+#' @param verbose a logical value indicating whether to provide additional output
+#'    messages on model running progress
+#'
+#' @return
+#' @export
+#' @importFrom utils head
+#'
 he_simulate_day <- function(inf_farm_info,
                             simulation_env,
                             simulation_day,
@@ -41,7 +54,7 @@ he_simulate_day <- function(inf_farm_info,
     num_animals_transitioning_by_stage <-
       c(num_newly_infected,
         lapply(
-          head(simulation_env$disease_stage_duration_matrices,-1),
+          utils::head(simulation_env$disease_stage_duration_matrices,-1),
           FUN = \(matrix) matrix[, 1]
         ))
 
