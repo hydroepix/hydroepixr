@@ -10,9 +10,10 @@ test_that("single netpen is correctly appended to empty infected farm info", {
     clinical = 0
   )
   test_type_of_contact <- "direct"
-  test_sim_timestep <- 1
+  test_simulation_day <- 1
 
   expected_inf_farm_info <- data.frame(
+    simulation_day = test_simulation_day,
     netpen_id = 4,
     farm_id = 1,
     species_id = 1,
@@ -41,7 +42,7 @@ test_that("single netpen is correctly appended to empty infected farm info", {
                            test_netpen_ids_to_infect,
                            test_num_inf_animals_by_stage,
                            test_type_of_contact,
-                           test_sim_timestep)
+                           test_simulation_day)
 
   expect_equal(result_inf_farm_info, expected_inf_farm_info)
 })
@@ -58,9 +59,10 @@ test_that("netpens are correctly appended to empty infected farm info", {
     clinical = c(0, 0)
   )
   test_type_of_contact <- c("indirect", "direct")
-  test_sim_timestep <- 1
+  test_simulation_day <- 1
 
   expected_inf_farm_info <- data.frame(
+    simulation_day = test_simulation_day,
     netpen_id = c(4, 21),
     farm_id = c(1, 2),
     species_id = c(1, 1),
@@ -88,7 +90,7 @@ test_that("netpens are correctly appended to empty infected farm info", {
                            test_netpen_ids_to_infect,
                            test_num_inf_animals_by_stage,
                            test_type_of_contact,
-                           test_sim_timestep)
+                           test_simulation_day)
 
   expect_equal(result_inf_farm_info, expected_inf_farm_info)
 })
@@ -109,12 +111,13 @@ test_that("single netpen is correctly appended to infected farm info", {
     clinical = 0
   )
   test_type_of_contact <- "indirect"
-  test_sim_timestep <- 10
+  test_simulation_day <- 10
 
   expected_inf_farm_info <-
     rbind(
       test_inf_farm_info,
       data.frame(
+        simulation_day = test_simulation_day,
         netpen_id = 5,
         farm_id = 1,
         species_id = 1,
@@ -144,7 +147,7 @@ test_that("single netpen is correctly appended to infected farm info", {
                            test_netpen_ids_to_infect,
                            test_num_inf_animals_by_stage,
                            test_type_of_contact,
-                           test_sim_timestep)
+                           test_simulation_day)
 
   expect_equal(result_inf_farm_info, expected_inf_farm_info)
 })
@@ -165,11 +168,12 @@ test_that("netpens are correctly appended to infected farm info", {
     clinical = c(0, 0)
   )
   test_type_of_contact <- c("direct", "direct")
-  test_sim_timestep <- 12
+  test_simulation_day <- 12
 
   expected_inf_farm_info <- rbind(
     test_inf_farm_info,
     data.frame(
+      simulation_day = test_simulation_day,
       netpen_id = c(5, 6),
       farm_id = c(1, 1),
       species_id = c(1, 1),
@@ -199,7 +203,7 @@ test_that("netpens are correctly appended to infected farm info", {
                            test_netpen_ids_to_infect,
                            test_num_inf_animals_by_stage,
                            test_type_of_contact,
-                           test_sim_timestep)
+                           test_simulation_day)
 
   expect_equal(result_inf_farm_info, expected_inf_farm_info)
 })
@@ -220,9 +224,10 @@ test_that("netpens are not appended when they already exist in infected farm inf
     clinical = c(0, 0)
   )
   test_type_of_contact <- c("indirect", "direct")
-  test_sim_timestep <- 1
+  test_simulation_day <- 1
 
   expected_inf_farm_info <- data.frame(
+    simulation_day = test_simulation_day,
     netpen_id = c(4, 21),
     farm_id = c(1, 2),
     species_id = c(1, 1),
@@ -250,7 +255,7 @@ test_that("netpens are not appended when they already exist in infected farm inf
                            test_netpen_ids_to_infect,
                            test_num_inf_animals_by_stage,
                            test_type_of_contact,
-                           test_sim_timestep)
+                           test_simulation_day)
 
   expect_equal(result_inf_farm_info, expected_inf_farm_info)
 })
@@ -272,11 +277,12 @@ test_that("single netpen is correctly appended when already infected netpens are
     clinical = c(0, 0, 0)
   )
   test_type_of_contact <- c("direct", "direct", "direct")
-  test_sim_timestep <- 5
+  test_simulation_day <- 5
 
   expected_inf_farm_info <- rbind(
     test_inf_farm_info,
     data.frame(
+      simulation_day = test_simulation_day,
       netpen_id = 5,
       farm_id = 1,
       species_id = 1,
@@ -306,7 +312,7 @@ test_that("single netpen is correctly appended when already infected netpens are
                            test_netpen_ids_to_infect,
                            test_num_inf_animals_by_stage,
                            test_type_of_contact,
-                           test_sim_timestep)
+                           test_simulation_day)
 
   expect_equal(result_inf_farm_info, expected_inf_farm_info)
 })
@@ -328,11 +334,12 @@ test_that("multiple netpens are correctly appended when already infected netpens
     clinical = c(0, 0, 0, 0)
   )
   test_type_of_contact <- c("direct", "direct", "direct", "direct")
-  test_sim_timestep <- 5
+  test_simulation_day <- 5
 
   expected_inf_farm_info <- rbind(
     test_inf_farm_info,
     data.frame(
+      simulation_day = test_simulation_day,
       netpen_id = c(5, 6),
       farm_id = c(1, 1),
       species_id = c(1, 1),
@@ -362,7 +369,7 @@ test_that("multiple netpens are correctly appended when already infected netpens
                            test_netpen_ids_to_infect,
                            test_num_inf_animals_by_stage,
                            test_type_of_contact,
-                           test_sim_timestep)
+                           test_simulation_day)
 
   expect_equal(result_inf_farm_info, expected_inf_farm_info)
 })

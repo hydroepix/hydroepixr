@@ -11,6 +11,8 @@
 he_calculate_net_change_in_disease_stage_count <-
   function(disease_stage_duration_matrices,
            num_newly_infected) {
+    # First column of the matrix represents number of fish that will transition
+    # today
     changes_in_disease_stage_duration <-
       matrix(
         unlist(lapply(disease_stage_duration_matrices, \(x) x[, 1])),

@@ -80,6 +80,10 @@ he_update_disease_stage_counts <- function(disease_stage_counts,
         disease_stage_duration_matrices,
         num_newly_infected
       )
-    disease_stage_counts + net_change
+    updated_disease_stage_counts <- disease_stage_counts + net_change
+    # if(any(updated_disease_stage_counts < 0)) {
+    #   stop("Invalid disease stage animal count (<0) calculated.")
+    # }
+    updated_disease_stage_counts
 }
 

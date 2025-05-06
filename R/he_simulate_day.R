@@ -61,8 +61,7 @@ he_simulate_day <- function(inf_farm_info,
     #inf_farm_info <- he_update_netpen_infection_status()
 
     # Generate output for a day
-    he_write_inf_netpen_output(simulation_day,
-                               inf_farm_info,
+    he_write_inf_netpen_output(inf_farm_info,
                                simulation_env$inf_netpen_output_file_name,
                                simulation_env$output_dir)
 

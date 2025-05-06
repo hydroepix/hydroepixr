@@ -5,7 +5,6 @@ test_that("infected netpen output file generates error for missing infected
   # Check for error
   expect_error(
     he_write_inf_netpen_output(
-      simulation_day = 1,
       test_inf_netpen_output,
       test_inf_netpen_output_file_name,
       output_dir = temp_test_dir
@@ -26,8 +25,7 @@ test_that("infected netpen output file generates error for missing infected
   )
   # Check for error
   expect_error(
-    he_write_inf_netpen_output(simulation_day = 1,
-                               test_inf_netpen_output,
+    he_write_inf_netpen_output(test_inf_netpen_output,
                                test_inf_netpen_output_file_name,
                                output_dir = temp_test_dir)
   )
@@ -46,8 +44,7 @@ test_that("infected netpen output file is created in expected directory", {
   test_inf_netpen_output_file_name <- "infected_netpens.csv"
   # Initialize test variable for comparison
   expected_filepath <- file.path(temp_test_dir, test_inf_netpen_output_file_name)
-  he_write_inf_netpen_output(simulation_day = 1,
-                             test_inf_netpen_output,
+  he_write_inf_netpen_output(test_inf_netpen_output,
                              test_inf_netpen_output_file_name,
                              temp_test_dir)
   expect_true(file.exists(expected_filepath))

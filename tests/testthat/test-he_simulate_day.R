@@ -10,8 +10,10 @@ test_that("simulating a day with no remaining infections generates error", {
                                          test_species_info,
                                          test_output_file_name = "infected_netpens.csv")
 
-  expect_error(he_simulate_day(test_inf_farm_info, test_simulation_env),
-               regexp = "No remaining infected netpens. Simulation should have terminated.")
+  expect_error(
+    he_simulate_day(test_inf_farm_info, simulation_day = 1, test_simulation_env),
+    regexp = "No remaining infected netpens. Simulation should have terminated."
+  )
 })
 
 test_that("day is simulated correctly for a single infected farm", {
@@ -41,54 +43,48 @@ test_that("day is simulated correctly for a single infected farm", {
       test_farm_info,
       test_index_netpens
     )
-  print(test_inf_farm_info)
-  print("\n")
-
+  # Simulate 10 days of infection dynamics
   result_inf_farm_info <- he_simulate_day(test_inf_farm_info,
                                           test_simulation_env,
+                                          simulation_day = 1,
                                           test_species_info)
-  print(result_inf_farm_info)
-  print("\n")
   result_inf_farm_info <- he_simulate_day(result_inf_farm_info,
                                           test_simulation_env,
+                                          simulation_day = 2,
                                           test_species_info)
-  print(result_inf_farm_info)
-  print("\n")
   result_inf_farm_info <- he_simulate_day(result_inf_farm_info,
                                           test_simulation_env,
+                                          simulation_day = 3,
                                           test_species_info)
-  print(result_inf_farm_info)
-  print("\n")
   result_inf_farm_info <- he_simulate_day(result_inf_farm_info,
                                           test_simulation_env,
+                                          simulation_day = 4,
                                           test_species_info)
-  print(result_inf_farm_info)
-  print("\n")
   result_inf_farm_info <- he_simulate_day(result_inf_farm_info,
                                           test_simulation_env,
+                                          simulation_day = 5,
                                           test_species_info)
-  print(result_inf_farm_info)
-  print("\n")
   result_inf_farm_info <- he_simulate_day(result_inf_farm_info,
                                           test_simulation_env,
+                                          simulation_day = 6,
                                           test_species_info)
-  print(result_inf_farm_info)
-  print("\n")
   result_inf_farm_info <- he_simulate_day(result_inf_farm_info,
                                           test_simulation_env,
+                                          simulation_day = 7,
                                           test_species_info)
-  print(result_inf_farm_info)
-  print("\n")
   result_inf_farm_info <- he_simulate_day(result_inf_farm_info,
                                           test_simulation_env,
+                                          simulation_day = 8,
                                           test_species_info)
-  print(result_inf_farm_info)
-  print("\n")
   result_inf_farm_info <- he_simulate_day(result_inf_farm_info,
                                           test_simulation_env,
+                                          simulation_day = 9,
                                           test_species_info)
-  print(result_inf_farm_info)
-  print("\n")
+  result_inf_farm_info <- he_simulate_day(result_inf_farm_info,
+                                          test_simulation_env,
+                                          simulation_day = 10,
+                                          test_species_info)
+  # TODO:
   # Check disease stage matrices (in simulation env)
   # Check updated disease stage counts
 })

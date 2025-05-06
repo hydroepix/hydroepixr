@@ -4,13 +4,11 @@
 \alias{he_run_model}
 \title{Run hydroepix model}
 \usage{
-he_run_model(model_env, verbose = FALSE)
+he_run_model(model_env)
 }
 \arguments{
 \item{model_env}{environment containing variables for all essential hydroepix
 model parameters}
-
-\item{verbose}{logical indicating whether to produce verbose outputs}
 }
 \description{
 Run hydroepix model

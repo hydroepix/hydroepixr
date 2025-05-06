@@ -31,6 +31,7 @@ test_that("simulation environment variables are correctly initialized", {
 
   # Check that column names have been written to output file
   inf_farm_info_columns <- data.frame(
+    simulation_day = integer(),
     netpen_id = integer(),
     farm_id = integer(),
     species_id = integer(),

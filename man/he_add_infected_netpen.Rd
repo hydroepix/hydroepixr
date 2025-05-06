@@ -10,7 +10,7 @@ he_add_infected_netpen(
   new_inf_netpen_ids,
   num_inf_animals_by_stage,
   type_of_contact,
-  sim_timestep
+  simulation_day
 )
 }
 \arguments{
@@ -27,7 +27,7 @@ subclinical)}
 \item{type_of_contact}{type of contact that resulted in the infection, can be
 either direct (within/between netpens) or indirect (between farms)}
 
-\item{sim_timestep}{timestep or day of simulation that infection is occurring}
+\item{simulation_day}{day of simulation that infection is occurring}
 }
 \value{
 data frame of information on infected farms, appended with rows to

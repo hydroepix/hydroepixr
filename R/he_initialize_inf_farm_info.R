@@ -12,6 +12,7 @@
 he_initialize_inf_farm_info <- function(output_dir,
                                         output_file_name) {
   inf_farm_info <- data.frame(
+    simulation_day = integer(),
     netpen_id = integer(),
     farm_id = integer(),
     species_id = integer(),
@@ -32,7 +33,7 @@ he_initialize_inf_farm_info <- function(output_dir,
     time_infected = double(), # appears to refer to the timestep of infection
     vaccinated = double()
   )
-  he_write_output_columns(c("simulation_day", names(inf_farm_info)),
+  he_write_output_columns(names(inf_farm_info),
                           output_dir,
                           output_file_name)
   inf_farm_info

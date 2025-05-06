@@ -8,6 +8,7 @@ test_that("infected farm info is initialized correctly", {
   expect_no_error(test_inf_farm_info)
   # Check column names and types
   inf_farm_info_columns <- data.frame(
+    simulation_day = integer(),
     netpen_id = integer(),
     farm_id = integer(),
     species_id = integer(),

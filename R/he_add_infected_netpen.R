@@ -8,7 +8,7 @@
 #'    subclinical)
 #' @param type_of_contact type of contact that resulted in the infection, can be
 #'    either direct (within/between netpens) or indirect (between farms)
-#' @param sim_timestep timestep or day of simulation that infection is occurring
+#' @param simulation_day day of simulation that infection is occurring
 #'
 #' @return data frame of information on infected farms, appended with rows to
 #'    represent new infections
@@ -21,7 +21,7 @@ he_add_infected_netpen <-
            new_inf_netpen_ids,
            num_inf_animals_by_stage,
            type_of_contact,
-           sim_timestep
+           simulation_day
            ) {
 
     # Filter new infection ids to remove those already infected
@@ -37,6 +37,7 @@ he_add_infected_netpen <-
     if (length(new_inf_netpen_ids) > 0) {
       new_inf_rows <-
         data.frame(
+          simulation_day = simulation_day,
           netpen_id = new_inf_netpen_ids,
           farm_id = farm_info$farm_id[new_inf_netpen_ids],
           species_id = farm_info$species_id[new_inf_netpen_ids],
@@ -55,7 +56,7 @@ he_add_infected_netpen <-
           time_of_diagnosis = Inf,
           diagnosed = 0,
           infected_by_direct_contact = type_of_contact,
-          time_infected = sim_timestep,
+          time_infected = simulation_day,
           vaccinated = 0 # shouldn't this come from somewhere
           #instead of a default of 0?,
         )
