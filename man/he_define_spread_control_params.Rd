@@ -6,8 +6,9 @@
 \usage{
 he_define_spread_control_params(
   model_env,
-  random_num_initially_infected_fish = FALSE,
-  intrafarm_disease_transmission_model = "binomial chain",
+  num_index_infected_min = 1,
+  num_index_infected_mode = 10,
+  num_index_infected_max = 100,
   index_netpen_ids = NULL,
   index_farm_id = NULL,
   index_direct = TRUE,
@@ -22,11 +23,14 @@ he_define_spread_control_params(
 \item{model_env}{environment in which simulation variables are stored and
 managed}
 
-\item{random_num_initially_infected_fish}{logical indicating whether to
-randomize the initial number of infected fish}
+\item{num_index_infected_min}{minimum number of fish initially infected,
+to be calculated from a PERT distribution}
 
-\item{intrafarm_disease_transmission_model}{defines which intrafarm disease
-transmission model is used, options are "binomial chain" and "reed-frost"}
+\item{num_index_infected_mode}{mode of fish initially infected, to be
+calculated from a PERT distribution}
+
+\item{num_index_infected_max}{maximum number of fish initially infected, to
+be calculated from a PERT distribution}
 
 \item{index_netpen_ids}{identifiers of the index netpens}
 
