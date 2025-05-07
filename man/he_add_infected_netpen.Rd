@@ -9,7 +9,7 @@ he_add_infected_netpen(
   farm_info,
   new_inf_netpen_ids,
   num_inf_animals_by_stage,
-  type_of_contact,
+  infection_origin,
   simulation_day
 )
 }
@@ -24,8 +24,8 @@ he_add_infected_netpen(
 of infected animals in each stage of infection (latent, clinical, and
 subclinical)}
 
-\item{type_of_contact}{type of contact that resulted in the infection, can be
-either direct (within/between netpens) or indirect (between farms)}
+\item{infection_origin}{source of the infection was can be "index",
+between-netpen", or "between-farm"}
 
 \item{simulation_day}{day of simulation that infection is occurring}
 }

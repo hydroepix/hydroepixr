@@ -5,12 +5,12 @@ test_that("single netpen is correctly appended to empty infected farm info", {
                                    "/initialized_farm_info_bay_x.rds"))
   test_netpen_ids_to_infect <- 4
   test_num_inf_animals_by_stage <- data.frame(
-    latent = 1,
-    subclinical = 0,
-    clinical = 0
+    n_latent = 1,
+    n_subclinical = 0,
+    n_clinical = 0
   )
-  test_type_of_contact <- "direct"
-  test_simulation_day <- 1
+  test_infection_origin <- "index"
+  test_simulation_day <- 0
 
   expected_inf_farm_info <- data.frame(
     simulation_day = test_simulation_day,
@@ -18,21 +18,16 @@ test_that("single netpen is correctly appended to empty infected farm info", {
     farm_id = 1,
     species_id = 1,
     within_netpen_transmission = 0.55820072,
-    susceptible = 24999,
-    latent = 1,
-    subclinical = 0,
-    clinical = 0,
-    immune = 0,
-    total = 25000,
+    n_susceptible = 24999,
+    n_latent = 1,
+    n_subclinical = 0,
+    n_clinical = 0,
+    n_immune = 0,
+    n_total = 25000,
     infection_status = 1,
-    latent_duration = 0,
-    subclinical_duration = 0,
-    clinical_time = Inf,
-    time_of_diagnosis = Inf,
-    diagnosed = 0,
-    infected_by_direct_contact = "direct",
-    time_infected = 1,
-    vaccinated = 0
+    infection_origin = test_infection_origin,
+    day_infected = 0,
+    is_vaccinated = 0
   )
 
 
@@ -41,7 +36,7 @@ test_that("single netpen is correctly appended to empty infected farm info", {
                            test_farm_info,
                            test_netpen_ids_to_infect,
                            test_num_inf_animals_by_stage,
-                           test_type_of_contact,
+                           test_infection_origin,
                            test_simulation_day)
 
   expect_equal(result_inf_farm_info, expected_inf_farm_info)
@@ -54,12 +49,12 @@ test_that("netpens are correctly appended to empty infected farm info", {
                                    "/initialized_farm_info_bay_x.rds"))
   test_netpen_ids_to_infect <- c(4, 21)
   test_num_inf_animals_by_stage <- data.frame(
-    latent = c(1, 0),
-    subclinical = c(0, 1),
-    clinical = c(0, 0)
+    n_latent = c(1, 0),
+    n_subclinical = c(0, 1),
+    n_clinical = c(0, 0)
   )
-  test_type_of_contact <- c("indirect", "direct")
-  test_simulation_day <- 1
+  test_infection_origin <- c("index", "index")
+  test_simulation_day <- 0
 
   expected_inf_farm_info <- data.frame(
     simulation_day = test_simulation_day,
@@ -67,21 +62,16 @@ test_that("netpens are correctly appended to empty infected farm info", {
     farm_id = c(1, 2),
     species_id = c(1, 1),
     within_netpen_transmission = c(0.55820072, 0.56227532),
-    susceptible = c(24999, 24999),
-    latent = c(1, 0),
-    subclinical = c(0, 1),
-    clinical = c(0, 0),
-    immune = c(0,0),
-    total = c(25000, 25000),
-    infection_status = c(1, 1), # ignored for now
-    latent_duration = c(0, 0),
-    subclinical_duration = c(0, 0),
-    clinical_time = c(Inf, Inf),
-    time_of_diagnosis = c(Inf, Inf),
-    diagnosed = c(0, 0),
-    infected_by_direct_contact = c("indirect", "direct"),
-    time_infected = c(1, 1),
-    vaccinated = c(0, 0)
+    n_susceptible = c(24999, 24999),
+    n_latent = c(1, 0),
+    n_subclinical = c(0, 1),
+    n_clinical = c(0, 0),
+    n_immune = c(0,0),
+    n_total = c(25000, 25000),
+    infection_status = c(1, 1),
+    infection_origin = c("index", "index"),
+    day_infected = c(0, 0),
+    is_vaccinated = c(0, 0)
   )
 
   result_inf_farm_info <-
@@ -89,7 +79,7 @@ test_that("netpens are correctly appended to empty infected farm info", {
                            test_farm_info,
                            test_netpen_ids_to_infect,
                            test_num_inf_animals_by_stage,
-                           test_type_of_contact,
+                           test_infection_origin,
                            test_simulation_day)
 
   expect_equal(result_inf_farm_info, expected_inf_farm_info)
@@ -106,11 +96,11 @@ test_that("single netpen is correctly appended to infected farm info", {
                                    "/initialized_farm_info_bay_x.rds"))
   test_netpen_ids_to_infect <- 5
   test_num_inf_animals_by_stage <- data.frame(
-    latent = 5,
-    subclinical = 0,
-    clinical = 0
+    n_latent = 5,
+    n_subclinical = 0,
+    n_clinical = 0
   )
-  test_type_of_contact <- "indirect"
+  test_infection_origin <- "between-netpen"
   test_simulation_day <- 10
 
   expected_inf_farm_info <-
@@ -122,21 +112,16 @@ test_that("single netpen is correctly appended to infected farm info", {
         farm_id = 1,
         species_id = 1,
         within_netpen_transmission =  0.48065623,
-        susceptible = 24995,
-        latent = 5,
-        subclinical = 0,
-        clinical = 0,
-        immune = 0,
-        total = 25000,
+        n_susceptible = 24995,
+        n_latent = 5,
+        n_subclinical = 0,
+        n_clinical = 0,
+        n_immune = 0,
+        n_total = 25000,
         infection_status = 1,
-        latent_duration = 0,
-        subclinical_duration = 0,
-        clinical_time = Inf,
-        time_of_diagnosis = Inf,
-        diagnosed = 0,
-        infected_by_direct_contact = "indirect",
-        time_infected = 10,
-        vaccinated = 0
+        infection_origin = "between-netpen",
+        day_infected = 10,
+        is_vaccinated = 0
       )
     )
 
@@ -146,7 +131,7 @@ test_that("single netpen is correctly appended to infected farm info", {
                            test_farm_info,
                            test_netpen_ids_to_infect,
                            test_num_inf_animals_by_stage,
-                           test_type_of_contact,
+                           test_infection_origin,
                            test_simulation_day)
 
   expect_equal(result_inf_farm_info, expected_inf_farm_info)
@@ -163,11 +148,11 @@ test_that("netpens are correctly appended to infected farm info", {
                                    "/initialized_farm_info_bay_x.rds"))
   test_netpen_ids_to_infect <- c(5, 6)
   test_num_inf_animals_by_stage <- data.frame(
-    latent = c(10, 5),
-    subclinical = c(0, 0),
-    clinical = c(0, 0)
+    n_latent = c(10, 5),
+    n_subclinical = c(0, 0),
+    n_clinical = c(0, 0)
   )
-  test_type_of_contact <- c("direct", "direct")
+  test_infection_origin <- c("between-netpen", "between-netpen")
   test_simulation_day <- 12
 
   expected_inf_farm_info <- rbind(
@@ -178,22 +163,16 @@ test_that("netpens are correctly appended to infected farm info", {
       farm_id = c(1, 1),
       species_id = c(1, 1),
       within_netpen_transmission = c(0.48065623, 0.45983893),
-      susceptible = c(24990, 24995),
-      latent = c(10, 5),
-      subclinical = c(0, 0),
-      clinical = c(0, 0),
-      immune = c(0, 0),
-      total = c(25000, 25000),
+      n_susceptible = c(24990, 24995),
+      n_latent = c(10, 5),
+      n_subclinical = c(0, 0),
+      n_clinical = c(0, 0),
+      n_immune = c(0, 0),
+      n_total = c(25000, 25000),
       infection_status = c(1, 1),
-      # ignored for now
-      latent_duration = c(0, 0),
-      subclinical_duration = c(0, 0),
-      clinical_time = c(Inf, Inf),
-      time_of_diagnosis = c(Inf, Inf),
-      diagnosed = c(0, 0),
-      infected_by_direct_contact = c("direct", "direct"),
-      time_infected = c(12, 12),
-      vaccinated = c(0, 0)
+      infection_origin = c("between-netpen", "between-netpen"),
+      day_infected = c(12, 12),
+      is_vaccinated = c(0, 0)
     )
   )
 
@@ -202,7 +181,7 @@ test_that("netpens are correctly appended to infected farm info", {
                            test_farm_info,
                            test_netpen_ids_to_infect,
                            test_num_inf_animals_by_stage,
-                           test_type_of_contact,
+                           test_infection_origin,
                            test_simulation_day)
 
   expect_equal(result_inf_farm_info, expected_inf_farm_info)
@@ -219,11 +198,11 @@ test_that("netpens are not appended when they already exist in infected farm inf
                                    "/initialized_farm_info_bay_x.rds"))
   test_netpen_ids_to_infect <- c(4, 21)
   test_num_inf_animals_by_stage <- data.frame(
-    latent = c(1, 0),
-    subclinical = c(0, 1),
-    clinical = c(0, 0)
+    n_latent = c(1, 0),
+    n_subclinical = c(0, 1),
+    n_clinical = c(0, 0)
   )
-  test_type_of_contact <- c("indirect", "direct")
+  test_infection_origin <- c("between-netpen", "between-netpen")
   test_simulation_day <- 1
 
   expected_inf_farm_info <- data.frame(
@@ -232,21 +211,16 @@ test_that("netpens are not appended when they already exist in infected farm inf
     farm_id = c(1, 2),
     species_id = c(1, 1),
     within_netpen_transmission = c(0.55820072, 0.56227532),
-    susceptible = c(24999, 24999),
-    latent = c(1, 0),
-    subclinical = c(0, 1),
-    clinical = c(0, 0),
-    immune = c(0,0),
-    total = c(25000, 25000),
-    infection_status = c(1, 1), # ignored for now
-    latent_duration = c(0, 0),
-    subclinical_duration = c(0, 0),
-    clinical_time = c(Inf, Inf),
-    time_of_diagnosis = c(Inf, Inf),
-    diagnosed = c(0, 0),
-    infected_by_direct_contact = c("indirect", "direct"),
-    time_infected = c(1, 1),
-    vaccinated = c(0, 0)
+    n_susceptible = c(24999, 24999),
+    n_latent = c(1, 0),
+    n_subclinical = c(0, 1),
+    n_clinical = c(0, 0),
+    n_immune = c(0,0),
+    n_total = c(25000, 25000),
+    infection_status = c(1, 1),
+    infection_origin = c("between-netpen", "between-netpen"),
+    day_infected = c(1, 1),
+    is_vaccinated = c(0, 0)
   )
 
   result_inf_farm_info <-
@@ -254,7 +228,7 @@ test_that("netpens are not appended when they already exist in infected farm inf
                            test_farm_info,
                            test_netpen_ids_to_infect,
                            test_num_inf_animals_by_stage,
-                           test_type_of_contact,
+                           test_infection_origin,
                            test_simulation_day)
 
   expect_equal(result_inf_farm_info, expected_inf_farm_info)
@@ -272,11 +246,11 @@ test_that("single netpen is correctly appended when already infected netpens are
                                    "/initialized_farm_info_bay_x.rds"))
   test_netpen_ids_to_infect <- c(4, 21, 5)
   test_num_inf_animals_by_stage <- data.frame(
-    latent = c(1, 1, 1),
-    subclinical = c(0, 0, 0),
-    clinical = c(0, 0, 0)
+    n_latent = c(1, 1, 1),
+    n_subclinical = c(0, 0, 0),
+    n_clinical = c(0, 0, 0)
   )
-  test_type_of_contact <- c("direct", "direct", "direct")
+  test_infection_origin <- rep("between-netpen", 3)
   test_simulation_day <- 5
 
   expected_inf_farm_info <- rbind(
@@ -287,22 +261,16 @@ test_that("single netpen is correctly appended when already infected netpens are
       farm_id = 1,
       species_id = 1,
       within_netpen_transmission = 0.48065623,
-      susceptible = 24999,
-      latent = 1,
-      subclinical = 0,
-      clinical = 0,
-      immune = 0,
-      total = 25000,
+      n_susceptible = 24999,
+      n_latent = 1,
+      n_subclinical = 0,
+      n_clinical = 0,
+      n_immune = 0,
+      n_total = 25000,
       infection_status = 1,
-      # ignored for now
-      latent_duration = 0,
-      subclinical_duration = 0,
-      clinical_time = Inf,
-      time_of_diagnosis = Inf,
-      diagnosed = 0,
-      infected_by_direct_contact = "direct",
-      time_infected = 5,
-      vaccinated = 0
+      infection_origin = "between-netpen",
+      day_infected = 5,
+      is_vaccinated = 0
     )
   )
 
@@ -311,7 +279,7 @@ test_that("single netpen is correctly appended when already infected netpens are
                            test_farm_info,
                            test_netpen_ids_to_infect,
                            test_num_inf_animals_by_stage,
-                           test_type_of_contact,
+                           test_infection_origin,
                            test_simulation_day)
 
   expect_equal(result_inf_farm_info, expected_inf_farm_info)
@@ -329,11 +297,11 @@ test_that("multiple netpens are correctly appended when already infected netpens
                                    "/initialized_farm_info_bay_x.rds"))
   test_netpen_ids_to_infect <- c(4, 21, 5, 6)
   test_num_inf_animals_by_stage <- data.frame(
-    latent = c(1, 1, 1, 1),
-    subclinical = c(0, 0, 0, 0),
-    clinical = c(0, 0, 0, 0)
+    n_latent = c(1, 1, 1, 1),
+    n_subclinical = c(0, 0, 0, 0),
+    n_clinical = c(0, 0, 0, 0)
   )
-  test_type_of_contact <- c("direct", "direct", "direct", "direct")
+  test_infection_origin <- rep("between-netpen", 4)
   test_simulation_day <- 5
 
   expected_inf_farm_info <- rbind(
@@ -344,22 +312,16 @@ test_that("multiple netpens are correctly appended when already infected netpens
       farm_id = c(1, 1),
       species_id = c(1, 1),
       within_netpen_transmission = c(0.48065623, 0.45983893),
-      susceptible = c(24999, 24999),
-      latent = c(1, 1),
-      subclinical = c(0, 0),
-      clinical = c(0, 0),
-      immune = c(0, 0),
-      total = c(25000, 25000),
+      n_susceptible = c(24999, 24999),
+      n_latent = c(1, 1),
+      n_subclinical = c(0, 0),
+      n_clinical = c(0, 0),
+      n_immune = c(0, 0),
+      n_total = c(25000, 25000),
       infection_status = c(1, 1),
-      # ignored for now
-      latent_duration = c(0, 0),
-      subclinical_duration = c(0, 0),
-      clinical_time = c(Inf, Inf),
-      time_of_diagnosis = c(Inf, Inf),
-      diagnosed = c(0, 0),
-      infected_by_direct_contact = c("direct", "direct"),
-      time_infected = c(5, 5),
-      vaccinated = c(0, 0)
+      infection_origin = rep("between-netpen", 2),
+      day_infected = c(5, 5),
+      is_vaccinated = c(0, 0)
     )
   )
 
@@ -368,7 +330,7 @@ test_that("multiple netpens are correctly appended when already infected netpens
                            test_farm_info,
                            test_netpen_ids_to_infect,
                            test_num_inf_animals_by_stage,
-                           test_type_of_contact,
+                           test_infection_origin,
                            test_simulation_day)
 
   expect_equal(result_inf_farm_info, expected_inf_farm_info)

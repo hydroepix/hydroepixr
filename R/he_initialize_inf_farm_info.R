@@ -17,21 +17,16 @@ he_initialize_inf_farm_info <- function(output_dir,
     farm_id = integer(),
     species_id = integer(),
     within_netpen_transmission = double(),
-    susceptible = integer(),
-    latent = integer(),
-    subclinical = integer(),
-    clinical = integer(),
-    immune = integer(),
-    total = integer(),
-    infection_status = integer(), #???
-    latent_duration = double(), # Length of time in latent stage?
-    subclinical_duration = double(), # Length of time in subclinical stage?
-    clinical_time = double(), # time the herd showed clinical signs of infection
-    time_of_diagnosis = double(),
-    diagnosed = logical(),
-    infected_by_direct_contact = character(),
-    time_infected = double(), # appears to refer to the timestep of infection
-    vaccinated = double()
+    n_susceptible = integer(),
+    n_latent = integer(),
+    n_subclinical = integer(),
+    n_clinical = integer(),
+    n_immune = integer(),
+    n_total = integer(),
+    infection_status = integer(),
+    infection_origin = character(),
+    day_infected = double(),
+    is_vaccinated = double()
   )
   he_write_output_columns(names(inf_farm_info),
                           output_dir,
