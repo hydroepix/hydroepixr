@@ -80,5 +80,9 @@ he_initialize_infection <- function(inf_farm_info,
     he_add_disease_stage_duration(simulation_env$clinical_duration,
                                   species_info$clinical_dur_freq[[1]],
                                   num_animals_to_distribute = 0)
+  # Output initial infection state to output file
+  he_write_inf_netpen_output(inf_farm_info,
+                             simulation_env$inf_netpen_output_file_name,
+                             simulation_env$output_dir)
   inf_farm_info
 }
