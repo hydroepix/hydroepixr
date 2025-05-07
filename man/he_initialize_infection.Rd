@@ -7,6 +7,9 @@
 he_initialize_infection(
   inf_farm_info,
   simulation_env,
+  num_index_infected_min,
+  num_index_infected_mode,
+  num_index_infected_max,
   species_info,
   farm_info,
   index_netpen_ids,
@@ -17,6 +20,12 @@ he_initialize_infection(
 \item{inf_farm_info}{data frame of infected farm information}
 
 \item{simulation_env}{environment containing simulation variables}
+
+\item{num_index_infected_min}{a minimum number of animals to be infected}
+
+\item{num_index_infected_mode}{a mode of animals to be infected}
+
+\item{num_index_infected_max}{a maximum number of animals to be infected}
 
 \item{species_info}{data frame of species information}
 

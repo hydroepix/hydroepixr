@@ -30,9 +30,13 @@ he_run_model <- function(model_env) {
                                                        model_env$index_netpen_ids,
                                                        model_env$index_farm_id)
 
+    # Initialize infection tracking data object
     simulation_env$inf_farm_info <-
       he_initialize_infection(simulation_env$inf_farm_info,
                               simulation_env,
+                              model_env$num_index_infected_min,
+                              model_env$num_index_infected_mode,
+                              model_env$num_index_infected_max,
                               model_env$species_info,
                               model_env$farm_info,
                               model_env$index_netpens)

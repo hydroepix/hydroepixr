@@ -7,7 +7,7 @@
 #' @param verbose a logical value indicating whether to provide additional output
 #'    messages on model running progress
 #'
-#' @return
+#' @return updated infected farm info data frame
 #' @export
 #' @importFrom utils head
 #'

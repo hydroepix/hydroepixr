@@ -35,8 +35,6 @@ he_define_simulation_control_params(model_env,
                                     ignore_disease_status_input = TRUE,
                                     verbose = FALSE)
 he_define_spread_control_params(model_env,
-                                random_num_initially_infected_fish = FALSE,
-                                intrafarm_disease_transmission_model = "binomial chain",
                                 index_netpen_ids = 1,
                                 index_farm_id = NULL,
                                 index_direct = TRUE,

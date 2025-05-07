@@ -8,6 +8,9 @@ test_that("invalid contact type produces error", {
     output_and_simulation_env_test_setup(test_simulation_env,
                                          test_species_info,
                                          test_output_file_name = "infected_netpens.csv")
+  test_num_index_infected_min <- 1
+  test_num_index_infected_mode <- 1
+  test_num_index_infected_max <- 1
 
   test_farm_info <-
     readRDS(paste0(test_data_filepath, "/initialized_farm_info_bay_x.rds"))
@@ -17,6 +20,9 @@ test_that("invalid contact type produces error", {
     he_initialize_infection(
       test_inf_farm_info,
       test_simulation_env,
+      test_num_index_infected_min,
+      test_num_index_infected_mode,
+      test_num_index_infected_max,
       test_species_info,
       test_farm_info,
       test_index_netpen_ids,
@@ -36,6 +42,9 @@ test_that("direct contact initializes infection correctly", {
     output_and_simulation_env_test_setup(test_simulation_env,
                                          test_species_info,
                                          test_output_file_name = "infected_netpens.csv")
+  test_num_index_infected_min <- 1
+  test_num_index_infected_mode <- 1
+  test_num_index_infected_max <- 1
 
   test_farm_info <-
     readRDS(paste0(test_data_filepath, "/initialized_farm_info_bay_x.rds"))
@@ -45,6 +54,9 @@ test_that("direct contact initializes infection correctly", {
     he_initialize_infection(
       test_inf_farm_info,
       test_simulation_env,
+      test_num_index_infected_min,
+      test_num_index_infected_mode,
+      test_num_index_infected_max,
       test_species_info,
       test_farm_info,
       test_index_netpen_ids,
@@ -99,6 +111,9 @@ test_that("indirect contact initializes infection correctly", {
     output_and_simulation_env_test_setup(test_simulation_env,
                                          test_species_info,
                                          test_output_file_name = "infected_netpens.csv")
+  test_num_index_infected_min <- 1
+  test_num_index_infected_mode <- 1
+  test_num_index_infected_max <- 1
 
   test_farm_info <-
     readRDS(paste0(test_data_filepath, "/initialized_farm_info_bay_x.rds"))
@@ -108,6 +123,9 @@ test_that("indirect contact initializes infection correctly", {
     he_initialize_infection(
       test_inf_farm_info,
       test_simulation_env,
+      test_num_index_infected_min,
+      test_num_index_infected_mode,
+      test_num_index_infected_max,
       test_species_info,
       test_farm_info,
       test_index_netpen_ids,

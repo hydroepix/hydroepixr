@@ -24,6 +24,9 @@ he_simulate_day(
 \item{verbose}{a logical value indicating whether to provide additional output
 messages on model running progress}
 }
+\value{
+updated infected farm info data frame
+}
 \description{
 Simulate a day of infection transmission dynamics
 }
