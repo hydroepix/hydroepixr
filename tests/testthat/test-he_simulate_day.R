@@ -91,6 +91,7 @@ test_that("day is simulated correctly for a single infected farm", {
                                           simulation_day = 10,
                                           test_species_info)
   # TODO:
+  # Check correct simulation day is recorded
   # Check disease stage matrices (in simulation env)
   # Check updated disease stage counts
 })

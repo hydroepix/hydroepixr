@@ -40,6 +40,9 @@ he_simulate_day <- function(inf_farm_info,
                      num_newly_infected))
     }
 
+    # Update the day represented by the current stage of the infected farm info
+    inf_farm_info["simulation_day"] <- simulation_day
+
     # Add and remove fish from different disease stages according to new
     # infections and the number of fish which have reached their duration in
     # their current disease stage

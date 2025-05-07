@@ -44,7 +44,7 @@ he_initialize_infection <- function(inf_farm_info,
                                            clinical = 0
                                          ),
                                          type_of_contact,
-                                         simulation_day = 1)
+                                         simulation_day = 0)
     simulation_env$disease_stage_duration_matrices$latent_duration <-
       he_add_disease_stage_duration(simulation_env$latent_duration,
                                     species_info$latent_dur_freq[[1]],
@@ -63,7 +63,7 @@ he_initialize_infection <- function(inf_farm_info,
                                            clinical = 0
                                          ),
                                          type_of_contact,
-                                         simulation_day = 1)
+                                         simulation_day = 0)
     simulation_env$disease_stage_duration_matrices$latent_duration <-
       he_add_disease_stage_duration(simulation_env$latent_duration,
                                     species_info$latent_dur_freq[[1]],

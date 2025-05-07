@@ -66,7 +66,7 @@ test_that("direct contact initializes infection correctly", {
   expect_equal(
     test_inf_farm_info,
     data.frame(
-      simulation_day = 1,
+      simulation_day = 0,
       netpen_id = 1,
       farm_id = 1,
       species_id = 1,
@@ -84,7 +84,7 @@ test_that("direct contact initializes infection correctly", {
       time_of_diagnosis = Inf,
       diagnosed = 0,
       infected_by_direct_contact = "direct",
-      time_infected = 1,
+      time_infected = 0,
       vaccinated = 0
     )
   )
@@ -135,7 +135,7 @@ test_that("indirect contact initializes infection correctly", {
   expect_equal(
     test_inf_farm_info,
     data.frame(
-      simulation_day = 1,
+      simulation_day = 0,
       netpen_id = 1,
       farm_id = 1,
       species_id = 1,
@@ -153,7 +153,7 @@ test_that("indirect contact initializes infection correctly", {
       time_of_diagnosis = Inf,
       diagnosed = 0,
       infected_by_direct_contact = "indirect",
-      time_infected = 1,
+      time_infected = 0,
       vaccinated = 0
     )
   )
