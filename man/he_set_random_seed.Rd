@@ -4,12 +4,12 @@
 \alias{he_set_random_seed}
 \title{Set random seed}
 \usage{
-he_set_random_seed(seed, simulation_num)
+he_set_random_seed(seed, simulation_n)
 }
 \arguments{
 \item{seed}{numeric value for the seed}
 
-\item{simulation_num}{simulation number, based on the number of simulations
+\item{simulation_n}{simulation number, based on the number of simulations
 the model is set to run}
 }
 \value{

@@ -8,7 +8,7 @@ he_select_index_netpens(
   farm_info,
   netpen_ids = NULL,
   farm_id = NULL,
-  num_inf_netpens = 1
+  n_inf_netpens = 1
 )
 }
 \arguments{
@@ -19,7 +19,7 @@ he_select_index_netpens(
 \item{farm_id}{identifier for farm to be infected first, if no netpen
 identifiers are supplied}
 
-\item{num_inf_netpens}{number of randomly selected netpens to be infected in
+\item{n_inf_netpens}{number of randomly selected netpens to be infected in
 the specified farm, if no netpen identifiers are supplied}
 }
 \value{

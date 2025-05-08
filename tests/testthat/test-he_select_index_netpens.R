@@ -45,7 +45,7 @@ test_that("randomixed index netpen selection from farm ID works with specified
   farm_info <- readRDS(paste0(test_data_filepath, "/raw_farm_info_bay_x.rds"))
   test_index_netpens <- he_select_index_netpens(farm_info,
                                                 farm_id = 2,
-                                                num_inf_netpens = 3)
+                                                n_inf_netpens = 3)
   # Check the appropriate number of netpens have been selected
   expect_equal(length(test_index_netpens), 3)
   # Check that the selected netpens exist in the data frame

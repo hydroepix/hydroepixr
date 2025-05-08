@@ -49,6 +49,6 @@ he_apply_between_farm_netpen_infection <-
     he_add_infected_netpen(inf_farm_info,
                            species_info,
                            new_inf_farm_ids,
-                           num_inf_animals)
+                           n_inf_animals)
   }
 }

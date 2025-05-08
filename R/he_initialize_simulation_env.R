@@ -7,7 +7,7 @@
 #' @param model_run_id identifier for this run of the model
 #' @param inf_netpen_output_file_name name of the file in which the infected
 #'    farm information should be stored
-#' @param simulation_num identifies which simulation of the model run this
+#' @param simulation_n identifies which simulation of the model run this
 #'    this environment belongs to
 #'
 #' @return NA
@@ -20,13 +20,13 @@ he_initialize_simulation_env <-
            output_dir,
            model_run_id,
            inf_netpen_output_file_name,
-           simulation_num) {
+           simulation_n) {
   # Define output parameters at the simulation level
   simulation_env$output_dir <- output_dir
-  simulation_env$simulation_num <- simulation_num
+  simulation_env$simulation_n <- simulation_n
   simulation_env$inf_netpen_output_file_name <-
     paste(model_run_id,
-          simulation_num,
+          simulation_n,
           inf_netpen_output_file_name,
           sep = "_")
 
@@ -35,10 +35,10 @@ he_initialize_simulation_env <-
     he_initialize_inf_farm_info(simulation_env$output_dir,
                                 simulation_env$inf_netpen_output_file_name)
   # Initialize simulation-level farm information variables
-  #farm_info$susceptible_again <- rep(0, num_netpens)
-  #farm_info$survived <- rep(0, num_netpens)
-  #farm_info$infectiousness <- rep(0, num_netpens)
-  #farm_info$infection_mode <- rep(0, num_netpens)
+  #farm_info$susceptible_again <- rep(0, n_netpens)
+  #farm_info$survived <- rep(0, n_netpens)
+  #farm_info$infectiousness <- rep(0, n_netpens)
+  #farm_info$infection_mode <- rep(0, n_netpens)
 
   # Initialize matrices to store disease stage durations
   # TODO: This will need to be updated to accommodate and label different

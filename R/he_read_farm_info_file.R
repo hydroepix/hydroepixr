@@ -13,7 +13,7 @@ he_read_farm_info_file <- function(filepath, verbose = FALSE) {
                                  sep = ",",
                                  dec = ".",
                                  header = TRUE)
-  num_farms <- length(farm_info$species)
+  n_farms <- length(farm_info$species)
   # Check for expected columns and names
   # TODO: Confirm whether all of these columns are necessary for the model
   # or is a specific subset sufficient? The check should change accordingly.
@@ -48,8 +48,8 @@ he_read_farm_info_file <- function(filepath, verbose = FALSE) {
         "Default values assigned.")
       )
     }
-    farm_info$infection_status <- rep(1, num_farms)
-    farm_info$time_infected <- rep(Inf, num_farms)
+    farm_info$infection_status <- rep(1, n_farms)
+    farm_info$time_infected <- rep(Inf, n_farms)
   } else {
     stop(
       "Unexpected column headers. Expected headers are: ",

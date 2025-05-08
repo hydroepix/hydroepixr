@@ -1,9 +1,9 @@
 test_that("default spread parameters are stored in the environment", {
   test_environment <- rlang::new_environment()
   he_define_spread_control_params(test_environment)
-  expect_equal(test_environment$num_index_infected_min, 1)
-  expect_equal(test_environment$num_index_infected_mode, 10)
-  expect_equal(test_environment$num_index_infected_max, 100)
+  expect_equal(test_environment$n_index_infected_min, 1)
+  expect_equal(test_environment$n_index_infected_mode, 10)
+  expect_equal(test_environment$n_index_infected_max, 100)
   expect_true(is.null(test_environment$index_netpen_ids))
   expect_true(is.null(test_environment$index_farm_id))
   expect_equal(test_environment$case_fatality_prop, 0.89)
@@ -15,9 +15,9 @@ test_that("default spread parameters are stored in the environment", {
 
 test_that("user-defined spread parameters stored in the environment", {
   test_index_netpen_ids <- c(1, 2, 3, 4, 5)
-  test_num_index_infected_min <- 10
-  test_num_index_infected_mode <- 10
-  test_num_index_infected_max <- 10
+  test_n_index_infected_min <- 10
+  test_n_index_infected_mode <- 10
+  test_n_index_infected_max <- 10
   test_index_farm_id <- 1
   test_case_fatality_prop <- 0.75
   test_days_dead_infectious <- 1
@@ -26,9 +26,9 @@ test_that("user-defined spread parameters stored in the environment", {
   test_vaccine_efficacy <- 0.5
   test_environment <- rlang::new_environment()
   he_define_spread_control_params(test_environment,
-                                  num_index_infected_min = test_num_index_infected_min,
-                                  num_index_infected_mode = test_num_index_infected_mode,
-                                  num_index_infected_max = test_num_index_infected_max,
+                                  n_index_infected_min = test_n_index_infected_min,
+                                  n_index_infected_mode = test_n_index_infected_mode,
+                                  n_index_infected_max = test_n_index_infected_max,
                                   index_netpen_ids = test_index_netpen_ids,
                                   index_farm_id = test_index_farm_id,
                                   case_fatality_prop = test_case_fatality_prop,
@@ -36,9 +36,9 @@ test_that("user-defined spread parameters stored in the environment", {
                                   farm_to_farm = test_farm_to_farm,
                                   netpen_to_netpen = test_netpen_to_netpen,
                                   vaccine_efficacy = test_vaccine_efficacy)
-  expect_equal(test_environment$num_index_infected_min, test_num_index_infected_min)
-  expect_equal(test_environment$num_index_infected_mode, test_num_index_infected_mode)
-  expect_equal(test_environment$num_index_infected_max, test_num_index_infected_max)
+  expect_equal(test_environment$n_index_infected_min, test_n_index_infected_min)
+  expect_equal(test_environment$n_index_infected_mode, test_n_index_infected_mode)
+  expect_equal(test_environment$n_index_infected_max, test_n_index_infected_max)
   expect_equal(test_environment$index_netpen_ids, test_index_netpen_ids)
   expect_equal(test_environment$index_farm_id, test_index_farm_id)
   expect_equal(test_environment$case_fatality_prop, test_case_fatality_prop)

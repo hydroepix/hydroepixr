@@ -80,7 +80,7 @@ he_simulate_day <- function(inf_farm_info,
       he_update_disease_stage_duration_matrix(
         simulation_env$disease_stage_duration_matrices,
         disease_stage_distribution = disease_stage_distributions,
-        num_animals_to_distribute = n_animals_transitioning_by_stage
+        n_animals_to_distribute = n_animals_transitioning_by_stage
         )
 
     # TODO: Update overall netpen infection statuses

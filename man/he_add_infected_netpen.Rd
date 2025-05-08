@@ -8,7 +8,7 @@ he_add_infected_netpen(
   inf_farm_info,
   farm_info,
   new_inf_netpen_ids,
-  num_inf_animals_by_stage,
+  n_inf_animals_by_stage,
   infection_origin,
   simulation_day
 )
@@ -20,7 +20,7 @@ he_add_infected_netpen(
 
 \item{new_inf_netpen_ids}{list of newly infected netpen ids}
 
-\item{num_inf_animals_by_stage}{vector of numeric values indicating the
+\item{n_inf_animals_by_stage}{vector of numeric values indicating the
 of infected animals in each stage of infection (latent, clinical, and
 subclinical)}
 

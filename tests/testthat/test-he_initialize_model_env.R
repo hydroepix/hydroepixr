@@ -19,7 +19,7 @@ test_that("model environment variables are initialized", {
   expect_true(is.null(test_environment$infected_netpens))
 
   # Check variables pulled from farm_info_file have been initialized
-  expect_true(exists("num_netpens", where = test_environment))
+  expect_true(exists("n_netpens", where = test_environment))
   expect_true(exists("rel_susceptibility", where = test_environment$farm_info))
   expect_true(exists("within_netpen_transmission", where = test_environment$farm_info))
 
@@ -32,7 +32,7 @@ test_that("model environment variables are initialized", {
   expect_true(all(test_environment$farm_info$within_netpen_transmission <= 0.8))
 
   # Check number of farms is stored correctly
-  expect_equal(test_environment$num_netpens, 60)
+  expect_equal(test_environment$n_netpens, 60)
 })
 
 

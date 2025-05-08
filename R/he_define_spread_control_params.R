@@ -2,11 +2,11 @@
 #'
 #' @param model_env environment in which simulation variables are stored and
 #'   managed
-#' @param num_index_infected_min minimum number of fish initially infected,
+#' @param n_index_infected_min minimum number of fish initially infected,
 #'    to be calculated from a PERT distribution
-#' @param num_index_infected_mode mode of fish initially infected, to be
+#' @param n_index_infected_mode mode of fish initially infected, to be
 #'    calculated from a PERT distribution
-#' @param num_index_infected_max maximum number of fish initially infected, to
+#' @param n_index_infected_max maximum number of fish initially infected, to
 #'    be calculated from a PERT distribution
 #' @param index_netpen_ids identifiers of the index netpens
 #' @param index_farm_id identifier of the index farm
@@ -25,9 +25,9 @@
 #'
 he_define_spread_control_params <-
   function(model_env,
-           num_index_infected_min = 1,
-           num_index_infected_mode = 10,
-           num_index_infected_max = 100,
+           n_index_infected_min = 1,
+           n_index_infected_mode = 10,
+           n_index_infected_max = 100,
            index_netpen_ids = NULL,
            index_farm_id = NULL,
            index_direct = TRUE,
@@ -36,9 +36,9 @@ he_define_spread_control_params <-
            farm_to_farm = 0.42,
            netpen_to_netpen = 0.052,
            vaccine_efficacy = 0) {
-    model_env$num_index_infected_min <- num_index_infected_min
-    model_env$num_index_infected_mode <- num_index_infected_mode
-    model_env$num_index_infected_max <- num_index_infected_max
+    model_env$n_index_infected_min <- n_index_infected_min
+    model_env$n_index_infected_mode <- n_index_infected_mode
+    model_env$n_index_infected_max <- n_index_infected_max
     model_env$index_netpen_ids <- index_netpen_ids
     model_env$index_farm_id <- index_farm_id
     model_env$case_fatality_prop <- case_fatality_prop

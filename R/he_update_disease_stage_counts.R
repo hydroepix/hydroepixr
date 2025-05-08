@@ -5,7 +5,7 @@
 #'    a netpen
 #' @param disease_stage_duration_matrices list of matrices containing the
 #'    disease stage duration for each netpen
-#' @param num_newly_infected the number of newly infected animals for each
+#' @param n_newly_infected the number of newly infected animals for each
 #'    netpen
 #'
 #' @return modified disease stage count columns
@@ -13,7 +13,7 @@
 
 he_update_disease_stage_counts <- function(disease_stage_counts,
                                            disease_stage_duration_matrices,
-                                           num_newly_infected) {
+                                           n_newly_infected) {
   # This function assumes at least three disease stages because of the call to
   # he_calculate_net_change_in_disease_stage_count
   if (ncol(disease_stage_counts) < 3) {
@@ -24,20 +24,20 @@ he_update_disease_stage_counts <- function(disease_stage_counts,
 
   # The number of infected netpens (rows) should be consistent across disease
   # stage duration matrices
-  num_rows_disease_stage_duration_matrices <-
+  n_rows_disease_stage_duration_matrices <-
     sapply(disease_stage_duration_matrices, nrow)
 
-  if (length(unique(num_rows_disease_stage_duration_matrices)) > 1) {
+  if (length(unique(n_rows_disease_stage_duration_matrices)) > 1) {
     stop("Inconsistent number of rows in disease stage duration matrices.
          Different matrices have numbers of rows as follows: ",
-         paste(num_rows_disease_stage_duration_matrices, collapse = ", "))
+         paste(n_rows_disease_stage_duration_matrices, collapse = ", "))
   }
 
   # The number of netpens should be consistent across provided arguments:
   # Length of newly infected
   # Number of rows in disease stage counts
   # Number of rows in duration matrices
-  if (nrow(disease_stage_counts) != length(num_newly_infected)) {
+  if (nrow(disease_stage_counts) != length(n_newly_infected)) {
     stop("Mismatched number of infected netpens (rows) between disease stage
          counts and number of newly infected animals. The number of newly
          infected animal values should be equal to the number of rows of
@@ -45,15 +45,15 @@ he_update_disease_stage_counts <- function(disease_stage_counts,
          Number of rows in disease stage counts: ",
          nrow(disease_stage_counts), "\n
          Number of newly infected animal values: ",
-         length(num_newly_infected))
+         length(n_newly_infected))
   }
   if (!all(nrow(disease_stage_counts) ==
-           num_rows_disease_stage_duration_matrices)) {
+           n_rows_disease_stage_duration_matrices)) {
     stop("Mismatched number of infected netpens (rows) between disease stage
          counts and disease stage duration matrices. All duration matrices and
          the disease stage counts should all have the same number of rows.\n
          Number of rows in each disease stage duration matrix: ",
-         paste(num_rows_disease_stage_duration_matrices, collapse = ", "),
+         paste(n_rows_disease_stage_duration_matrices, collapse = ", "),
          "\n
          Number of rows in disease stage counts: ",
          nrow(disease_stage_counts)
@@ -78,7 +78,7 @@ he_update_disease_stage_counts <- function(disease_stage_counts,
     net_change <-
       he_calculate_net_change_in_disease_stage_count(
         disease_stage_duration_matrices,
-        num_newly_infected
+        n_newly_infected
       )
     updated_disease_stage_counts <- disease_stage_counts + net_change
     # if(any(updated_disease_stage_counts < 0)) {

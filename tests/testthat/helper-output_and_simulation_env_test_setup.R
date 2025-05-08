@@ -8,7 +8,7 @@ output_and_simulation_env_test_setup <- function(test_environment,
     temp_test_dir,
     model_run_id = "testmodel",
     test_output_file_name,
-    simulation_num = 1
+    simulation_n = 1
   )
   # Return the temp directory
   temp_test_dir

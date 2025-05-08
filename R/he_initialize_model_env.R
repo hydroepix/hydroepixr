@@ -35,5 +35,5 @@ he_initialize_model_env <-
 
     # Store number of farms as a separate variable due to frequent referencing
     # throughout the model
-    model_env$num_netpens <- length(model_env$farm_info$netpen_id)
+    model_env$n_netpens <- length(model_env$farm_info$netpen_id)
   }

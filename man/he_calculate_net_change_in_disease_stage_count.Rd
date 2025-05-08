@@ -7,14 +7,14 @@
 \usage{
 he_calculate_net_change_in_disease_stage_count(
   disease_stage_duration_matrices,
-  num_newly_infected
+  n_newly_infected
 )
 }
 \arguments{
 \item{disease_stage_duration_matrices}{list of matrices containing the
 disease stage duration for each netpen}
 
-\item{num_newly_infected}{he number of newly infected animals for each
+\item{n_newly_infected}{he number of newly infected animals for each
 netpen}
 }
 \value{

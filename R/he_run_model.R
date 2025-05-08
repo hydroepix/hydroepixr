@@ -8,10 +8,10 @@
 he_run_model <- function(model_env) {
   # TODO: Check that all required variables are initialized in the model env
   # Iterate over the specified number of simulations
-  for (simulation_num in model_env$n_simulations) {
+  for (simulation_n in model_env$n_simulations) {
     # Inside here is analogous to HEengine.R
     if (model_env$verbose) {
-      cat("Simulation ", simulation_num, "\n")
+      cat("Simulation ", simulation_n, "\n")
     }
     # Create and initialize simulation environment
     simulation_env <- he_create_simulation_env(model_env)
@@ -20,11 +20,11 @@ he_run_model <- function(model_env) {
                                  model_env$output_dir,
                                  model_env$model_run_id,
                                  model_env$inf_netpen_output_file_name,
-                                 simulation_num)
+                                 simulation_n)
 
     # Set random seed for the simulation
     model_env$random_seed <- he_set_random_seed(model_env$random_seed,
-                                                simulation_num)
+                                                simulation_n)
     # Select index netpens for this simulation
     model_env$index_netpens <- he_select_index_netpens(model_env$farm_info,
                                                        model_env$index_netpen_ids,
@@ -34,9 +34,9 @@ he_run_model <- function(model_env) {
     simulation_env$inf_farm_info <-
       he_initialize_infection(simulation_env$inf_farm_info,
                               simulation_env,
-                              model_env$num_index_infected_min,
-                              model_env$num_index_infected_mode,
-                              model_env$num_index_infected_max,
+                              model_env$n_index_infected_min,
+                              model_env$n_index_infected_mode,
+                              model_env$n_index_infected_max,
                               model_env$species_info,
                               model_env$farm_info,
                               model_env$index_netpens)

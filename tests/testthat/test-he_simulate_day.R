@@ -33,18 +33,18 @@ test_that("day is simulated correctly for a single infected farm", {
                                          test_species_info,
                                          test_output_file_name = "infected_netpens.csv")
 
-  test_num_index_infected_min <- 1
-  test_num_index_infected_mode <- 10
-  test_num_index_infected_max <- 100
+  test_n_index_infected_min <- 1
+  test_n_index_infected_mode <- 10
+  test_n_index_infected_max <- 100
 
   test_index_netpens <- 1
   test_inf_farm_info <-
     he_initialize_infection(
       test_inf_farm_info,
       test_simulation_env,
-      test_num_index_infected_min,
-      test_num_index_infected_mode,
-      test_num_index_infected_max,
+      test_n_index_infected_min,
+      test_n_index_infected_mode,
+      test_n_index_infected_max,
       test_species_info,
       test_farm_info,
       test_index_netpens

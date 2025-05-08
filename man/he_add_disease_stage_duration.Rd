@@ -7,7 +7,7 @@
 he_add_disease_stage_duration(
   duration_matrix,
   disease_stage_distribution,
-  num_animals_to_distribute
+  n_animals_to_distribute
 )
 }
 \arguments{
@@ -17,7 +17,7 @@ disease stage}
 \item{disease_stage_distribution}{probability distribution of an animal
 spending a given number of days in the specified disease stage}
 
-\item{num_animals_to_distribute}{number of animals to distribute into time
+\item{n_animals_to_distribute}{number of animals to distribute into time
 spent in the specified disease stage}
 }
 \description{

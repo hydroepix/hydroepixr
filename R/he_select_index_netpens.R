@@ -4,14 +4,14 @@
 #' @param netpen_ids identifiers of specific netpens to be infected
 #' @param farm_id identifier for farm to be infected first, if no netpen
 #'    identifiers are supplied
-#' @param num_inf_netpens number of randomly selected netpens to be infected in
+#' @param n_inf_netpens number of randomly selected netpens to be infected in
 #'    the specified farm, if no netpen identifiers are supplied
 #'
 #' @return netpen identifier(s) of initially infected netpens
 #' @export
 #'
 he_select_index_netpens <-
-  function(farm_info, netpen_ids = NULL, farm_id = NULL, num_inf_netpens = 1) {
+  function(farm_info, netpen_ids = NULL, farm_id = NULL, n_inf_netpens = 1) {
     # TODO: Check for cases where both netpen_ids and farm_id are provided?
     # If no netpen id is provided, select randomly from the netpens with the
     # provided farm id
@@ -28,7 +28,7 @@ he_select_index_netpens <-
       # Randomly sample the specified number of netpens from the specified farm
       # as index netpens
       inf_netpen_ids <- sample(farm_id_netpens$netpen_id,
-                               size = num_inf_netpens)
+                               size = n_inf_netpens)
     # Otherwise, simply check if the netpen ids provided are valid
     } else {
       # Netpen id is not null, in which case farm id should be

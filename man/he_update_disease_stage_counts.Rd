@@ -7,7 +7,7 @@
 he_update_disease_stage_counts(
   disease_stage_counts,
   disease_stage_duration_matrices,
-  num_newly_infected
+  n_newly_infected
 )
 }
 \arguments{
@@ -18,7 +18,7 @@ a netpen}
 \item{disease_stage_duration_matrices}{list of matrices containing the
 disease stage duration for each netpen}
 
-\item{num_newly_infected}{the number of newly infected animals for each
+\item{n_newly_infected}{the number of newly infected animals for each
 netpen}
 }
 \value{

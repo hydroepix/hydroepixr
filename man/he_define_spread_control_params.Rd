@@ -6,9 +6,9 @@
 \usage{
 he_define_spread_control_params(
   model_env,
-  num_index_infected_min = 1,
-  num_index_infected_mode = 10,
-  num_index_infected_max = 100,
+  n_index_infected_min = 1,
+  n_index_infected_mode = 10,
+  n_index_infected_max = 100,
   index_netpen_ids = NULL,
   index_farm_id = NULL,
   index_direct = TRUE,
@@ -23,13 +23,13 @@ he_define_spread_control_params(
 \item{model_env}{environment in which simulation variables are stored and
 managed}
 
-\item{num_index_infected_min}{minimum number of fish initially infected,
+\item{n_index_infected_min}{minimum number of fish initially infected,
 to be calculated from a PERT distribution}
 
-\item{num_index_infected_mode}{mode of fish initially infected, to be
+\item{n_index_infected_mode}{mode of fish initially infected, to be
 calculated from a PERT distribution}
 
-\item{num_index_infected_max}{maximum number of fish initially infected, to
+\item{n_index_infected_max}{maximum number of fish initially infected, to
 be calculated from a PERT distribution}
 
 \item{index_netpen_ids}{identifiers of the index netpens}

@@ -3,7 +3,7 @@
 #' @param inf_farm_info data frame of information on infected farms
 #' @param farm_info data frame of information on netpens
 #' @param new_inf_netpen_ids list of newly infected netpen ids
-#' @param num_inf_animals_by_stage vector of numeric values indicating the
+#' @param n_inf_animals_by_stage vector of numeric values indicating the
 #'    of infected animals in each stage of infection (latent, clinical, and
 #'    subclinical)
 #' @param infection_origin source of the infection was can be "index",
@@ -18,7 +18,7 @@ he_add_infected_netpen <-
   function(inf_farm_info,
            farm_info,
            new_inf_netpen_ids,
-           num_inf_animals_by_stage,
+           n_inf_animals_by_stage,
            infection_origin,
            simulation_day
            ) {
@@ -27,8 +27,8 @@ he_add_infected_netpen <-
     already_inf_ids <- new_inf_netpen_ids %in% inf_farm_info$netpen_id
     if (any(already_inf_ids)) {
       new_inf_netpen_ids <- new_inf_netpen_ids[!already_inf_ids]
-      num_inf_animals_by_stage <-
-        num_inf_animals_by_stage[!already_inf_ids,, drop = FALSE]
+      n_inf_animals_by_stage <-
+        n_inf_animals_by_stage[!already_inf_ids,, drop = FALSE]
       infection_origin <- infection_origin[!already_inf_ids]
     }
 
@@ -42,8 +42,8 @@ he_add_infected_netpen <-
           species_id = farm_info$species_id[new_inf_netpen_ids],
           within_netpen_transmission = farm_info$within_netpen_transmission[new_inf_netpen_ids],
           n_susceptible = farm_info$netpen_size[new_inf_netpen_ids] -
-            rowSums(num_inf_animals_by_stage),
-          num_inf_animals_by_stage,
+            rowSums(n_inf_animals_by_stage),
+          n_inf_animals_by_stage,
           n_immune = 0,
           n_total = farm_info$netpen_size[new_inf_netpen_ids],
           infection_status = 1,

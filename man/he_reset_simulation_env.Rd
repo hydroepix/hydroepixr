@@ -4,12 +4,12 @@
 \alias{he_reset_simulation_env}
 \title{Reset the simulation environment at the end of a simulation}
 \usage{
-he_reset_simulation_env(environment, num_farms, farm_info)
+he_reset_simulation_env(environment, n_farms, farm_info)
 }
 \arguments{
 \item{environment}{simulation environment to reset}
 
-\item{num_farms}{number of farms in the model run}
+\item{n_farms}{number of farms in the model run}
 
 \item{farm_info}{matrix of farm information}
 }

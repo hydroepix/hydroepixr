@@ -4,7 +4,7 @@ test_that("single netpen is correctly appended to empty infected farm info", {
   test_farm_info <- readRDS(paste0(test_data_filepath,
                                    "/initialized_farm_info_bay_x.rds"))
   test_netpen_ids_to_infect <- 4
-  test_num_inf_animals_by_stage <- data.frame(
+  test_n_inf_animals_by_stage <- data.frame(
     n_latent = 1,
     n_subclinical = 0,
     n_clinical = 0
@@ -35,7 +35,7 @@ test_that("single netpen is correctly appended to empty infected farm info", {
     he_add_infected_netpen(test_inf_farm_info,
                            test_farm_info,
                            test_netpen_ids_to_infect,
-                           test_num_inf_animals_by_stage,
+                           test_n_inf_animals_by_stage,
                            test_infection_origin,
                            test_simulation_day)
 
@@ -48,7 +48,7 @@ test_that("netpens are correctly appended to empty infected farm info", {
   test_farm_info <- readRDS(paste0(test_data_filepath,
                                    "/initialized_farm_info_bay_x.rds"))
   test_netpen_ids_to_infect <- c(4, 21)
-  test_num_inf_animals_by_stage <- data.frame(
+  test_n_inf_animals_by_stage <- data.frame(
     n_latent = c(1, 0),
     n_subclinical = c(0, 1),
     n_clinical = c(0, 0)
@@ -78,7 +78,7 @@ test_that("netpens are correctly appended to empty infected farm info", {
     he_add_infected_netpen(test_inf_farm_info,
                            test_farm_info,
                            test_netpen_ids_to_infect,
-                           test_num_inf_animals_by_stage,
+                           test_n_inf_animals_by_stage,
                            test_infection_origin,
                            test_simulation_day)
 
@@ -95,7 +95,7 @@ test_that("single netpen is correctly appended to infected farm info", {
   test_farm_info <- readRDS(paste0(test_data_filepath,
                                    "/initialized_farm_info_bay_x.rds"))
   test_netpen_ids_to_infect <- 5
-  test_num_inf_animals_by_stage <- data.frame(
+  test_n_inf_animals_by_stage <- data.frame(
     n_latent = 5,
     n_subclinical = 0,
     n_clinical = 0
@@ -130,7 +130,7 @@ test_that("single netpen is correctly appended to infected farm info", {
     he_add_infected_netpen(test_inf_farm_info,
                            test_farm_info,
                            test_netpen_ids_to_infect,
-                           test_num_inf_animals_by_stage,
+                           test_n_inf_animals_by_stage,
                            test_infection_origin,
                            test_simulation_day)
 
@@ -147,7 +147,7 @@ test_that("netpens are correctly appended to infected farm info", {
   test_farm_info <- readRDS(paste0(test_data_filepath,
                                    "/initialized_farm_info_bay_x.rds"))
   test_netpen_ids_to_infect <- c(5, 6)
-  test_num_inf_animals_by_stage <- data.frame(
+  test_n_inf_animals_by_stage <- data.frame(
     n_latent = c(10, 5),
     n_subclinical = c(0, 0),
     n_clinical = c(0, 0)
@@ -180,7 +180,7 @@ test_that("netpens are correctly appended to infected farm info", {
     he_add_infected_netpen(test_inf_farm_info,
                            test_farm_info,
                            test_netpen_ids_to_infect,
-                           test_num_inf_animals_by_stage,
+                           test_n_inf_animals_by_stage,
                            test_infection_origin,
                            test_simulation_day)
 
@@ -197,7 +197,7 @@ test_that("netpens are not appended when they already exist in infected farm inf
   test_farm_info <- readRDS(paste0(test_data_filepath,
                                    "/initialized_farm_info_bay_x.rds"))
   test_netpen_ids_to_infect <- c(4, 21)
-  test_num_inf_animals_by_stage <- data.frame(
+  test_n_inf_animals_by_stage <- data.frame(
     n_latent = c(1, 0),
     n_subclinical = c(0, 1),
     n_clinical = c(0, 0)
@@ -227,7 +227,7 @@ test_that("netpens are not appended when they already exist in infected farm inf
     he_add_infected_netpen(test_inf_farm_info,
                            test_farm_info,
                            test_netpen_ids_to_infect,
-                           test_num_inf_animals_by_stage,
+                           test_n_inf_animals_by_stage,
                            test_infection_origin,
                            test_simulation_day)
 
@@ -245,7 +245,7 @@ test_that("single netpen is correctly appended when already infected netpens are
   test_farm_info <- readRDS(paste0(test_data_filepath,
                                    "/initialized_farm_info_bay_x.rds"))
   test_netpen_ids_to_infect <- c(4, 21, 5)
-  test_num_inf_animals_by_stage <- data.frame(
+  test_n_inf_animals_by_stage <- data.frame(
     n_latent = c(1, 1, 1),
     n_subclinical = c(0, 0, 0),
     n_clinical = c(0, 0, 0)
@@ -278,7 +278,7 @@ test_that("single netpen is correctly appended when already infected netpens are
     he_add_infected_netpen(test_inf_farm_info,
                            test_farm_info,
                            test_netpen_ids_to_infect,
-                           test_num_inf_animals_by_stage,
+                           test_n_inf_animals_by_stage,
                            test_infection_origin,
                            test_simulation_day)
 
@@ -296,7 +296,7 @@ test_that("multiple netpens are correctly appended when already infected netpens
   test_farm_info <- readRDS(paste0(test_data_filepath,
                                    "/initialized_farm_info_bay_x.rds"))
   test_netpen_ids_to_infect <- c(4, 21, 5, 6)
-  test_num_inf_animals_by_stage <- data.frame(
+  test_n_inf_animals_by_stage <- data.frame(
     n_latent = c(1, 1, 1, 1),
     n_subclinical = c(0, 0, 0, 0),
     n_clinical = c(0, 0, 0, 0)
@@ -329,7 +329,7 @@ test_that("multiple netpens are correctly appended when already infected netpens
     he_add_infected_netpen(test_inf_farm_info,
                            test_farm_info,
                            test_netpen_ids_to_infect,
-                           test_num_inf_animals_by_stage,
+                           test_n_inf_animals_by_stage,
                            test_infection_origin,
                            test_simulation_day)
 

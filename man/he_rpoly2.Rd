@@ -4,10 +4,10 @@
 \alias{he_rpoly2}
 \title{RPoly2 ?}
 \usage{
-he_rpoly2(sample_num, probability)
+he_rpoly2(sample_n, probability)
 }
 \arguments{
-\item{sample_num}{number of samples to take}
+\item{sample_n}{number of samples to take}
 
 \item{probability}{numeric probability or vector of probabilities}
 }

@@ -7,7 +7,7 @@
 he_update_disease_stage_duration_matrix(
   disease_stage_matrix,
   disease_stage_distribution,
-  num_animals_to_distribute
+  n_animals_to_distribute
 )
 }
 \arguments{
@@ -17,7 +17,7 @@ disease stage}
 
 \item{disease_stage_distribution}{data frame of species information}
 
-\item{num_animals_to_distribute}{number of animals which are newly entering
+\item{n_animals_to_distribute}{number of animals which are newly entering
 the given disease stage}
 }
 \description{

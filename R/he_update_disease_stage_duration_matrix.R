@@ -4,7 +4,7 @@
 #' @param disease_stage_matrix matrix representing a disease stage, recording
 #'    the number of animals that will spend a given number of days in that
 #'    disease stage
-#' @param num_animals_to_distribute number of animals which are newly entering
+#' @param n_animals_to_distribute number of animals which are newly entering
 #'    the given disease stage
 #'
 #' @export
@@ -12,12 +12,12 @@
 he_update_disease_stage_duration_matrix <-
   function(disease_stage_matrix,
            disease_stage_distribution,
-           num_animals_to_distribute) {
+           n_animals_to_distribute) {
   # Generate a new set of durations for incoming animals to spend in this
   # disease stage before transitioning
     newly_distributed_animals <-
       purrr::map2(
-        num_animals_to_distribute,
+        n_animals_to_distribute,
         disease_stage_distribution,
         \(x, y) t(he_rpoly2(x, y[[1]]))
       )

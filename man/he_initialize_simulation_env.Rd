@@ -10,7 +10,7 @@ he_initialize_simulation_env(
   output_dir,
   model_run_id,
   inf_netpen_output_file_name,
-  simulation_num
+  simulation_n
 )
 }
 \arguments{
@@ -26,7 +26,7 @@ be stored}
 \item{inf_netpen_output_file_name}{name of the file in which the infected
 farm information should be stored}
 
-\item{simulation_num}{identifies which simulation of the model run this
+\item{simulation_n}{identifies which simulation of the model run this
 this environment belongs to}
 }
 \value{
