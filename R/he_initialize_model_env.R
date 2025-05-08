@@ -13,7 +13,7 @@ he_initialize_model_env <-
   function(model_env,
            farm_info_filepath,
            species_info_filepath,
-           connectivity_matrix_filepath) {
+           connectivity_matrix_filepath = NULL) {
     # Read in files data
     model_env$farm_info <-
       he_read_farm_info_file(farm_info_filepath)
@@ -21,8 +21,10 @@ he_initialize_model_env <-
     model_env$species_info <-
       he_read_species_info_file(species_info_filepath)
 
-    model_env$connectivity_matrix <-
-      he_read_connectivity_matrix_file(connectivity_matrix_filepath)
+    if (!is.null(connectivity_matrix_filepath)){
+      model_env$connectivity_matrix <-
+        he_read_connectivity_matrix_file(connectivity_matrix_filepath)
+    }
 
     # Initialize variables for internal tracking
     model_env$index_netpens <- NA

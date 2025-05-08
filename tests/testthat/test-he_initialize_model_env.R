@@ -1,18 +1,18 @@
-test_that("model environment variables are initialized", {
+test_that("model environment variables are initialized, excluding between-farm
+          transmission", {
   # Create test directory and test model environment
   test_environment <- rlang::new_environment()
   test_environment$verbose <- TRUE
   expect_no_error(he_initialize_model_env(
     test_environment,
     farm_info_filepath = test_farm_info_filepath,
-    species_info_filepath = test_species_info_filepath,
-    connectivity_matrix_filepath = test_dist_matrix_filepath
+    species_info_filepath = test_species_info_filepath
   ))
 
   # Check files are read in
   expect_true(exists("farm_info", where = test_environment))
   expect_true(exists("species_info", where = test_environment))
-  expect_true(exists("connectivity_matrix", where = test_environment))
+  expect_false(exists("connectivity_matrix", where = test_environment))
 
   # Check internal model variables are initialized
   expect_true(is.na(test_environment$index_netpens))
