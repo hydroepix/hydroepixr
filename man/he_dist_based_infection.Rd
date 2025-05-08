@@ -6,7 +6,7 @@
 \usage{
 he_dist_based_infection(
   farm_info,
-  sim_day,
+  simulation_day,
   connectivity_matrix,
   farm_to_farm,
   vaccine_efficacy,
@@ -19,7 +19,7 @@ he_dist_based_infection(
 \arguments{
 \item{farm_info}{matrix of farm and netpen information}
 
-\item{sim_day}{day timestep in the simulation}
+\item{simulation_day}{day timestep in the simulation}
 
 \item{connectivity_matrix}{connectivity matrix in the form of a seaway
 distance matrix (in kilometers)or a hydroconnectivity matrix}

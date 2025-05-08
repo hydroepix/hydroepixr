@@ -9,7 +9,7 @@ he_apply_between_farm_netpen_infection(
   inf_farm_info,
   species_info,
   newly_infected_farm_ids,
-  sim_day,
+  simulation_day,
   label
 )
 }
@@ -23,7 +23,7 @@ he_apply_between_farm_netpen_infection(
 \item{newly_infected_farm_ids}{farm identifiers which should have newly
 infected netpens}
 
-\item{sim_day}{day timestep in the simulation}
+\item{simulation_day}{day timestep in the simulation}
 
 \item{label}{? contact method potentially?}
 }

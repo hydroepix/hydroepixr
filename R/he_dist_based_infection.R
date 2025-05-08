@@ -1,7 +1,7 @@
 #' Determines infection spread between farms for a given day?
 #'
 #' @param farm_info matrix of farm and netpen information
-#' @param sim_day day timestep in the simulation
+#' @param simulation_day day timestep in the simulation
 #' @param connectivity_matrix connectivity matrix in the form of a seaway
 #'    distance matrix (in kilometers)or a hydroconnectivity matrix
 #' @param farm_to_farm scaling parameter for between-farm infection transmission
@@ -18,7 +18,7 @@
 #' @importFrom stats rbinom
 #'
 he_dist_based_infection <- function(farm_info,
-                                    sim_day,
+                                    simulation_day,
                                     connectivity_matrix,
                                     farm_to_farm,
                                     vaccine_efficacy,
@@ -26,7 +26,7 @@ he_dist_based_infection <- function(farm_info,
                                     label = 1,
                                     t_start = 0,
                                     t_end = Inf) {
-  if (sim_day > t_start & sim_day < t_end) {
+  if (simulation_day > t_start & simulation_day < t_end) {
     all_new_infections <- NULL
     all_new_animals <- NULL
 
@@ -69,7 +69,7 @@ he_dist_based_infection <- function(farm_info,
     # Infect netpens in any farms selected to be newly infected
     # TODO: Confirm simulation day threshold to ensure infection does not happen
     # before 60 days into simulation
-    if (length(newly_infected_farms > 0) & sim_day > 60) {
+    if (length(newly_infected_farms > 0) & simulation_day > 60) {
       # TODO: Complete call to he_infect_netpens()
       newly_infected_cages <- he_infect_netpens()
     }
