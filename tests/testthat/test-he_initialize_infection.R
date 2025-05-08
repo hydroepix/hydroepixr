@@ -1,4 +1,4 @@
-test_that("invalid contact type produces error", {
+test_that("invalid index disease stage produces error", {
   test_inf_farm_info <-
     readRDS(paste0(test_data_filepath, "/inf_farm_info_initialized.rds"))
   test_species_info <-
@@ -15,7 +15,7 @@ test_that("invalid contact type produces error", {
   test_farm_info <-
     readRDS(paste0(test_data_filepath, "/initialized_farm_info_bay_x.rds"))
   test_index_netpen_ids <- 1
-  test_type_of_contact <- "immediate"
+  test_index_infection_stage <- "invalid_disease_stage"
   expect_error(
     he_initialize_infection(
       test_inf_farm_info,
@@ -26,13 +26,13 @@ test_that("invalid contact type produces error", {
       test_species_info,
       test_farm_info,
       test_index_netpen_ids,
-      test_type_of_contact
+      test_index_infection_stage
     ),
-    regex = "Invalid type of contact for index farm infection."
+    regex = "Invalid disease stage for index farm infection."
   )
 })
 
-test_that("direct contact initializes infection correctly", {
+test_that("default index infection initializes correctly", {
   test_inf_farm_info <-
     readRDS(paste0(test_data_filepath, "/inf_farm_info_initialized.rds"))
   test_species_info <-
@@ -49,7 +49,6 @@ test_that("direct contact initializes infection correctly", {
   test_farm_info <-
     readRDS(paste0(test_data_filepath, "/initialized_farm_info_bay_x.rds"))
   test_index_netpen_ids <- 1
-  test_type_of_contact <- "direct"
   test_inf_farm_info <-
     he_initialize_infection(
       test_inf_farm_info,
@@ -59,8 +58,7 @@ test_that("direct contact initializes infection correctly", {
       test_num_index_infected_max,
       test_species_info,
       test_farm_info,
-      test_index_netpen_ids,
-      test_type_of_contact
+      test_index_netpen_ids
     )
   # Check infected netpen added
   expect_equal(
@@ -71,21 +69,16 @@ test_that("direct contact initializes infection correctly", {
       farm_id = 1,
       species_id = 1,
       within_netpen_transmission = 0.35105114,
-      susceptible = 24999,
-      latent = 0,
-      subclinical = 1,
-      clinical = 0,
-      immune = 0,
-      total = 25000,
+      n_susceptible = 24999,
+      n_latent = 0,
+      n_subclinical = 1,
+      n_clinical = 0,
+      n_immune = 0,
+      n_total = 25000,
       infection_status = 1,
-      latent_duration = 0,
-      subclinical_duration = 0,
-      clinical_time = Inf,
-      time_of_diagnosis = Inf,
-      diagnosed = 0,
-      infected_by_direct_contact = "direct",
-      time_infected = 0,
-      vaccinated = 0
+      infection_origin = "index",
+      day_infected = 0,
+      is_vaccinated = 0
     )
   )
 
@@ -101,7 +94,7 @@ test_that("direct contact initializes infection correctly", {
     0)
 })
 
-test_that("indirect contact initializes infection correctly", {
+test_that("specified disease stage for index infection initializes correctly", {
   test_inf_farm_info <-
     readRDS(paste0(test_data_filepath, "/inf_farm_info_initialized.rds"))
   test_species_info <-
@@ -118,7 +111,7 @@ test_that("indirect contact initializes infection correctly", {
   test_farm_info <-
     readRDS(paste0(test_data_filepath, "/initialized_farm_info_bay_x.rds"))
   test_index_netpen_ids <- 1
-  test_type_of_contact <- "indirect"
+  test_index_infection_stage <- "latent"
   test_inf_farm_info <-
     he_initialize_infection(
       test_inf_farm_info,
@@ -129,7 +122,7 @@ test_that("indirect contact initializes infection correctly", {
       test_species_info,
       test_farm_info,
       test_index_netpen_ids,
-      test_type_of_contact
+      test_index_infection_stage
     )
   # Check infected netpen added
   expect_equal(
@@ -140,21 +133,16 @@ test_that("indirect contact initializes infection correctly", {
       farm_id = 1,
       species_id = 1,
       within_netpen_transmission = 0.35105114,
-      susceptible = 24999,
-      latent = 1,
-      subclinical = 0,
-      clinical = 0,
-      immune = 0,
-      total = 25000,
+      n_susceptible = 24999,
+      n_latent = 1,
+      n_subclinical = 0,
+      n_clinical = 0,
+      n_immune = 0,
+      n_total = 25000,
       infection_status = 1,
-      latent_duration = 0,
-      subclinical_duration = 0,
-      clinical_time = Inf,
-      time_of_diagnosis = Inf,
-      diagnosed = 0,
-      infected_by_direct_contact = "indirect",
-      time_infected = 0,
-      vaccinated = 0
+      infection_origin = "index",
+      day_infected = 0,
+      is_vaccinated = 0
     )
   )
 

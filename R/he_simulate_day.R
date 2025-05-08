@@ -32,12 +32,12 @@ he_simulate_day <- function(inf_farm_info,
     # animals - nrow(inf_farm_info) yields all infected farms
     # Does this generate NAs because of sampling a 0 from farms with no remaining
     # susceptible animals?
-    num_newly_infected <- rbinom(nrow(inf_farm_info),
-                                 inf_farm_info$susceptible,
+    n_newly_infected <- rbinom(nrow(inf_farm_info),
+                                 inf_farm_info$n_susceptible,
                                  prob_within_netpen_infection)
     if (verbose) {
       message(paste0("Newly infected animals: ",
-                     num_newly_infected))
+                     n_newly_infected))
     }
 
     # Update the day represented by the current stage of the infected farm info
@@ -47,15 +47,25 @@ he_simulate_day <- function(inf_farm_info,
     # infections and the number of fish which have reached their duration in
     # their current disease stage
     disease_stage_counts <-
-      inf_farm_info[c("susceptible", "latent", "subclinical", "clinical", "immune")]
-    inf_farm_info[c("susceptible", "latent", "subclinical", "clinical", "immune")] <-
-      he_update_disease_stage_counts(disease_stage_counts,
-                                     simulation_env$disease_stage_duration_matrices,
-                                     num_newly_infected)
+      inf_farm_info[c("n_susceptible",
+                      "n_latent",
+                      "n_subclinical",
+                      "n_clinical",
+                      "n_immune")]
+    inf_farm_info[c("n_susceptible",
+                    "n_latent",
+                    "n_subclinical",
+                    "n_clinical",
+                    "n_immune")] <-
+      he_update_disease_stage_counts(
+        disease_stage_counts,
+        simulation_env$disease_stage_duration_matrices,
+        n_newly_infected
+      )
 
     # Update disease stage duration matrices for animals entering a new stage
-    num_animals_transitioning_by_stage <-
-      c(num_newly_infected,
+    n_animals_transitioning_by_stage <-
+      c(n_newly_infected,
         lapply(
           utils::head(simulation_env$disease_stage_duration_matrices,-1),
           FUN = \(matrix) matrix[, 1]
@@ -70,7 +80,7 @@ he_simulate_day <- function(inf_farm_info,
       he_update_disease_stage_duration_matrix(
         simulation_env$disease_stage_duration_matrices,
         disease_stage_distribution = disease_stage_distributions,
-        num_animals_to_distribute = num_animals_transitioning_by_stage
+        num_animals_to_distribute = n_animals_transitioning_by_stage
         )
 
     # TODO: Update overall netpen infection statuses

@@ -13,7 +13,7 @@ he_initialize_infection(
   species_info,
   farm_info,
   index_netpen_ids,
-  type_of_contact = "direct"
+  index_infection_stage = "subclinical"
 )
 }
 \arguments{
@@ -33,7 +33,8 @@ he_initialize_infection(
 
 \item{index_netpen_ids}{netpen ids selected for index infection}
 
-\item{type_of_contact}{type of contact that resulted in the infection}
+\item{index_infection_stage}{infection stage in which animals infected by the
+index infection should start}
 }
 \value{
 infected farm info data frame with infection information for

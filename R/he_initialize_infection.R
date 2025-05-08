@@ -8,7 +8,8 @@
 #' @param species_info data frame of species information
 #' @param farm_info data frame of farm information
 #' @param index_netpen_ids netpen ids selected for index infection
-#' @param type_of_contact type of contact that resulted in the infection
+#' @param index_infection_stage infection stage in which animals infected by the
+#'    index infection should start
 #'
 #' @return infected farm info data frame with infection information for
 #'    the index farm appended
@@ -22,9 +23,9 @@ he_initialize_infection <- function(inf_farm_info,
                                     species_info,
                                     farm_info,
                                     index_netpen_ids,
-                                    type_of_contact = "direct") {
+                                    index_infection_stage = "subclinical") {
   # Calculate number of animals initially infected for each netpen infected
-  num_animals_infected <- round(
+  n_animals_infected <- round(
     he_rpert(
       length(index_netpen_ids),
       num_index_infected_min,
@@ -32,18 +33,17 @@ he_initialize_infection <- function(inf_farm_info,
       num_index_infected_max
     )
   )
-  # According to type of contact, add infected farm info tracking row and
-  # initialize matrices to track disease stage durations
-  if (type_of_contact == "direct") {
+
+  if (index_infection_stage == "subclinical") {
     inf_farm_info <- he_add_infected_netpen(inf_farm_info,
                                          farm_info,
                                          index_netpen_ids,
                                          num_inf_animals_by_stage = data.frame(
-                                           latent = 0,
-                                           subclinical = num_animals_infected,
-                                           clinical = 0
+                                           n_latent = 0,
+                                           n_subclinical = n_animals_infected,
+                                           n_clinical = 0
                                          ),
-                                         type_of_contact,
+                                         infection_origin = "index",
                                          simulation_day = 0)
     simulation_env$disease_stage_duration_matrices$latent_duration <-
       he_add_disease_stage_duration(simulation_env$latent_duration,
@@ -52,29 +52,28 @@ he_initialize_infection <- function(inf_farm_info,
     simulation_env$disease_stage_duration_matrices$subclinical_duration <-
       he_add_disease_stage_duration(simulation_env$subclinical_duration,
                                     species_info$subclinical_dur_freq[[1]],
-                                    num_animals_to_distribute = num_animals_infected)
-  } else if (type_of_contact == "indirect") {
+                                    num_animals_to_distribute = n_animals_infected)
+  } else if (index_infection_stage == "latent") {
     inf_farm_info <- he_add_infected_netpen(inf_farm_info,
                                          farm_info,
                                          index_netpen_ids,
                                          num_inf_animals_by_stage = data.frame(
-                                           latent = num_animals_infected,
-                                           subclinical = 0,
-                                           clinical = 0
+                                           n_latent = n_animals_infected,
+                                           n_subclinical = 0,
+                                           n_clinical = 0
                                          ),
-                                         type_of_contact,
+                                         infection_origin = "index",
                                          simulation_day = 0)
     simulation_env$disease_stage_duration_matrices$latent_duration <-
       he_add_disease_stage_duration(simulation_env$latent_duration,
                                     species_info$latent_dur_freq[[1]],
-                                    num_animals_to_distribute = num_animals_infected)
+                                    num_animals_to_distribute = n_animals_infected)
     simulation_env$disease_stage_duration_matrices$subclinical_duration <-
       he_add_disease_stage_duration(simulation_env$subclinical_duration,
                                     species_info$subclinical_dur_freq[[1]],
                                     num_animals_to_distribute = 0)
   } else {
-    stop("Invalid type of contact for index farm infection. Contact should be
-         either direct or indirect.")
+    stop("Invalid disease stage for index farm infection.")
   }
   simulation_env$disease_stage_duration_matrices$clinical_duration <-
     he_add_disease_stage_duration(simulation_env$clinical_duration,

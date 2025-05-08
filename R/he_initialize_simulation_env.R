@@ -51,5 +51,4 @@ he_initialize_simulation_env <-
     clinical_duration =
       matrix(numeric(0), ncol = length(species_info$clinical_dur_freq[[1]]))
   )
-  simulation_env$sim_day <- 0
 }

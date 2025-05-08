@@ -36,29 +36,22 @@ test_that("simulation environment variables are correctly initialized", {
     farm_id = integer(),
     species_id = integer(),
     within_netpen_transmission = double(),
-    susceptible = integer(),
-    latent = integer(),
-    subclinical = integer(),
-    clinical = integer(),
-    immune = integer(),
-    total = integer(),
+    n_susceptible = integer(),
+    n_latent = integer(),
+    n_subclinical = integer(),
+    n_clinical = integer(),
+    n_immune = integer(),
+    n_total = integer(),
     infection_status = integer(),
-    latent_duration = double(),
-    subclinical_duration = double(),
-    clinical_time = double(),
-    time_of_diagnosis = double(),
-    diagnosed = logical(),
-    infected_by_direct_contact = character(),
-    time_infected = double(),
-    vaccinated = numeric()
+    infection_origin = character(),
+    day_infected = double(),
+    is_vaccinated = numeric()
   )
   test_output_file_data <- read.csv(expected_filepath)
   expect_equal(names(test_output_file_data), names(inf_farm_info_columns))
 
   expect_true(exists("disease_stage_duration_matrices",
                      test_simulation_env))
-
-  expect_equal(test_simulation_env$sim_day, 0)
 
   expect_equal(
     test_simulation_env$disease_stage_duration_matrices$latent_duration,

@@ -2,7 +2,7 @@
 % Please edit documentation in R/he_calculate_within_netpen_infection_prob.R
 \name{he_calculate_within_netpen_infection_prob}
 \alias{he_calculate_within_netpen_infection_prob}
-\title{Calculate within-netpen probability of infection transmission}
+\title{Calculate probability of infection transmission within a netpen}
 \usage{
 he_calculate_within_netpen_infection_prob(inf_farm_info, vaccine_efficacy)
 }
@@ -16,5 +16,5 @@ and the population coverage of the vaccine}
 probability of within-netpen infection transmission
 }
 \description{
-Calculate within-netpen probability of infection transmission
+Calculate probability of infection transmission within a netpen
 }
