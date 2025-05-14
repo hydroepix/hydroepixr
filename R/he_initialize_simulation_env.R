@@ -2,11 +2,11 @@
 #'
 #' @param simulation_env environment in which simulation variables are stored
 #' @param species_info data frame of species information
-#' @param output_dir file path where the infected farm information output should
+#' @param output_dir file path where the infected netpen information output should
 #'    be stored
 #' @param model_run_id identifier for this run of the model
-#' @param inf_netpen_output_file_name name of the file in which the infected
-#'    farm information should be stored
+#' @param infected_netpen_output_file_name name of the file in which the infected
+#'    netpen information should be stored
 #' @param simulation_n identifies which simulation of the model run this
 #'    this environment belongs to
 #'
@@ -19,26 +19,26 @@ he_initialize_simulation_env <-
            species_info,
            output_dir,
            model_run_id,
-           inf_netpen_output_file_name,
+           infected_netpen_output_file_name,
            simulation_n) {
   # Define output parameters at the simulation level
   simulation_env$output_dir <- output_dir
   simulation_env$simulation_n <- simulation_n
-  simulation_env$inf_netpen_output_file_name <-
+  simulation_env$infected_netpen_output_file_name <-
     paste(model_run_id,
           simulation_n,
-          inf_netpen_output_file_name,
+          infected_netpen_output_file_name,
           sep = "_")
 
-  # Create data frame and file to store infected farm and netpen information
-  simulation_env$inf_farm_info <-
-    he_initialize_inf_farm_info(simulation_env$output_dir,
-                                simulation_env$inf_netpen_output_file_name)
-  # Initialize simulation-level farm information variables
-  #farm_info$susceptible_again <- rep(0, n_netpens)
-  #farm_info$survived <- rep(0, n_netpens)
-  #farm_info$infectiousness <- rep(0, n_netpens)
-  #farm_info$infection_mode <- rep(0, n_netpens)
+  # Create data frame and file to store infected netpen information
+  simulation_env$infected_netpen_info <-
+    he_initialize_infected_netpen_info(simulation_env$output_dir,
+                                simulation_env$infected_netpen_output_file_name)
+  # Initialize simulation-level netpen information variables
+  #netpen_info$susceptible_again <- rep(0, n_netpens)
+  #netpen_info$survived <- rep(0, n_netpens)
+  #netpen_info$infectiousness <- rep(0, n_netpens)
+  #netpen_info$infection_mode <- rep(0, n_netpens)
 
   # Initialize matrices to store disease stage durations
   # TODO: This will need to be updated to accommodate and label different

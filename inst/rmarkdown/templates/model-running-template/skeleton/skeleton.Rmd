@@ -46,13 +46,14 @@ he_define_spread_control_params(model_env,
 he_define_output_params(model_env,
                         output_dir = "output",
                         model_run_id = "test-model-run",
-                        inf_netpen_output_file_name = "infected_netpens.csv")
+                        infected_netpen_output_file_name = "infected_netpens.csv")
 
 # Set up model environment based on data files and parameters
 he_initialize_model_env(model_env,
-                        farm_info_filepath = "../../../../testdata/farm_file_bay_x.csv",
-                        species_info_filepath = "../../../../testdata/species_info_file_bay_x.csv",
-                        connectivity_matrix_filepath = "../../../../testdata/dist_mat_bay_x.csv")
+                        netpen_info_filepath = "../../../../testdata/netpen_file_bay_x.csv",
+                        species_info_filepath = "../../../../testdata/species_info_file_bay_x.csv"
+                        #connectivity_matrix_filepath = "../../../../testdata/dist_mat_bay_x.csv"
+                        )
 ```
 
 ## Run model

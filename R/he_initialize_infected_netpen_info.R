@@ -1,17 +1,17 @@
-#' Initialize data frame to store and track infected farm information
+#' Initialize data frame to store and track infected netpen information
 #'
-#' @param output_dir file path where the infected farm information output should
+#' @param output_dir file path where the infected netpen information output should
 #'    be stored
-#' @param output_file_name name of the file in which the infected farm information
+#' @param output_file_name name of the file in which the infected netpen information
 #'    should be stored
 #'
 #' @return empty data frame with appropriate column headers and types to store
-#'    infected farm and netpen information
+#'    infected netpen information
 #' @export
 #'
-he_initialize_inf_farm_info <- function(output_dir,
+he_initialize_infected_netpen_info <- function(output_dir,
                                         output_file_name) {
-  inf_farm_info <- data.frame(
+  infected_netpen_info <- data.frame(
     simulation_day = integer(),
     netpen_id = integer(),
     farm_id = integer(),
@@ -28,8 +28,8 @@ he_initialize_inf_farm_info <- function(output_dir,
     day_infected = double(),
     is_vaccinated = double()
   )
-  he_write_output_columns(names(inf_farm_info),
+  he_write_output_cols(names(infected_netpen_info),
                           output_dir,
                           output_file_name)
-  inf_farm_info
+  infected_netpen_info
 }

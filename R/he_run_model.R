@@ -19,43 +19,43 @@ he_run_model <- function(model_env) {
                                  model_env$species_info,
                                  model_env$output_dir,
                                  model_env$model_run_id,
-                                 model_env$inf_netpen_output_file_name,
+                                 model_env$infected_netpen_output_file_name,
                                  simulation_n)
 
     # Set random seed for the simulation
     model_env$random_seed <- he_set_random_seed(model_env$random_seed,
                                                 simulation_n)
     # Select index netpens for this simulation
-    model_env$index_netpens <- he_select_index_netpens(model_env$farm_info,
+    model_env$index_netpens <- he_select_index_netpens(model_env$netpen_info,
                                                        model_env$index_netpen_ids,
                                                        model_env$index_farm_id)
 
     # Initialize infection tracking data object
-    simulation_env$inf_farm_info <-
-      he_initialize_infection(simulation_env$inf_farm_info,
+    simulation_env$infected_netpen_info <-
+      he_initialize_infection(simulation_env$infected_netpen_info,
                               simulation_env,
                               model_env$n_index_infected_min,
                               model_env$n_index_infected_mode,
                               model_env$n_index_infected_max,
                               model_env$species_info,
-                              model_env$farm_info,
+                              model_env$netpen_info,
                               model_env$index_netpens)
 
-    # loop over simulation days for as long as there are still farms with an
+    # loop over simulation days for as long as there are still netpens with an
     # active infection
     for(simulation_day in 1:model_env$max_outbreak_length) {
       if (model_env$verbose) {
         message(paste0("Simulation Day: ", simulation_day))
       }
-      simulation_env$inf_farm_info <- he_simulate_day(
-        simulation_env$inf_farm_info,
+      simulation_env$infected_netpen_info <- he_simulate_day(
+        simulation_env$infected_netpen_info,
         simulation_env,
         simulation_day,
         model_env$species_info,
         model_env$verbose
       )
       # TODO: Add termination condition in case where no animals are infected:
-      #any(inf_farm_info$infection_status %in% c(2, 3, 4))
+      #any(inf_netpen_info$infection_status %in% c(2, 3, 4))
     }
   }
   # TODO: Generate output for results from all simulations

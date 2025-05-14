@@ -1,6 +1,6 @@
 #' Calculate probability of infection transmission within a netpen
 #'
-#' @param inf_farm_info data frame of infected farm information
+#' @param infected_netpen_info data frame of infected netpen information
 #' @param vaccine_efficacy product of the manufacturer-reported vaccine efficacy
 #'    and the population coverage of the vaccine
 #'
@@ -8,13 +8,13 @@
 #' @export
 #'
 he_calculate_within_netpen_infection_prob <-
-  function(inf_farm_info,
+  function(infected_netpen_info,
            vaccine_efficacy) {
     effective_transmission <-
-      inf_farm_info$within_netpen_transmission * (1 - vaccine_efficacy)
+      infected_netpen_info$within_netpen_transmission * (1 - vaccine_efficacy)
     prevalence <-
-      (inf_farm_info$n_subclinical + inf_farm_info$n_clinical) /
-      (inf_farm_info$n_total - inf_farm_info$n_immune)
+      (infected_netpen_info$n_subclinical + infected_netpen_info$n_clinical) /
+      (infected_netpen_info$n_total - infected_netpen_info$n_immune)
     within_netpen_infection_prob <- 1 - exp(-effective_transmission * prevalence)
     within_netpen_infection_prob
   }

@@ -5,7 +5,7 @@
 \title{Simulate a day of infection transmission dynamics}
 \usage{
 he_simulate_day(
-  inf_farm_info,
+  infected_netpen_info,
   simulation_env,
   simulation_day,
   species_info,
@@ -13,7 +13,7 @@ he_simulate_day(
 )
 }
 \arguments{
-\item{inf_farm_info}{data frame of information on infected farms}
+\item{infected_netpen_info}{data frame of information on infected netpens}
 
 \item{simulation_env}{environment containing simulation variables}
 
@@ -25,7 +25,7 @@ he_simulate_day(
 messages on model running progress}
 }
 \value{
-updated infected farm info data frame
+updated infected netpen info data frame
 }
 \description{
 Simulate a day of infection transmission dynamics

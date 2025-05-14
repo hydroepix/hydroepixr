@@ -1,4 +1,4 @@
-#' Read in a farm information file
+#' Read in a netpen information file
 #'
 #' @param filepath a filepath to read a csv file from
 #' @param verbose a logical value indicating whether to provide additional
@@ -8,67 +8,65 @@
 #' @export
 #' @importFrom utils read.table
 
-he_read_farm_info_file <- function(filepath, verbose = FALSE) {
-  farm_info <- utils::read.table(filepath,
+he_read_netpen_info_file <- function(filepath, verbose = FALSE) {
+  netpen_info <- utils::read.table(filepath,
                                  sep = ",",
                                  dec = ".",
                                  header = TRUE)
-  n_farms <- length(farm_info$species)
+  n_netpens <- length(netpen_info$species)
   # Check for expected columns and names
-  # TODO: Confirm whether all of these columns are necessary for the model
-  # or is a specific subset sufficient? The check should change accordingly.
-  farm_info_columns <- names(farm_info)
-  expected_columns <- list("netpen_id",
+  netpen_info_cols <- names(netpen_info)
+  expected_cols <- list("netpen_id",
                            "farm_id",
                            "netpen_size",
                            "baseline_mort",
                            "species_id",
                            "bay_management_id")
-  optional_columns <- list("initial_infection_status",
+  optional_cols <- list("initial_infection_status",
                            "initial_time_infected")
-  mismatched_columns <-
+  mismatched_cols <-
     setdiff(
-      union(farm_info_columns, expected_columns),
-      intersect(farm_info_columns, expected_columns)
+      union(netpen_info_cols, expected_cols),
+      intersect(netpen_info_cols, expected_cols)
     )
 
-  if (length(mismatched_columns) == 0) {
+  if (length(mismatched_cols) == 0) {
     if (verbose) {
       message(
         paste0("Optional infection status and infection time columns ",
-        "included in farm info file.",
+        "included in netpen info file.",
         "Retrieved values from file.")
       )
     }
-  } else if (identical(mismatched_columns, optional_columns)) {
+  } else if (identical(mismatched_cols, optional_cols)) {
     if (verbose) {
       message(
         paste0("Optional infection status and infection time columns ",
-        "not included in farm info file.",
+        "not included in netpen info file.",
         "Default values assigned.")
       )
     }
-    farm_info$infection_status <- rep(1, n_farms)
-    farm_info$time_infected <- rep(Inf, n_farms)
+    netpen_info$infection_status <- rep(1, n_netpens)
+    netpen_info$time_infected <- rep(Inf, n_netpens)
   } else {
     stop(
       "Unexpected column headers. Expected headers are: ",
-      paste(expected_columns, collapse = ", "),
+      paste(expected_cols, collapse = ", "),
       "Optional headers are: ",
       # TODO: Is there a valid case where one optional column will be provided
       # but not the other??
-      paste(optional_columns, collapse = ", "),
+      paste(optional_cols, collapse = ", "),
       "Headers in the provided file that do not match are: ",
-      paste(mismatched_columns, collapse = ", ")
+      paste(mismatched_cols, collapse = ", ")
     )
   }
 
   # Check for non-unique IDs
-  if (length(unique(farm_info$netpen_id)) < length(farm_info$netpen_id)) {
+  if (length(unique(netpen_info$netpen_id)) < length(netpen_info$netpen_id)) {
     stop(
       "Netpen ID numbers are not unique. Simulations Fails. Duplicate Value: ",
-      paste(unique(farm_info$netpen_id[duplicated(farm_info$netpen_id)]), collapse = ", ")
+      paste(unique(netpen_info$netpen_id[duplicated(netpen_info$netpen_id)]), collapse = ", ")
     )
   }
-  farm_info
+  netpen_info
 }

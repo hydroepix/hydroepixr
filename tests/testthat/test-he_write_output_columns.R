@@ -5,11 +5,11 @@ test_that("specified columns are correctly written to file", {
     test_col_names <- names(readRDS(
       paste0(
         test_data_filepath,
-        "/inf_farm_info_bay_x_with_multi_farm_infection.rds"
+        "/infected_netpen_info_bay_x_with_multi_farm_infection.rds"
       )
     ))
     test_output_file_name <- "infected_netpens.csv"
-    he_write_output_columns(test_col_names,
+    he_write_output_cols(test_col_names,
                             temp_test_dir,
                             test_output_file_name)
     test_output_file_data <- read.csv(file.path(temp_test_dir,

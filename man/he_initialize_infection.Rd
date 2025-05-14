@@ -2,22 +2,22 @@
 % Please edit documentation in R/he_initialize_infection.R
 \name{he_initialize_infection}
 \alias{he_initialize_infection}
-\title{Initialize index infection and start tracking infected farms}
+\title{Initialize index infection and start tracking infected netpens}
 \usage{
 he_initialize_infection(
-  inf_farm_info,
+  infected_netpen_info,
   simulation_env,
   n_index_infected_min,
   n_index_infected_mode,
   n_index_infected_max,
   species_info,
-  farm_info,
+  netpen_info,
   index_netpen_ids,
   index_infection_stage = "subclinical"
 )
 }
 \arguments{
-\item{inf_farm_info}{data frame of infected farm information}
+\item{infected_netpen_info}{data frame of infected netpen information}
 
 \item{simulation_env}{environment containing simulation variables}
 
@@ -29,7 +29,7 @@ he_initialize_infection(
 
 \item{species_info}{data frame of species information}
 
-\item{farm_info}{data frame of farm information}
+\item{netpen_info}{data frame of netpen information}
 
 \item{index_netpen_ids}{netpen ids selected for index infection}
 
@@ -37,9 +37,9 @@ he_initialize_infection(
 index infection should start}
 }
 \value{
-infected farm info data frame with infection information for
-the index farm appended
+infected netpen info data frame with infection information for
+the index netpen(s) appended
 }
 \description{
-Initialize index infection and start tracking infected farms
+Initialize index infection and start tracking infected netpens
 }

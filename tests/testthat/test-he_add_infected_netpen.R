@@ -1,10 +1,10 @@
-test_that("single netpen is correctly appended to empty infected farm info", {
-  test_inf_farm_info <- readRDS(paste0(test_data_filepath,
-                                       "/inf_farm_info_initialized.rds"))
-  test_farm_info <- readRDS(paste0(test_data_filepath,
-                                   "/initialized_farm_info_bay_x.rds"))
+test_that("single netpen is correctly appended to empty infected netpen info", {
+  test_infected_netpen_info <- readRDS(paste0(test_data_filepath,
+                                       "/infected_netpen_info_initialized.rds"))
+  test_netpen_info <- readRDS(paste0(test_data_filepath,
+                                   "/initialized_netpen_info_bay_x.rds"))
   test_netpen_ids_to_infect <- 4
-  test_n_inf_animals_by_stage <- data.frame(
+  test_n_infected_animals_by_stage <- data.frame(
     n_latent = 1,
     n_subclinical = 0,
     n_clinical = 0
@@ -12,7 +12,7 @@ test_that("single netpen is correctly appended to empty infected farm info", {
   test_infection_origin <- "index"
   test_simulation_day <- 0
 
-  expected_inf_farm_info <- data.frame(
+  expected_infected_netpen_info <- data.frame(
     simulation_day = test_simulation_day,
     netpen_id = 4,
     farm_id = 1,
@@ -31,24 +31,24 @@ test_that("single netpen is correctly appended to empty infected farm info", {
   )
 
 
-  result_inf_farm_info <-
-    he_add_infected_netpen(test_inf_farm_info,
-                           test_farm_info,
+  result_infected_netpen_info <-
+    he_add_infected_netpen(test_infected_netpen_info,
+                           test_netpen_info,
                            test_netpen_ids_to_infect,
-                           test_n_inf_animals_by_stage,
+                           test_n_infected_animals_by_stage,
                            test_infection_origin,
                            test_simulation_day)
 
-  expect_equal(result_inf_farm_info, expected_inf_farm_info)
+  expect_equal(result_infected_netpen_info, expected_infected_netpen_info)
 })
 
-test_that("netpens are correctly appended to empty infected farm info", {
-  test_inf_farm_info <- readRDS(paste0(test_data_filepath,
-                                       "/inf_farm_info_initialized.rds"))
-  test_farm_info <- readRDS(paste0(test_data_filepath,
-                                   "/initialized_farm_info_bay_x.rds"))
+test_that("netpens are correctly appended to empty infected netpen info", {
+  test_infected_netpen_info <- readRDS(paste0(test_data_filepath,
+                                       "/infected_netpen_info_initialized.rds"))
+  test_netpen_info <- readRDS(paste0(test_data_filepath,
+                                   "/initialized_netpen_info_bay_x.rds"))
   test_netpen_ids_to_infect <- c(4, 21)
-  test_n_inf_animals_by_stage <- data.frame(
+  test_n_infected_animals_by_stage <- data.frame(
     n_latent = c(1, 0),
     n_subclinical = c(0, 1),
     n_clinical = c(0, 0)
@@ -56,7 +56,7 @@ test_that("netpens are correctly appended to empty infected farm info", {
   test_infection_origin <- c("index", "index")
   test_simulation_day <- 0
 
-  expected_inf_farm_info <- data.frame(
+  expected_infected_netpen_info <- data.frame(
     simulation_day = test_simulation_day,
     netpen_id = c(4, 21),
     farm_id = c(1, 2),
@@ -74,28 +74,28 @@ test_that("netpens are correctly appended to empty infected farm info", {
     is_vaccinated = c(0, 0)
   )
 
-  result_inf_farm_info <-
-    he_add_infected_netpen(test_inf_farm_info,
-                           test_farm_info,
+  result_infected_netpen_info <-
+    he_add_infected_netpen(test_infected_netpen_info,
+                           test_netpen_info,
                            test_netpen_ids_to_infect,
-                           test_n_inf_animals_by_stage,
+                           test_n_infected_animals_by_stage,
                            test_infection_origin,
                            test_simulation_day)
 
-  expect_equal(result_inf_farm_info, expected_inf_farm_info)
+  expect_equal(result_infected_netpen_info, expected_infected_netpen_info)
 })
 
-test_that("single netpen is correctly appended to infected farm info", {
-  test_inf_farm_info <- readRDS(
+test_that("single netpen is correctly appended to infected netpen info", {
+  test_infected_netpen_info <- readRDS(
     paste0(
       test_data_filepath,
-      "/inf_farm_info_bay_x_with_multi_farm_infection.rds"
+      "/infected_netpen_info_bay_x_with_multi_farm_infection.rds"
     )
   )
-  test_farm_info <- readRDS(paste0(test_data_filepath,
-                                   "/initialized_farm_info_bay_x.rds"))
+  test_netpen_info <- readRDS(paste0(test_data_filepath,
+                                   "/initialized_netpen_info_bay_x.rds"))
   test_netpen_ids_to_infect <- 5
-  test_n_inf_animals_by_stage <- data.frame(
+  test_n_infected_animals_by_stage <- data.frame(
     n_latent = 5,
     n_subclinical = 0,
     n_clinical = 0
@@ -103,9 +103,9 @@ test_that("single netpen is correctly appended to infected farm info", {
   test_infection_origin <- "between-netpen"
   test_simulation_day <- 10
 
-  expected_inf_farm_info <-
+  expected_infected_netpen_info <-
     rbind(
-      test_inf_farm_info,
+      test_infected_netpen_info,
       data.frame(
         simulation_day = test_simulation_day,
         netpen_id = 5,
@@ -126,28 +126,28 @@ test_that("single netpen is correctly appended to infected farm info", {
     )
 
 
-  result_inf_farm_info <-
-    he_add_infected_netpen(test_inf_farm_info,
-                           test_farm_info,
+  result_infected_netpen_info <-
+    he_add_infected_netpen(test_infected_netpen_info,
+                           test_netpen_info,
                            test_netpen_ids_to_infect,
-                           test_n_inf_animals_by_stage,
+                           test_n_infected_animals_by_stage,
                            test_infection_origin,
                            test_simulation_day)
 
-  expect_equal(result_inf_farm_info, expected_inf_farm_info)
+  expect_equal(result_infected_netpen_info, expected_infected_netpen_info)
 })
 
-test_that("netpens are correctly appended to infected farm info", {
-  test_inf_farm_info <- readRDS(
+test_that("netpens are correctly appended to infected netpen info", {
+  test_infected_netpen_info <- readRDS(
     paste0(
       test_data_filepath,
-      "/inf_farm_info_bay_x_with_multi_farm_infection.rds"
+      "/infected_netpen_info_bay_x_with_multi_farm_infection.rds"
     )
   )
-  test_farm_info <- readRDS(paste0(test_data_filepath,
-                                   "/initialized_farm_info_bay_x.rds"))
+  test_netpen_info <- readRDS(paste0(test_data_filepath,
+                                   "/initialized_netpen_info_bay_x.rds"))
   test_netpen_ids_to_infect <- c(5, 6)
-  test_n_inf_animals_by_stage <- data.frame(
+  test_n_infected_animals_by_stage <- data.frame(
     n_latent = c(10, 5),
     n_subclinical = c(0, 0),
     n_clinical = c(0, 0)
@@ -155,8 +155,8 @@ test_that("netpens are correctly appended to infected farm info", {
   test_infection_origin <- c("between-netpen", "between-netpen")
   test_simulation_day <- 12
 
-  expected_inf_farm_info <- rbind(
-    test_inf_farm_info,
+  expected_infected_netpen_info <- rbind(
+    test_infected_netpen_info,
     data.frame(
       simulation_day = test_simulation_day,
       netpen_id = c(5, 6),
@@ -176,28 +176,28 @@ test_that("netpens are correctly appended to infected farm info", {
     )
   )
 
-  result_inf_farm_info <-
-    he_add_infected_netpen(test_inf_farm_info,
-                           test_farm_info,
+  result_infected_netpen_info <-
+    he_add_infected_netpen(test_infected_netpen_info,
+                           test_netpen_info,
                            test_netpen_ids_to_infect,
-                           test_n_inf_animals_by_stage,
+                           test_n_infected_animals_by_stage,
                            test_infection_origin,
                            test_simulation_day)
 
-  expect_equal(result_inf_farm_info, expected_inf_farm_info)
+  expect_equal(result_infected_netpen_info, expected_infected_netpen_info)
 })
 
-test_that("netpens are not appended when they already exist in infected farm info", {
-  test_inf_farm_info <- readRDS(
+test_that("netpens are not appended when they already exist in infected netpen info", {
+  test_infected_netpen_info <- readRDS(
     paste0(
       test_data_filepath,
-      "/inf_farm_info_bay_x_with_multi_farm_infection.rds"
+      "/infected_netpen_info_bay_x_with_multi_farm_infection.rds"
     )
   )
-  test_farm_info <- readRDS(paste0(test_data_filepath,
-                                   "/initialized_farm_info_bay_x.rds"))
+  test_netpen_info <- readRDS(paste0(test_data_filepath,
+                                   "/initialized_netpen_info_bay_x.rds"))
   test_netpen_ids_to_infect <- c(4, 21)
-  test_n_inf_animals_by_stage <- data.frame(
+  test_n_infected_animals_by_stage <- data.frame(
     n_latent = c(1, 0),
     n_subclinical = c(0, 1),
     n_clinical = c(0, 0)
@@ -205,7 +205,7 @@ test_that("netpens are not appended when they already exist in infected farm inf
   test_infection_origin <- c("between-netpen", "between-netpen")
   test_simulation_day <- 1
 
-  expected_inf_farm_info <- data.frame(
+  expected_infected_netpen_info <- data.frame(
     simulation_day = test_simulation_day,
     netpen_id = c(4, 21),
     farm_id = c(1, 2),
@@ -223,29 +223,29 @@ test_that("netpens are not appended when they already exist in infected farm inf
     is_vaccinated = c(0, 0)
   )
 
-  result_inf_farm_info <-
-    he_add_infected_netpen(test_inf_farm_info,
-                           test_farm_info,
+  result_infected_netpen_info <-
+    he_add_infected_netpen(test_infected_netpen_info,
+                           test_netpen_info,
                            test_netpen_ids_to_infect,
-                           test_n_inf_animals_by_stage,
+                           test_n_infected_animals_by_stage,
                            test_infection_origin,
                            test_simulation_day)
 
-  expect_equal(result_inf_farm_info, expected_inf_farm_info)
+  expect_equal(result_infected_netpen_info, expected_infected_netpen_info)
 })
 
 test_that("single netpen is correctly appended when already infected netpens are
           filtered out", {
-  test_inf_farm_info <- readRDS(
+  test_infected_netpen_info <- readRDS(
     paste0(
       test_data_filepath,
-      "/inf_farm_info_bay_x_with_multi_farm_infection.rds"
+      "/infected_netpen_info_bay_x_with_multi_farm_infection.rds"
     )
   )
-  test_farm_info <- readRDS(paste0(test_data_filepath,
-                                   "/initialized_farm_info_bay_x.rds"))
+  test_netpen_info <- readRDS(paste0(test_data_filepath,
+                                   "/initialized_netpen_info_bay_x.rds"))
   test_netpen_ids_to_infect <- c(4, 21, 5)
-  test_n_inf_animals_by_stage <- data.frame(
+  test_n_infected_animals_by_stage <- data.frame(
     n_latent = c(1, 1, 1),
     n_subclinical = c(0, 0, 0),
     n_clinical = c(0, 0, 0)
@@ -253,8 +253,8 @@ test_that("single netpen is correctly appended when already infected netpens are
   test_infection_origin <- rep("between-netpen", 3)
   test_simulation_day <- 5
 
-  expected_inf_farm_info <- rbind(
-    test_inf_farm_info,
+  expected_infected_netpen_info <- rbind(
+    test_infected_netpen_info,
     data.frame(
       simulation_day = test_simulation_day,
       netpen_id = 5,
@@ -274,29 +274,29 @@ test_that("single netpen is correctly appended when already infected netpens are
     )
   )
 
-  result_inf_farm_info <-
-    he_add_infected_netpen(test_inf_farm_info,
-                           test_farm_info,
+  result_infected_netpen_info <-
+    he_add_infected_netpen(test_infected_netpen_info,
+                           test_netpen_info,
                            test_netpen_ids_to_infect,
-                           test_n_inf_animals_by_stage,
+                           test_n_infected_animals_by_stage,
                            test_infection_origin,
                            test_simulation_day)
 
-  expect_equal(result_inf_farm_info, expected_inf_farm_info)
+  expect_equal(result_infected_netpen_info, expected_infected_netpen_info)
 })
 
 test_that("multiple netpens are correctly appended when already infected netpens
           are filtered out", {
-  test_inf_farm_info <- readRDS(
+  test_infected_netpen_info <- readRDS(
     paste0(
       test_data_filepath,
-      "/inf_farm_info_bay_x_with_multi_farm_infection.rds"
+      "/infected_netpen_info_bay_x_with_multi_farm_infection.rds"
     )
   )
-  test_farm_info <- readRDS(paste0(test_data_filepath,
-                                   "/initialized_farm_info_bay_x.rds"))
+  test_netpen_info <- readRDS(paste0(test_data_filepath,
+                                   "/initialized_netpen_info_bay_x.rds"))
   test_netpen_ids_to_infect <- c(4, 21, 5, 6)
-  test_n_inf_animals_by_stage <- data.frame(
+  test_n_infected_animals_by_stage <- data.frame(
     n_latent = c(1, 1, 1, 1),
     n_subclinical = c(0, 0, 0, 0),
     n_clinical = c(0, 0, 0, 0)
@@ -304,8 +304,8 @@ test_that("multiple netpens are correctly appended when already infected netpens
   test_infection_origin <- rep("between-netpen", 4)
   test_simulation_day <- 5
 
-  expected_inf_farm_info <- rbind(
-    test_inf_farm_info,
+  expected_infected_netpen_info <- rbind(
+    test_infected_netpen_info,
     data.frame(
       simulation_day = test_simulation_day,
       netpen_id = c(5, 6),
@@ -325,13 +325,13 @@ test_that("multiple netpens are correctly appended when already infected netpens
     )
   )
 
-  result_inf_farm_info <-
-    he_add_infected_netpen(test_inf_farm_info,
-                           test_farm_info,
+  result_infected_netpen_info <-
+    he_add_infected_netpen(test_infected_netpen_info,
+                           test_netpen_info,
                            test_netpen_ids_to_infect,
-                           test_n_inf_animals_by_stage,
+                           test_n_infected_animals_by_stage,
                            test_infection_origin,
                            test_simulation_day)
 
-  expect_equal(result_inf_farm_info, expected_inf_farm_info)
+  expect_equal(result_infected_netpen_info, expected_infected_netpen_info)
 })

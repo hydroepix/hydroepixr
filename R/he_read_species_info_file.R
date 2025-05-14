@@ -13,8 +13,8 @@ he_read_species_info_file <- function(filepath) {
     as.is = TRUE,
     header = TRUE
   )
-  species_info_columns <- names(species_info)
-  expected_columns <- list(
+  species_info_cols <- names(species_info)
+  expected_cols <- list(
     "species_id",
     "species_name",
     "latent_dur_freq",
@@ -25,13 +25,13 @@ he_read_species_info_file <- function(filepath) {
     "within_netpen_transmission_max",
     "rel_susceptibility"
   )
-  mismatched_columns <- setdiff(species_info_columns, expected_columns)
-  if (length(mismatched_columns > 0)) {
+  mismatched_cols <- setdiff(species_info_cols, expected_cols)
+  if (length(mismatched_cols > 0)) {
     stop(
       "Unexpected column headers. Expected headers are: ",
-      paste(expected_columns, collapse = ", "),
+      paste(expected_cols, collapse = ", "),
       "\nHeaders in the provided file that do not match are: ",
-      paste(mismatched_columns, collapse = ", ")
+      paste(mismatched_cols, collapse = ", ")
     )
   }
   # Parsing R-code style vectors in input file

@@ -1,58 +1,60 @@
 #' Simulate a day of infection transmission dynamics
 #'
-#' @param inf_farm_info data frame of information on infected farms
+#' @param infected_netpen_info data frame of information on infected netpens
 #' @param simulation_env environment containing simulation variables
 #' @param simulation_day day of simulation that infection is occurring
 #' @param species_info matrix of species information
 #' @param verbose a logical value indicating whether to provide additional output
 #'    messages on model running progress
 #'
-#' @return updated infected farm info data frame
+#' @return updated infected netpen info data frame
 #' @export
 #' @importFrom utils head
+#' @importFrom stats rbinom
 #'
-he_simulate_day <- function(inf_farm_info,
+he_simulate_day <- function(infected_netpen_info,
                             simulation_env,
                             simulation_day,
                             species_info,
                             verbose = FALSE) {
 
   # TODO: Future feature, update farm production time and whether farm is active
+  # Consider whether this is a farm-level variable or a netpen-level variable
 
   # Check there are infected netpens to cause infection spread
-  if (nrow(inf_farm_info) > 0) {
+  if (nrow(infected_netpen_info) > 0) {
     # Calculate probability of within-netpen infection
     if (verbose) {
       message("Calculating newly infected animals from within-netpen transmission...")
     }
     prob_within_netpen_infection <-
-      he_calculate_within_netpen_infection_prob(inf_farm_info,
+      he_calculate_within_netpen_infection_prob(infected_netpen_info,
                                                 vaccine_efficacy = 0)
     # TODO: Sampling should only be done for netpens with remaining susceptible
-    # animals - nrow(inf_farm_info) yields all infected farms
-    # Does this generate NAs because of sampling a 0 from farms with no remaining
+    # animals - nrow(infected_netpen_info) yields all infected netpens
+    # Does this generate NAs because of sampling a 0 from netpens with no remaining
     # susceptible animals?
-    n_newly_infected <- rbinom(nrow(inf_farm_info),
-                                 inf_farm_info$n_susceptible,
+    n_newly_infected <- rbinom(nrow(infected_netpen_info),
+                                 infected_netpen_info$n_susceptible,
                                  prob_within_netpen_infection)
     if (verbose) {
       message(paste0("Newly infected animals: ",
                      n_newly_infected))
     }
 
-    # Update the day represented by the current stage of the infected farm info
-    inf_farm_info["simulation_day"] <- simulation_day
+    # Update the day represented by the current stage of the infected netpen info
+    infected_netpen_info["simulation_day"] <- simulation_day
 
     # Add and remove fish from different disease stages according to new
     # infections and the number of fish which have reached their duration in
     # their current disease stage
     disease_stage_counts <-
-      inf_farm_info[c("n_susceptible",
+      infected_netpen_info[c("n_susceptible",
                       "n_latent",
                       "n_subclinical",
                       "n_clinical",
                       "n_immune")]
-    inf_farm_info[c("n_susceptible",
+    infected_netpen_info[c("n_susceptible",
                     "n_latent",
                     "n_subclinical",
                     "n_clinical",
@@ -84,14 +86,14 @@ he_simulate_day <- function(inf_farm_info,
         )
 
     # TODO: Update overall netpen infection statuses
-    #inf_farm_info <- he_update_netpen_infection_status()
+    #infected_netpen_info <- he_update_netpen_infection_status()
 
     # Generate output for a day
-    he_write_inf_netpen_output(inf_farm_info,
-                               simulation_env$inf_netpen_output_file_name,
+    he_write_infected_netpen_output(infected_netpen_info,
+                               simulation_env$infected_netpen_output_file_name,
                                simulation_env$output_dir)
 
-    inf_farm_info
+    infected_netpen_info
   } else {
     stop("No remaining infected netpens. Simulation should have terminated.")
   }

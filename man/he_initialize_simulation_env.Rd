@@ -9,7 +9,7 @@ he_initialize_simulation_env(
   species_info,
   output_dir,
   model_run_id,
-  inf_netpen_output_file_name,
+  infected_netpen_output_file_name,
   simulation_n
 )
 }
@@ -18,13 +18,13 @@ he_initialize_simulation_env(
 
 \item{species_info}{data frame of species information}
 
-\item{output_dir}{file path where the infected farm information output should
+\item{output_dir}{file path where the infected netpen information output should
 be stored}
 
 \item{model_run_id}{identifier for this run of the model}
 
-\item{inf_netpen_output_file_name}{name of the file in which the infected
-farm information should be stored}
+\item{infected_netpen_output_file_name}{name of the file in which the infected
+netpen information should be stored}
 
 \item{simulation_n}{identifies which simulation of the model run this
 this environment belongs to}

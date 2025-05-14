@@ -5,21 +5,21 @@
 \title{Select Index Netpens}
 \usage{
 he_select_index_netpens(
-  farm_info,
+  netpen_info,
   netpen_ids = NULL,
   farm_id = NULL,
-  n_inf_netpens = 1
+  n_infected_netpens = 1
 )
 }
 \arguments{
-\item{farm_info}{data frame of farm information}
+\item{netpen_info}{data frame of netpen information}
 
 \item{netpen_ids}{identifiers of specific netpens to be infected}
 
 \item{farm_id}{identifier for farm to be infected first, if no netpen
 identifiers are supplied}
 
-\item{n_inf_netpens}{number of randomly selected netpens to be infected in
+\item{n_infected_netpens}{number of randomly selected netpens to be infected in
 the specified farm, if no netpen identifiers are supplied}
 }
 \value{

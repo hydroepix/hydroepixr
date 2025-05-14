@@ -2,25 +2,25 @@
 % Please edit documentation in R/he_add_infected_netpen.R
 \name{he_add_infected_netpen}
 \alias{he_add_infected_netpen}
-\title{Add infected netpen to the infected farm info data frame}
+\title{Add infected netpen to infected netpen tracking}
 \usage{
 he_add_infected_netpen(
-  inf_farm_info,
-  farm_info,
-  new_inf_netpen_ids,
-  n_inf_animals_by_stage,
+  infected_netpen_info,
+  netpen_info,
+  new_infected_netpens,
+  n_infected_animals_by_stage,
   infection_origin,
   simulation_day
 )
 }
 \arguments{
-\item{inf_farm_info}{data frame of information on infected farms}
+\item{infected_netpen_info}{data frame of information on infected netpens}
 
-\item{farm_info}{data frame of information on netpens}
+\item{netpen_info}{data frame of information on netpens}
 
-\item{new_inf_netpen_ids}{list of newly infected netpen ids}
+\item{new_infected_netpens}{list of newly infected netpen ids}
 
-\item{n_inf_animals_by_stage}{vector of numeric values indicating the
+\item{n_infected_animals_by_stage}{vector of numeric values indicating the
 of infected animals in each stage of infection (latent, clinical, and
 subclinical)}
 
@@ -30,9 +30,9 @@ between-netpen", or "between-farm"}
 \item{simulation_day}{day of simulation that infection is occurring}
 }
 \value{
-data frame of information on infected farms, appended with rows to
-represent new infections
+data frame of information on infected netpens, appended with rows to
+for new infections
 }
 \description{
-Add infected netpen to the infected farm info data frame
+Add infected netpen to infected netpen tracking
 }

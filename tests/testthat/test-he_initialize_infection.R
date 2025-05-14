@@ -1,6 +1,6 @@
 test_that("invalid index disease stage produces error", {
-  test_inf_farm_info <-
-    readRDS(paste0(test_data_filepath, "/inf_farm_info_initialized.rds"))
+  test_infected_netpen_info <-
+    readRDS(paste0(test_data_filepath, "/infected_netpen_info_initialized.rds"))
   test_species_info <-
     readRDS(paste0(test_data_filepath, "/parsed_species_info_bay_x.rds"))
   test_simulation_env <- rlang::new_environment()
@@ -12,29 +12,29 @@ test_that("invalid index disease stage produces error", {
   test_n_index_infected_mode <- 1
   test_n_index_infected_max <- 1
 
-  test_farm_info <-
-    readRDS(paste0(test_data_filepath, "/initialized_farm_info_bay_x.rds"))
+  test_netpen_info <-
+    readRDS(paste0(test_data_filepath, "/initialized_netpen_info_bay_x.rds"))
   test_index_netpen_ids <- 1
   test_index_infection_stage <- "invalid_disease_stage"
   expect_error(
     he_initialize_infection(
-      test_inf_farm_info,
+      test_infected_netpen_info,
       test_simulation_env,
       test_n_index_infected_min,
       test_n_index_infected_mode,
       test_n_index_infected_max,
       test_species_info,
-      test_farm_info,
+      test_netpen_info,
       test_index_netpen_ids,
       test_index_infection_stage
     ),
-    regex = "Invalid disease stage for index farm infection."
+    regex = "Invalid disease stage for index infection."
   )
 })
 
 test_that("default index infection initializes correctly", {
-  test_inf_farm_info <-
-    readRDS(paste0(test_data_filepath, "/inf_farm_info_initialized.rds"))
+  test_infected_netpen_info <-
+    readRDS(paste0(test_data_filepath, "/infected_netpen_info_initialized.rds"))
   test_species_info <-
     readRDS(paste0(test_data_filepath, "/parsed_species_info_bay_x.rds"))
   test_simulation_env <- rlang::new_environment()
@@ -46,23 +46,23 @@ test_that("default index infection initializes correctly", {
   test_n_index_infected_mode <- 1
   test_n_index_infected_max <- 1
 
-  test_farm_info <-
-    readRDS(paste0(test_data_filepath, "/initialized_farm_info_bay_x.rds"))
+  test_netpen_info <-
+    readRDS(paste0(test_data_filepath, "/initialized_netpen_info_bay_x.rds"))
   test_index_netpen_ids <- 1
-  test_inf_farm_info <-
+  test_infected_netpen_info <-
     he_initialize_infection(
-      test_inf_farm_info,
+      test_infected_netpen_info,
       test_simulation_env,
       test_n_index_infected_min,
       test_n_index_infected_mode,
       test_n_index_infected_max,
       test_species_info,
-      test_farm_info,
+      test_netpen_info,
       test_index_netpen_ids
     )
   # Check infected netpen added
   expect_equal(
-    test_inf_farm_info,
+    test_infected_netpen_info,
     data.frame(
       simulation_day = 0,
       netpen_id = 1,
@@ -95,8 +95,8 @@ test_that("default index infection initializes correctly", {
 })
 
 test_that("specified disease stage for index infection initializes correctly", {
-  test_inf_farm_info <-
-    readRDS(paste0(test_data_filepath, "/inf_farm_info_initialized.rds"))
+  test_infected_netpen_info <-
+    readRDS(paste0(test_data_filepath, "/infected_netpen_info_initialized.rds"))
   test_species_info <-
     readRDS(paste0(test_data_filepath, "/parsed_species_info_bay_x.rds"))
   test_simulation_env <- rlang::new_environment()
@@ -108,25 +108,25 @@ test_that("specified disease stage for index infection initializes correctly", {
   test_n_index_infected_mode <- 1
   test_n_index_infected_max <- 1
 
-  test_farm_info <-
-    readRDS(paste0(test_data_filepath, "/initialized_farm_info_bay_x.rds"))
+  test_netpen_info <-
+    readRDS(paste0(test_data_filepath, "/initialized_netpen_info_bay_x.rds"))
   test_index_netpen_ids <- 1
   test_index_infection_stage <- "latent"
-  test_inf_farm_info <-
+  test_infected_netpen_info <-
     he_initialize_infection(
-      test_inf_farm_info,
+      test_infected_netpen_info,
       test_simulation_env,
       test_n_index_infected_min,
       test_n_index_infected_mode,
       test_n_index_infected_max,
       test_species_info,
-      test_farm_info,
+      test_netpen_info,
       test_index_netpen_ids,
       test_index_infection_stage
     )
   # Check infected netpen added
   expect_equal(
-    test_inf_farm_info,
+    test_infected_netpen_info,
     data.frame(
       simulation_day = 0,
       netpen_id = 1,

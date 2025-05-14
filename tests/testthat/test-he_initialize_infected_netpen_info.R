@@ -1,13 +1,13 @@
-test_that("infected farm info is initialized correctly", {
+test_that("infected netpen info is initialized correctly", {
   # Create test directory
   temp_test_dir <- output_test_setup()
   test_output_file_name <- "infected_netpens.csv"
 
-  test_inf_farm_info <- he_initialize_inf_farm_info(temp_test_dir,
+  test_infected_netpen_info <- he_initialize_infected_netpen_info(temp_test_dir,
                                                     test_output_file_name)
-  expect_no_error(test_inf_farm_info)
+  expect_no_error(test_infected_netpen_info)
   # Check column names and types
-  inf_farm_info_columns <- data.frame(
+  infected_netpen_info_columns <- data.frame(
     simulation_day = integer(),
     netpen_id = integer(),
     farm_id = integer(),
@@ -25,12 +25,12 @@ test_that("infected farm info is initialized correctly", {
     is_vaccinated = double()
   )
   # Check that column names and types are correct
-  expect_equal(names(test_inf_farm_info),
-               names(inf_farm_info_columns))
-  expect_equal(sapply(test_inf_farm_info, class),
-               sapply(inf_farm_info_columns, class))
+  expect_equal(names(test_infected_netpen_info),
+               names(infected_netpen_info_columns))
+  expect_equal(sapply(test_infected_netpen_info, class),
+               sapply(infected_netpen_info_columns, class))
   # Check that column names have been written to output file
   test_output_file_data <- read.csv(file.path(temp_test_dir,
                                               test_output_file_name))
-  expect_equal(names(test_output_file_data), names(inf_farm_info_columns))
+  expect_equal(names(test_output_file_data), names(infected_netpen_info_columns))
 })
