@@ -6,6 +6,8 @@
 #' @param n_infected_animals_by_stage vector of numeric values indicating the
 #'    of infected animals in each stage of infection (latent, clinical, and
 #'    subclinical)
+#' @param infection_status overall infection status of the netpen, which is the
+#'    latest disease stage found in the netpen
 #' @param infection_origin source of the infection was can be "index",
 #'    between-netpen", or "between-farm"
 #' @param simulation_day day of simulation that infection is occurring
@@ -19,6 +21,7 @@ he_add_infected_netpen <-
            netpen_info,
            new_infected_netpens,
            n_infected_animals_by_stage,
+           infection_status,
            infection_origin,
            simulation_day
            ) {
@@ -29,6 +32,7 @@ he_add_infected_netpen <-
       new_infected_netpens <- new_infected_netpens[!already_infected_netpens]
       n_infected_animals_by_stage <-
         n_infected_animals_by_stage[!already_infected_netpens,, drop = FALSE]
+      infection_status <- infection_status[!already_infected_netpens]
       infection_origin <- infection_origin[!already_infected_netpens]
     }
 
@@ -46,7 +50,7 @@ he_add_infected_netpen <-
           n_infected_animals_by_stage,
           n_immune = 0,
           n_total = netpen_info$netpen_size[new_infected_netpens],
-          infection_status = 1,
+          infection_status = infection_status,
           infection_origin = infection_origin,
           day_infected = simulation_day,
           is_vaccinated = 0

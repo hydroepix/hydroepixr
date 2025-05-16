@@ -75,7 +75,7 @@ test_that("default index infection initializes correctly", {
       n_clinical = 0,
       n_immune = 0,
       n_total = 25000,
-      infection_status = 1,
+      infection_status = "subclinical",
       infection_origin = "index",
       day_infected = 0,
       is_vaccinated = 0
@@ -139,7 +139,7 @@ test_that("specified disease stage for index infection initializes correctly", {
       n_clinical = 0,
       n_immune = 0,
       n_total = 25000,
-      infection_status = 1,
+      infection_status = "latent",
       infection_origin = "index",
       day_infected = 0,
       is_vaccinated = 0

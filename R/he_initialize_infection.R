@@ -43,6 +43,7 @@ he_initialize_infection <- function(infected_netpen_info,
                                              n_subclinical = n_animals_infected,
                                              n_clinical = 0
                                            ),
+                                           infection_status = "subclinical",
                                            infection_origin = "index",
                                            simulation_day = 0)
     simulation_env$disease_stage_duration_matrices$latent_duration <-
@@ -62,6 +63,7 @@ he_initialize_infection <- function(infected_netpen_info,
                                              n_subclinical = 0,
                                              n_clinical = 0
                                            ),
+                                           infection_status = "latent",
                                            infection_origin = "index",
                                            simulation_day = 0)
     simulation_env$disease_stage_duration_matrices$latent_duration <-

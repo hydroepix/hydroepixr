@@ -9,6 +9,7 @@ test_that("single netpen is correctly appended to empty infected netpen info", {
     n_subclinical = 0,
     n_clinical = 0
   )
+  test_infection_status <- "subclinical"
   test_infection_origin <- "index"
   test_simulation_day <- 0
 
@@ -24,7 +25,7 @@ test_that("single netpen is correctly appended to empty infected netpen info", {
     n_clinical = 0,
     n_immune = 0,
     n_total = 25000,
-    infection_status = 1,
+    infection_status = test_infection_status,
     infection_origin = test_infection_origin,
     day_infected = 0,
     is_vaccinated = 0
@@ -36,6 +37,7 @@ test_that("single netpen is correctly appended to empty infected netpen info", {
                            test_netpen_info,
                            test_netpen_ids_to_infect,
                            test_n_infected_animals_by_stage,
+                           test_infection_status,
                            test_infection_origin,
                            test_simulation_day)
 
@@ -53,6 +55,7 @@ test_that("netpens are correctly appended to empty infected netpen info", {
     n_subclinical = c(0, 1),
     n_clinical = c(0, 0)
   )
+  test_infection_status <- c("latent", "subclinical")
   test_infection_origin <- c("index", "index")
   test_simulation_day <- 0
 
@@ -68,7 +71,7 @@ test_that("netpens are correctly appended to empty infected netpen info", {
     n_clinical = c(0, 0),
     n_immune = c(0,0),
     n_total = c(25000, 25000),
-    infection_status = c(1, 1),
+    infection_status = test_infection_status,
     infection_origin = c("index", "index"),
     day_infected = c(0, 0),
     is_vaccinated = c(0, 0)
@@ -79,6 +82,7 @@ test_that("netpens are correctly appended to empty infected netpen info", {
                            test_netpen_info,
                            test_netpen_ids_to_infect,
                            test_n_infected_animals_by_stage,
+                           test_infection_status,
                            test_infection_origin,
                            test_simulation_day)
 
@@ -100,6 +104,7 @@ test_that("single netpen is correctly appended to infected netpen info", {
     n_subclinical = 0,
     n_clinical = 0
   )
+  test_infection_status <- "subclinical"
   test_infection_origin <- "between-netpen"
   test_simulation_day <- 10
 
@@ -118,8 +123,8 @@ test_that("single netpen is correctly appended to infected netpen info", {
         n_clinical = 0,
         n_immune = 0,
         n_total = 25000,
-        infection_status = 1,
-        infection_origin = "between-netpen",
+        infection_status = test_infection_status,
+        infection_origin = test_infection_origin,
         day_infected = 10,
         is_vaccinated = 0
       )
@@ -131,6 +136,7 @@ test_that("single netpen is correctly appended to infected netpen info", {
                            test_netpen_info,
                            test_netpen_ids_to_infect,
                            test_n_infected_animals_by_stage,
+                           test_infection_status,
                            test_infection_origin,
                            test_simulation_day)
 
@@ -152,6 +158,7 @@ test_that("netpens are correctly appended to infected netpen info", {
     n_subclinical = c(0, 0),
     n_clinical = c(0, 0)
   )
+  test_infection_status <- c("latent", "latent")
   test_infection_origin <- c("between-netpen", "between-netpen")
   test_simulation_day <- 12
 
@@ -169,8 +176,8 @@ test_that("netpens are correctly appended to infected netpen info", {
       n_clinical = c(0, 0),
       n_immune = c(0, 0),
       n_total = c(25000, 25000),
-      infection_status = c(1, 1),
-      infection_origin = c("between-netpen", "between-netpen"),
+      infection_status = test_infection_status,
+      infection_origin = test_infection_origin,
       day_infected = c(12, 12),
       is_vaccinated = c(0, 0)
     )
@@ -181,6 +188,7 @@ test_that("netpens are correctly appended to infected netpen info", {
                            test_netpen_info,
                            test_netpen_ids_to_infect,
                            test_n_infected_animals_by_stage,
+                           test_infection_status,
                            test_infection_origin,
                            test_simulation_day)
 
@@ -202,6 +210,7 @@ test_that("netpens are not appended when they already exist in infected netpen i
     n_subclinical = c(0, 1),
     n_clinical = c(0, 0)
   )
+  test_infection_status <- c("latent", "subclinical")
   test_infection_origin <- c("between-netpen", "between-netpen")
   test_simulation_day <- 1
 
@@ -217,8 +226,8 @@ test_that("netpens are not appended when they already exist in infected netpen i
     n_clinical = c(0, 0),
     n_immune = c(0,0),
     n_total = c(25000, 25000),
-    infection_status = c(1, 1),
-    infection_origin = c("between-netpen", "between-netpen"),
+    infection_status = test_infection_status,
+    infection_origin = test_infection_origin,
     day_infected = c(1, 1),
     is_vaccinated = c(0, 0)
   )
@@ -228,6 +237,7 @@ test_that("netpens are not appended when they already exist in infected netpen i
                            test_netpen_info,
                            test_netpen_ids_to_infect,
                            test_n_infected_animals_by_stage,
+                           test_infection_status,
                            test_infection_origin,
                            test_simulation_day)
 
@@ -250,6 +260,7 @@ test_that("single netpen is correctly appended when already infected netpens are
     n_subclinical = c(0, 0, 0),
     n_clinical = c(0, 0, 0)
   )
+  test_infection_status <- rep("latent", 3)
   test_infection_origin <- rep("between-netpen", 3)
   test_simulation_day <- 5
 
@@ -267,7 +278,7 @@ test_that("single netpen is correctly appended when already infected netpens are
       n_clinical = 0,
       n_immune = 0,
       n_total = 25000,
-      infection_status = 1,
+      infection_status = "latent",
       infection_origin = "between-netpen",
       day_infected = 5,
       is_vaccinated = 0
@@ -279,6 +290,7 @@ test_that("single netpen is correctly appended when already infected netpens are
                            test_netpen_info,
                            test_netpen_ids_to_infect,
                            test_n_infected_animals_by_stage,
+                           test_infection_status,
                            test_infection_origin,
                            test_simulation_day)
 
@@ -301,6 +313,7 @@ test_that("multiple netpens are correctly appended when already infected netpens
     n_subclinical = c(0, 0, 0, 0),
     n_clinical = c(0, 0, 0, 0)
   )
+  test_infection_status <- rep("latent", 4)
   test_infection_origin <- rep("between-netpen", 4)
   test_simulation_day <- 5
 
@@ -318,7 +331,7 @@ test_that("multiple netpens are correctly appended when already infected netpens
       n_clinical = c(0, 0),
       n_immune = c(0, 0),
       n_total = c(25000, 25000),
-      infection_status = c(1, 1),
+      infection_status = rep("latent", 2),
       infection_origin = rep("between-netpen", 2),
       day_infected = c(5, 5),
       is_vaccinated = c(0, 0)
@@ -330,6 +343,7 @@ test_that("multiple netpens are correctly appended when already infected netpens
                            test_netpen_info,
                            test_netpen_ids_to_infect,
                            test_n_infected_animals_by_stage,
+                           test_infection_status,
                            test_infection_origin,
                            test_simulation_day)
 

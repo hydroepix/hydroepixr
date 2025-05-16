@@ -9,6 +9,7 @@ he_add_infected_netpen(
   netpen_info,
   new_infected_netpens,
   n_infected_animals_by_stage,
+  infection_status,
   infection_origin,
   simulation_day
 )
@@ -23,6 +24,9 @@ he_add_infected_netpen(
 \item{n_infected_animals_by_stage}{vector of numeric values indicating the
 of infected animals in each stage of infection (latent, clinical, and
 subclinical)}
+
+\item{infection_status}{overall infection status of the netpen, which is the
+latest disease stage found in the netpen}
 
 \item{infection_origin}{source of the infection was can be "index",
 between-netpen", or "between-farm"}
