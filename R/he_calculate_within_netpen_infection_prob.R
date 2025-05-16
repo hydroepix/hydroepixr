@@ -12,9 +12,10 @@ he_calculate_within_netpen_infection_prob <-
            vaccine_efficacy) {
     effective_transmission <-
       infected_netpen_info$within_netpen_transmission * (1 - vaccine_efficacy)
-    prevalence <-
-      (infected_netpen_info$n_subclinical + infected_netpen_info$n_clinical) /
-      (infected_netpen_info$n_total - infected_netpen_info$n_immune)
+    n_infectious <- infected_netpen_info$n_subclinical + infected_netpen_info$n_clinical
+    n_susceptible_or_infected <- infected_netpen_info$n_total - infected_netpen_info$n_immune
+    prevalence <- n_infectious / n_susceptible_or_infected
+    prevalence[is.nan(prevalence)] <- 0
     within_netpen_infection_prob <- 1 - exp(-effective_transmission * prevalence)
     within_netpen_infection_prob
   }
