@@ -27,16 +27,17 @@ he_simulate_day <- function(infected_netpen_info,
     if (verbose) {
       message("Calculating newly infected animals from within-netpen transmission...")
     }
+    # TODO: Update this calculation to only be applied to the subset of netpens
+    # which have active infections?
     prob_within_netpen_infection <-
       he_calculate_within_netpen_infection_prob(infected_netpen_info,
                                                 vaccine_efficacy = 0)
-    # TODO: Sampling should only be done for netpens with remaining susceptible
-    # animals - nrow(infected_netpen_info) yields all infected netpens
-    # Does this generate NAs because of sampling a 0 from netpens with no remaining
-    # susceptible animals?
-    n_newly_infected <- rbinom(nrow(infected_netpen_info),
-                                 infected_netpen_info$n_susceptible,
-                                 prob_within_netpen_infection)
+
+    n_newly_infected <- stats::rbinom(
+      nrow(infected_netpen_info),
+      infected_netpen_info$n_susceptible,
+      prob_within_netpen_infection
+    )
     if (verbose) {
       message(paste0("Newly infected animals: ",
                      n_newly_infected))
@@ -86,12 +87,24 @@ he_simulate_day <- function(infected_netpen_info,
         )
 
     # TODO: Update overall netpen infection statuses
-    #infected_netpen_info <- he_update_netpen_infection_status()
+    # 1: susceptible
+    # 2: latent
+    # 3: subclinical
+    # 4: clinical
+    # 5: immune
+    # infected_netpen_info$infection_status <-
+    #   he_update_netpen_infection_status(infected_netpen_info[c("n_susceptible",
+    #                                                            "n_latent",
+    #                                                            "n_subclinical",
+    #                                                            "n_clinical",
+    #                                                            "n_immune")])
 
     # Generate output for a day
-    he_write_infected_netpen_output(infected_netpen_info,
-                               simulation_env$infected_netpen_output_file_name,
-                               simulation_env$output_dir)
+    he_write_infected_netpen_output(
+      infected_netpen_info,
+      simulation_env$infected_netpen_output_file_name,
+      simulation_env$output_dir
+    )
 
     infected_netpen_info
   } else {

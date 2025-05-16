@@ -12,12 +12,11 @@
 #' @importFrom utils write.table
 #'
 he_write_infected_netpen_output <- function(infected_netpen_info,
-                                       infected_netpen_output_file_name,
-                                       output_dir) {
+                                            infected_netpen_output_file_name,
+                                            output_dir) {
   write.table(
     infected_netpen_info,
-    file.path(output_dir,
-              infected_netpen_output_file_name),
+    file.path(output_dir, infected_netpen_output_file_name),
     append = TRUE,
     sep = ",",
     col.names = FALSE,
