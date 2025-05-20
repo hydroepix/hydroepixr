@@ -6,22 +6,19 @@
 \usage{
 he_initialize_model_env(
   model_env,
-  farm_info_filepath,
+  netpen_info_filepath,
   species_info_filepath,
-  connectivity_matrix_filepath,
-  output_filepath = "/output"
+  connectivity_matrix_filepath = NULL
 )
 }
 \arguments{
 \item{model_env}{environment in which to store model level variables}
 
-\item{farm_info_filepath}{filepath to farm info file}
+\item{netpen_info_filepath}{filepath to netpen info file}
 
 \item{species_info_filepath}{filepath to species info file}
 
 \item{connectivity_matrix_filepath}{filepath to connectivity matrix file}
-
-\item{output_filepath}{filepath to the directory in which to write output files}
 }
 \value{
 NA

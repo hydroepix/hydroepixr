@@ -6,19 +6,28 @@
 \usage{
 he_initialize_simulation_env(
   simulation_env,
-  num_netpens,
-  farm_info,
-  species_info
+  species_info,
+  output_dir,
+  model_run_id,
+  infected_netpen_output_file_name,
+  simulation_n
 )
 }
 \arguments{
 \item{simulation_env}{environment in which simulation variables are stored}
 
-\item{num_netpens}{number of netpens}
-
-\item{farm_info}{data frame of farm and netpen information}
-
 \item{species_info}{data frame of species information}
+
+\item{output_dir}{file path where the infected netpen information output should
+be stored}
+
+\item{model_run_id}{identifier for this run of the model}
+
+\item{infected_netpen_output_file_name}{name of the file in which the infected
+netpen information should be stored}
+
+\item{simulation_n}{identifies which simulation of the model run this
+this environment belongs to}
 }
 \value{
 NA

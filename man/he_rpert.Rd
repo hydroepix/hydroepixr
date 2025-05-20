@@ -4,16 +4,16 @@
 \alias{he_rpert}
 \title{Generate n PERT beta random variates}
 \usage{
-he_rpert(n, a, l, b)
+he_rpert(n, min, mode, max)
 }
 \arguments{
 \item{n}{number of PERT beta random variates to generate}
 
-\item{a}{minimum value}
+\item{min}{minimum value}
 
-\item{l}{mode value}
+\item{mode}{mode value}
 
-\item{b}{maximum value}
+\item{max}{maximum value}
 }
 \value{
 vector of PERT beta random variates

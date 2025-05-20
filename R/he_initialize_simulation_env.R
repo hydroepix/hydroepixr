@@ -1,71 +1,54 @@
 #' Initialize simulation environment with necessary variables
 #'
 #' @param simulation_env environment in which simulation variables are stored
-#' @param num_netpens number of netpens
-#' @param farm_info data frame of farm and netpen information
 #' @param species_info data frame of species information
+#' @param output_dir file path where the infected netpen information output should
+#'    be stored
+#' @param model_run_id identifier for this run of the model
+#' @param infected_netpen_output_file_name name of the file in which the infected
+#'    netpen information should be stored
+#' @param simulation_n identifies which simulation of the model run this
+#'    this environment belongs to
 #'
 #' @return NA
 #' @export
 #' @importFrom stats runif
 #'
-he_initialize_simulation_env <- function(simulation_env,
-                                         num_netpens,
-                                         farm_info,
-                                         species_info) {
-  # Initialize simulation-level farm information variables
-  farm_info$susceptible_again <- rep(0, num_netpens)
-  farm_info$survived <- rep(0, num_netpens)
-  farm_info$infectiousness <- rep(0, num_netpens)
-  farm_info$infection_mode <- rep(0, num_netpens)
+he_initialize_simulation_env <-
+  function(simulation_env,
+           species_info,
+           output_dir,
+           model_run_id,
+           infected_netpen_output_file_name,
+           simulation_n) {
+  # Define output parameters at the simulation level
+  simulation_env$output_dir <- output_dir
+  simulation_env$simulation_n <- simulation_n
+  simulation_env$infected_netpen_output_file_name <-
+    paste(model_run_id,
+          simulation_n,
+          infected_netpen_output_file_name,
+          sep = "_")
 
-  farm_info <- he_reset_simulation_env(simulation_env,
-                                       num_netpens,
-                                       farm_info)
+  # Create data frame and file to store infected netpen information
+  simulation_env$infected_netpen_info <-
+    he_initialize_infected_netpen_info(simulation_env$output_dir,
+                                simulation_env$infected_netpen_output_file_name)
+  # Initialize simulation-level netpen information variables
+  #netpen_info$susceptible_again <- rep(0, n_netpens)
+  #netpen_info$survived <- rep(0, n_netpens)
+  #netpen_info$infectiousness <- rep(0, n_netpens)
+  #netpen_info$infection_mode <- rep(0, n_netpens)
 
-  # select index herds for next simulation?
-  # if (ignore_status) {
-  #   # TODO: Select index farm based on index farm selection function
-  #   environment$index_farm <- select_index_farm()
-  #   # apply infected status to the index farm
-  #   farm_info$status[simulation_env$index_farm]
-  #   farm_info$time_infected[simulation_env$index_farm] <- 0
-  #
-  #   # TODO: infect index farm with number of fish according to type of
-  #   # initial infection
-  #   if (index_direct) {
-  #     # TODO: construct an infected farm
-  #     # aInfHerd$addInf(indexHerd,
-  #     #                 matrix(c(0, 1, 0),
-  #     #                        byrow = TRUE,
-  #     #                        ncol = 3,
-  #     #                        nrow = length(indexHerd)),
-  #     #                 1)
-  #   } else {
-  #     # TODO: construct an infected farm
-  #     # aInfHerd$addInf(indexHerd,
-  #     #                 matrix(c(1, 0, 0),
-  #     #                        byrow = TRUE,
-  #     #                        ncol = 3,
-  #     #                        nrow = length(indexHerd)),
-  #     #                 0)
-  #   }
-  # }
-
-  # TODO: Review these variables - what are these bay management area vars for?
-  temp_bay_management <- round(runif(unique(farm_info$bay_management_id)))
-  farm_info$bay_management_time <- rep(0, num_farms)
-  farm_info$productive_time <- rep(0, num_farms)
-  farm_info$farm_active <- rep(FALSE, num_farms)
-  farm_info$bay_management_time <- temp_bay_management[farm_info$bay_management_id]
-  farm_info$productive_time <-
-    farm_info$bay_management_time - round(runif(length(farm_info$bay_management_time), 0, 120))
-
-  # Set the index farm to be active
-  index_farm_id <- farm_info$farm_id[index_farm]
-  farm_info$productive_time[farm_info$farm_id %in% index_farm_id] <-
-    round(runif(sum(farm_info$farm_id %in% index_farm_id), 0, 120))
-  farm_info$productive_time[index_farm]
-
-  farm_info
+  # Initialize matrices to store disease stage durations
+  # TODO: This will need to be updated to accommodate and label different
+  # diseases
+  simulation_env$disease_stage_duration_matrices <- list(
+    latent_duration =
+      matrix(numeric(0), ncol = length(species_info$latent_dur_freq[[1]])),
+    subclinical_duration =
+      matrix(numeric(0), ncol = length(species_info$subclinical_dur_freq[[1]])),
+    clinical_duration =
+      matrix(numeric(0), ncol = length(species_info$clinical_dur_freq[[1]]))
+  )
 }
