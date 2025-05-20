@@ -55,11 +55,6 @@ he_add_infected_netpen <-
           day_infected = simulation_day,
           is_vaccinated = 0
         )
-      # Assign maximum status value
-      # new_infected_netpen_rows$status <-
-      #   apply(new_infected_netpen_rows[, c("latent", "subclinical", "clinical"), drop = FALSE], 1, function(x)
-      #     max(c("latent", "subclinical", "clinical")[x >= 1]))
-      # Add newly infected rows into infected netpen data
 
       # Row names needs to be false due to the match condition above that checks
       # for already infected netpens - it seems to convert row names to

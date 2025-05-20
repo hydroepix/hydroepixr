@@ -54,8 +54,14 @@ he_run_model <- function(model_env) {
         model_env$species_info,
         model_env$verbose
       )
-      # TODO: Add termination condition in case where no animals are infected:
-      #any(inf_netpen_info$infection_status %in% c(2, 3, 4))
+
+      infections_resolved <- he_check_if_infection_is_resolved(
+        simulation_env$infected_netpen_info)
+
+      # Terminate simulation run if all infections have reached an endpoint
+      if (infections_resolved) {
+        break
+      }
     }
   }
   # TODO: Generate output for results from all simulations
