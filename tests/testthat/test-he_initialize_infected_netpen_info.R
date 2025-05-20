@@ -19,7 +19,6 @@ test_that("infected netpen info is initialized correctly", {
     n_clinical = integer(),
     n_immune = integer(),
     n_total = integer(),
-    infection_status = integer(),
     infection_origin = character(),
     day_infected = double(),
     is_vaccinated = double()

@@ -42,7 +42,6 @@ test_that("simulation environment variables are correctly initialized", {
     n_clinical = integer(),
     n_immune = integer(),
     n_total = integer(),
-    infection_status = integer(),
     infection_origin = character(),
     day_infected = double(),
     is_vaccinated = numeric()

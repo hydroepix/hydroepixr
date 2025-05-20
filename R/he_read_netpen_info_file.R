@@ -46,7 +46,6 @@ he_read_netpen_info_file <- function(filepath, verbose = FALSE) {
         "Default values assigned.")
       )
     }
-    netpen_info$infection_status <- rep(1, n_netpens)
     netpen_info$time_infected <- rep(Inf, n_netpens)
   } else {
     stop(

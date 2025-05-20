@@ -86,19 +86,6 @@ he_simulate_day <- function(infected_netpen_info,
         n_animals_to_distribute = n_animals_transitioning_by_stage
         )
 
-    # TODO: Update overall netpen infection statuses
-    # 1: susceptible
-    # 2: latent
-    # 3: subclinical
-    # 4: clinical
-    # 5: immune
-    # infected_netpen_info$infection_status <-
-    #   he_update_netpen_infection_status(infected_netpen_info[c("n_susceptible",
-    #                                                            "n_latent",
-    #                                                            "n_subclinical",
-    #                                                            "n_clinical",
-    #                                                            "n_immune")])
-
     # Generate output for a day
     he_write_infected_netpen_output(
       infected_netpen_info,
