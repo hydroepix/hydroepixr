@@ -7,5 +7,5 @@
 #' @export
 #'
 he_check_if_infection_is_resolved <- function(infected_netpen_info) {
-  all(infected_netpen_info$n_immune == infected_netpen_info$n_total)
+  all((infected_netpen_info$n_recovered + infected_netpen_info$n_dead) == infected_netpen_info$n_total)
 }
