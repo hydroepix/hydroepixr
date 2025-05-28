@@ -22,9 +22,11 @@ Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.2
 Imports: 
     dplyr,
+    ggplot2,
     purrr,
     rlang,
     stats,
+    tidyr,
     utils
 Suggests: 
     testthat (>= 3.0.0),
