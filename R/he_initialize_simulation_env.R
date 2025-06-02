@@ -7,6 +7,7 @@
 #' @param model_run_id identifier for this run of the model
 #' @param infected_netpen_output_file_name name of the file in which the infected
 #'    netpen information should be stored
+#' @param case_fatality_prop proportion of the infected population that will die
 #' @param simulation_n identifies which simulation of the model run this
 #'    this environment belongs to
 #'
@@ -20,6 +21,7 @@ he_initialize_simulation_env <-
            output_dir,
            model_run_id,
            infected_netpen_output_file_name,
+           case_fatality_prop,
            simulation_n) {
   # Define output parameters at the simulation level
   simulation_env$output_dir <- output_dir
@@ -29,6 +31,8 @@ he_initialize_simulation_env <-
           simulation_n,
           infected_netpen_output_file_name,
           sep = "_")
+
+  simulation_env$case_fatality_prop <- case_fatality_prop
 
   # Create data frame and file to store infected netpen information
   simulation_env$infected_netpen_info <-
