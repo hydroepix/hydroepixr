@@ -7,7 +7,8 @@
 he_update_disease_stage_counts(
   disease_stage_counts,
   disease_stage_duration_matrices,
-  n_newly_infected
+  n_newly_infected,
+  case_fatality_prop
 )
 }
 \arguments{
@@ -20,6 +21,8 @@ disease stage duration for each netpen}
 
 \item{n_newly_infected}{the number of newly infected animals for each
 netpen}
+
+\item{case_fatality_prop}{proportion of the infected population that will die}
 }
 \value{
 modified disease stage count columns

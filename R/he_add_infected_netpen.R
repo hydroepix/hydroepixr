@@ -44,7 +44,8 @@ he_add_infected_netpen <-
           n_susceptible = netpen_info$netpen_size[new_infected_netpens] -
             rowSums(n_infected_animals_by_stage),
           n_infected_animals_by_stage,
-          n_immune = 0,
+          n_recovered = 0,
+          n_dead = 0,
           n_total = netpen_info$netpen_size[new_infected_netpens],
           infection_origin = infection_origin,
           day_infected = simulation_day,
