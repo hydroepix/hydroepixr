@@ -81,9 +81,10 @@ he_update_disease_stage_counts <- function(disease_stage_counts,
     net_change <-
       he_calculate_net_change_in_disease_stage_count(
         disease_stage_duration_matrices,
-        n_newly_infected
+        n_newly_infected,
+        case_fatality_prop
       )
-
+    # TODO: UPDATE - SUBCLINICAL -> RECOVERED, CLINICAL -> DEAD
     # Note: This works because it is the ending stage - there are no transitions
     # out of it, so the net change out of clinical will represent the number
     # transitioning into dead or recovered and will always be positive or zero
