@@ -6,7 +6,7 @@ test_that("simulation environment variables are correctly initialized", {
   test_species_info <- readRDS(paste0(test_data_filepath,
                                       "/parsed_species_info_bay_x.rds"))
   test_model_run_id <- "testmodel"
-  test_case_fatality_prop <- 0.6
+  test_clinically_infected_prop <- 0.6
   test_simulation_n <- 10
   he_initialize_simulation_env(
     test_simulation_env,
@@ -14,7 +14,7 @@ test_that("simulation environment variables are correctly initialized", {
     output_dir = temp_test_dir,
     test_model_run_id,
     test_infected_netpen_output_file_name,
-    test_case_fatality_prop,
+    test_clinically_infected_prop,
     test_simulation_n
   )
 

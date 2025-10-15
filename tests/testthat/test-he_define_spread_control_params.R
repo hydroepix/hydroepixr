@@ -6,7 +6,7 @@ test_that("default spread parameters are stored in the environment", {
   expect_equal(test_environment$n_index_infected_max, 100)
   expect_true(is.null(test_environment$index_netpen_ids))
   expect_true(is.null(test_environment$index_farm_id))
-  expect_equal(test_environment$case_fatality_prop, 0.89)
+  expect_equal(test_environment$clinically_infected_prop, 0.89)
   expect_equal(test_environment$days_dead_infectious, 2)
   expect_equal(test_environment$farm_to_farm, 0.42)
   expect_equal(test_environment$netpen_to_netpen, 0.052)
@@ -19,7 +19,7 @@ test_that("user-defined spread parameters stored in the environment", {
   test_n_index_infected_mode <- 10
   test_n_index_infected_max <- 10
   test_index_farm_id <- 1
-  test_case_fatality_prop <- 0.75
+  test_clinically_infected_prop <- 0.75
   test_days_dead_infectious <- 1
   test_farm_to_farm <- 0.5
   test_netpen_to_netpen <- 0.025
@@ -31,7 +31,7 @@ test_that("user-defined spread parameters stored in the environment", {
                                   n_index_infected_max = test_n_index_infected_max,
                                   index_netpen_ids = test_index_netpen_ids,
                                   index_farm_id = test_index_farm_id,
-                                  case_fatality_prop = test_case_fatality_prop,
+                                  clinically_infected_prop = test_clinically_infected_prop,
                                   days_dead_infectious = test_days_dead_infectious,
                                   farm_to_farm = test_farm_to_farm,
                                   netpen_to_netpen = test_netpen_to_netpen,
@@ -41,7 +41,7 @@ test_that("user-defined spread parameters stored in the environment", {
   expect_equal(test_environment$n_index_infected_max, test_n_index_infected_max)
   expect_equal(test_environment$index_netpen_ids, test_index_netpen_ids)
   expect_equal(test_environment$index_farm_id, test_index_farm_id)
-  expect_equal(test_environment$case_fatality_prop, test_case_fatality_prop)
+  expect_equal(test_environment$clinically_infected_prop, test_clinically_infected_prop)
   expect_equal(test_environment$days_dead_infectious, test_days_dead_infectious)
   expect_equal(test_environment$farm_to_farm, test_farm_to_farm)
   expect_equal(test_environment$netpen_to_netpen, test_netpen_to_netpen)

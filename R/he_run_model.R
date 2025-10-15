@@ -20,7 +20,7 @@ he_run_model <- function(model_env) {
                                  model_env$output_dir,
                                  model_env$model_run_id,
                                  model_env$infected_netpen_output_file_name,
-                                 model_env$case_fatality_prop,
+                                 model_env$clinically_infected_prop,
                                  simulation_n)
 
     # Set random seed for the simulation

@@ -66,7 +66,7 @@ he_simulate_day <- function(infected_netpen_info,
         disease_stage_counts,
         simulation_env$disease_stage_duration_matrices,
         n_newly_infected,
-        simulation_env$case_fatality_prop
+        simulation_env$clinically_infected_prop
       )
 
     # Update disease stage duration matrices for animals entering a new stage

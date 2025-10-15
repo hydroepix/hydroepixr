@@ -7,15 +7,21 @@
 \usage{
 he_calculate_net_change_in_disease_stage_count(
   disease_stage_duration_matrices,
-  n_newly_infected
+  n_newly_infected,
+  clinically_infected_prop
 )
 }
 \arguments{
 \item{disease_stage_duration_matrices}{list of matrices containing the
 disease stage duration for each netpen}
 
-\item{n_newly_infected}{he number of newly infected animals for each
+\item{n_newly_infected}{the number of newly infected animals for each
 netpen}
+
+\item{clinically_infected_prop}{the proportion of animals which will enter
+the clinical stage upon infection, which is the same as 1 minus the
+proportion of animals which will enter the subclinical stage upon
+infection}
 }
 \value{
 net change in the number of animals in each disease stage

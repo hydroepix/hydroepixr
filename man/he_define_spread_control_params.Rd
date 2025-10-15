@@ -12,7 +12,7 @@ he_define_spread_control_params(
   index_netpen_ids = NULL,
   index_farm_id = NULL,
   index_direct = TRUE,
-  case_fatality_prop = 0.89,
+  clinically_infected_prop = 0.89,
   days_dead_infectious = 2,
   farm_to_farm = 0.42,
   netpen_to_netpen = 0.052,
@@ -39,7 +39,10 @@ be calculated from a PERT distribution}
 \item{index_direct}{logical indicating whether the index farm gets infected
 directly, as opposed to indirectly}
 
-\item{case_fatality_prop}{proportion of the infected population that will die}
+\item{clinically_infected_prop}{the proportion of animals which will enter
+the clinical stage upon infection, which is the same as 1 minus the
+proportion of animals which will enter the subclinical stage upon
+infection}
 
 \item{days_dead_infectious}{number of days dead animals remain infectious}
 

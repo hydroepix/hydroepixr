@@ -13,12 +13,12 @@ test_that("disease stage count values are updated correctly for a single netpen"
     matrix(c(5, 0, 0, 0, 0, 0, 0, 0), ncol = 8, byrow = TRUE)
   )
   test_n_newly_infected <- 1000
-  test_case_fatality_prop <- 0.5
+  test_clinically_infected_prop <- 0.5
   test_updated_disease_stage_counts <-
     he_update_disease_stage_counts(test_disease_stage_counts,
                                    test_disease_stage_duration_matrices,
                                    test_n_newly_infected,
-                                   test_case_fatality_prop)
+                                   test_clinically_infected_prop)
   expected_updated_disease_stage_counts <-
     data.frame(
       n_susceptible = 25000 - 1000,
@@ -56,12 +56,12 @@ test_that("disease stage count values are updated correctly for multiple netpens
            byrow = TRUE)
   )
   test_n_newly_infected <- c(2000, 1000)
-  test_case_fatality_prop <- 0.5
+  test_clinically_infected_prop <- 0.5
   test_updated_disease_stage_counts <-
     he_update_disease_stage_counts(test_disease_stage_counts,
                                    test_disease_stage_duration_matrices,
                                    test_n_newly_infected,
-                                   test_case_fatality_prop)
+                                   test_clinically_infected_prop)
   expected_updated_disease_stage_counts <-
     test_disease_stage_counts <- data.frame(
       n_susceptible = c(25000 - 2000,
@@ -105,19 +105,19 @@ test_that("disease stage count values are sequentially updated correctly for mul
            byrow = TRUE)
   )
   test_n_newly_infected <- c(2000, 1000)
-  test_case_fatality_prop <- 0.5
+  test_clinically_infected_prop <- 0.5
   # FIRST DISEASE STAGE COUNT UPDATE!!
   test_updated_disease_stage_counts <-
     he_update_disease_stage_counts(test_disease_stage_counts,
                                    test_disease_stage_duration_matrices,
                                    test_n_newly_infected,
-                                   test_case_fatality_prop)
+                                   test_clinically_infected_prop)
   # SECOND DISEASE STAGE COUNT UPDATE!!
   test_updated_disease_stage_counts <-
     he_update_disease_stage_counts(test_updated_disease_stage_counts,
                                    test_disease_stage_duration_matrices,
                                    test_n_newly_infected,
-                                   test_case_fatality_prop)
+                                   test_clinically_infected_prop)
   expected_updated_disease_stage_counts <-
     test_disease_stage_counts <- data.frame(
       n_susceptible = c(25000 - 4000,
@@ -149,12 +149,12 @@ test_that("providing fewer than 4 columns for disease stage counts generates an
     matrix(c(5, 0, 0, 0, 0, 0, 0, 0), ncol = 8, byrow = TRUE)
   )
   test_n_newly_infected <- 1000
-  test_case_fatality_prop <- 0.5
+  test_clinically_infected_prop <- 0.5
   expect_error(
     he_update_disease_stage_counts(test_disease_stage_counts,
                                    test_disease_stage_duration_matrices,
                                    test_num_newly_infected,
-                                   test_case_fatality_prop),
+                                   test_clinically_infected_prop),
     regexp = "At least four disease stage counts are required in order to
          calculate transition between a beginning stage, an intermediate stage,
          and two final stages of disease. Please include at least four disease
@@ -177,12 +177,12 @@ test_that("error generated when number of netpens recorded in disease stage
     matrix(c(5, 0, 0, 0, 0, 0, 0, 0), ncol = 8, byrow = TRUE)
   )
   test_n_newly_infected <- c(1000, 1000)
-  test_case_fatality_prop <- 0.5
+  test_clinically_infected_prop <- 0.5
   expect_error(
     he_update_disease_stage_counts(test_disease_stage_counts,
                                    test_disease_stage_duration_matrices,
                                    test_n_newly_infected,
-                                   test_case_fatality_prop),
+                                   test_clinically_infected_prop),
     regexp = "Mismatched number of infected netpens (rows) between disease stage
          counts and number of newly infected animals. The number of newly
          infected animal values should be equal to the number of rows of
@@ -211,12 +211,12 @@ test_that("error generated when number of netpens recorded in disease stage
     matrix(c(5, 0, 0, 0, 0, 0, 0, 0), ncol = 8, byrow = TRUE)
   )
   test_n_newly_infected <- c(1000, 1000)
-  test_case_fatality_prop <- 0.5
+  test_clinically_infected_prop <- 0.5
   expect_error(
     he_update_disease_stage_counts(test_disease_stage_counts,
                                    test_disease_stage_duration_matrices,
                                    test_n_newly_infected,
-                                   test_case_fatality_prop),
+                                   test_clinically_infected_prop),
     regexp = "Inconsistent number of rows in disease stage duration matrices.
          Different matrices have numbers of rows as follows: 2, 1, 1",
     fixed = TRUE
@@ -246,12 +246,12 @@ test_that("error generated when number of netpens recorded in disease stage
            byrow = TRUE)
   )
   test_n_newly_infected <- 1000
-  test_case_fatality_prop <- 0.5
+  test_clinically_infected_prop <- 0.5
   expect_error(
     he_update_disease_stage_counts(test_disease_stage_counts,
                                    test_disease_stage_duration_matrices,
                                    test_n_newly_infected,
-                                   test_case_fatality_prop),
+                                   test_clinically_infected_prop),
     regexp = "Mismatched number of infected netpens (rows) between disease stage
          counts and disease stage duration matrices. All duration matrices and
          the disease stage counts should all have the same number of rows.\n
@@ -282,12 +282,12 @@ test_that("too few disease stage counts for the number of disease stage duration
              byrow = TRUE)
     )
     test_n_newly_infected <- 1000
-    test_case_fatality_prop <- 0.5
+    test_clinically_infected_prop <- 0.5
     expect_error(
       he_update_disease_stage_counts(test_disease_stage_counts,
                                      test_disease_stage_duration_matrices,
                                      test_n_newly_infected,
-                                     test_case_fatality_prop),
+                                     test_clinically_infected_prop),
       regexp = "Mismatched number of disease stage counts and disease stage duration
          matrices. The number of disease stage duration matrices should be three
          less than the number of disease stage counts. \n
@@ -316,12 +316,12 @@ test_that("too many disease stage counts for the number of disease stage duratio
            byrow = TRUE)
   )
   test_n_newly_infected <- 1000
-  test_case_fatality_prop <- 0.5
+  test_clinically_infected_prop <- 0.5
   expect_error(
     he_update_disease_stage_counts(test_disease_stage_counts,
                                    test_disease_stage_duration_matrices,
                                    test_n_newly_infected,
-                                   test_case_fatality_prop),
+                                   test_clinically_infected_prop),
     regexp = "Mismatched number of disease stage counts and disease stage duration
          matrices. The number of disease stage duration matrices should be three
          less than the number of disease stage counts. \n

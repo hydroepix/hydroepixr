@@ -7,7 +7,10 @@
 #'    disease stage duration for each netpen
 #' @param n_newly_infected the number of newly infected animals for each
 #'    netpen
-#' @param case_fatality_prop proportion of the infected population that will die
+#' @param clinically_infected_prop the proportion of animals which will enter
+#'    the clinical stage upon infection, which is the same as 1 minus the
+#'    proportion of animals which will enter the subclinical stage upon
+#'    infection
 #'
 #' @return modified disease stage count columns
 #' @export
@@ -15,7 +18,7 @@
 he_update_disease_stage_counts <- function(disease_stage_counts,
                                            disease_stage_duration_matrices,
                                            n_newly_infected,
-                                           case_fatality_prop) {
+                                           clinically_infected_prop) {
   # This function assumes at least four disease stages because of the call to
   # he_calculate_net_change_in_disease_stage_count
   if (ncol(disease_stage_counts) < 4) {
@@ -82,7 +85,7 @@ he_update_disease_stage_counts <- function(disease_stage_counts,
       he_calculate_net_change_in_disease_stage_count(
         disease_stage_duration_matrices,
         n_newly_infected,
-        case_fatality_prop
+        clinically_infected_prop
       )
     # TODO: UPDATE - SUBCLINICAL -> RECOVERED, CLINICAL -> DEAD
     # Note: This works because it is the ending stage - there are no transitions
@@ -95,7 +98,8 @@ he_update_disease_stage_counts <- function(disease_stage_counts,
     # to recovered and dead
     # Opted for ceiling function for rounding consistency and a "worst-case"
     # approach
-    net_change_dead <- ceiling(net_change_out_of_clinical * case_fatality_prop)
+    net_change_dead <-
+      ceiling(net_change_out_of_clinical * clinically_infected_prop)
     net_change_recovered <- net_change_out_of_clinical - net_change_dead
     # Append net change in recovered and dead
     net_change <- c(net_change, net_change_recovered, net_change_dead)
