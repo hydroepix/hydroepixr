@@ -33,14 +33,38 @@ he_calculate_net_change_in_disease_stage_count <-
     # duration matrices
     subclinical_clinical_split <-
       he_calculate_subclinical_clinical_infection_split(
-        changes_in_disease_stage_duration[1],
+        changes_in_disease_stage_duration[, 1],
         clinically_infected_prop)
 
     animals_in_by_stage <-
-      cbind(0, n_newly_infected, subclinical_clinical_split,
-            deparse.level = 0)
+      cbind(
+        # into susceptible  (i.e. none... at this time)
+        0,
+        # into latent (i.e. newly infected)
+        n_newly_infected,
+        # into subclinical and clinical (i.e. out of latent, split into subclinical and clinical)
+        subclinical_clinical_split,
+        # into recovered (i.e. out of subclinical)
+        changes_in_disease_stage_duration[, 2],
+        # into dead (i.e. out of clinical)
+        changes_in_disease_stage_duration[, 3],
+        deparse.level = 0
+      )
     animals_out_by_stage <-
-      cbind(n_newly_infected, subclinical_clinical_split, 0,
-            deparse.level = 0)
+      cbind(
+        # out of susceptible (i.e. newly infected)
+        n_newly_infected,
+        # out of latent (i.e. split into subclinical and clinical)
+        changes_in_disease_stage_duration[, 1],
+        # out of subclinical (i.e. into recovered)
+        changes_in_disease_stage_duration[, 2],
+        # out of clinical (i.e. into dead)
+        changes_in_disease_stage_duration[, 3],
+        # out of recovered (i.e. none... at this time)
+        0,
+        # out of dead (i.e. none... ever)
+        0,
+        deparse.level = 0
+      )
     animals_in_by_stage - animals_out_by_stage
   }
