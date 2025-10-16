@@ -1,4 +1,5 @@
-test_that("disease stage count values are updated correctly for a single netpen", {
+test_that("disease stage count values are updated correctly for a single
+          netpen", {
   test_disease_stage_counts <- data.frame(
     n_susceptible = 25000,
     n_latent = 10000,
@@ -8,9 +9,9 @@ test_that("disease stage count values are updated correctly for a single netpen"
     n_dead = 0
   )
   test_disease_stage_duration_matrices <- list(
-    matrix(c(25, 0, 0, 0, 0, 0, 0, 0), ncol = 8, byrow = TRUE),
-    matrix(c(10, 0, 0, 0, 0, 0, 0, 0), ncol = 8, byrow = TRUE),
-    matrix(c(5, 0, 0, 0, 0, 0, 0, 0), ncol = 8, byrow = TRUE)
+    matrix(c(50, 0, 0, 0, 0, 0, 0, 0), ncol = 8, byrow = TRUE), # latent
+    matrix(c(20, 0, 0, 0, 0, 0, 0, 0), ncol = 8, byrow = TRUE), # subclinical
+    matrix(c(10, 0, 0, 0, 0, 0, 0, 0), ncol = 8, byrow = TRUE) # clinical
   )
   test_n_newly_infected <- 1000
   test_clinically_infected_prop <- 0.5
@@ -22,17 +23,18 @@ test_that("disease stage count values are updated correctly for a single netpen"
   expected_updated_disease_stage_counts <-
     data.frame(
       n_susceptible = 25000 - 1000,
-      n_latent = 10000 + 1000 - 25,
-      n_subclinical = 10000 + 25 - 10,
-      n_clinical = 5000 + 10 - 5,
-      n_recovered = 0 + 2,
-      n_dead = 0 + 3
+      n_latent = 10000 + 1000 - 50,
+      n_subclinical = 10000 + 25 - 20,
+      n_clinical = 5000 + 25 - 10,
+      n_recovered = 0 + 20,
+      n_dead = 0 + 10
     )
   expect_equal(test_updated_disease_stage_counts,
                expected_updated_disease_stage_counts)
 })
 
-test_that("disease stage count values are updated correctly for multiple netpens", {
+test_that("disease stage count values are updated correctly for multiple
+          netpens", {
   test_disease_stage_counts <- data.frame(
     n_susceptible = c(25000, 10000),
     n_latent = c(10000, 5000),
@@ -43,14 +45,14 @@ test_that("disease stage count values are updated correctly for multiple netpens
   )
   test_disease_stage_duration_matrices <- list(
     matrix(c(50, 0, 0, 0, 0, 0, 0, 0,
-             25, 0, 0, 0, 0, 0, 0, 0),
+             40, 0, 0, 0, 0, 0, 0, 0),
            ncol = 8,
            byrow = TRUE),
-    matrix(c(25, 0, 0, 0, 0, 0, 0, 0,
+    matrix(c(30, 0, 0, 0, 0, 0, 0, 0,
              10, 0, 0, 0, 0, 0, 0, 0),
            ncol = 8,
            byrow = TRUE),
-    matrix(c(10, 0, 0, 0, 0, 0, 0, 0,
+    matrix(c(30, 0, 0, 0, 0, 0, 0, 0,
              5, 0, 0, 0, 0, 0, 0, 0),
            ncol = 8,
            byrow = TRUE)
@@ -67,21 +69,22 @@ test_that("disease stage count values are updated correctly for multiple netpens
       n_susceptible = c(25000 - 2000,
                       10000 - 1000),
       n_latent = c(10000 + 2000 - 50,
-                 5000 + 1000 - 25),
-      n_subclinical = c(10000 + 50 - 25,
-                      2500 + 25 - 10),
-      n_clinical = c(5000 + 25 - 10,
-                   1000 + 10 - 5),
-      n_recovered = c(500 + 5,
-                      0 + 2),
-      n_dead = c(0 + 5,
-                 0 + 3)
+                 5000 + 1000 - 40),
+      n_subclinical = c(10000 + 25 - 30,
+                      2500 + 20 - 10),
+      n_clinical = c(5000 + 25 - 30,
+                   1000 + 20 - 5),
+      n_recovered = c(500 + 30,
+                      0 + 10),
+      n_dead = c(0 + 30,
+                 0 + 5)
     )
   expect_equal(test_updated_disease_stage_counts,
                expected_updated_disease_stage_counts)
 })
 
-test_that("disease stage count values are sequentially updated correctly for multiple netpens ", {
+test_that("disease stage count values are sequentially updated correctly for
+          multiple netpens ", {
   test_disease_stage_counts <- data.frame(
     n_susceptible = c(25000, 10000),
     n_latent = c(10000, 5000),
@@ -91,8 +94,8 @@ test_that("disease stage count values are sequentially updated correctly for mul
     n_dead = c(0, 0)
   )
   test_disease_stage_duration_matrices <- list(
-    matrix(c(50, 0, 0, 0, 0, 0, 0, 0,
-             25, 0, 0, 0, 0, 0, 0, 0),
+    matrix(c(100, 0, 0, 0, 0, 0, 0, 0,
+             50, 0, 0, 0, 0, 0, 0, 0),
            ncol = 8,
            byrow = TRUE),
     matrix(c(25, 0, 0, 0, 0, 0, 0, 0,
@@ -122,15 +125,15 @@ test_that("disease stage count values are sequentially updated correctly for mul
     test_disease_stage_counts <- data.frame(
       n_susceptible = c(25000 - 4000,
                       10000 - 2000),
-      n_latent = c(10000 + 4000 - 100,
-                 5000 + 2000 - 50),
+      n_latent = c(10000 + 4000 - 200,
+                 5000 + 2000 - 100),
       n_subclinical = c(10000 + 100 - 50,
                       2500 + 50 - 20),
-      n_clinical = c(5000 + 50 - 20,
-                   1000 + 20 - 10),
-      n_recovered = c(500 + 10,
-                      0 + 4),
-      n_dead = c(10, 6)
+      n_clinical = c(5000 + 100 - 20,
+                   1000 + 50 - 10),
+      n_recovered = c(500 + 50,
+                      0 + 20),
+      n_dead = c(20, 10)
     )
   expect_equal(test_updated_disease_stage_counts,
                expected_updated_disease_stage_counts)

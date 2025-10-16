@@ -87,22 +87,6 @@ he_update_disease_stage_counts <- function(disease_stage_counts,
         n_newly_infected,
         clinically_infected_prop
       )
-    # TODO: UPDATE - SUBCLINICAL -> RECOVERED, CLINICAL -> DEAD
-    # Note: This works because it is the ending stage - there are no transitions
-    # out of it, so the net change out of clinical will represent the number
-    # transitioning into dead or recovered and will always be positive or zero
-    # Pull out number of animals transitioning out of clinical phase
-    net_change_out_of_clinical <- net_change[, ncol(net_change)]
-    net_change <- net_change[, -ncol(net_change)]
-    # Apply case-fatality rate to allocate the appropriate number of individuals
-    # to recovered and dead
-    # Opted for ceiling function for rounding consistency and a "worst-case"
-    # approach
-    net_change_dead <-
-      ceiling(net_change_out_of_clinical * clinically_infected_prop)
-    net_change_recovered <- net_change_out_of_clinical - net_change_dead
-    # Append net change in recovered and dead
-    net_change <- c(net_change, net_change_recovered, net_change_dead)
 
     updated_disease_stage_counts <- disease_stage_counts + net_change
     updated_disease_stage_counts
