@@ -33,8 +33,12 @@ he_calculate_net_change_in_disease_stage_count <-
     # duration matrices
     subclinical_clinical_split <-
       he_calculate_subclinical_clinical_infection_split(
-        changes_in_disease_stage_duration[, 1],
+        as.matrix(changes_in_disease_stage_duration[, 1]),
         clinically_infected_prop)
+
+    # Necessary to force into column-wise matrix for cbind
+    subclinical_clinical_split <- matrix(subclinical_clinical_split,
+                                         ncol = 2)
 
     animals_in_by_stage <-
       cbind(
@@ -42,7 +46,8 @@ he_calculate_net_change_in_disease_stage_count <-
         0,
         # into latent (i.e. newly infected)
         n_newly_infected,
-        # into subclinical and clinical (i.e. out of latent, split into subclinical and clinical)
+        # into subclinical and clinical (i.e. out of latent, split
+        # into subclinical and clinical)
         subclinical_clinical_split,
         # into recovered (i.e. out of subclinical)
         changes_in_disease_stage_duration[, 2],
