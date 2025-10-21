@@ -1,4 +1,4 @@
-#' Update disease duration stage matrices by with newly distributed animals
+#' Update disease duration stage matrices with newly distributed animals
 #'
 #' @param disease_stage_distribution data frame of species information
 #' @param disease_stage_matrix matrix representing a disease stage, recording
