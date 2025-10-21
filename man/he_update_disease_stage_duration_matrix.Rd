@@ -2,7 +2,7 @@
 % Please edit documentation in R/he_update_disease_stage_duration_matrix.R
 \name{he_update_disease_stage_duration_matrix}
 \alias{he_update_disease_stage_duration_matrix}
-\title{Update disease duration stage matrices by with newly distributed animals}
+\title{Update disease duration stage matrices with newly distributed animals}
 \usage{
 he_update_disease_stage_duration_matrix(
   disease_stage_matrix,
@@ -21,5 +21,5 @@ disease stage}
 the given disease stage}
 }
 \description{
-Update disease duration stage matrices by with newly distributed animals
+Update disease duration stage matrices with newly distributed animals
 }

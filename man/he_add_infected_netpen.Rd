@@ -21,8 +21,8 @@ he_add_infected_netpen(
 \item{new_infected_netpens}{list of newly infected netpen ids}
 
 \item{n_infected_animals_by_stage}{vector of numeric values indicating the
-of infected animals in each stage of infection (latent, clinical, and
-subclinical)}
+number of infected animals in each stage of infection (latent, clinical,
+and subclinical)}
 
 \item{infection_origin}{source of the infection was can be "index",
 between-netpen", or "between-farm"}

@@ -3,6 +3,7 @@
 export(he_add_disease_stage_duration)
 export(he_add_infected_netpen)
 export(he_calculate_net_change_in_disease_stage_count)
+export(he_calculate_subclinical_clinical_infection_split)
 export(he_calculate_within_netpen_infection_prob)
 export(he_check_if_infection_is_resolved)
 export(he_create_model_env)
