@@ -36,8 +36,10 @@ test_that("day is simulated correctly for a single infected netpen", {
   test_n_index_infected_min <- 1
   test_n_index_infected_mode <- 10
   test_n_index_infected_max <- 100
+  test_clinically_infected_prop <- 0.9
 
   test_index_netpens <- 1
+  test_index_infection_stage <- "subclinical-clinical split"
   test_infected_netpen_info <-
     he_initialize_infection(
       test_infected_netpen_info,
@@ -47,7 +49,9 @@ test_that("day is simulated correctly for a single infected netpen", {
       test_n_index_infected_max,
       test_species_info,
       test_netpen_info,
-      test_index_netpens
+      test_index_netpens,
+      test_index_infection_stage,
+      test_clinically_infected_prop
     )
   # Simulate 10 days of infection dynamics
   result_infected_netpen_info <- he_simulate_day(test_infected_netpen_info,
