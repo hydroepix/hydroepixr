@@ -33,7 +33,7 @@ he_define_spread_control_params <-
            n_index_infected_max = 100,
            index_netpen_ids = NULL,
            index_farm_id = NULL,
-           index_direct = TRUE,
+           index_infection_stage = "subclinical-clinical split",
            clinically_infected_prop = 0.89,
            days_dead_infectious = 2,
            farm_to_farm = 0.42,
@@ -42,8 +42,9 @@ he_define_spread_control_params <-
     model_env$n_index_infected_min <- n_index_infected_min
     model_env$n_index_infected_mode <- n_index_infected_mode
     model_env$n_index_infected_max <- n_index_infected_max
-    model_env$index_netpen_ids <- index_netpen_ids
     model_env$index_farm_id <- index_farm_id
+    model_env$index_netpen_ids <- index_netpen_ids
+    model_env$index_infection_stage <- index_infection_stage
     model_env$clinically_infected_prop <- clinically_infected_prop
     model_env$days_dead_infectious <- days_dead_infectious
     model_env$farm_to_farm <- farm_to_farm
