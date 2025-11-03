@@ -13,7 +13,8 @@ he_initialize_infection(
   species_info,
   netpen_info,
   index_netpen_ids,
-  index_infection_stage = "subclinical"
+  index_infection_stage,
+  clinically_infected_prop = NULL
 )
 }
 \arguments{
@@ -35,6 +36,11 @@ he_initialize_infection(
 
 \item{index_infection_stage}{infection stage in which animals infected by the
 index infection should start}
+
+\item{clinically_infected_prop}{the proportion of animals which will enter
+the clinical stage upon infection, which is the same as 1 minus the
+proportion of animals which will enter the subclinical stage upon
+infection}
 }
 \value{
 infected netpen info data frame with infection information for

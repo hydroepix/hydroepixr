@@ -11,7 +11,7 @@ he_define_spread_control_params(
   n_index_infected_max = 100,
   index_netpen_ids = NULL,
   index_farm_id = NULL,
-  index_direct = TRUE,
+  index_infection_stage = "subclinical-clinical split",
   clinically_infected_prop = 0.89,
   days_dead_infectious = 2,
   farm_to_farm = 0.42,
@@ -36,9 +36,6 @@ be calculated from a PERT distribution}
 
 \item{index_farm_id}{identifier of the index farm}
 
-\item{index_direct}{logical indicating whether the index farm gets infected
-directly, as opposed to indirectly}
-
 \item{clinically_infected_prop}{the proportion of animals which will enter
 the clinical stage upon infection, which is the same as 1 minus the
 proportion of animals which will enter the subclinical stage upon
@@ -53,6 +50,9 @@ transmission within a farm}
 
 \item{vaccine_efficacy}{product of the manufacturer-reported vaccine efficacy
 and the population coverage of the vaccine}
+
+\item{index_direct}{logical indicating whether the index farm gets infected
+directly, as opposed to indirectly}
 }
 \value{
 NA
