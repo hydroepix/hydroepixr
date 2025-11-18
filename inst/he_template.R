@@ -12,7 +12,7 @@ he_define_spread_control_params(model_env,
                                 n_index_infected_max = 50,
                                 index_netpen_ids = 1,
                                 index_farm_id = NULL,
-                                index_direct = TRUE,
+                                index_infection_stage = "subclinical-clinical split",
                                 clinically_infected_prop = 0.9,
                                 days_dead_infectious = 2,
                                 farm_to_farm = 0.5,
@@ -20,7 +20,7 @@ he_define_spread_control_params(model_env,
                                 vaccine_efficacy = 0)
 he_define_output_params(model_env,
                         output_dir = "output",
-                        model_run_id = "year-long-low-within-netpen-transmission",
+                        model_run_id = "subclinical-clinical-split-test",
                         infected_netpen_output_file_name = "infected_netpens.csv")
 
 # Set up model environment based on data files and parameters

@@ -40,7 +40,9 @@ he_run_model <- function(model_env) {
                               model_env$n_index_infected_max,
                               model_env$species_info,
                               model_env$netpen_info,
-                              model_env$index_netpens)
+                              model_env$index_netpens,
+                              model_env$index_infection_stage,
+                              model_env$clinically_infected_prop)
 
     # loop over simulation days for as long as there are still netpens with an
     # active infection

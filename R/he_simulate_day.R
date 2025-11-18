@@ -70,6 +70,7 @@ he_simulate_day <- function(infected_netpen_info,
       )
 
     # Update disease stage duration matrices for animals entering a new stage
+    # TODO: Convert to a named matrix?
     n_animals_transitioning_by_stage <-
       c(n_newly_infected,
         lapply(
@@ -81,7 +82,6 @@ he_simulate_day <- function(infected_netpen_info,
       species_info[c("latent_dur_freq",
                      "subclinical_dur_freq",
                      "clinical_dur_freq")]
-
     simulation_env$disease_stage_duration_matrices <-
       he_update_disease_stage_duration_matrix(
         simulation_env$disease_stage_duration_matrices,
