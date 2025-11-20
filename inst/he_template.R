@@ -20,13 +20,13 @@ he_define_spread_control_params(model_env,
                                 vaccine_efficacy = 0)
 he_define_output_params(model_env,
                         output_dir = "output",
-                        model_run_id = "subclinical-clinical-split-test",
+                        model_run_id = "subclinical-clinical-split-test-mid-level-transmission",
                         infected_netpen_output_file_name = "infected_netpens.csv")
 
 # Set up model environment based on data files and parameters
 he_initialize_model_env(model_env,
                         netpen_info_filepath = "C:/Users/Rachel Woodside/GitHub Repos/hydroepixr/inst/testdata/netpen_file_bay_x.csv",
-                        species_info_filepath = "C:/Users/Rachel Woodside/GitHub Repos/hydroepixr/inst/testdata/species_info_file_bay_x_low-within-netpen-transmission.csv"
+                        species_info_filepath = "C:/Users/Rachel Woodside/GitHub Repos/hydroepixr/inst/testdata/species_info_file_bay_x_mid-within-netpen-transmission.csv"
                         #connectivity_matrix_filepath = "../../../../testdata/dist_mat_bay_x.csv"
 )
 
