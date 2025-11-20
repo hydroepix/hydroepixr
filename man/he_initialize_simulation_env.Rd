@@ -10,7 +10,7 @@ he_initialize_simulation_env(
   output_dir,
   model_run_id,
   infected_netpen_output_file_name,
-  case_fatality_prop,
+  clinically_infected_prop,
   simulation_n
 )
 }
@@ -27,7 +27,10 @@ be stored}
 \item{infected_netpen_output_file_name}{name of the file in which the infected
 netpen information should be stored}
 
-\item{case_fatality_prop}{proportion of the infected population that will die}
+\item{clinically_infected_prop}{the proportion of animals which will enter
+the clinical stage upon infection, which is the same as 1 minus the
+proportion of animals which will enter the subclinical stage upon
+infection}
 
 \item{simulation_n}{identifies which simulation of the model run this
 this environment belongs to}

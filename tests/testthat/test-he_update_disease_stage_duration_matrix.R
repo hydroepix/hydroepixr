@@ -36,7 +36,7 @@ test_that("disease stage duration values are updated correctly for multiple inpu
   test_disease_stage_distribution <-
     list(list(
       latent_dur_freq = c(0.000001, 0.000001, 0.0001, 0.01, 0.1, 0.25, 0.339898, 0.3),
-      subclinical_dur_freq = c(0.000001, 0.000001, 0.0001, 0.01, 0.1, 0.25, 0.339898, 0.3)
+      subclinical_dur_freq = c(0.249995, 0.50, 0.25, 0.000001, 0.000001, 0.000001, 0.000001, 0.000001)
     ))
   test_n_animals_to_distribute <- list(50000, 25000)
   test_result_duration_matrix <-

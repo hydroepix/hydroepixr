@@ -66,22 +66,26 @@ he_simulate_day <- function(infected_netpen_info,
         disease_stage_counts,
         simulation_env$disease_stage_duration_matrices,
         n_newly_infected,
-        simulation_env$case_fatality_prop
+        simulation_env$clinically_infected_prop
       )
 
     # Update disease stage duration matrices for animals entering a new stage
+    n_latent_out <- simulation_env$disease_stage_duration_matrices$latent_duration[, 1, drop = FALSE]
+    subclinical_clinical_split <- he_calculate_subclinical_clinical_infection_split(
+      n_transitioning = n_latent_out,
+      clinically_infected_prop = simulation_env$clinically_infected_prop
+    )
     n_animals_transitioning_by_stage <-
-      c(n_newly_infected,
-        lapply(
-          utils::head(simulation_env$disease_stage_duration_matrices,-1),
-          FUN = \(matrix) matrix[, 1]
-        ))
+      c(
+        n_latent_in = n_newly_infected,
+        n_subclinical_in = subclinical_clinical_split[1],
+        n_clinical_in = subclinical_clinical_split[2]
+      )
 
     disease_stage_distributions <-
       species_info[c("latent_dur_freq",
                      "subclinical_dur_freq",
                      "clinical_dur_freq")]
-
     simulation_env$disease_stage_duration_matrices <-
       he_update_disease_stage_duration_matrix(
         simulation_env$disease_stage_duration_matrices,

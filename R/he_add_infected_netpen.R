@@ -4,8 +4,8 @@
 #' @param netpen_info data frame of information on netpens
 #' @param new_infected_netpens list of newly infected netpen ids
 #' @param n_infected_animals_by_stage vector of numeric values indicating the
-#'    of infected animals in each stage of infection (latent, clinical, and
-#'    subclinical)
+#'    number of infected animals in each stage of infection (latent, clinical,
+#'    and subclinical)
 #' @param infection_origin source of the infection was can be "index",
 #'    between-netpen", or "between-farm"
 #' @param simulation_day day of simulation that infection is occurring
@@ -24,7 +24,8 @@ he_add_infected_netpen <-
            ) {
 
     # Filter new infection ids to remove those already infected
-    already_infected_netpens <- new_infected_netpens %in% infected_netpen_info$netpen_id
+    already_infected_netpens <- new_infected_netpens %in%
+      infected_netpen_info$netpen_id
     if (any(already_infected_netpens)) {
       new_infected_netpens <- new_infected_netpens[!already_infected_netpens]
       n_infected_animals_by_stage <-
