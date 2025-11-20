@@ -36,6 +36,10 @@ be calculated from a PERT distribution}
 
 \item{index_farm_id}{identifier of the index farm}
 
+\item{index_infection_stage}{indication of the infection stage in which the
+index infection will begin, valid options are "latent" and
+"subclinical-clinical split"}
+
 \item{clinically_infected_prop}{the proportion of animals which will enter
 the clinical stage upon infection, which is the same as 1 minus the
 proportion of animals which will enter the subclinical stage upon
@@ -50,9 +54,6 @@ transmission within a farm}
 
 \item{vaccine_efficacy}{product of the manufacturer-reported vaccine efficacy
 and the population coverage of the vaccine}
-
-\item{index_direct}{logical indicating whether the index farm gets infected
-directly, as opposed to indirectly}
 }
 \value{
 NA

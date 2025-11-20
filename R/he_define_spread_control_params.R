@@ -10,8 +10,9 @@
 #'    be calculated from a PERT distribution
 #' @param index_netpen_ids identifiers of the index netpens
 #' @param index_farm_id identifier of the index farm
-#' @param index_direct logical indicating whether the index farm gets infected
-#'    directly, as opposed to indirectly
+#' @param index_infection_stage indication of the infection stage in which the
+#'    index infection will begin, valid options are "latent" and
+#'    "subclinical-clinical split"
 #' @param clinically_infected_prop the proportion of animals which will enter
 #'    the clinical stage upon infection, which is the same as 1 minus the
 #'    proportion of animals which will enter the subclinical stage upon
@@ -39,6 +40,7 @@ he_define_spread_control_params <-
            farm_to_farm = 0.42,
            netpen_to_netpen = 0.052,
            vaccine_efficacy = 0) {
+    # TODO: Input validation, especially for index_infection_stage
     model_env$n_index_infected_min <- n_index_infected_min
     model_env$n_index_infected_mode <- n_index_infected_mode
     model_env$n_index_infected_max <- n_index_infected_max
