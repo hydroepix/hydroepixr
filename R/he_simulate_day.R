@@ -30,8 +30,7 @@ he_simulate_day <- function(infected_netpen_info,
     # TODO: Update this calculation to only be applied to the subset of netpens
     # which have active infections?
     prob_within_netpen_infection <-
-      he_calculate_within_netpen_infection_prob(infected_netpen_info,
-                                                vaccine_efficacy = 0)
+      he_calculate_within_netpen_infection_prob(infected_netpen_info)
 
     n_newly_infected <- stats::rbinom(
       nrow(infected_netpen_info),

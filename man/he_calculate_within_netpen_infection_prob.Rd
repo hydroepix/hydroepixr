@@ -4,16 +4,10 @@
 \alias{he_calculate_within_netpen_infection_prob}
 \title{Calculate probability of infection transmission within a netpen}
 \usage{
-he_calculate_within_netpen_infection_prob(
-  infected_netpen_info,
-  vaccine_efficacy
-)
+he_calculate_within_netpen_infection_prob(infected_netpen_info)
 }
 \arguments{
 \item{infected_netpen_info}{data frame of infected netpen information}
-
-\item{vaccine_efficacy}{product of the manufacturer-reported vaccine efficacy
-and the population coverage of the vaccine}
 }
 \value{
 probability of within-netpen infection transmission
