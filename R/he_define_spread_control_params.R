@@ -47,9 +47,12 @@ he_define_spread_control_params <-
     model_env$index_farm_id <- index_farm_id
     model_env$index_netpen_ids <- index_netpen_ids
     model_env$index_infection_stage <- index_infection_stage
-    model_env$clinically_infected_prop <- clinically_infected_prop
     model_env$days_dead_infectious <- days_dead_infectious
     model_env$farm_to_farm <- farm_to_farm
     model_env$netpen_to_netpen <- netpen_to_netpen
     model_env$vaccine_efficacy <- vaccine_efficacy
+
+    # Apply vaccine efficacy to clinically infected prop
+    model_env$clinically_infected_prop <-
+      clinically_infected_prop * (1 - vaccine_efficacy)
   }
