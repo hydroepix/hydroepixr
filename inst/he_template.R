@@ -17,10 +17,10 @@ he_define_spread_control_params(model_env,
                                 days_dead_infectious = 2,
                                 farm_to_farm = 0.5,
                                 netpen_to_netpen = 0.05,
-                                vaccine_efficacy = 0)
+                                vaccine_efficacy = 0.5)
 he_define_output_params(model_env,
                         output_dir = "output",
-                        model_run_id = "subclinical-clinical-split-test-mid-level-transmission",
+                        model_run_id = "vaccine_efficacy_point_five_test",
                         infected_netpen_output_file_name = "infected_netpens.csv")
 
 # Set up model environment based on data files and parameters
