@@ -7,9 +7,18 @@ test_that("prevalence is zero when no animals are infectious", {
     he_calculate_prevalence(test_infected_netpen_info)
   expect_equal(test_prevalence, c(0, 0, 0))
 })
-test_that("prevalence is zero when all animals are either recovered or dead", {
-  # TODO: test for 0 instead of NaN when infection is resolved i.e. all fish are immune
+
+test_that("prevalence is zero for netpens where all animals are either recovered or dead and calculated correctly for other netpens", {
+  test_infected_netpen_info <-
+    readRDS(paste0(
+      test_data_filepath,
+      "/infected_netpen_info_dummy_data_with_infection_and_resolved_netpen.rds"
+    ))
+  test_prevalence <-
+    he_calculate_prevalence(test_infected_netpen_info)
+  expect_equal(test_prevalence, c(0, 15000 / 21000, 15000 / 22000))
 })
+
 test_that("prevalence is calculated correctly for a single infected netpen with infectious animals and non-immune animals", {
   test_infected_netpen_info <-
     readRDS(paste0(
