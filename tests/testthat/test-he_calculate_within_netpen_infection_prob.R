@@ -47,8 +47,9 @@ test_that("within netpen transmission probability is calculated correctly for
       test_data_filepath,
       "/infected_netpen_info_dummy_data_with_infection.rds"
     ))
-  test_infection_prob <-
-    he_calculate_within_netpen_infection_prob(test_infected_netpen_info)
+  test_infection_prob <- he_calculate_within_netpen_infection_prob(
+    test_infected_netpen_info
+  )
   expected_infection_prob <- c(1 - exp(-0.5 * (4500 / 24500)), 0, 0)
   expect_equal(test_infection_prob, expected_infection_prob)
 })
