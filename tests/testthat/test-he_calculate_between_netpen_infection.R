@@ -10,7 +10,7 @@ test_that("between netpen transmission probability is zero when no animals are
       test_netpen_to_netpen,
       test_infected_netpen_info
     )
-  expect_equal(test_infection_prob, c(0, 0, 0))
+  expect_equal(test_infection_prob, 0)
 })
 
 test_that("between netpen transmission probability is calculated correctly for
@@ -30,7 +30,7 @@ test_that("between netpen transmission probability is calculated correctly for
   expect_equal(test_infection_prob, expected_infection_prob)
 })
 
-test_that("between netpen transmission is zero for netpens where all animals are either recovered or dead and calculated correctly for other netpens", {
+test_that("between netpen transmission is not zero even where some netpen infections are resolved", {
   test_infected_netpen_info <-
     readRDS(paste0(
       test_data_filepath,
@@ -42,17 +42,13 @@ test_that("between netpen transmission is zero for netpens where all animals are
       test_netpen_to_netpen,
       test_infected_netpen_info
     )
-  expected_infection_prob <- c(
-    0,
-    1 - exp(-0.6 * (15000 / 21000)),
-    1 - exp(-0.6 * (15000 / 22000))
-  )
+  expected_infection_prob <- 1 - exp(-0.6 * (30000 / 43000))
   expect_equal(test_infection_prob, expected_infection_prob)
 })
 
 
 test_that("between netpen transmission probability is calculated correctly for
-          multiple values, with some immune", {
+          multiple netpens, with some immune", {
   test_infected_netpen_info <-
     readRDS(paste0(
       test_data_filepath,
@@ -64,6 +60,6 @@ test_that("between netpen transmission probability is calculated correctly for
       test_netpen_to_netpen,
       test_infected_netpen_info
     )
-  expected_infection_prob <- c(1 - exp(-0.6 * (4500 / 24500)), 0, 0)
+  expected_infection_prob <- 1 - exp(-0.6 * (4500 / 74500))
   expect_equal(test_infection_prob, expected_infection_prob)
 })
