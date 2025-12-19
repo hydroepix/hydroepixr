@@ -9,7 +9,7 @@ he_initialize_simulation_env(
   species_info,
   output_dir,
   model_run_id,
-  infected_netpen_output_file_name,
+  infected_net_pen_output_file_name,
   clinically_infected_prop,
   simulation_n
 )
@@ -19,13 +19,13 @@ he_initialize_simulation_env(
 
 \item{species_info}{data frame of species information}
 
-\item{output_dir}{file path where the infected netpen information output should
+\item{output_dir}{file path where the infected net pen information output should
 be stored}
 
 \item{model_run_id}{identifier for this run of the model}
 
-\item{infected_netpen_output_file_name}{name of the file in which the infected
-netpen information should be stored}
+\item{infected_net_pen_output_file_name}{name of the file in which the infected
+net pen information should be stored}
 
 \item{clinically_infected_prop}{the proportion of animals which will enter
 the clinical stage upon infection, which is the same as 1 minus the
