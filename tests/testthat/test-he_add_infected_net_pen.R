@@ -113,7 +113,7 @@ test_that("single net pen is correctly appended to infected net pen info", {
     n_subclinical = 0,
     n_clinical = 0
   )
-  test_infection_origin <- "between-net_pen"
+  test_infection_origin <- "between-net-pen"
   test_simulation_day <- 10
 
   expected_infected_net_pen_info <-
@@ -168,7 +168,7 @@ test_that("net pens are correctly appended to infected net pen info", {
     n_subclinical = c(0, 0),
     n_clinical = c(0, 0)
   )
-  test_infection_origin <- c("between-net_pen", "between-net_pen")
+  test_infection_origin <- c("between-net-pen", "between-net-pen")
   test_simulation_day <- 12
 
   expected_infected_net_pen_info <- rbind(
@@ -222,7 +222,7 @@ test_that("net pens are not appended when they already exist in infected net pen
     n_subclinical = c(0, 1),
     n_clinical = c(0, 0)
   )
-  test_infection_origin <- c("between-net_pen", "between-net_pen")
+  test_infection_origin <- c("between-net-pen", "between-net-pen")
   test_simulation_day <- 1
 
   expected_infected_net_pen_info <- data.frame(
@@ -274,7 +274,7 @@ test_that("single net pen is correctly appended when already infected net pens a
     n_subclinical = c(0, 0, 0),
     n_clinical = c(0, 0, 0)
   )
-  test_infection_origin <- rep("between-net_pen", 3)
+  test_infection_origin <- rep("between-net-pen", 3)
   test_simulation_day <- 5
 
   expected_infected_net_pen_info <- rbind(
@@ -292,7 +292,7 @@ test_that("single net pen is correctly appended when already infected net pens a
       n_recovered = 0,
       n_dead = 0,
       n_total = 25000,
-      infection_origin = "between-net_pen",
+      infection_origin = "between-net-pen",
       day_infected = 5,
       is_vaccinated = 0
     )
@@ -329,7 +329,7 @@ test_that("multiple net pens are correctly appended when already infected net pe
     n_subclinical = c(0, 0, 0, 0),
     n_clinical = c(0, 0, 0, 0)
   )
-  test_infection_origin <- rep("between-net_pen", 4)
+  test_infection_origin <- rep("between-net-pen", 4)
   test_simulation_day <- 5
 
   expected_infected_net_pen_info <- rbind(
@@ -347,7 +347,7 @@ test_that("multiple net pens are correctly appended when already infected net pe
       n_recovered = c(0, 0),
       n_dead = c(0, 0),
       n_total = c(25000, 25000),
-      infection_origin = rep("between-net_pen", 2),
+      infection_origin = rep("between-net-pen", 2),
       day_infected = c(5, 5),
       is_vaccinated = c(0, 0)
     )
