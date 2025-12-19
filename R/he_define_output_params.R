@@ -4,7 +4,7 @@
 #'   managed
 #' @param output_dir directory into which output should be written
 #' @param model_run_id identifier for this run of the model
-#' @param infected_netpen_output_file_name base file name to which the run ID and
+#' @param infected_net_pen_output_file_name base file name to which the run ID and
 #'    simulation number will be appended to uniquely identify a simulation's
 #'    output file
 #'
@@ -12,11 +12,13 @@
 #' @export
 #'
 he_define_output_params <-
-  function(model_env,
-           output_dir = "output",
-           model_run_id = NULL,
-           infected_netpen_output_file_name = "infected_netpens.csv") {
+  function(
+    model_env,
+    output_dir = "output",
+    model_run_id = NULL,
+    infected_net_pen_output_file_name = "infected_net_pens.csv"
+  ) {
     model_env$output_dir <- output_dir
     model_env$model_run_id <- model_run_id
-    model_env$infected_netpen_output_file_name <- infected_netpen_output_file_name
+    model_env$infected_net_pen_output_file_name <- infected_net_pen_output_file_name
   }

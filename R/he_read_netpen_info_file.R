@@ -1,4 +1,4 @@
-#' Read in a netpen information file
+#' Read in a net pen information file
 #'
 #' @param filepath a filepath to read a csv file from
 #' @param verbose a logical value indicating whether to provide additional
@@ -8,45 +8,52 @@
 #' @export
 #' @importFrom utils read.table
 
-he_read_netpen_info_file <- function(filepath, verbose = FALSE) {
-  netpen_info <- utils::read.table(filepath,
-                                 sep = ",",
-                                 dec = ".",
-                                 header = TRUE)
-  n_netpens <- length(netpen_info$species)
+he_read_net_pen_info_file <- function(filepath, verbose = FALSE) {
+  net_pen_info <- utils::read.table(
+    filepath,
+    sep = ",",
+    dec = ".",
+    header = TRUE
+  )
+  n_net_pens <- length(net_pen_info$species)
   # Check for expected columns and names
-  netpen_info_cols <- names(netpen_info)
-  expected_cols <- list("netpen_id",
-                           "farm_id",
-                           "netpen_size",
-                           "baseline_mort",
-                           "species_id",
-                           "bay_management_id")
-  optional_cols <- list("initial_infection_status",
-                           "initial_time_infected")
+  net_pen_info_cols <- names(net_pen_info)
+  expected_cols <- list(
+    "net_pen_id",
+    "farm_id",
+    "net_pen_size",
+    "baseline_mort",
+    "species_id",
+    "bay_management_id"
+  )
+  optional_cols <- list("initial_infection_status", "initial_time_infected")
   mismatched_cols <-
     setdiff(
-      union(netpen_info_cols, expected_cols),
-      intersect(netpen_info_cols, expected_cols)
+      union(net_pen_info_cols, expected_cols),
+      intersect(net_pen_info_cols, expected_cols)
     )
 
   if (length(mismatched_cols) == 0) {
     if (verbose) {
       message(
-        paste0("Optional infection status and infection time columns ",
-        "included in netpen info file.",
-        "Retrieved values from file.")
+        paste0(
+          "Optional infection status and infection time columns ",
+          "included in net pen info file.",
+          "Retrieved values from file."
+        )
       )
     }
   } else if (identical(mismatched_cols, optional_cols)) {
     if (verbose) {
       message(
-        paste0("Optional infection status and infection time columns ",
-        "not included in netpen info file.",
-        "Default values assigned.")
+        paste0(
+          "Optional infection status and infection time columns ",
+          "not included in net pen info file.",
+          "Default values assigned."
+        )
       )
     }
-    netpen_info$time_infected <- rep(Inf, n_netpens)
+    net_pen_info$time_infected <- rep(Inf, n_net_pens)
   } else {
     stop(
       "Unexpected column headers. Expected headers are: ",
@@ -61,11 +68,16 @@ he_read_netpen_info_file <- function(filepath, verbose = FALSE) {
   }
 
   # Check for non-unique IDs
-  if (length(unique(netpen_info$netpen_id)) < length(netpen_info$netpen_id)) {
+  if (
+    length(unique(net_pen_info$net_pen_id)) < length(net_pen_info$net_pen_id)
+  ) {
     stop(
-      "Netpen ID numbers are not unique. Simulations Fails. Duplicate Value: ",
-      paste(unique(netpen_info$netpen_id[duplicated(netpen_info$netpen_id)]), collapse = ", ")
+      "Net pen ID numbers are not unique. Simulations Fails. Duplicate Value: ",
+      paste(
+        unique(net_pen_info$net_pen_id[duplicated(net_pen_info$net_pen_id)]),
+        collapse = ", "
+      )
     )
   }
-  netpen_info
+  net_pen_info
 }

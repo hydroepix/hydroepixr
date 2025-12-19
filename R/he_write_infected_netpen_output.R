@@ -1,8 +1,8 @@
-#' Write infected netpen output to file
+#' Write infected net pen output to file
 #'
-#' @param infected_netpen_info data frame containing infected netpen data, initialized
+#' @param infected_net_pen_info data frame containing infected net pen data, initialized
 #'    and updated over the course of a simulation run
-#' @param infected_netpen_output_file_name string to name the infected netpen output
+#' @param infected_net_pen_output_file_name string to name the infected net pen output
 #'    file
 #' @param output_dir string to indicate the directory in which the output file
 #'    should be written
@@ -11,12 +11,14 @@
 #' @export
 #' @importFrom utils write.table
 #'
-he_write_infected_netpen_output <- function(infected_netpen_info,
-                                            infected_netpen_output_file_name,
-                                            output_dir) {
+he_write_infected_net_pen_output <- function(
+  infected_net_pen_info,
+  infected_net_pen_output_file_name,
+  output_dir
+) {
   write.table(
-    infected_netpen_info,
-    file.path(output_dir, infected_netpen_output_file_name),
+    infected_net_pen_info,
+    file.path(output_dir, infected_net_pen_output_file_name),
     append = TRUE,
     sep = ",",
     col.names = FALSE,

@@ -1,66 +1,86 @@
 test_that("simulating a day with no remaining infections generates error", {
-  test_infected_netpen_info <-
-    readRDS(paste0(test_data_filepath, "/infected_netpen_info_initialized.rds"))
+  test_infected_net_pen_info <-
+    readRDS(paste0(
+      test_data_filepath,
+      "/infected_net_pen_info_initialized.rds"
+    ))
   test_species_info <- test_species_info <-
     readRDS(paste0(test_data_filepath, "/parsed_species_info_bay_x.rds"))
   test_simulation_env <- rlang::new_environment()
   # Set up test output directory and file, initialize test environment
   temp_test_dir <-
-    output_and_simulation_env_test_setup(test_simulation_env,
-                                         test_species_info,
-                                         test_output_file_name = "infected_netpens.csv")
+    output_and_simulation_env_test_setup(
+      test_simulation_env,
+      test_species_info,
+      test_output_file_name = "infected_net_pens.csv"
+    )
 
   expect_error(
-    he_simulate_day(test_infected_netpen_info, simulation_day = 1, test_simulation_env),
-    regexp = "No remaining infected netpens. Simulation should have terminated."
+    he_simulate_day(
+      test_infected_net_pen_info,
+      simulation_day = 1,
+      test_simulation_env
+    ),
+    regexp = "No remaining infected net pens. Simulation should have terminated."
   )
 })
 
-test_that("day is simulated correctly for a single infected netpen", {
+test_that("day is simulated correctly for a single infected net pen", {
   withr::local_seed(100)
-  test_infected_netpen_info <-
-    readRDS(paste0(test_data_filepath, "/infected_netpen_info_initialized.rds"))
+  test_infected_net_pen_info <-
+    readRDS(paste0(
+      test_data_filepath,
+      "/infected_net_pen_info_initialized.rds"
+    ))
   test_species_info <-
-    readRDS(paste0(test_data_filepath, "/species_info_guaranteed_infection.rds"))
-  test_netpen_info <-
-    readRDS(paste0(test_data_filepath, "/initialized_netpen_info_guaranteed_infection.rds"))
+    readRDS(paste0(
+      test_data_filepath,
+      "/species_info_guaranteed_infection.rds"
+    ))
+  test_net_pen_info <-
+    readRDS(paste0(
+      test_data_filepath,
+      "/initialized_net_pen_info_guaranteed_infection.rds"
+    ))
   test_simulation_env <- rlang::new_environment()
   # Set up test output directory and file, initialize test environment
   temp_test_dir <-
-    output_and_simulation_env_test_setup(test_simulation_env,
-                                         test_species_info,
-                                         test_output_file_name = "infected_netpens.csv")
+    output_and_simulation_env_test_setup(
+      test_simulation_env,
+      test_species_info,
+      test_output_file_name = "infected_net_pens.csv"
+    )
 
   test_n_index_infected_min <- 1
   test_n_index_infected_mode <- 10
   test_n_index_infected_max <- 100
   test_clinically_infected_prop <- 0.9
 
-  test_index_netpens <- 1
+  test_index_net_pens <- 1
   test_index_infection_stage <- "subclinical-clinical split"
-  test_infected_netpen_info <-
+  test_infected_net_pen_info <-
     he_initialize_infection(
-      test_infected_netpen_info,
+      test_infected_net_pen_info,
       test_simulation_env,
       test_n_index_infected_min,
       test_n_index_infected_mode,
       test_n_index_infected_max,
       test_species_info,
-      test_netpen_info,
-      test_index_netpens,
+      test_net_pen_info,
+      test_index_net_pens,
       test_index_infection_stage,
       test_clinically_infected_prop
     )
 
   # Simulate 10 days of infection dynamics ---
   # Day 1 ---
-  # Check infected netpen info
-  expected_infected_netpen_info <- data.frame(
+  # Check infected net pen info
+  expected_infected_net_pen_info <- data.frame(
     simulation_day = 1,
-    netpen_id = 1,
+    net_pen_id = 1,
     farm_id = 1,
     species_id = 1,
-    within_netpen_transmission = 1,
+    within_net_pen_transmission = 1,
     n_susceptible = 24975,
     n_latent = 11,
     n_subclinical = 4,
@@ -72,11 +92,13 @@ test_that("day is simulated correctly for a single infected netpen", {
     day_infected = 0,
     is_vaccinated = 0
   )
-  result_infected_netpen_info <- he_simulate_day(test_infected_netpen_info,
-                                          test_simulation_env,
-                                          simulation_day = 1,
-                                          test_species_info)
-  expect_equal(result_infected_netpen_info, expected_infected_netpen_info)
+  result_infected_net_pen_info <- he_simulate_day(
+    test_infected_net_pen_info,
+    test_simulation_env,
+    simulation_day = 1,
+    test_species_info
+  )
+  expect_equal(result_infected_net_pen_info, expected_infected_net_pen_info)
   # Check disease stage duration matrices
   expected_disease_stage_duration_matrices <-
     list(
@@ -96,17 +118,19 @@ test_that("day is simulated correctly for a single infected netpen", {
         byrow = TRUE
       )
     )
-  expect_equal(test_simulation_env$disease_stage_duration_matrices,
-               expected_disease_stage_duration_matrices)
+  expect_equal(
+    test_simulation_env$disease_stage_duration_matrices,
+    expected_disease_stage_duration_matrices
+  )
 
   # Day 2 ---
-  # Check infected netpen info
-  expected_infected_netpen_info <- data.frame(
+  # Check infected net pen info
+  expected_infected_net_pen_info <- data.frame(
     simulation_day = 2,
-    netpen_id = 1,
+    net_pen_id = 1,
     farm_id = 1,
     species_id = 1,
-    within_netpen_transmission = 1,
+    within_net_pen_transmission = 1,
     n_susceptible = 24963,
     n_latent = 23,
     n_subclinical = 1,
@@ -118,11 +142,13 @@ test_that("day is simulated correctly for a single infected netpen", {
     day_infected = 0,
     is_vaccinated = 0
   )
-  result_infected_netpen_info <- he_simulate_day(result_infected_netpen_info,
-                                          test_simulation_env,
-                                          simulation_day = 2,
-                                          test_species_info)
-  expect_equal(result_infected_netpen_info, expected_infected_netpen_info)
+  result_infected_net_pen_info <- he_simulate_day(
+    result_infected_net_pen_info,
+    test_simulation_env,
+    simulation_day = 2,
+    test_species_info
+  )
+  expect_equal(result_infected_net_pen_info, expected_infected_net_pen_info)
   # Check disease stage duration matrices
   expected_disease_stage_duration_matrices <-
     list(
@@ -142,17 +168,19 @@ test_that("day is simulated correctly for a single infected netpen", {
         byrow = TRUE
       )
     )
-  expect_equal(test_simulation_env$disease_stage_duration_matrices,
-               expected_disease_stage_duration_matrices)
+  expect_equal(
+    test_simulation_env$disease_stage_duration_matrices,
+    expected_disease_stage_duration_matrices
+  )
 
   # Day 3 ---
-  # Check infected netpen info
-  expected_infected_netpen_info <- data.frame(
+  # Check infected net pen info
+  expected_infected_net_pen_info <- data.frame(
     simulation_day = 3,
-    netpen_id = 1,
+    net_pen_id = 1,
     farm_id = 1,
     species_id = 1,
-    within_netpen_transmission = 1,
+    within_net_pen_transmission = 1,
     n_susceptible = 24951,
     n_latent = 35,
     n_subclinical = 0,
@@ -164,11 +192,13 @@ test_that("day is simulated correctly for a single infected netpen", {
     day_infected = 0,
     is_vaccinated = 0
   )
-  result_infected_netpen_info <- he_simulate_day(result_infected_netpen_info,
-                                                 test_simulation_env,
-                                                 simulation_day = 3,
-                                                 test_species_info)
-  expect_equal(result_infected_netpen_info, expected_infected_netpen_info)
+  result_infected_net_pen_info <- he_simulate_day(
+    result_infected_net_pen_info,
+    test_simulation_env,
+    simulation_day = 3,
+    test_species_info
+  )
+  expect_equal(result_infected_net_pen_info, expected_infected_net_pen_info)
   # Check disease stage duration matrices
   expected_disease_stage_duration_matrices <-
     list(
@@ -188,17 +218,19 @@ test_that("day is simulated correctly for a single infected netpen", {
         byrow = TRUE
       )
     )
-  expect_equal(test_simulation_env$disease_stage_duration_matrices,
-               expected_disease_stage_duration_matrices)
+  expect_equal(
+    test_simulation_env$disease_stage_duration_matrices,
+    expected_disease_stage_duration_matrices
+  )
 
   # Day 4 ---
-  # Check infected netpen info
-  expected_infected_netpen_info <- data.frame(
+  # Check infected net pen info
+  expected_infected_net_pen_info <- data.frame(
     simulation_day = 4,
-    netpen_id = 1,
+    net_pen_id = 1,
     farm_id = 1,
     species_id = 1,
-    within_netpen_transmission = 1,
+    within_net_pen_transmission = 1,
     n_susceptible = 24944,
     n_latent = 42,
     n_subclinical = 0,
@@ -210,11 +242,13 @@ test_that("day is simulated correctly for a single infected netpen", {
     day_infected = 0,
     is_vaccinated = 0
   )
-  result_infected_netpen_info <- he_simulate_day(result_infected_netpen_info,
-                                                 test_simulation_env,
-                                                 simulation_day = 4,
-                                                 test_species_info)
-  expect_equal(result_infected_netpen_info, expected_infected_netpen_info)
+  result_infected_net_pen_info <- he_simulate_day(
+    result_infected_net_pen_info,
+    test_simulation_env,
+    simulation_day = 4,
+    test_species_info
+  )
+  expect_equal(result_infected_net_pen_info, expected_infected_net_pen_info)
   # Check disease stage duration matrices
   expected_disease_stage_duration_matrices <-
     list(
@@ -234,17 +268,19 @@ test_that("day is simulated correctly for a single infected netpen", {
         byrow = TRUE
       )
     )
-  expect_equal(test_simulation_env$disease_stage_duration_matrices,
-               expected_disease_stage_duration_matrices)
+  expect_equal(
+    test_simulation_env$disease_stage_duration_matrices,
+    expected_disease_stage_duration_matrices
+  )
 
   # Day 5 ---
-  # Check infected netpen info
-  expected_infected_netpen_info <- data.frame(
+  # Check infected net pen info
+  expected_infected_net_pen_info <- data.frame(
     simulation_day = 5,
-    netpen_id = 1,
+    net_pen_id = 1,
     farm_id = 1,
     species_id = 1,
-    within_netpen_transmission = 1,
+    within_net_pen_transmission = 1,
     n_susceptible = 24935,
     n_latent = 51,
     n_subclinical = 0,
@@ -256,11 +292,13 @@ test_that("day is simulated correctly for a single infected netpen", {
     day_infected = 0,
     is_vaccinated = 0
   )
-  result_infected_netpen_info <- he_simulate_day(result_infected_netpen_info,
-                                                 test_simulation_env,
-                                                 simulation_day = 5,
-                                                 test_species_info)
-  expect_equal(result_infected_netpen_info, expected_infected_netpen_info)
+  result_infected_net_pen_info <- he_simulate_day(
+    result_infected_net_pen_info,
+    test_simulation_env,
+    simulation_day = 5,
+    test_species_info
+  )
+  expect_equal(result_infected_net_pen_info, expected_infected_net_pen_info)
   # Check disease stage duration matrices
   expected_disease_stage_duration_matrices <-
     list(
@@ -280,17 +318,19 @@ test_that("day is simulated correctly for a single infected netpen", {
         byrow = TRUE
       )
     )
-  expect_equal(test_simulation_env$disease_stage_duration_matrices,
-               expected_disease_stage_duration_matrices)
+  expect_equal(
+    test_simulation_env$disease_stage_duration_matrices,
+    expected_disease_stage_duration_matrices
+  )
 
   # Day 6 ---
-  # Check infected netpen info
-  expected_infected_netpen_info <- data.frame(
+  # Check infected net pen info
+  expected_infected_net_pen_info <- data.frame(
     simulation_day = 6,
-    netpen_id = 1,
+    net_pen_id = 1,
     farm_id = 1,
     species_id = 1,
-    within_netpen_transmission = 1,
+    within_net_pen_transmission = 1,
     n_susceptible = 24931,
     n_latent = 55,
     n_subclinical = 0,
@@ -302,11 +342,13 @@ test_that("day is simulated correctly for a single infected netpen", {
     day_infected = 0,
     is_vaccinated = 0
   )
-  result_infected_netpen_info <- he_simulate_day(result_infected_netpen_info,
-                                                 test_simulation_env,
-                                                 simulation_day = 6,
-                                                 test_species_info)
-  expect_equal(result_infected_netpen_info, expected_infected_netpen_info)
+  result_infected_net_pen_info <- he_simulate_day(
+    result_infected_net_pen_info,
+    test_simulation_env,
+    simulation_day = 6,
+    test_species_info
+  )
+  expect_equal(result_infected_net_pen_info, expected_infected_net_pen_info)
   # Check disease stage duration matrices
   expected_disease_stage_duration_matrices <-
     list(
@@ -326,17 +368,19 @@ test_that("day is simulated correctly for a single infected netpen", {
         byrow = TRUE
       )
     )
-  expect_equal(test_simulation_env$disease_stage_duration_matrices,
-               expected_disease_stage_duration_matrices)
+  expect_equal(
+    test_simulation_env$disease_stage_duration_matrices,
+    expected_disease_stage_duration_matrices
+  )
 
   # Day 7 ---
-  # Check infected netpen info
-  expected_infected_netpen_info <- data.frame(
+  # Check infected net pen info
+  expected_infected_net_pen_info <- data.frame(
     simulation_day = 7,
-    netpen_id = 1,
+    net_pen_id = 1,
     farm_id = 1,
     species_id = 1,
-    within_netpen_transmission = 1,
+    within_net_pen_transmission = 1,
     n_susceptible = 24928,
     n_latent = 50,
     n_subclinical = 3,
@@ -348,11 +392,13 @@ test_that("day is simulated correctly for a single infected netpen", {
     day_infected = 0,
     is_vaccinated = 0
   )
-  result_infected_netpen_info <- he_simulate_day(result_infected_netpen_info,
-                                                 test_simulation_env,
-                                                 simulation_day = 7,
-                                                 test_species_info)
-  expect_equal(result_infected_netpen_info, expected_infected_netpen_info)
+  result_infected_net_pen_info <- he_simulate_day(
+    result_infected_net_pen_info,
+    test_simulation_env,
+    simulation_day = 7,
+    test_species_info
+  )
+  expect_equal(result_infected_net_pen_info, expected_infected_net_pen_info)
   # Check disease stage duration matrices
   expected_disease_stage_duration_matrices <-
     list(
@@ -372,17 +418,19 @@ test_that("day is simulated correctly for a single infected netpen", {
         byrow = TRUE
       )
     )
-  expect_equal(test_simulation_env$disease_stage_duration_matrices,
-               expected_disease_stage_duration_matrices)
+  expect_equal(
+    test_simulation_env$disease_stage_duration_matrices,
+    expected_disease_stage_duration_matrices
+  )
 
   # Day 8 ---
-  # Check infected netpen info
-  expected_infected_netpen_info <- data.frame(
+  # Check infected net pen info
+  expected_infected_net_pen_info <- data.frame(
     simulation_day = 8,
-    netpen_id = 1,
+    net_pen_id = 1,
     farm_id = 1,
     species_id = 1,
-    within_netpen_transmission = 1,
+    within_net_pen_transmission = 1,
     n_susceptible = 24917,
     n_latent = 58,
     n_subclinical = 2,
@@ -394,11 +442,13 @@ test_that("day is simulated correctly for a single infected netpen", {
     day_infected = 0,
     is_vaccinated = 0
   )
-  result_infected_netpen_info <- he_simulate_day(result_infected_netpen_info,
-                                                 test_simulation_env,
-                                                 simulation_day = 8,
-                                                 test_species_info)
-  expect_equal(result_infected_netpen_info, expected_infected_netpen_info)
+  result_infected_net_pen_info <- he_simulate_day(
+    result_infected_net_pen_info,
+    test_simulation_env,
+    simulation_day = 8,
+    test_species_info
+  )
+  expect_equal(result_infected_net_pen_info, expected_infected_net_pen_info)
   # Check disease stage duration matrices
   expected_disease_stage_duration_matrices <-
     list(
@@ -418,17 +468,19 @@ test_that("day is simulated correctly for a single infected netpen", {
         byrow = TRUE
       )
     )
-  expect_equal(test_simulation_env$disease_stage_duration_matrices,
-               expected_disease_stage_duration_matrices)
+  expect_equal(
+    test_simulation_env$disease_stage_duration_matrices,
+    expected_disease_stage_duration_matrices
+  )
 
   # Day 9 ---
-  # Check infected netpen info
-  expected_infected_netpen_info <- data.frame(
+  # Check infected net pen info
+  expected_infected_net_pen_info <- data.frame(
     simulation_day = 9,
-    netpen_id = 1,
+    net_pen_id = 1,
     farm_id = 1,
     species_id = 1,
-    within_netpen_transmission = 1,
+    within_net_pen_transmission = 1,
     n_susceptible = 24908,
     n_latent = 54,
     n_subclinical = 7,
@@ -440,11 +492,13 @@ test_that("day is simulated correctly for a single infected netpen", {
     day_infected = 0,
     is_vaccinated = 0
   )
-  result_infected_netpen_info <- he_simulate_day(result_infected_netpen_info,
-                                                 test_simulation_env,
-                                                 simulation_day = 9,
-                                                 test_species_info)
-  expect_equal(result_infected_netpen_info, expected_infected_netpen_info)
+  result_infected_net_pen_info <- he_simulate_day(
+    result_infected_net_pen_info,
+    test_simulation_env,
+    simulation_day = 9,
+    test_species_info
+  )
+  expect_equal(result_infected_net_pen_info, expected_infected_net_pen_info)
   # Check disease stage duration matrices
   expected_disease_stage_duration_matrices <-
     list(
@@ -464,17 +518,19 @@ test_that("day is simulated correctly for a single infected netpen", {
         byrow = TRUE
       )
     )
-  expect_equal(test_simulation_env$disease_stage_duration_matrices,
-               expected_disease_stage_duration_matrices)
+  expect_equal(
+    test_simulation_env$disease_stage_duration_matrices,
+    expected_disease_stage_duration_matrices
+  )
 
   # Day 9 ---
-  # Check infected netpen info
-  expected_infected_netpen_info <- data.frame(
+  # Check infected net pen info
+  expected_infected_net_pen_info <- data.frame(
     simulation_day = 10,
-    netpen_id = 1,
+    net_pen_id = 1,
     farm_id = 1,
     species_id = 1,
-    within_netpen_transmission = 1,
+    within_net_pen_transmission = 1,
     n_susceptible = 24879,
     n_latent = 73,
     n_subclinical = 7,
@@ -486,11 +542,13 @@ test_that("day is simulated correctly for a single infected netpen", {
     day_infected = 0,
     is_vaccinated = 0
   )
-  result_infected_netpen_info <- he_simulate_day(result_infected_netpen_info,
-                                                 test_simulation_env,
-                                                 simulation_day = 10,
-                                                 test_species_info)
-  expect_equal(result_infected_netpen_info, expected_infected_netpen_info)
+  result_infected_net_pen_info <- he_simulate_day(
+    result_infected_net_pen_info,
+    test_simulation_env,
+    simulation_day = 10,
+    test_species_info
+  )
+  expect_equal(result_infected_net_pen_info, expected_infected_net_pen_info)
   # Check disease stage duration matrices
   expected_disease_stage_duration_matrices <-
     list(
@@ -510,7 +568,8 @@ test_that("day is simulated correctly for a single infected netpen", {
         byrow = TRUE
       )
     )
-  expect_equal(test_simulation_env$disease_stage_duration_matrices,
-               expected_disease_stage_duration_matrices)
-
+  expect_equal(
+    test_simulation_env$disease_stage_duration_matrices,
+    expected_disease_stage_duration_matrices
+  )
 })
