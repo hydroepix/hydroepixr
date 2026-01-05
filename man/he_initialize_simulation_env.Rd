@@ -7,6 +7,7 @@
 he_initialize_simulation_env(
   simulation_env,
   species_info,
+  net_pen_info,
   output_dir,
   model_run_id,
   infected_net_pen_output_file_name,
@@ -18,6 +19,8 @@ he_initialize_simulation_env(
 \item{simulation_env}{environment in which simulation variables are stored}
 
 \item{species_info}{data frame of species information}
+
+\item{net_pen_info}{data frame of net pen and farm information}
 
 \item{output_dir}{file path where the infected net pen information output should
 be stored}

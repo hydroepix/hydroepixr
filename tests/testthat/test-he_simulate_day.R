@@ -6,12 +6,17 @@ test_that("simulating a day with no remaining infections generates error", {
     ))
   test_species_info <- test_species_info <-
     readRDS(paste0(test_data_filepath, "/parsed_species_info_bay_x.rds"))
+  test_net_pen_info <- readRDS(paste0(
+    test_data_filepath,
+    "/initialized_net_pen_info_bay_x.rds"
+  ))
   test_simulation_env <- rlang::new_environment()
   # Set up test output directory and file, initialize test environment
   temp_test_dir <-
     output_and_simulation_env_test_setup(
       test_simulation_env,
       test_species_info,
+      test_net_pen_info,
       test_output_file_name = "infected_net_pens.csv"
     )
 
@@ -48,6 +53,7 @@ test_that("day is simulated correctly for a single infected net pen", {
     output_and_simulation_env_test_setup(
       test_simulation_env,
       test_species_info,
+      test_net_pen_info,
       test_output_file_name = "infected_net_pens.csv"
     )
 

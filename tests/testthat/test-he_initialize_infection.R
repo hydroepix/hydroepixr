@@ -6,11 +6,16 @@ test_that("invalid index disease stage produces error", {
     ))
   test_species_info <-
     readRDS(paste0(test_data_filepath, "/parsed_species_info_bay_x.rds"))
+  test_net_pen_info <- readRDS(paste0(
+    test_data_filepath,
+    "/initialized_net_pen_info_bay_x.rds"
+  ))
   test_simulation_env <- rlang::new_environment()
   temp_test_dir <-
     output_and_simulation_env_test_setup(
       test_simulation_env,
       test_species_info,
+      test_net_pen_info,
       test_output_file_name = "infected_net_pens.csv"
     )
   test_n_index_infected_min <- 3
@@ -49,11 +54,16 @@ test_that("lack of clinically_infected_prop argument in subclinical-clinical
     ))
   test_species_info <-
     readRDS(paste0(test_data_filepath, "/parsed_species_info_bay_x.rds"))
+  test_net_pen_info <- readRDS(paste0(
+    test_data_filepath,
+    "/initialized_net_pen_info_bay_x.rds"
+  ))
   test_simulation_env <- rlang::new_environment()
   temp_test_dir <-
     output_and_simulation_env_test_setup(
       test_simulation_env,
       test_species_info,
+      test_net_pen_info,
       test_output_file_name = "infected_net_pens.csv"
     )
   test_n_index_infected_min <- 3
@@ -90,11 +100,16 @@ test_that("subclinical-clinical split disease stage for index infection initiali
     ))
   test_species_info <-
     readRDS(paste0(test_data_filepath, "/parsed_species_info_bay_x.rds"))
+  test_net_pen_info <- readRDS(paste0(
+    test_data_filepath,
+    "/initialized_net_pen_info_bay_x.rds"
+  ))
   test_simulation_env <- rlang::new_environment()
   temp_test_dir <-
     output_and_simulation_env_test_setup(
       test_simulation_env,
       test_species_info,
+      test_net_pen_info,
       test_output_file_name = "infected_net_pens.csv"
     )
   test_n_index_infected_min <- 3
@@ -171,11 +186,16 @@ test_that("latent disease stage for index infection initializes correctly", {
     ))
   test_species_info <-
     readRDS(paste0(test_data_filepath, "/parsed_species_info_bay_x.rds"))
+  test_net_pen_info <- readRDS(paste0(
+    test_data_filepath,
+    "/initialized_net_pen_info_bay_x.rds"
+  ))
   test_simulation_env <- rlang::new_environment()
   temp_test_dir <-
     output_and_simulation_env_test_setup(
       test_simulation_env,
       test_species_info,
+      test_net_pen_info,
       test_output_file_name = "infected_net_pens.csv"
     )
   test_n_index_infected_min <- 3

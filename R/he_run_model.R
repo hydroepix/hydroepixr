@@ -18,6 +18,7 @@ he_run_model <- function(model_env) {
     he_initialize_simulation_env(
       simulation_env,
       model_env$species_info,
+      model_env$net_pen_info,
       model_env$output_dir,
       model_env$model_run_id,
       model_env$infected_net_pen_output_file_name,
