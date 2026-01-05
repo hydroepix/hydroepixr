@@ -3,6 +3,8 @@
 #' @param simulation_env environment in which simulation variables are stored
 #' @param species_info data frame of species information
 #' @param net_pen_info data frame of net pen and farm information
+#' @param net_pen_to_net_pen daily probability for infection between net pens
+#' transmission within a farm
 #' @param output_dir file path where the infected net pen information output should
 #'    be stored
 #' @param model_run_id identifier for this run of the model
@@ -24,6 +26,7 @@ he_initialize_simulation_env <-
     simulation_env,
     species_info,
     net_pen_info,
+    net_pen_to_net_pen,
     output_dir,
     model_run_id,
     infected_net_pen_output_file_name,
@@ -41,8 +44,10 @@ he_initialize_simulation_env <-
         sep = "_"
       )
 
+    # Define required variables for calculations at the simulation level
     simulation_env$clinically_infected_prop <- clinically_infected_prop
     simulation_env$net_pen_info <- net_pen_info
+    simulation_env$net_pen_to_net_pen <- net_pen_to_net_pen
 
     # Create data frame and file to store infected net pen information
     simulation_env$infected_net_pen_info <-

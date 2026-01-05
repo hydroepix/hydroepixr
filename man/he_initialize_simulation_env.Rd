@@ -8,6 +8,7 @@ he_initialize_simulation_env(
   simulation_env,
   species_info,
   net_pen_info,
+  net_pen_to_net_pen,
   output_dir,
   model_run_id,
   infected_net_pen_output_file_name,
@@ -21,6 +22,9 @@ he_initialize_simulation_env(
 \item{species_info}{data frame of species information}
 
 \item{net_pen_info}{data frame of net pen and farm information}
+
+\item{net_pen_to_net_pen}{daily probability for infection between net pens
+transmission within a farm}
 
 \item{output_dir}{file path where the infected net pen information output should
 be stored}

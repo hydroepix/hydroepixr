@@ -12,12 +12,14 @@ test_that("simulation environment variables are correctly initialized", {
     "/initialized_net_pen_info_bay_x.rds"
   ))
   test_model_run_id <- "testmodel"
+  test_net_pen_to_net_pen <- 0.5
   test_clinically_infected_prop <- 0.6
   test_simulation_n <- 10
   he_initialize_simulation_env(
     test_simulation_env,
     test_species_info,
     test_net_pen_info,
+    test_net_pen_to_net_pen,
     output_dir = temp_test_dir,
     test_model_run_id,
     test_infected_net_pen_output_file_name,

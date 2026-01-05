@@ -10,6 +10,7 @@ he_calculate_between_net_pen_infection_prob <- function(
   net_pen_to_net_pen,
   infected_net_pen_info
 ) {
+  # TODO Handle repeated values of net_pen_to_net_pen due to vector submission?
   n_infectious <- sum(
     infected_net_pen_info$n_subclinical +
       infected_net_pen_info$n_clinical
