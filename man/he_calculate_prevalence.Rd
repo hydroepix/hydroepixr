@@ -9,7 +9,7 @@ he_calculate_prevalence(n_infectious, n_not_immune)
 \arguments{
 \item{n_infectious}{number of animals which are infectious}
 
-\item{disease_stage_distribution}{number of animals which are not immune to infection}
+\item{n_not_immune}{number of animals which cannot be infected}
 }
 \description{
 Calculate the prevalence of disease
