@@ -8,9 +8,10 @@
 #' @export
 #' @importFrom dplyr select
 #' @importFrom dplyr filter
-#' @importFrom dplyr pull
+#' @importFrom dplyr setdiff
+#' @importFrom dplyr join_by
 #'
-he_calculate_susceptible_net_pens <- function(
+he_retrieve_susceptible_net_pens <- function(
   farm_id,
   net_pen_info,
   infected_net_pen_info
@@ -20,14 +21,14 @@ he_calculate_susceptible_net_pens <- function(
   # Option: include status in net pen info (however, this would require modifying another data frame
   # throughout the simulation, which would complicate things)
   all_net_pen_ids <- net_pen_info |>
-    dplyr::select(c(farm_id, net_pen_id)) |>
-    dplyr::filter(farm_id == !!farm_id) |>
-    dplyr::pull(net_pen_id)
+    dplyr::select(farm_id, net_pen_id) |>
+    dplyr::filter(farm_id == !!farm_id)
   infected_net_pen_ids <- infected_net_pen_info |>
-    dplyr::select(c(farm_id, net_pen_id)) |>
-    dplyr::filter(farm_id == !!farm_id) |>
-    dplyr::pull(net_pen_id)
-  susceptible_net_pens <- setdiff(all_net_pen_ids, infected_net_pen_ids)
-  n_susceptible_net_pens <- length(susceptible_net_pens)
-  n_susceptible_net_pens
+    dplyr::select(farm_id, net_pen_id) |>
+    dplyr::filter(farm_id == !!farm_id)
+  susceptible_net_pens <- all_net_pen_ids |>
+    dplyr::setdiff(
+      infected_net_pen_ids
+    ) |>
+    dplyr::left_join(net_pen_info, by = dplyr::join_by(farm_id, net_pen_id))
 }

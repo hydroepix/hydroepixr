@@ -8,12 +8,16 @@ test_that("correct number of susceptible net pens is calculated when no net pens
     test_data_filepath,
     "/initialized_net_pen_info_bay_x.rds"
   ))
-  n_susceptible_net_pens <- he_calculate_susceptible_net_pens(
+  test_susceptible_net_pens <- he_retrieve_susceptible_net_pens(
     test_farm_id,
     test_net_pen_info,
     test_infected_net_pen_info
   )
-  expect_equal(n_susceptible_net_pens, 20)
+  expected_susceptible_net_pens <- readRDS(paste0(
+    test_data_filepath,
+    "/net_pen_info_farm_1_all_susceptible.rds"
+  ))
+  expect_equal(test_susceptible_net_pens, expected_susceptible_net_pens)
 })
 
 test_that("correct number of susceptible net pens is calculated when some net pens are infected", {
@@ -28,16 +32,19 @@ test_that("correct number of susceptible net pens is calculated when some net pe
     test_data_filepath,
     "/initialized_net_pen_info_bay_x.rds"
   ))
-  n_susceptible_net_pens <- he_calculate_susceptible_net_pens(
+  test_susceptible_net_pens <- he_retrieve_susceptible_net_pens(
     test_farm_id,
     test_net_pen_info,
     test_infected_net_pen_info
   )
-  expect_equal(n_susceptible_net_pens, 19)
+  expected_susceptible_net_pens <- readRDS(paste0(
+    test_data_filepath,
+    "/net_pen_info_farm_1_some_susceptible.rds"
+  ))
+  expect_equal(test_susceptible_net_pens, expected_susceptible_net_pens)
 })
 
 test_that("correct number of susceptible net pens is calculated when all net pens are infected", {
-  # TODO: create new infected net pen info file which contains all net pens
   test_farm_id <- 1
   test_infected_net_pen_info <- readRDS(
     paste0(
@@ -49,10 +56,14 @@ test_that("correct number of susceptible net pens is calculated when all net pen
     test_data_filepath,
     "/initialized_net_pen_info_bay_x.rds"
   ))
-  n_susceptible_net_pens <- he_calculate_susceptible_net_pens(
+  test_susceptible_net_pens <- he_retrieve_susceptible_net_pens(
     test_farm_id,
     test_net_pen_info,
     test_infected_net_pen_info
   )
-  expect_equal(n_susceptible_net_pens, 0)
+  expected_susceptible_net_pens <- readRDS(paste0(
+    test_data_filepath,
+    "/net_pen_info_farm_1_none_susceptible.rds"
+  ))
+  expect_equal(test_susceptible_net_pens, expected_susceptible_net_pens)
 })
