@@ -9,6 +9,7 @@
 #'
 #' @return updated infected net pen info data frame
 #' @export
+#' @import foreach
 #' @importFrom utils head
 #' @importFrom stats rbinom
 #'
@@ -19,11 +20,37 @@ he_simulate_day <- function(
   species_info,
   verbose = FALSE
 ) {
-  # TODO: Future feature, update farm production time and whether farm is active
-  # Consider whether this is a farm-level variable or a net pen-level variable
-
   # Check there are infected net pens to cause infection spread
   if (nrow(infected_net_pen_info) > 0) {
+    # Calculate probability of between-net pen infection
+    # NOTE: This will have to be done for each farm
+    # once between farm infection is implemented
+    if (verbose) {
+      message(
+        "Calculating newly infected animals from between-net pen transmission..."
+      )
+    }
+    foreach::foreach(farm_id = unique(simulation_env$net_pen_info$farm_id)) %do%
+      {
+        prob_between_net_pen_infection <-
+          he_calculate_between_net_pen_infection_prob(
+            simulation_env$net_pen_to_net_pen,
+            infected_net_pen_info
+          )
+        # Determine number of susceptible net pens
+        susceptible_net_pens <- he_retrieve_susceptible_net_pens(
+          farm_id,
+          simulation_env$net_pen_info,
+          infected_net_pen_info
+        )
+        # Sample susceptible net pens for newly infected ones
+        n_newly_infected <- stats::rbinom(
+          nrow(susceptible_net_pens),
+          1,
+          prob_between_net_pen_infection
+        )
+        # TODO: Add newly infected net pens to infected net pen info
+      }
     # Calculate probability of within-net pen infection
     if (verbose) {
       message(

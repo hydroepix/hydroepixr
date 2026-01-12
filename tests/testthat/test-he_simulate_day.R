@@ -91,8 +91,8 @@ test_that("day is simulated correctly for a single infected net pen", {
     farm_id = 1,
     species_id = 1,
     within_net_pen_transmission = 1,
-    n_susceptible = 24975,
-    n_latent = 11,
+    n_susceptible = 24971,
+    n_latent = 15,
     n_subclinical = 4,
     n_clinical = 8,
     n_recovered = 1,
@@ -113,7 +113,7 @@ test_that("day is simulated correctly for a single infected net pen", {
   expected_disease_stage_duration_matrices <-
     list(
       latent_duration = matrix(
-        c(0, 0, 0, 0, 0, 5, 1, 5),
+        c(0, 0, 0, 0, 3, 5, 4, 3),
         ncol = 8,
         byrow = TRUE
       ),
@@ -141,8 +141,8 @@ test_that("day is simulated correctly for a single infected net pen", {
     farm_id = 1,
     species_id = 1,
     within_net_pen_transmission = 1,
-    n_susceptible = 24963,
-    n_latent = 23,
+    n_susceptible = 24959,
+    n_latent = 27,
     n_subclinical = 1,
     n_clinical = 8,
     n_recovered = 4,
@@ -163,7 +163,7 @@ test_that("day is simulated correctly for a single infected net pen", {
   expected_disease_stage_duration_matrices <-
     list(
       latent_duration = matrix(
-        c(0, 0, 0, 0, 8, 3, 9, 3),
+        c(0, 0, 0, 3, 6, 9, 6, 3),
         ncol = 8,
         byrow = TRUE
       ),
@@ -191,8 +191,8 @@ test_that("day is simulated correctly for a single infected net pen", {
     farm_id = 1,
     species_id = 1,
     within_net_pen_transmission = 1,
-    n_susceptible = 24951,
-    n_latent = 35,
+    n_susceptible = 24949,
+    n_latent = 37,
     n_subclinical = 0,
     n_clinical = 7,
     n_recovered = 5,
@@ -213,7 +213,7 @@ test_that("day is simulated correctly for a single infected net pen", {
   expected_disease_stage_duration_matrices <-
     list(
       latent_duration = matrix(
-        c(0, 0, 0, 8, 3, 13, 9, 2),
+        c(0, 0, 3, 6, 10, 8, 7, 3),
         ncol = 8,
         byrow = TRUE
       ),
@@ -241,8 +241,8 @@ test_that("day is simulated correctly for a single infected net pen", {
     farm_id = 1,
     species_id = 1,
     within_net_pen_transmission = 1,
-    n_susceptible = 24944,
-    n_latent = 42,
+    n_susceptible = 24943,
+    n_latent = 43,
     n_subclinical = 0,
     n_clinical = 5,
     n_recovered = 5,
@@ -263,7 +263,7 @@ test_that("day is simulated correctly for a single infected net pen", {
   expected_disease_stage_duration_matrices <-
     list(
       latent_duration = matrix(
-        c(0, 0, 8, 3, 13, 10, 6, 2),
+        c(0, 3, 6, 10, 8, 10, 5, 1),
         ncol = 8,
         byrow = TRUE
       ),
@@ -291,8 +291,8 @@ test_that("day is simulated correctly for a single infected net pen", {
     farm_id = 1,
     species_id = 1,
     within_net_pen_transmission = 1,
-    n_susceptible = 24935,
-    n_latent = 51,
+    n_susceptible = 24933,
+    n_latent = 53,
     n_subclinical = 0,
     n_clinical = 4,
     n_recovered = 5,
@@ -313,7 +313,7 @@ test_that("day is simulated correctly for a single infected net pen", {
   expected_disease_stage_duration_matrices <-
     list(
       latent_duration = matrix(
-        c(0, 8, 3, 13, 10, 8, 4, 5),
+        c(3, 6, 10, 8, 10, 8, 6, 2),
         ncol = 8,
         byrow = TRUE
       ),
@@ -341,10 +341,10 @@ test_that("day is simulated correctly for a single infected net pen", {
     farm_id = 1,
     species_id = 1,
     within_net_pen_transmission = 1,
-    n_susceptible = 24931,
-    n_latent = 55,
-    n_subclinical = 0,
-    n_clinical = 2,
+    n_susceptible = 24932,
+    n_latent = 51,
+    n_subclinical = 1,
+    n_clinical = 4,
     n_recovered = 5,
     n_dead = 7,
     n_total = 25000,
@@ -363,17 +363,17 @@ test_that("day is simulated correctly for a single infected net pen", {
   expected_disease_stage_duration_matrices <-
     list(
       latent_duration = matrix(
-        c(8, 3, 13, 10, 9, 6, 5, 1),
+        c(6, 10, 8, 10, 8, 6, 3, 0),
         ncol = 8,
         byrow = TRUE
       ),
       subclinical_duration = matrix(
-        c(0, 0, 0, 0, 0, 0, 0, 0),
+        c(1, 0, 0, 0, 0, 0, 0, 0),
         ncol = 8,
         byrow = TRUE
       ),
       clinical_duration = matrix(
-        c(1, 1, 0, 0, 0, 0, 0, 0),
+        c(1, 2, 0, 1, 0, 0, 0, 0),
         ncol = 8,
         byrow = TRUE
       )
@@ -392,10 +392,10 @@ test_that("day is simulated correctly for a single infected net pen", {
     species_id = 1,
     within_net_pen_transmission = 1,
     n_susceptible = 24928,
-    n_latent = 50,
-    n_subclinical = 3,
-    n_clinical = 6,
-    n_recovered = 5,
+    n_latent = 49,
+    n_subclinical = 2,
+    n_clinical = 7,
+    n_recovered = 6,
     n_dead = 8,
     n_total = 25000,
     infection_origin = "index",
@@ -413,17 +413,17 @@ test_that("day is simulated correctly for a single infected net pen", {
   expected_disease_stage_duration_matrices <-
     list(
       latent_duration = matrix(
-        c(3, 13, 10, 9, 6, 6, 2, 1),
+        c(10, 8, 10, 8, 6, 3, 3, 1),
         ncol = 8,
         byrow = TRUE
       ),
       subclinical_duration = matrix(
-        c(2, 0, 1, 0, 0, 0, 0, 0),
+        c(1, 1, 0, 0, 0, 0, 0, 0),
         ncol = 8,
         byrow = TRUE
       ),
       clinical_duration = matrix(
-        c(1, 1, 1, 1, 0, 1, 1, 0),
+        c(2, 0, 2, 2, 0, 0, 1, 0),
         ncol = 8,
         byrow = TRUE
       )
@@ -441,12 +441,12 @@ test_that("day is simulated correctly for a single infected net pen", {
     farm_id = 1,
     species_id = 1,
     within_net_pen_transmission = 1,
-    n_susceptible = 24917,
-    n_latent = 58,
-    n_subclinical = 2,
-    n_clinical = 7,
+    n_susceptible = 24918,
+    n_latent = 49,
+    n_subclinical = 5,
+    n_clinical = 11,
     n_recovered = 7,
-    n_dead = 9,
+    n_dead = 10,
     n_total = 25000,
     infection_origin = "index",
     day_infected = 0,
@@ -463,17 +463,17 @@ test_that("day is simulated correctly for a single infected net pen", {
   expected_disease_stage_duration_matrices <-
     list(
       latent_duration = matrix(
-        c(13, 10, 9, 6, 8, 3, 5, 4),
+        c(8, 10, 8, 6, 5, 7, 2, 3),
         ncol = 8,
         byrow = TRUE
       ),
       subclinical_duration = matrix(
-        c(0, 2, 0, 0, 0, 0, 0, 0),
+        c(1, 3, 1, 0, 0, 0, 0, 0),
         ncol = 8,
         byrow = TRUE
       ),
       clinical_duration = matrix(
-        c(1, 2, 1, 1, 1, 1, 0, 0),
+        c(0, 3, 3, 0, 1, 2, 1, 1),
         ncol = 8,
         byrow = TRUE
       )
@@ -491,11 +491,11 @@ test_that("day is simulated correctly for a single infected net pen", {
     farm_id = 1,
     species_id = 1,
     within_net_pen_transmission = 1,
-    n_susceptible = 24908,
-    n_latent = 54,
+    n_susceptible = 24899,
+    n_latent = 60,
     n_subclinical = 7,
-    n_clinical = 14,
-    n_recovered = 7,
+    n_clinical = 16,
+    n_recovered = 8,
     n_dead = 10,
     n_total = 25000,
     infection_origin = "index",
@@ -513,17 +513,17 @@ test_that("day is simulated correctly for a single infected net pen", {
   expected_disease_stage_duration_matrices <-
     list(
       latent_duration = matrix(
-        c(10, 9, 6, 8, 4, 9, 7, 1),
+        c(10, 8, 6, 6, 8, 7, 8, 7),
         ncol = 8,
         byrow = TRUE
       ),
       subclinical_duration = matrix(
-        c(4, 2, 1, 0, 0, 0, 0, 0),
+        c(5, 1, 1, 0, 0, 0, 0, 0),
         ncol = 8,
         byrow = TRUE
       ),
       clinical_duration = matrix(
-        c(3, 2, 1, 2, 4, 1, 0, 1),
+        c(4, 3, 0, 2, 3, 1, 3, 0),
         ncol = 8,
         byrow = TRUE
       )
@@ -541,12 +541,12 @@ test_that("day is simulated correctly for a single infected net pen", {
     farm_id = 1,
     species_id = 1,
     within_net_pen_transmission = 1,
-    n_susceptible = 24879,
-    n_latent = 73,
-    n_subclinical = 7,
-    n_clinical = 17,
-    n_recovered = 11,
-    n_dead = 13,
+    n_susceptible = 24874,
+    n_latent = 75,
+    n_subclinical = 6,
+    n_clinical = 18,
+    n_recovered = 13,
+    n_dead = 14,
     n_total = 25000,
     infection_origin = "index",
     day_infected = 0,
@@ -563,17 +563,17 @@ test_that("day is simulated correctly for a single infected net pen", {
   expected_disease_stage_duration_matrices <-
     list(
       latent_duration = matrix(
-        c(9, 6, 8, 4, 12, 13, 13, 8),
+        c(8, 6, 6, 8, 12, 15, 13, 7),
         ncol = 8,
         byrow = TRUE
       ),
       subclinical_duration = matrix(
-        c(4, 2, 1, 0, 0, 0, 0, 0),
+        c(1, 5, 0, 0, 0, 0, 0, 0),
         ncol = 8,
         byrow = TRUE
       ),
       clinical_duration = matrix(
-        c(2, 3, 4, 4, 2, 1, 1, 0),
+        c(4, 0, 3, 5, 1, 4, 0, 1),
         ncol = 8,
         byrow = TRUE
       )
