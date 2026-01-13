@@ -35,7 +35,7 @@ he_simulate_day <- function(
         prob_between_net_pen_infection <-
           he_calculate_between_net_pen_infection_prob(
             simulation_env$net_pen_to_net_pen,
-            infected_net_pen_info
+            infected_net_pen_info |> dplyr::filter(farm_id == !!farm_id)
           )
         # Determine number of susceptible net pens
         susceptible_net_pens <- he_retrieve_susceptible_net_pens(
