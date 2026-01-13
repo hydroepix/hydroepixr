@@ -58,22 +58,49 @@ he_simulate_day <- function(
           c(newly_infected_net_pens,
             newly_infected_ids)
       }
-    # TODO: Add newly infected net pens to infected net pen info
+    # TODO: Should we have more than one animal become infected? How many?
+    # Also entering in latent state by default because between net pen contact
+    # is very distant
+    n_infected_animals_by_stage = data.frame(
+      n_latent = 1,
+      n_subclinical = 0,
+      n_clinical = 0
+    )
+    # Add newly infected net pens to infected net pen info
     infected_net_pen_info <- he_add_infected_net_pen(
       infected_net_pen_info,
       simulation_env$net_pen_info,
       newly_infected_net_pens,
-      # TODO: Should we have more than one animal become infected? How many?
-      # Also entering in latent state by default because between net pen contact
-      # is very distant
-      n_infected_animals_by_stage = data.frame(
-        n_latent = 1,
-        n_subclinical = 0,
-        n_clinical = 0
-      ),
+      n_infected_animals_by_stage,
       infection_origin = "between-net pen",
       simulation_day
     )
+    # Add new disease stage durations for newly infected net pens
+    disease_stage_distributions <-
+      species_info[c(
+        "latent_dur_freq",
+        "subclinical_dur_freq",
+        "clinical_dur_freq"
+      )]
+    simulation_env$disease_stage_duration_matrices$latent_duration <-
+      he_add_disease_stage_duration(
+        simulation_env$latent_duration,
+        species_info$latent_dur_freq[[1]],
+        n_animals_to_distribute = n_infected_animals_by_stage$n_latent
+      )
+    simulation_env$disease_stage_duration_matrices$subclinical_duration <-
+      he_add_disease_stage_duration(
+        simulation_env$subclinical_duration,
+        species_info$subclinical_dur_freq[[1]],
+        n_animals_to_distribute = n_infected_animals_by_stage$n_subclinical
+      )
+    simulation_env$disease_stage_duration_matrices$clinical_duration <-
+      he_add_disease_stage_duration(
+        simulation_env$clinical_duration,
+        species_info$clinical_dur_freq[[1]],
+        n_animals_to_distribute = n_infected_animals_by_stage$n_clinical
+      )
+
     # Calculate probability of within-net pen infection
     if (verbose) {
       message(
