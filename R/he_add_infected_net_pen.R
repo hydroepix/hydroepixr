@@ -3,14 +3,14 @@
 #' @param infected_net_pen_info data frame of information on infected net_pens
 #' @param net_pen_info data frame of information on net_pens
 #' @param new_infected_net_pens list of newly infected net pen ids
-#' @param n_infected_animals_by_stage vector of numeric values indicating the
-#'    number of infected animals in each stage of infection (latent, clinical,
-#'    and subclinical)
+#' @param n_infected_animals_by_stage data frame with columns n_latent,
+#'    n_subclinical, n_clinical indicating indicating the
+#'    number of infected animals in each stage of infection
 #' @param infection_origin source of the infection can be "index",
 #'    "between-net_pen", or "between-farm"
 #' @param simulation_day day of simulation that infection is occurring
 #'
-#' @return data frame of information on infected net_pens, appended with rows to
+#' @return data frame of information on infected net pens, appended with rows to
 #'    for new infections
 #' @export
 #'

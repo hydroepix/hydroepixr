@@ -20,9 +20,9 @@ he_add_infected_net_pen(
 
 \item{new_infected_net_pens}{list of newly infected net pen ids}
 
-\item{n_infected_animals_by_stage}{vector of numeric values indicating the
-number of infected animals in each stage of infection (latent, clinical,
-and subclinical)}
+\item{n_infected_animals_by_stage}{data frame with columns n_latent,
+n_subclinical, n_clinical indicating indicating the
+number of infected animals in each stage of infection}
 
 \item{infection_origin}{source of the infection can be "index",
 "between-net_pen", or "between-farm"}
@@ -30,7 +30,7 @@ and subclinical)}
 \item{simulation_day}{day of simulation that infection is occurring}
 }
 \value{
-data frame of information on infected net_pens, appended with rows to
+data frame of information on infected net pens, appended with rows to
 for new infections
 }
 \description{
