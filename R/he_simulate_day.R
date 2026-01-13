@@ -30,6 +30,7 @@ he_simulate_day <- function(
         "Calculating newly infected animals from between-net pen transmission..."
       )
     }
+    newly_infected_net_pens <- c()
     foreach::foreach(farm_id = unique(simulation_env$net_pen_info$farm_id)) %do%
       {
         prob_between_net_pen_infection <-
@@ -44,13 +45,35 @@ he_simulate_day <- function(
           infected_net_pen_info
         )
         # Sample susceptible net pens for newly infected ones
-        n_newly_infected <- stats::rbinom(
+        is_newly_infected <- stats::rbinom(
           nrow(susceptible_net_pens),
           1,
           prob_between_net_pen_infection
         )
-        # TODO: Add newly infected net pens to infected net pen info
+        susceptible_net_pens <- cbind(susceptible_net_pens, is_newly_infected)
+        newly_infected_ids <- susceptible_net_pens |>
+          dplyr::filter(is_newly_infected == 1) |>
+          dplyr::pull(net_pen_id)
+        newly_infected_net_pens <-
+          c(newly_infected_net_pens,
+            newly_infected_ids)
       }
+    # TODO: Add newly infected net pens to infected net pen info
+    infected_net_pen_info <- he_add_infected_net_pen(
+      infected_net_pen_info,
+      simulation_env$net_pen_info,
+      newly_infected_net_pens,
+      # TODO: Should we have more than one animal become infected? How many?
+      # Also entering in latent state by default because between net pen contact
+      # is very distant
+      n_infected_animals_by_stage = data.frame(
+        n_latent = 1,
+        n_subclinical = 0,
+        n_clinical = 0
+      ),
+      infection_origin = "between-net pen",
+      simulation_day
+    )
     # Calculate probability of within-net pen infection
     if (verbose) {
       message(
