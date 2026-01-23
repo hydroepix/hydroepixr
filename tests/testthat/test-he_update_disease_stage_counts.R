@@ -49,17 +49,20 @@ test_that("disease stage count values are updated correctly for multiple
   )
   test_disease_stage_duration_matrices <- list(
     matrix(
-      c(50, 0, 0, 0, 0, 0, 0, 0, 40, 0, 0, 0, 0, 0, 0, 0),
+      c(50, 0, 0, 0, 0, 0, 0, 0,
+        40, 0, 0, 0, 0, 0, 0, 0),
       ncol = 8,
       byrow = TRUE
     ),
     matrix(
-      c(30, 0, 0, 0, 0, 0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0),
+      c(30, 0, 0, 0, 0, 0, 0, 0,
+        10, 0, 0, 0, 0, 0, 0, 0),
       ncol = 8,
       byrow = TRUE
     ),
     matrix(
-      c(30, 0, 0, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0),
+      c(30, 0, 0, 0, 0, 0, 0, 0,
+        5, 0, 0, 0, 0, 0, 0, 0),
       ncol = 8,
       byrow = TRUE
     )
@@ -100,17 +103,20 @@ test_that("disease stage count values are sequentially updated correctly for
   )
   test_disease_stage_duration_matrices <- list(
     matrix(
-      c(100, 0, 0, 0, 0, 0, 0, 0, 50, 0, 0, 0, 0, 0, 0, 0),
+      c(100, 0, 0, 0, 0, 0, 0, 0,
+        50, 0, 0, 0, 0, 0, 0, 0),
       ncol = 8,
       byrow = TRUE
     ),
     matrix(
-      c(25, 0, 0, 0, 0, 0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0),
+      c(25, 0, 0, 0, 0, 0, 0, 0,
+        10, 0, 0, 0, 0, 0, 0, 0),
       ncol = 8,
       byrow = TRUE
     ),
     matrix(
-      c(10, 0, 0, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0),
+      c(10, 0, 0, 0, 0, 0, 0, 0,
+        5, 0, 0, 0, 0, 0, 0, 0),
       ncol = 8,
       byrow = TRUE
     )
@@ -221,7 +227,8 @@ test_that("error generated when number of net pens recorded in disease stage
   )
   test_disease_stage_duration_matrices <- list(
     matrix(
-      c(25, 0, 0, 0, 0, 0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0),
+      c(25, 0, 0, 0, 0, 0, 0, 0,
+        10, 0, 0, 0, 0, 0, 0, 0),
       ncol = 8,
       byrow = TRUE
     ),
@@ -256,17 +263,20 @@ test_that("error generated when number of net pens recorded in disease stage
   )
   test_disease_stage_duration_matrices <- list(
     matrix(
-      c(50, 0, 0, 0, 0, 0, 0, 0, 25, 0, 0, 0, 0, 0, 0, 0),
+      c(50, 0, 0, 0, 0, 0, 0, 0,
+        25, 0, 0, 0, 0, 0, 0, 0),
       ncol = 8,
       byrow = TRUE
     ),
     matrix(
-      c(25, 0, 0, 0, 0, 0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0),
+      c(25, 0, 0, 0, 0, 0, 0, 0,
+        10, 0, 0, 0, 0, 0, 0, 0),
       ncol = 8,
       byrow = TRUE
     ),
     matrix(
-      c(10, 0, 0, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0),
+      c(10, 0, 0, 0, 0, 0, 0, 0,
+        5, 0, 0, 0, 0, 0, 0, 0),
       ncol = 8,
       byrow = TRUE
     )
