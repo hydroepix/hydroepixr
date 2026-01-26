@@ -41,7 +41,39 @@ he_define_spread_control_params <-
     net_pen_to_net_pen = 0.052,
     vaccine_efficacy = 0
   ) {
-    # TODO: Input validation, especially for index_infection_stage
+    # Input validation
+    # all n_index_infected variables must be greater than 0
+    if (n_index_infected_min < 1) {
+      stop(
+        "Error: n_index_infected_min value must be greater than 0"
+      )
+    }
+    if (n_index_infected_mode < 1) {
+      stop(
+        "Error: n_index_infected_mode value must be greater than 0"
+      )
+    }
+    if (n_index_infected_max < 1) {
+      stop(
+        "Error: n_index_infected_max value must be greater than 0"
+      )
+    }
+    # n_index_infected_min must be the smallest value (or tied), n_index_infected_max must be the largest value (or tied)
+    if (
+      n_index_infected_min > n_index_infected_mode |
+        n_index_infected_min > n_index_infected_max
+    ) {
+      stop(
+        "Error: n_index_infected_min value must be smaller than n_index_infected_mode and n_index_infected_max"
+      )
+    }
+    if (n_index_infected_mode > n_index_infected_max) {
+      stop(
+        "Error: n_index_infected_mode must be smaller than n_index_infected_max"
+      )
+    }
+
+    # Assign variables to model environment
     model_env$n_index_infected_min <- n_index_infected_min
     model_env$n_index_infected_mode <- n_index_infected_mode
     model_env$n_index_infected_max <- n_index_infected_max

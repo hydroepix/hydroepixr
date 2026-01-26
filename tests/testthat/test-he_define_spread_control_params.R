@@ -1,3 +1,72 @@
+test_that("n_index_infected_min less than 1 generates an error", {
+  test_environment <- rlang::new_environment()
+  expect_error(
+    he_define_spread_control_params(
+      test_environment,
+      n_index_infected_min = 0
+    ),
+    regexp = "Error: n_index_infected_min value must be greater than 0"
+  )
+})
+
+test_that("n_index_infected_mode less than 1 generates an error", {
+  test_environment <- rlang::new_environment()
+  expect_error(
+    he_define_spread_control_params(
+      test_environment,
+      n_index_infected_mode = 0
+    ),
+    regexp = "Error: n_index_infected_mode value must be greater than 0"
+  )
+})
+
+test_that("n_index_infected_max less than 1 generates an error", {
+  test_environment <- rlang::new_environment()
+  expect_error(
+    he_define_spread_control_params(
+      test_environment,
+      n_index_infected_max = 0
+    ),
+    regexp = "Error: n_index_infected_max value must be greater than 0"
+  )
+})
+
+test_that("n_index_infected_min greater than n_index_infected_mode generates error", {
+  test_environment <- rlang::new_environment()
+  expect_error(
+    he_define_spread_control_params(
+      test_environment,
+      n_index_infected_min = 10,
+      n_index_infected_mode = 1
+    ),
+    regexp = "Error: n_index_infected_min value must be smaller than n_index_infected_mode and n_index_infected_max"
+  )
+})
+
+test_that("n_index_infected_min greater than n_index_infected_max generates error", {
+  test_environment <- rlang::new_environment()
+  expect_error(
+    he_define_spread_control_params(
+      test_environment,
+      n_index_infected_min = 10,
+      n_index_infected_max = 1
+    ),
+    regexp = "Error: n_index_infected_min value must be smaller than n_index_infected_mode and n_index_infected_max"
+  )
+})
+
+test_that("n_index_infected_mode greater than n_index_infected_max generates error", {
+  test_environment <- rlang::new_environment()
+  expect_error(
+    he_define_spread_control_params(
+      test_environment,
+      n_index_infected_mode = 10,
+      n_index_infected_max = 1
+    ),
+    regexp = "Error: n_index_infected_mode must be smaller than n_index_infected_max"
+  )
+})
+
 test_that("default spread parameters are stored in the environment", {
   test_environment <- rlang::new_environment()
   he_define_spread_control_params(test_environment)
