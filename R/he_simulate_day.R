@@ -55,8 +55,7 @@ he_simulate_day <- function(
           dplyr::filter(is_newly_infected == 1) |>
           dplyr::pull(net_pen_id)
         newly_infected_net_pens <-
-          c(newly_infected_net_pens,
-            newly_infected_ids)
+          c(newly_infected_net_pens, newly_infected_ids)
       }
 
     # If any net pens have been newly infected
@@ -85,24 +84,28 @@ he_simulate_day <- function(
           "subclinical_dur_freq",
           "clinical_dur_freq"
         )]
-      for(i in 1:nrow(n_infected_animals_by_stage)) {
+      for (i in 1:nrow(n_infected_animals_by_stage)) {
         simulation_env$disease_stage_duration_matrices$latent_duration <-
           he_add_disease_stage_duration(
             simulation_env$disease_stage_duration_matrices$latent_duration,
             species_info$latent_dur_freq[[1]],
-            n_animals_to_distribute = n_infected_animals_by_stage[i,]$n_latent
+            n_animals_to_distribute = n_infected_animals_by_stage[i, ]$n_latent
           )
         simulation_env$disease_stage_duration_matrices$subclinical_duration <-
           he_add_disease_stage_duration(
             simulation_env$disease_stage_duration_matrices$subclinical_duration,
             species_info$subclinical_dur_freq[[1]],
-            n_animals_to_distribute = n_infected_animals_by_stage[i,]$n_subclinical
+            n_animals_to_distribute = n_infected_animals_by_stage[
+              i,
+            ]$n_subclinical
           )
         simulation_env$disease_stage_duration_matrices$clinical_duration <-
           he_add_disease_stage_duration(
             simulation_env$disease_stage_duration_matrices$clinical_duration,
             species_info$clinical_dur_freq[[1]],
-            n_animals_to_distribute = n_infected_animals_by_stage[i,]$n_clinical
+            n_animals_to_distribute = n_infected_animals_by_stage[
+              i,
+            ]$n_clinical
           )
       }
     }
@@ -166,13 +169,13 @@ he_simulate_day <- function(
       he_calculate_subclinical_clinical_infection_split(
         n_transitioning = n_latent_out,
         clinically_infected_prop = simulation_env$clinically_infected_prop
-    )
+      )
 
     n_animals_transitioning_by_stage <-
       data.frame(
         n_latent_in = n_newly_infected,
-        n_subclinical_in = subclinical_clinical_split[,1],
-        n_clinical_in = subclinical_clinical_split[,2]
+        n_subclinical_in = subclinical_clinical_split[, 1],
+        n_clinical_in = subclinical_clinical_split[, 2]
       )
 
     disease_stage_distributions <-
