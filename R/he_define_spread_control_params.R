@@ -72,6 +72,47 @@ he_define_spread_control_params <-
         "Error: n_index_infected_mode must be smaller than n_index_infected_max"
       )
     }
+    # index_infection_stage
+    if (
+      index_infection_stage != "subclinical-clinical split" &
+        index_infection_stage != "latent"
+    ) {
+      stop(
+        paste0(
+          "Error: ",
+          index_infection_stage,
+          " is not a valid value for index_infection_stage. Valid values are 'subclinical-clinical split' or 'latent'"
+        )
+      )
+    }
+    # clinically_infected_prop
+    if (clinically_infected_prop < 0 | clinically_infected_prop > 1) {
+      stop("Error: clinically_infected_prop value must be between 0 and 1")
+    }
+    if (clinically_infected_prop < 0.05 | clinically_infected_prop > 0.9) {
+      warning(
+        "Warning: clinically_infected_prop value should typically be between 0.05 and 0.9"
+      )
+    }
+    # net_pen_to_net_pen
+    if (net_pen_to_net_pen < 0 | net_pen_to_net_pen > 1) {
+      stop("Error: net_pen_to_net_pen value must be between 0 and 1")
+    }
+    if (net_pen_to_net_pen < 0.01 | net_pen_to_net_pen > 0.1) {
+      warning(
+        "Warning: net_pen_to_net_pen value should typically be between 0.01 and 0.1"
+      )
+    }
+    # vaccine_efficacy = 0
+    if (vaccine_efficacy < 0 | vaccine_efficacy > 1) {
+      stop("Error: vaccine_efficacy value must be between 0 and 1")
+    }
+    if (vaccine_efficacy > 0.6) {
+      warning(
+        "Warning: vaccine_efficacy values should typically not be above 0.6"
+      )
+    }
+    # TODO: Eventually add days_dead_infectious and farm_to_farm
 
     # Assign variables to model environment
     model_env$n_index_infected_min <- n_index_infected_min

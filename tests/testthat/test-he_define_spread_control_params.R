@@ -67,6 +67,138 @@ test_that("n_index_infected_mode greater than n_index_infected_max generates err
   )
 })
 
+test_that("invalid index_infection_stage generates error", {
+  test_environment <- rlang::new_environment()
+  expect_error(
+    he_define_spread_control_params(
+      test_environment,
+      index_infection_stage = "subclinical"
+    ),
+    regexp = "Error: subclinical is not a valid value for index_infection_stage. Valid values are 'subclinical-clinical split' or 'latent'"
+  )
+})
+
+test_that("clinically_infected_prop value less than zero generates an error", {
+  test_environment <- rlang::new_environment()
+  expect_error(
+    he_define_spread_control_params(
+      test_environment,
+      clinically_infected_prop = -1
+    ),
+    regexp = "Error: clinically_infected_prop value must be between 0 and 1"
+  )
+})
+
+test_that("clinically_infected_prop value greater than 1 generates an error", {
+  test_environment <- rlang::new_environment()
+  expect_error(
+    he_define_spread_control_params(
+      test_environment,
+      clinically_infected_prop = 1.1
+    ),
+    regexp = "Error: clinically_infected_prop value must be between 0 and 1"
+  )
+})
+
+test_that("clinically_infected_prop value less than 0.05 generates a warning", {
+  test_environment <- rlang::new_environment()
+  expect_warning(
+    he_define_spread_control_params(
+      test_environment,
+      clinically_infected_prop = 0
+    ),
+    regexp = "Warning: clinically_infected_prop value should typically be between 0.05 and 0.9"
+  )
+})
+
+test_that("clinically_infected_prop value greater than 0.9 generates a warning", {
+  test_environment <- rlang::new_environment()
+  expect_warning(
+    he_define_spread_control_params(
+      test_environment,
+      clinically_infected_prop = 1
+    ),
+    regexp = "Warning: clinically_infected_prop value should typically be between 0.05 and 0.9"
+  )
+})
+
+test_that("net_pen_to_net_pen value less than 0 generates an error", {
+  test_environment <- rlang::new_environment()
+  expect_error(
+    he_define_spread_control_params(
+      test_environment,
+      net_pen_to_net_pen = -1
+    ),
+    regexp = "Error: net_pen_to_net_pen value must be between 0 and 1"
+  )
+})
+
+test_that("net_pen_to_net_pen value greater than 1 generates an error", {
+  test_environment <- rlang::new_environment()
+  expect_error(
+    he_define_spread_control_params(
+      test_environment,
+      net_pen_to_net_pen = 1.1
+    ),
+    regexp = "Error: net_pen_to_net_pen value must be between 0 and 1"
+  )
+})
+
+test_that("net_pen_to_net_pen value less than 0.01 generates a warning", {
+  test_environment <- rlang::new_environment()
+  expect_warning(
+    he_define_spread_control_params(
+      test_environment,
+      net_pen_to_net_pen = 0.001
+    ),
+    regexp = "Warning: net_pen_to_net_pen value should typically be between 0.01 and 0.1"
+  )
+})
+
+test_that("net_pen_to_net_pen value greater than 0.1 generates a warning", {
+  test_environment <- rlang::new_environment()
+  expect_warning(
+    he_define_spread_control_params(
+      test_environment,
+      net_pen_to_net_pen = 0.2
+    ),
+    regexp = "Warning: net_pen_to_net_pen value should typically be between 0.01 and 0.1"
+  )
+})
+
+test_that("vaccine_efficacy value smaller than 0 generates an error", {
+  test_environment <- rlang::new_environment()
+  expect_error(
+    he_define_spread_control_params(
+      test_environment,
+      vaccine_efficacy = -1
+    ),
+    regexp = "Error: vaccine_efficacy value must be between 0 and 1"
+  )
+})
+
+test_that("vaccine_efficacy value greater than 1 generates an error", {
+  test_environment <- rlang::new_environment()
+  expect_error(
+    he_define_spread_control_params(
+      test_environment,
+      vaccine_efficacy = 1.1
+    ),
+    regexp = "Error: vaccine_efficacy value must be between 0 and 1"
+  )
+})
+
+test_that("vaccine_efficacy value greater than 0.6 generates a warning", {
+  test_environment <- rlang::new_environment()
+  expect_warning(
+    he_define_spread_control_params(
+      test_environment,
+      vaccine_efficacy = 0.9
+    ),
+    regexp = "Warning: vaccine_efficacy values should typically not be above 0.6"
+  )
+})
+
 test_that("default spread parameters are stored in the environment", {
   test_environment <- rlang::new_environment()
   he_define_spread_control_params(test_environment)
