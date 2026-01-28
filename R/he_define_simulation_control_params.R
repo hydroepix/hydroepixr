@@ -21,19 +21,24 @@ he_define_simulation_control_params <-
     ignore_disease_status_input = TRUE,
     verbose = FALSE
   ) {
+    # Input checks
     if (n_simulations < 10) {
       warning(
-        "Due to the inclusion of randomness in the model, running a small number of simulations will provide a less representative model. It is recommended to run several simulations and aggregate their results."
+        "Warning: Due to the inclusion of randomness in the model, running a small number of simulations will provide a less representative model. It is recommended to run several simulations and aggregate their results."
       )
     }
     if (n_simulations > 1000) {
       warning(
-        "Running a large number of simulations will take a large amount of time. It is recommended not to run more than 1000 simulations."
+        "Warning: Running a large number of simulations will take a large amount of time. It is recommended not to run more than 1000 simulations."
       )
+    }
+    # max_outbreak_length
+    if (!is.numeric(max_outbreak_length) | max_outbreak_length < 1) {
+      stop("Error: max_outbreak_length must be numeric value greater than 0")
     }
     if (max_outbreak_length > 720) {
       warning(
-        "Simulations with a long max_outbreak_length will take a large amount of time to run and will not typically represent the length of time the animals will be in the water. Values of 720 days or less are recommended."
+        "Warning: Simulations with a long max_outbreak_length will take a large amount of time to run and will not typically represent the length of time the animals will be in the water. Values of 720 days or less are recommended."
       )
     }
     model_env$n_simulations <- n_simulations

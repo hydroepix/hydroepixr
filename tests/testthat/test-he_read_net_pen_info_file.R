@@ -12,7 +12,7 @@ test_that("net pen info file without correct headers throws error", {
       test_data_filepath,
       "/net_pen_file_bay_x_wrong_headers.csv"
     )),
-    regexp = "Unexpected column headers. Expected headers are: "
+    regexp = "Error: Unexpected column headers. Expected headers are: "
   )
 })
 
@@ -22,6 +22,6 @@ test_that("net pen info file with duplicate net pen identifiers throws error", {
       test_data_filepath,
       "/net_pen_file_bay_x_duplicate_net_pen_ids.csv"
     )),
-    regexp = "Net pen ID numbers are not unique. Simulations Fails. Duplicate Value: "
+    regexp = "Error: simulation failed. Net pen ID must be unique, even across farms. Duplicate Value: "
   )
 })

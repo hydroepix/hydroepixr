@@ -47,7 +47,7 @@ he_read_net_pen_info_file <- function(filepath, verbose = FALSE) {
     if (verbose) {
       message(
         paste0(
-          "Optional infection status and infection time columns ",
+          "Note: Optional infection status and infection time columns ",
           "not included in net pen info file.",
           "Default values assigned."
         )
@@ -56,7 +56,7 @@ he_read_net_pen_info_file <- function(filepath, verbose = FALSE) {
     net_pen_info$time_infected <- rep(Inf, n_net_pens)
   } else {
     stop(
-      "Unexpected column headers. Expected headers are: ",
+      "Error: Unexpected column headers. Expected headers are: ",
       paste(expected_cols, collapse = ", "),
       "Optional headers are: ",
       # TODO: Is there a valid case where one optional column will be provided
@@ -67,12 +67,12 @@ he_read_net_pen_info_file <- function(filepath, verbose = FALSE) {
     )
   }
 
-  # Check for non-unique IDs
+  # Check for non-unique net pen IDs
   if (
     length(unique(net_pen_info$net_pen_id)) < length(net_pen_info$net_pen_id)
   ) {
     stop(
-      "Net pen ID numbers are not unique. Simulations Fails. Duplicate Value: ",
+      "Error: simulation failed. Net pen ID must be unique, even across farms. Duplicate Value: ",
       paste(
         unique(net_pen_info$net_pen_id[duplicated(net_pen_info$net_pen_id)]),
         collapse = ", "
