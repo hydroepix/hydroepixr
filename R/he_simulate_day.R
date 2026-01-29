@@ -64,7 +64,8 @@ he_simulate_day <- function(
       # Also entering in latent state by default because between net pen contact
       # is very distant
       n_infected_animals_by_stage = data.frame(
-        n_latent = rep(1, length(newly_infected_net_pens)),
+        # TODO: Modify number of latently infected fish to be a variable input parameter
+        n_latent = rep(100, length(newly_infected_net_pens)),
         n_subclinical = rep(0, length(newly_infected_net_pens)),
         n_clinical = rep(0, length(newly_infected_net_pens))
       )
