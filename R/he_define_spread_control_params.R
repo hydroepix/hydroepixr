@@ -43,19 +43,19 @@ he_define_spread_control_params <-
   ) {
     # Input validation
     # all n_index_infected variables must be greater than 0
-    if (n_index_infected_min < 1) {
+    if (!is.numeric(n_index_infected_min) | n_index_infected_min < 1) {
       stop(
-        "Error: n_index_infected_min value must be greater than 0"
+        "Error: n_index_infected_min value must be a numeric value greater than 0"
       )
     }
-    if (n_index_infected_mode < 1) {
+    if (!is.numeric(n_index_infected_mode) | n_index_infected_mode < 1) {
       stop(
-        "Error: n_index_infected_mode value must be greater than 0"
+        "Error: n_index_infected_mode value must be a numeric value greater than 0"
       )
     }
-    if (n_index_infected_max < 1) {
+    if (!is.numeric(n_index_infected_max) | n_index_infected_max < 1) {
       stop(
-        "Error: n_index_infected_max value must be greater than 0"
+        "Error: n_index_infected_max value must be a numeric value greater than 0"
       )
     }
     # n_index_infected_min must be the smallest value (or tied), n_index_infected_max must be the largest value (or tied)
@@ -86,8 +86,14 @@ he_define_spread_control_params <-
       )
     }
     # clinically_infected_prop
-    if (clinically_infected_prop < 0 | clinically_infected_prop > 1) {
-      stop("Error: clinically_infected_prop value must be between 0 and 1")
+    if (
+      !is.numeric(clinically_infected_prop) |
+        clinically_infected_prop < 0 |
+        clinically_infected_prop > 1
+    ) {
+      stop(
+        "Error: clinically_infected_prop value must be a numeric value between 0 and 1"
+      )
     }
     if (clinically_infected_prop < 0.05 | clinically_infected_prop > 0.9) {
       warning(
@@ -95,8 +101,14 @@ he_define_spread_control_params <-
       )
     }
     # net_pen_to_net_pen
-    if (net_pen_to_net_pen < 0 | net_pen_to_net_pen > 1) {
-      stop("Error: net_pen_to_net_pen value must be between 0 and 1")
+    if (
+      !is.numeric(net_pen_to_net_pen) |
+        net_pen_to_net_pen < 0 |
+        net_pen_to_net_pen > 1
+    ) {
+      stop(
+        "Error: net_pen_to_net_pen value must be a numeric value between 0 and 1"
+      )
     }
     if (net_pen_to_net_pen < 0.01 | net_pen_to_net_pen > 0.1) {
       warning(
@@ -104,8 +116,14 @@ he_define_spread_control_params <-
       )
     }
     # vaccine_efficacy = 0
-    if (vaccine_efficacy < 0 | vaccine_efficacy > 1) {
-      stop("Error: vaccine_efficacy value must be between 0 and 1")
+    if (
+      !is.numeric(vaccine_efficacy) |
+        vaccine_efficacy < 0 |
+        vaccine_efficacy > 1
+    ) {
+      stop(
+        "Error: vaccine_efficacy value must be a numeric value between 0 and 1"
+      )
     }
     if (vaccine_efficacy > 0.6) {
       warning(

@@ -1,3 +1,14 @@
+test_that("non-numeric n_index_infected_min generates an error", {
+  test_environment <- rlang::new_environment()
+  expect_error(
+    he_define_spread_control_params(
+      test_environment,
+      n_index_infected_min = "one"
+    ),
+    regexp = "Error: n_index_infected_min value must be a numeric value greater than 0"
+  )
+})
+
 test_that("n_index_infected_min less than 1 generates an error", {
   test_environment <- rlang::new_environment()
   expect_error(
@@ -5,7 +16,18 @@ test_that("n_index_infected_min less than 1 generates an error", {
       test_environment,
       n_index_infected_min = 0
     ),
-    regexp = "Error: n_index_infected_min value must be greater than 0"
+    regexp = "Error: n_index_infected_min value must be a numeric value greater than 0"
+  )
+})
+
+test_that("non-numeric n_index_infected_mode generates an error", {
+  test_environment <- rlang::new_environment()
+  expect_error(
+    he_define_spread_control_params(
+      test_environment,
+      n_index_infected_mode = "twenty"
+    ),
+    regexp = "Error: n_index_infected_mode value must be a numeric value greater than 0"
   )
 })
 
@@ -16,7 +38,17 @@ test_that("n_index_infected_mode less than 1 generates an error", {
       test_environment,
       n_index_infected_mode = 0
     ),
-    regexp = "Error: n_index_infected_mode value must be greater than 0"
+    regexp = "Error: n_index_infected_mode value must be a numeric value greater than 0"
+  )
+})
+
+test_that("non-numeric n_index_infected_max generates an error", {
+  test_environment <- rlang::new_environment()
+  expect_error(
+    he_define_spread_control_params(
+      test_environment,
+      n_index_infected_max = "two thousand"
+    )
   )
 })
 
@@ -27,7 +59,7 @@ test_that("n_index_infected_max less than 1 generates an error", {
       test_environment,
       n_index_infected_max = 0
     ),
-    regexp = "Error: n_index_infected_max value must be greater than 0"
+    regexp = "Error: n_index_infected_max value must be a numeric value greater than 0"
   )
 })
 
@@ -78,6 +110,17 @@ test_that("invalid index_infection_stage generates error", {
   )
 })
 
+test_that("non-numeric clinically_infected_prop value generates an error", {
+  test_environment <- rlang::new_environment()
+  expect_error(
+    he_define_spread_control_params(
+      test_environment,
+      clinically_infected_prop = "high"
+    ),
+    regexp = "Error: clinically_infected_prop value must be a numeric value between 0 and 1"
+  )
+})
+
 test_that("clinically_infected_prop value less than zero generates an error", {
   test_environment <- rlang::new_environment()
   expect_error(
@@ -85,7 +128,7 @@ test_that("clinically_infected_prop value less than zero generates an error", {
       test_environment,
       clinically_infected_prop = -1
     ),
-    regexp = "Error: clinically_infected_prop value must be between 0 and 1"
+    regexp = "Error: clinically_infected_prop value must be a numeric value between 0 and 1"
   )
 })
 
@@ -96,7 +139,7 @@ test_that("clinically_infected_prop value greater than 1 generates an error", {
       test_environment,
       clinically_infected_prop = 1.1
     ),
-    regexp = "Error: clinically_infected_prop value must be between 0 and 1"
+    regexp = "Error: clinically_infected_prop value must be a numeric value between 0 and 1"
   )
 })
 
@@ -122,6 +165,17 @@ test_that("clinically_infected_prop value greater than 0.9 generates a warning",
   )
 })
 
+test_that("non-numeric net_pen_to_net_pen value generates error", {
+  test_environment <- rlang::new_environment()
+  expect_error(
+    he_define_spread_control_params(
+      test_environment,
+      net_pen_to_net_pen = "low"
+    ),
+    regexp = "Error: net_pen_to_net_pen value must be a numeric value between 0 and 1"
+  )
+})
+
 test_that("net_pen_to_net_pen value less than 0 generates an error", {
   test_environment <- rlang::new_environment()
   expect_error(
@@ -129,7 +183,7 @@ test_that("net_pen_to_net_pen value less than 0 generates an error", {
       test_environment,
       net_pen_to_net_pen = -1
     ),
-    regexp = "Error: net_pen_to_net_pen value must be between 0 and 1"
+    regexp = "Error: net_pen_to_net_pen value must be a numeric value between 0 and 1"
   )
 })
 
@@ -140,7 +194,7 @@ test_that("net_pen_to_net_pen value greater than 1 generates an error", {
       test_environment,
       net_pen_to_net_pen = 1.1
     ),
-    regexp = "Error: net_pen_to_net_pen value must be between 0 and 1"
+    regexp = "Error: net_pen_to_net_pen value must be a numeric value between 0 and 1"
   )
 })
 
@@ -166,6 +220,17 @@ test_that("net_pen_to_net_pen value greater than 0.1 generates a warning", {
   )
 })
 
+test_that("non-numeric vaccine_efficacy value generates an error", {
+  test_environment <- rlang::new_environment()
+  expect_error(
+    he_define_spread_control_params(
+      test_environment,
+      vaccine_efficacy = "medium"
+    ),
+    regexp = "Error: vaccine_efficacy value must be a numeric value between 0 and 1"
+  )
+})
+
 test_that("vaccine_efficacy value smaller than 0 generates an error", {
   test_environment <- rlang::new_environment()
   expect_error(
@@ -173,7 +238,7 @@ test_that("vaccine_efficacy value smaller than 0 generates an error", {
       test_environment,
       vaccine_efficacy = -1
     ),
-    regexp = "Error: vaccine_efficacy value must be between 0 and 1"
+    regexp = "Error: vaccine_efficacy value must be a numeric value between 0 and 1"
   )
 })
 
@@ -184,7 +249,7 @@ test_that("vaccine_efficacy value greater than 1 generates an error", {
       test_environment,
       vaccine_efficacy = 1.1
     ),
-    regexp = "Error: vaccine_efficacy value must be between 0 and 1"
+    regexp = "Error: vaccine_efficacy value must be a numeric value between 0 and 1"
   )
 })
 
