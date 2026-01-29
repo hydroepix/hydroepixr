@@ -38,7 +38,7 @@ he_define_simulation_control_params <-
     }
     # max_outbreak_length
     if (!is.numeric(max_outbreak_length) | max_outbreak_length < 1) {
-      stop("Error: max_outbreak_length must be numeric value greater than 0")
+      stop("Error: max_outbreak_length must be a numeric value greater than 0")
     }
     if (max_outbreak_length > 720) {
       warning(

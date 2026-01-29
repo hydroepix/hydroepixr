@@ -49,7 +49,7 @@ test_that("a non-numeric max_outbreak_length value generates an error", {
       test_environment,
       max_outbreak_length = "ten"
     ),
-    regexp = "Error: max_outbreak_length must be numeric value greater than 0"
+    regexp = "Error: max_outbreak_length must be a numeric value greater than 0"
   )
 })
 
@@ -60,7 +60,7 @@ test_that("a value of max_outbreak_length less than 1 generates an error", {
       test_environment,
       max_outbreak_length = 0
     ),
-    regexp = "Error: max_outbreak_length must be numeric value greater than 0"
+    regexp = "Error: max_outbreak_length must be a numeric value greater than 0"
   )
 })
 
