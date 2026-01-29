@@ -17,8 +17,6 @@
 #'    the clinical stage upon infection, which is the same as 1 minus the
 #'    proportion of animals which will enter the subclinical stage upon
 #'    infection
-#' @param days_dead_infectious number of days dead animals remain infectious
-#' @param farm_to_farm scaling parameter for between-farm infection transmission
 #' @param net_pen_to_net_pen daily probability of infection transmission between net pens within a farm
 #' @param vaccine_efficacy product of the manufacturer-reported vaccine efficacy
 #'    and the population coverage of the vaccine
@@ -36,8 +34,6 @@ he_define_spread_control_params <-
     index_farm_id = NULL,
     index_infection_stage = "subclinical-clinical split",
     clinically_infected_prop = 0.89,
-    days_dead_infectious = 2,
-    farm_to_farm = 0.42,
     net_pen_to_net_pen = 0.052,
     vaccine_efficacy = 0
   ) {
@@ -131,6 +127,8 @@ he_define_spread_control_params <-
       )
     }
     # TODO: Eventually add days_dead_infectious and farm_to_farm
+    # model_env$days_dead_infectious <- days_dead_infectious
+    # model_env$farm_to_farm <- farm_to_farm
 
     # Assign variables to model environment
     model_env$n_index_infected_min <- n_index_infected_min
@@ -139,8 +137,6 @@ he_define_spread_control_params <-
     model_env$index_farm_id <- index_farm_id
     model_env$index_net_pen_ids <- index_net_pen_ids
     model_env$index_infection_stage <- index_infection_stage
-    model_env$days_dead_infectious <- days_dead_infectious
-    model_env$farm_to_farm <- farm_to_farm
     model_env$net_pen_to_net_pen <- net_pen_to_net_pen
     model_env$vaccine_efficacy <- vaccine_efficacy
 

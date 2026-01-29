@@ -17,15 +17,13 @@ he_define_spread_control_params(
   index_farm_id = NULL,
   index_infection_stage = "subclinical-clinical split",
   clinically_infected_prop = 0.9,
-  days_dead_infectious = 2,
-  farm_to_farm = 0.5,
   net_pen_to_net_pen = 0.05,
   vaccine_efficacy = 0.5
 )
 he_define_output_params(
   model_env,
   output_dir = "output",
-  model_run_id = "vaccine_efficacy_point_five_test",
+  model_run_id = "between_net_pen_test",
   infected_net_pen_output_file_name = "infected_net_pens.csv"
 )
 

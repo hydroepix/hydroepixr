@@ -13,8 +13,6 @@ he_define_spread_control_params(
   index_farm_id = NULL,
   index_infection_stage = "subclinical-clinical split",
   clinically_infected_prop = 0.89,
-  days_dead_infectious = 2,
-  farm_to_farm = 0.42,
   net_pen_to_net_pen = 0.052,
   vaccine_efficacy = 0
 )
@@ -44,10 +42,6 @@ index infection will begin, valid options are "latent" and
 the clinical stage upon infection, which is the same as 1 minus the
 proportion of animals which will enter the subclinical stage upon
 infection}
-
-\item{days_dead_infectious}{number of days dead animals remain infectious}
-
-\item{farm_to_farm}{scaling parameter for between-farm infection transmission}
 
 \item{net_pen_to_net_pen}{daily probability of infection transmission between net pens within a farm}
 
