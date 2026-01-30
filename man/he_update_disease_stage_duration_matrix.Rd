@@ -20,6 +20,9 @@ disease stage}
 \item{n_animals_to_distribute}{number of animals which are newly entering
 the given disease stage}
 }
+\value{
+updated disease stage duration matrix with newly distributed animals
+}
 \description{
 Update disease duration stage matrices with newly distributed animals
 }

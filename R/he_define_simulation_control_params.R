@@ -1,7 +1,7 @@
 #' Define simulation variables related to simulation control
 #'
 #' @param model_env environment in which simulation variables are stored and
-#'   managed
+#'   managed, this will be modified by the function
 #' @param n_simulations number of simulations (i.e., individual simulated epidemics) to be run
 #' @param max_outbreak_length maximum length of a disease outbreak
 #' @param random_seed random seed to use for the simulation
@@ -10,6 +10,7 @@
 #' @param verbose boolean indicating whether verbose output should be generated
 #'
 #' @return NA
+#'
 #' @export
 
 he_define_simulation_control_params <-

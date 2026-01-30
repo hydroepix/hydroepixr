@@ -1,7 +1,7 @@
 #' Define simulation variables related to spread control
 #'
 #' @param model_env environment in which simulation variables are stored and
-#'   managed
+#'   managed, this will be modified by the function
 #' @param n_index_infected_min minimum number of fish initially infected,
 #'    to be calculated from a PERT distribution
 #' @param n_index_infected_mode mode of fish initially infected, to be
@@ -22,6 +22,7 @@
 #'    and the population coverage of the vaccine
 #'
 #' @return NA
+#'
 #' @export
 #'
 he_define_spread_control_params <-

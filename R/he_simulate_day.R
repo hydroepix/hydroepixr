@@ -8,7 +8,7 @@
 #'    messages on model running progress
 #'
 #' @return updated infected net pen info data frame
-#' @export
+#'
 #' @import foreach
 #' @importFrom utils head
 #' @importFrom stats rbinom
@@ -200,7 +200,7 @@ he_simulate_day <- function(
       simulation_env$output_dir
     )
 
-    infected_net_pen_info
+    return(infected_net_pen_info)
   } else {
     stop("No remaining infected net pens. Simulation should have terminated.")
   }

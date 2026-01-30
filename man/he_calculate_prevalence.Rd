@@ -11,6 +11,9 @@ he_calculate_prevalence(n_infectious, n_not_immune)
 
 \item{n_not_immune}{number of animals which cannot be infected}
 }
+\value{
+prevalence of infected animals within a net pen or a farm
+}
 \description{
 Calculate the prevalence of disease
 }

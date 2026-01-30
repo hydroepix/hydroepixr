@@ -5,6 +5,7 @@
 #'    output messages on function progress
 #'
 #' @return data.frame of the csv file
+#'
 #' @export
 #' @importFrom utils read.table
 
@@ -79,5 +80,5 @@ he_read_net_pen_info_file <- function(filepath, verbose = FALSE) {
       )
     )
   }
-  net_pen_info
+  return(net_pen_info)
 }

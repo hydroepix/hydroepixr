@@ -17,7 +17,7 @@
 #'
 #' @return infected net_pen info data frame with infection information for
 #'    the index net_pen(s) appended
-#' @export
+#'
 #'
 he_initialize_infection <- function(
   infected_net_pen_info,

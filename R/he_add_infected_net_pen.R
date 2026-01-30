@@ -12,7 +12,6 @@
 #'
 #' @return data frame of information on infected net pens, appended with rows to
 #'    for new infections
-#' @export
 #'
 he_add_infected_net_pen <-
   function(
@@ -65,5 +64,5 @@ he_add_infected_net_pen <-
           make.row.names = FALSE
         )
     }
-    infected_net_pen_info
+    return(infected_net_pen_info)
   }

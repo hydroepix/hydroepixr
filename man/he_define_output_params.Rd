@@ -13,7 +13,7 @@ he_define_output_params(
 }
 \arguments{
 \item{model_env}{environment in which environment variables are stored and
-managed}
+managed, this will be modified by the function}
 
 \item{output_dir}{directory into which output should be written}
 

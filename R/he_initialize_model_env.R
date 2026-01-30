@@ -1,20 +1,19 @@
 #' Initialize model variables
 #'
-#' @param model_env environment in which to store model level variables
+#' @param model_env environment in which to store model level variables,
+#'    this will be modified by the function
 #' @param net_pen_info_filepath filepath to net pen info file
 #' @param species_info_filepath filepath to species info file
-#' @param connectivity_matrix_filepath filepath to connectivity matrix file
 #'
 #' @return NA
-#' @export
+#'
 #'
 # References createHEvars in HEinitialize.R in hydroepix-model
 he_initialize_model_env <-
   function(
     model_env,
     net_pen_info_filepath,
-    species_info_filepath,
-    connectivity_matrix_filepath = NULL
+    species_info_filepath
   ) {
     # Read in files data
     model_env$net_pen_info <-
@@ -22,11 +21,6 @@ he_initialize_model_env <-
 
     model_env$species_info <-
       he_read_species_info_file(species_info_filepath)
-
-    if (!is.null(connectivity_matrix_filepath)) {
-      model_env$connectivity_matrix <-
-        he_read_connectivity_matrix_file(connectivity_matrix_filepath)
-    }
 
     # Initialize variables for internal tracking
     model_env$index_net_pens <- NA

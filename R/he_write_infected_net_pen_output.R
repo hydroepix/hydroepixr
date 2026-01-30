@@ -8,7 +8,7 @@
 #'    should be written
 #'
 #' @return NA
-#' @export
+#'
 #' @importFrom utils write.table
 #'
 he_write_infected_net_pen_output <- function(

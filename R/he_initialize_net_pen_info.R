@@ -5,7 +5,6 @@
 #'
 #' @return data frame of net pen information initialized with necessary columns
 #'    and necessary species information for the entire model run
-#' @export
 #'
 he_initialize_net_pen_info <- function(net_pen_info, species_info) {
   species_info_subset <-
@@ -58,13 +57,13 @@ he_initialize_net_pen_info <- function(net_pen_info, species_info) {
     ),
     he_rpert
   ))
-  # Remove intermediate columns
-  subset(
+  # Return net pen info without intermediate columns
+  return(subset(
     initialized_net_pen_info,
     select = -c(
       within_net_pen_transmission_min,
       within_net_pen_transmission_mode,
       within_net_pen_transmission_max
     )
-  )
+  ))
 }

@@ -21,6 +21,3 @@ vector of PERT beta random variates
 \description{
 Generate n PERT beta random variates
 }
-\examples{
-he_rpert(10, 0.14, 0.4, 0.8)
-}

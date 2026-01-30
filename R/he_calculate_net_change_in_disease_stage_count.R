@@ -10,7 +10,6 @@
 #'    infection
 #'
 #' @return net change in the number of animals in each disease stage
-#' @export
 #'
 he_calculate_net_change_in_disease_stage_count <-
   function(
@@ -73,5 +72,5 @@ he_calculate_net_change_in_disease_stage_count <-
         0,
         deparse.level = 0
       )
-    animals_in_by_stage - animals_out_by_stage
+    return(animals_in_by_stage - animals_out_by_stage)
   }

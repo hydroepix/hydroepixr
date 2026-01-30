@@ -3,6 +3,7 @@
 #' @param filepath to species info file
 #'
 #' @return data frame of species info
+#'
 #' @export
 #' @importFrom utils read.table
 
@@ -37,5 +38,5 @@ he_read_species_info_file <- function(filepath) {
   # Parsing R-code style vectors in input file
   # Note that this assumes a single row of species info data
   species_info <- he_parse_disease_stage_distributions(species_info)
-  species_info
+  return(species_info)
 }

@@ -3,6 +3,8 @@
 #' @param model_env environment containing variables for all essential hydroepix
 #'    model parameters
 #'
+#' @return NA
+#'
 #' @export
 #'
 he_run_model <- function(model_env) {

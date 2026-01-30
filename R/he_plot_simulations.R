@@ -44,7 +44,7 @@
 #'
 #' @param dat tbd
 #'
-#' @returns tbd
+#' @return tbd
 #'
 #' @importFrom dplyr any_of
 #' @importFrom ggplot2 aes ggplot geom_line scale_color_manual

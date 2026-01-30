@@ -17,7 +17,8 @@ he_initialize_simulation_env(
 )
 }
 \arguments{
-\item{simulation_env}{environment in which simulation variables are stored}
+\item{simulation_env}{environment in which simulation variables are stored,
+this will be modified by the function}
 
 \item{species_info}{data frame of species information}
 

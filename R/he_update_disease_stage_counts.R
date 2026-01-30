@@ -13,7 +13,6 @@
 #'    infection
 #'
 #' @return modified disease stage count columns
-#' @export
 
 he_update_disease_stage_counts <- function(
   disease_stage_counts,
@@ -103,5 +102,5 @@ he_update_disease_stage_counts <- function(
     )
 
   updated_disease_stage_counts <- disease_stage_counts + net_change
-  updated_disease_stage_counts
+  return(updated_disease_stage_counts)
 }

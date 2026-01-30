@@ -8,7 +8,6 @@
 #'    the specified farm, if no net pen identifiers are supplied
 #'
 #' @return net pen identifier(s) of initially infected net pens
-#' @export
 #'
 he_select_index_net_pens <-
   function(
@@ -59,5 +58,5 @@ he_select_index_net_pens <-
         stop("Either net pen ID or farm ID should be provided, not both.")
       }
     }
-    infected_net_pen_ids
+    return(infected_net_pen_ids)
   }

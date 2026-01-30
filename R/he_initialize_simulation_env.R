@@ -1,6 +1,7 @@
 #' Initialize simulation environment with necessary variables
 #'
-#' @param simulation_env environment in which simulation variables are stored
+#' @param simulation_env environment in which simulation variables are stored,
+#'    this will be modified by the function
 #' @param species_info data frame of species information
 #' @param net_pen_info data frame of net pen and farm information
 #' @param net_pen_to_net_pen daily probability for infection between net pens
@@ -18,7 +19,7 @@
 #'    this environment belongs to
 #'
 #' @return NA
-#' @export
+#'
 #' @importFrom stats runif
 #'
 he_initialize_simulation_env <-

@@ -19,7 +19,7 @@ he_define_spread_control_params(
 }
 \arguments{
 \item{model_env}{environment in which simulation variables are stored and
-managed}
+managed, this will be modified by the function}
 
 \item{n_index_infected_min}{minimum number of fish initially infected,
 to be calculated from a PERT distribution}

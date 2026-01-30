@@ -7,7 +7,6 @@
 #'
 #' @return empty data frame with appropriate column headers and types to store
 #'    infected net pen information
-#' @export
 #'
 he_initialize_infected_net_pen_info <- function(output_dir, output_file_name) {
   infected_net_pen_info <- data.frame(
@@ -32,5 +31,5 @@ he_initialize_infected_net_pen_info <- function(output_dir, output_file_name) {
     output_dir,
     output_file_name
   )
-  infected_net_pen_info
+  return(infected_net_pen_info)
 }

@@ -5,7 +5,7 @@
 #' @param infected_net_pen_info data frame of information on infected net pens
 #'
 #' @return number of net pens which are susceptible to infection in the specified farm
-#' @export
+#'
 #' @importFrom dplyr select
 #' @importFrom dplyr filter
 #' @importFrom dplyr setdiff
@@ -31,4 +31,5 @@ he_retrieve_susceptible_net_pens <- function(
       infected_net_pen_ids
     ) |>
     dplyr::left_join(net_pen_info, by = dplyr::join_by(farm_id, net_pen_id))
+  return(susceptible_net_pens)
 }
