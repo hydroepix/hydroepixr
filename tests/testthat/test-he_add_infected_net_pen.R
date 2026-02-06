@@ -30,8 +30,7 @@ test_that("single net pen is correctly appended to empty infected net pen info",
     n_dead = 0,
     n_total = 25000,
     infection_origin = test_infection_origin,
-    day_infected = 0,
-    is_vaccinated = 0
+    day_infected = 0
   )
 
   result_infected_net_pen_info <-
@@ -79,8 +78,7 @@ test_that("net pens are correctly appended to empty infected net pen info", {
     n_dead = c(0, 0),
     n_total = c(25000, 25000),
     infection_origin = c("index", "index"),
-    day_infected = c(0, 0),
-    is_vaccinated = c(0, 0)
+    day_infected = c(0, 0)
   )
 
   result_infected_net_pen_info <-
@@ -133,8 +131,7 @@ test_that("single net pen is correctly appended to infected net pen info", {
         n_dead = 0,
         n_total = 25000,
         infection_origin = test_infection_origin,
-        day_infected = 10,
-        is_vaccinated = 0
+        day_infected = 10
       )
     )
 
@@ -187,8 +184,7 @@ test_that("net pens are correctly appended to infected net pen info", {
       n_dead = c(0, 0),
       n_total = c(25000, 25000),
       infection_origin = test_infection_origin,
-      day_infected = c(12, 12),
-      is_vaccinated = c(0, 0)
+      day_infected = c(12, 12)
     )
   )
 
@@ -239,8 +235,7 @@ test_that("net pens are not appended when they already exist in infected net pen
     n_dead = c(0, 0),
     n_total = c(25000, 25000),
     infection_origin = test_infection_origin,
-    day_infected = c(1, 1),
-    is_vaccinated = c(0, 0)
+    day_infected = c(1, 1)
   )
 
   result_infected_net_pen_info <-
@@ -293,8 +288,7 @@ test_that("single net pen is correctly appended when already infected net pens a
       n_dead = 0,
       n_total = 25000,
       infection_origin = "between-net-pen",
-      day_infected = 5,
-      is_vaccinated = 0
+      day_infected = 5
     )
   )
 
@@ -348,8 +342,7 @@ test_that("multiple net pens are correctly appended when already infected net pe
       n_dead = c(0, 0),
       n_total = c(25000, 25000),
       infection_origin = rep("between-net-pen", 2),
-      day_infected = c(5, 5),
-      is_vaccinated = c(0, 0)
+      day_infected = c(5, 5)
     )
   )
 

@@ -55,8 +55,7 @@ test_that("simulation environment variables are correctly initialized", {
     n_dead = integer(),
     n_total = integer(),
     infection_origin = character(),
-    day_infected = double(),
-    is_vaccinated = numeric()
+    day_infected = double()
   )
   test_output_file_data <- read.csv(expected_filepath)
   expect_equal(names(test_output_file_data), names(infected_net_pen_info_cols))

@@ -23,8 +23,7 @@ test_that("infected net pen info is initialized correctly", {
     n_dead = integer(),
     n_total = integer(),
     infection_origin = character(),
-    day_infected = double(),
-    is_vaccinated = double()
+    day_infected = double()
   )
   # Check that column names and types are correct
   expect_equal(

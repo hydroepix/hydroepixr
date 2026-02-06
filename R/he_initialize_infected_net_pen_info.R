@@ -23,8 +23,7 @@ he_initialize_infected_net_pen_info <- function(output_dir, output_file_name) {
     n_dead = integer(),
     n_total = integer(),
     infection_origin = character(),
-    day_infected = double(),
-    is_vaccinated = double()
+    day_infected = double()
   )
   he_write_output_cols(
     names(infected_net_pen_info),

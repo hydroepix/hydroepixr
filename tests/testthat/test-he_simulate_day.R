@@ -99,8 +99,7 @@ test_that("day is simulated correctly for a single infected net pen", {
     n_dead = 1,
     n_total = 25000,
     infection_origin = "index",
-    day_infected = 0,
-    is_vaccinated = 0
+    day_infected = 0
   )
   day_1_infected_net_pen_info <- he_simulate_day(
     test_infected_net_pen_info,
@@ -152,8 +151,7 @@ test_that("day is simulated correctly for a single infected net pen", {
     n_dead = 1,
     n_total = 25000,
     infection_origin = "index",
-    day_infected = 0,
-    is_vaccinated = 0
+    day_infected = 0
   )
   day_2_infected_net_pen_info <- he_simulate_day(
     day_1_infected_net_pen_info,
@@ -205,8 +203,7 @@ test_that("day is simulated correctly for a single infected net pen", {
     n_dead = 2,
     n_total = 25000,
     infection_origin = "index",
-    day_infected = 0,
-    is_vaccinated = 0
+    day_infected = 0
   )
   day_3_infected_net_pen_info <- he_simulate_day(
     day_2_infected_net_pen_info,
@@ -258,8 +255,7 @@ test_that("day is simulated correctly for a single infected net pen", {
     n_dead = 4,
     n_total = 25000,
     infection_origin = "index",
-    day_infected = 0,
-    is_vaccinated = 0
+    day_infected = 0
   )
   day_4_infected_net_pen_info <- he_simulate_day(
     day_3_infected_net_pen_info,
@@ -311,8 +307,7 @@ test_that("day is simulated correctly for a single infected net pen", {
     n_dead = 5,
     n_total = 25000,
     infection_origin = "index",
-    day_infected = 0,
-    is_vaccinated = 0
+    day_infected = 0
   )
   day_5_infected_net_pen_info <- he_simulate_day(
     day_4_infected_net_pen_info,
@@ -364,8 +359,7 @@ test_that("day is simulated correctly for a single infected net pen", {
     n_dead = 7,
     n_total = 25000,
     infection_origin = "index",
-    day_infected = 0,
-    is_vaccinated = 0
+    day_infected = 0
   )
   day_6_infected_net_pen_info <- he_simulate_day(
     day_5_infected_net_pen_info,
@@ -417,8 +411,7 @@ test_that("day is simulated correctly for a single infected net pen", {
     n_dead = 9,
     n_total = 25000,
     infection_origin = "index",
-    day_infected = 0,
-    is_vaccinated = 0
+    day_infected = 0
   )
   day_7_infected_net_pen_info <- he_simulate_day(
     day_6_infected_net_pen_info,
@@ -470,8 +463,7 @@ test_that("day is simulated correctly for a single infected net pen", {
     n_dead = 11,
     n_total = 25000,
     infection_origin = "index",
-    day_infected = 0,
-    is_vaccinated = 0
+    day_infected = 0
   )
   day_8_infected_net_pen_info <- he_simulate_day(
     day_7_infected_net_pen_info,
@@ -523,8 +515,7 @@ test_that("day is simulated correctly for a single infected net pen", {
     n_dead = 13,
     n_total = 25000,
     infection_origin = "index",
-    day_infected = 0,
-    is_vaccinated = 0
+    day_infected = 0
   )
   day_9_infected_net_pen_info <- he_simulate_day(
     day_8_infected_net_pen_info,
@@ -576,8 +567,7 @@ test_that("day is simulated correctly for a single infected net pen", {
     n_dead = 14,
     n_total = 25000,
     infection_origin = "index",
-    day_infected = 0,
-    is_vaccinated = 0
+    day_infected = 0
   )
   day_10_infected_net_pen_info <- he_simulate_day(
     day_9_infected_net_pen_info,
@@ -681,8 +671,7 @@ test_that("day is simulated correctly for a single index net pen with aggressive
     n_dead = c(1431, rep(0, 5)),
     n_total = 25000,
     infection_origin = c("index", rep("between-net pen", 5)),
-    day_infected = c(0, rep(1, 5)),
-    is_vaccinated = 0
+    day_infected = c(0, rep(1, 5))
   )
   day_1_infected_net_pen_info <- he_simulate_day(
     test_infected_net_pen_info,
@@ -755,8 +744,7 @@ test_that("day is simulated correctly for a single index net pen with aggressive
     n_dead = c(2912, rep(0, 6)),
     n_total = 25000,
     infection_origin = c("index", rep("between-net pen", 6)),
-    day_infected = c(0, rep(1, 5), 2),
-    is_vaccinated = 0
+    day_infected = c(0, rep(1, 5), 2)
   )
   day_2_infected_net_pen_info <- he_simulate_day(
     day_1_infected_net_pen_info,
@@ -832,8 +820,7 @@ test_that("day is simulated correctly for a single index net pen with aggressive
     n_dead = c(4412, rep(0, 7)),
     n_total = 25000,
     infection_origin = c("index", rep("between-net pen", 7)),
-    day_infected = c(0, rep(1, 5), 2, 3),
-    is_vaccinated = 0
+    day_infected = c(0, rep(1, 5), 2, 3)
   )
   day_3_infected_net_pen_info <- he_simulate_day(
     day_2_infected_net_pen_info,
@@ -912,8 +899,7 @@ test_that("day is simulated correctly for a single index net pen with aggressive
     n_dead = c(5936, rep(0, 8)),
     n_total = 25000,
     infection_origin = c("index", rep("between-net pen", 8)),
-    day_infected = c(0, rep(1, 5), 2, 3, 4),
-    is_vaccinated = 0
+    day_infected = c(0, rep(1, 5), 2, 3, 4)
   )
   day_4_infected_net_pen_info <- he_simulate_day(
     day_3_infected_net_pen_info,
@@ -1005,8 +991,7 @@ test_that("day is simulated correctly for a single index net pen with aggressive
     n_dead = c(7475, 0, 0, 1, 0, 1, 0, 0, 0),
     n_total = 25000,
     infection_origin = c("index", rep("between-net pen", 8)),
-    day_infected = c(0, rep(1, 5), 2, 3, 4),
-    is_vaccinated = 0
+    day_infected = c(0, rep(1, 5), 2, 3, 4)
   )
   day_5_infected_net_pen_info <- he_simulate_day(
     day_4_infected_net_pen_info,

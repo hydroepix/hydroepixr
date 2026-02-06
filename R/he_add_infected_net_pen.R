@@ -50,8 +50,7 @@ he_add_infected_net_pen <-
           n_dead = 0,
           n_total = net_pen_info$net_pen_size[new_infected_net_pens],
           infection_origin = infection_origin,
-          day_infected = simulation_day,
-          is_vaccinated = 0
+          day_infected = simulation_day
         )
 
       # Row names needs to be false due to the match condition above that checks

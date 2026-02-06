@@ -157,8 +157,7 @@ test_that("subclinical-clinical split disease stage for index infection initiali
       n_dead = 0,
       n_total = 25000,
       infection_origin = "index",
-      day_infected = 0,
-      is_vaccinated = 0
+      day_infected = 0
     )
   )
 
@@ -244,8 +243,7 @@ test_that("latent disease stage for index infection initializes correctly", {
       n_dead = 0,
       n_total = 25000,
       infection_origin = "index",
-      day_infected = 0,
-      is_vaccinated = 0
+      day_infected = 0
     )
   )
 
