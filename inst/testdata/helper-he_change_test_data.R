@@ -1,18 +1,16 @@
 library(here)
 library(dplyr)
 
-
+# Read in current test data
 test_data_file_path <- here("inst/testdata")
 # TODO:
-test_data_file_name <- paste0(test_data_file_path, "/infected_net_pen_info_dummy_data_with_infection.rds")
+test_data_file_name <- paste0(test_data_file_path, "/initialized_net_pen_info_bay_x.rds")
 
+test_data <- readRDS(test_data_file_name)
 
-test_data <- readRDS()
+# Update test data
+# TODO:
+test_data <- test_data %>% select(-is_vaccinated)
 
-
-test_data <- test_data %>%
-  # TODO:
-  rename(n_recovered = n_immune) %>%
-  mutate(n_dead = c(0, 0, 0), .after = "n_recovered")
-
+# Rewrite test data
 saveRDS(test_data, test_data_file_name)
