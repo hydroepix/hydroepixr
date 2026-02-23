@@ -45,9 +45,12 @@
 #'
 #' @param dat tbd
 #'
+#' @param pal tbd
+#'
 #' @returns tbd
 #'
-#' @importFrom dplyr any_of
+#' @importFrom RColorBrewer brewer.pal
+#' @importFrom dplyr %>% any_of
 #' @importFrom ggplot2 aes ggplot geom_line scale_color_manual
 #'   scale_x_continuous scale_y_continuous theme_light theme_set
 #' @importFrom tidyr pivot_longer

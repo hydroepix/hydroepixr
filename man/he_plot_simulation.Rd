@@ -8,6 +8,8 @@ he_plot_simulation(dat, pal = NULL)
 }
 \arguments{
 \item{dat}{tbd}
+
+\item{pal}{tbd}
 }
 \value{
 tbd
