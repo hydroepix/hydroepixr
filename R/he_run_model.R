@@ -10,7 +10,7 @@
 he_run_model <- function(model_env) {
   # TODO: Check that all required variables are initialized in the model env
   # Iterate over the specified number of simulations
-  for (simulation_n in model_env$n_simulations) {
+  for (simulation_n in 1:model_env$n_simulations) {
     # Inside here is analogous to HEengine.R
     if (model_env$verbose) {
       cat("Simulation ", simulation_n, "\n")
