@@ -30,8 +30,8 @@ he_define_output_params(
 # Set up model environment based on data files and parameters
 he_initialize_model_env(
   model_env,
-  net_pen_info_filepath = "C:/Users/Rachel Woodside/GitHub Repos/hydroepixr/inst/testdata/net_pen_file_bay_x.csv",
-  species_info_filepath = "C:/Users/Rachel Woodside/GitHub Repos/hydroepixr/inst/testdata/species_info_file_bay_x_mid-within-net-pen-transmission.csv"
+  net_pen_info_filepath = paste0(system.file("testdata", package = "hydroepixr"), "/net_pen_file_bay_x.csv"),
+  species_info_filepath = paste0(system.file("testdata", package = "hydroepixr"), "/species_info_file_bay_x_mid-within-net-pen-transmission.csv")
   #connectivity_matrix_filepath = "../../../../testdata/dist_mat_bay_x.csv"
 )
 
