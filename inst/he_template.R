@@ -2,7 +2,7 @@ model_env <- he_create_model_env()
 
 he_define_simulation_control_params(
   model_env,
-  n_simulations = 1,
+  n_simulations = 5,
   max_outbreak_length = 365,
   random_seed = -10,
   ignore_disease_status_input = TRUE,
@@ -23,7 +23,7 @@ he_define_spread_control_params(
 he_define_output_params(
   model_env,
   output_dir = "output",
-  model_run_id = "between_net_pen_test",
+  model_run_id = "plot_demo",
   infected_net_pen_output_file_name = "infected_net_pens.csv"
 )
 
