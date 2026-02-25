@@ -4,10 +4,10 @@
 \alias{he_check_if_infection_is_resolved}
 \title{Check if infection is resolved}
 \usage{
-he_check_if_infection_is_resolved(infected_netpen_info)
+he_check_if_infection_is_resolved(infected_net_pen_info)
 }
 \arguments{
-\item{infected_netpen_info}{data frame containing infected netpen info}
+\item{infected_net_pen_info}{data frame containing infected net pen info}
 }
 \value{
 boolean value indicating whether the infection has run its course,

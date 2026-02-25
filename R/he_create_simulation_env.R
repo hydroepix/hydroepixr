@@ -4,7 +4,6 @@
 #'    should be the model environment in the hydroepix context
 #'
 #' @return environment with provided argument environment as a parent
-#' @export
 #'
 he_create_simulation_env <- function(model_env) {
   # This function ensures the empty environment is the parent

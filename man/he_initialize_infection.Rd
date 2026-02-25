@@ -2,23 +2,23 @@
 % Please edit documentation in R/he_initialize_infection.R
 \name{he_initialize_infection}
 \alias{he_initialize_infection}
-\title{Initialize index infection and start tracking infected netpens}
+\title{Initialize index infection and start tracking infected net pens}
 \usage{
 he_initialize_infection(
-  infected_netpen_info,
+  infected_net_pen_info,
   simulation_env,
   n_index_infected_min,
   n_index_infected_mode,
   n_index_infected_max,
   species_info,
-  netpen_info,
-  index_netpen_ids,
+  net_pen_info,
+  index_net_pen_ids,
   index_infection_stage,
   clinically_infected_prop = NULL
 )
 }
 \arguments{
-\item{infected_netpen_info}{data frame of infected netpen information}
+\item{infected_net_pen_info}{data frame of infected net pen information}
 
 \item{simulation_env}{environment containing simulation variables}
 
@@ -30,9 +30,9 @@ he_initialize_infection(
 
 \item{species_info}{data frame of species information}
 
-\item{netpen_info}{data frame of netpen information}
+\item{net_pen_info}{data frame of net pen information}
 
-\item{index_netpen_ids}{netpen ids selected for index infection}
+\item{index_net_pen_ids}{net pen ids selected for index infection}
 
 \item{index_infection_stage}{infection stage in which animals infected by the
 index infection should start}
@@ -43,9 +43,9 @@ proportion of animals which will enter the subclinical stage upon
 infection}
 }
 \value{
-infected netpen info data frame with infection information for
-the index netpen(s) appended
+infected net_pen info data frame with infection information for
+the index net_pen(s) appended
 }
 \description{
-Initialize index infection and start tracking infected netpens
+Initialize index infection and start tracking infected net pens
 }

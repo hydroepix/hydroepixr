@@ -10,6 +10,9 @@ he_run_model(model_env)
 \item{model_env}{environment containing variables for all essential hydroepix
 model parameters}
 }
+\value{
+NA
+}
 \description{
 Run hydroepix model
 }

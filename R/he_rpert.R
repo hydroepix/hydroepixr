@@ -6,11 +6,9 @@
 #' @param max maximum value
 #'
 #' @return vector of PERT beta random variates
-#' @importFrom stats rbeta
-#' @export
 #'
-#' @examples
-#' he_rpert(10, 0.14, 0.4, 0.8)
+#' @importFrom stats rbeta
+#'
 he_rpert <- function(n, min, mode, max) {
   expected <- (min + 4 * mode + max) / 6
 
@@ -18,11 +16,12 @@ he_rpert <- function(n, min, mode, max) {
   # representation and arithmetic differences
   if (isTRUE(all.equal(expected, mode))) {
     v <- w <- 3
-
-  }  else {
-
-    v <- (expected - min) * (2 * mode - min - max) / (mode - expected) / (max - min)
+  } else {
+    v <- (expected - min) *
+      (2 * mode - min - max) /
+      (mode - expected) /
+      (max - min)
     w <- v * (max - expected) / (expected - min)
   }
-  min + (max - min) * stats::rbeta(n, v, w)
+  return(min + (max - min) * stats::rbeta(n, v, w))
 }

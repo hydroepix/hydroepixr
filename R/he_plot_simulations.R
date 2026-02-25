@@ -12,18 +12,18 @@
 #
 #
 # dat_raw <- read_csv(
-#   here("output/high-within-netpen-transmission_1_infected_netpens.csv"),
+#   here("output/high-within-net-pen-transmission_1_infected_net-pens.csv"),
 #   show_col_types = FALSE
 # )
 #
 # dat_raw <- read_csv(
-#   here("output/year-long-mid-within-netpen-transmission_1_infected_netpens.csv"),
+#   here("output/year-long-mid-within-net-pen-transmission_1_infected_net-pens.csv"),
 #   show_col_types = FALSE
 # )
 
 # dat <- dat_raw %>%
 #   select(
-#     simulation_day, netpen_id, farm_id, species_id,
+#     simulation_day, net_pen_id, farm_id, species_id,
 #     n_susceptible,
 #     n_latent, n_subclinical, n_clinical, n_immune
 #   ) %>%
@@ -37,7 +37,6 @@
 #   )# %>%
 # filter(infection_stage != "subclinical")
 
-
 #' Plot the number of individuals in each stage over the simulation
 #'
 #' Infection stages will have the same colour between plots, even if a stage(s)
@@ -45,7 +44,7 @@
 #'
 #' @param dat tbd
 #'
-#' @returns tbd
+#' @return tbd
 #'
 #' @importFrom dplyr any_of
 #' @importFrom ggplot2 aes ggplot geom_line scale_color_manual
@@ -56,20 +55,27 @@
 #'
 
 he_plot_simulation <- function(dat, pal = NULL) {
-
   theme_set(theme_light())
 
-  if(is.null(pal)) pal <- brewer.pal(5, "Dark2")
+  if (is.null(pal)) {
+    pal <- brewer.pal(5, "Dark2")
+  }
 
-  infection_cols <- c("n_susceptible", "n_latent", "n_subclinical", "n_clinical", "n_immune")
+  infection_cols <- c(
+    "n_susceptible",
+    "n_latent",
+    "n_subclinical",
+    "n_clinical",
+    "n_immune"
+  )
   infection_levels <- gsub("n_", "", infection_cols)
 
-
-  if(!("infection_stage" %in% colnames(dat))) {
+  if (!("infection_stage" %in% colnames(dat))) {
     dat <- dat %>%
       pivot_longer(
         cols = any_of(infection_cols),
-        values_to = "value", names_to = "infection_stage"
+        values_to = "value",
+        names_to = "infection_stage"
       )
   }
 
@@ -81,7 +87,12 @@ he_plot_simulation <- function(dat, pal = NULL) {
 
   ggplot(
     dat,
-    aes(simulation_day, value, colour = infection_stage, group = infection_stage)
+    aes(
+      simulation_day,
+      value,
+      colour = infection_stage,
+      group = infection_stage
+    )
   ) +
     geom_line(linewidth = 1, show.legend = TRUE) +
     scale_color_manual("Infection Stage", values = pal, drop = FALSE) +
