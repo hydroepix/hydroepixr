@@ -14,13 +14,13 @@ he_update_disease_stage_counts(
 \arguments{
 \item{disease_stage_counts}{data frame containing the counts of animals in
 each disease stage, where each disease stage is a column and each row is
-a netpen}
+a net pen}
 
 \item{disease_stage_duration_matrices}{list of matrices containing the
-disease stage duration for each netpen}
+disease stage duration for each net pen}
 
 \item{n_newly_infected}{the number of newly infected animals for each
-netpen}
+net pen}
 
 \item{clinically_infected_prop}{the proportion of animals which will enter
 the clinical stage upon infection, which is the same as 1 minus the

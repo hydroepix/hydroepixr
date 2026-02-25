@@ -6,19 +6,17 @@
 \usage{
 he_initialize_model_env(
   model_env,
-  netpen_info_filepath,
-  species_info_filepath,
-  connectivity_matrix_filepath = NULL
+  net_pen_info_filepath,
+  species_info_filepath
 )
 }
 \arguments{
-\item{model_env}{environment in which to store model level variables}
+\item{model_env}{environment in which to store model level variables,
+this will be modified by the function}
 
-\item{netpen_info_filepath}{filepath to netpen info file}
+\item{net_pen_info_filepath}{filepath to net pen info file}
 
 \item{species_info_filepath}{filepath to species info file}
-
-\item{connectivity_matrix_filepath}{filepath to connectivity matrix file}
 }
 \value{
 NA

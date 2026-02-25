@@ -8,18 +8,18 @@ he_define_output_params(
   model_env,
   output_dir = "output",
   model_run_id = NULL,
-  infected_netpen_output_file_name = "infected_netpens.csv"
+  infected_net_pen_output_file_name = "infected_net_pens.csv"
 )
 }
 \arguments{
 \item{model_env}{environment in which environment variables are stored and
-managed}
+managed, this will be modified by the function}
 
 \item{output_dir}{directory into which output should be written}
 
 \item{model_run_id}{identifier for this run of the model}
 
-\item{infected_netpen_output_file_name}{base file name to which the run ID and
+\item{infected_net_pen_output_file_name}{base file name to which the run ID and
 simulation number will be appended to uniquely identify a simulation's
 output file}
 }

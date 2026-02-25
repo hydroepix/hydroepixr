@@ -1,5 +1,6 @@
 .onAttach <- function(libname, pkgname) {
-  packageStartupMessage("DISCLAIMER - PLEASE READ PRIOR TO USE: \n
+  packageStartupMessage(
+    "DISCLAIMER - PLEASE READ PRIOR TO USE: \n
   The hydroepixr model is for use by professionals trained in aquatic animal
   health (e.g., veterinarians and fish health managers) and provides information
   to assist decision-making related to waterborne spread of fish pathogens.
@@ -12,5 +13,6 @@
   Note that this package is distributed under the GNU GPLv3. This stipulates
   that no closed versions of this package may be distributed, regardless of
   modifications made to the code. For additional details on the GNU GPLv3
-  license, enter `packageDescription(\"hydroepixr\")$License` in the console.")
+  license, enter `packageDescription(\"hydroepixr\")$License` in the console."
+  )
 }

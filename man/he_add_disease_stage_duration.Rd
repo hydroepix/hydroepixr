@@ -20,6 +20,10 @@ spending a given number of days in the specified disease stage}
 \item{n_animals_to_distribute}{number of animals to distribute into time
 spent in the specified disease stage}
 }
+\value{
+disease stage matrix with an additional row including with animals
+distributed into durations spent in the stage
+}
 \description{
 Add new row to disease stage duration matrix
 }

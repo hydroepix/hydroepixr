@@ -15,7 +15,7 @@ he_define_simulation_control_params(
 }
 \arguments{
 \item{model_env}{environment in which simulation variables are stored and
-managed}
+managed, this will be modified by the function}
 
 \item{n_simulations}{number of simulations (i.e., individual simulated epidemics) to be run}
 

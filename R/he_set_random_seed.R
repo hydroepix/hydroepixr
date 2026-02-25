@@ -6,11 +6,10 @@
 #'
 #' @return seed value, variable by simulation number if seed value provided is
 #'    negative, fixed otherwise
-#' @export
 #'
 he_set_random_seed <- function(seed, simulation_n) {
   if (seed < 0) {
     seed <- abs(seed) + simulation_n
   }
-  seed
+  return(seed)
 }

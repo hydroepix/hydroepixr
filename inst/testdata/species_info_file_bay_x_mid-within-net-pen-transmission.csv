@@ -1,0 +1,2 @@
+﻿species_id,species_name,latent_dur_freq,subclinical_dur_freq,clinical_dur_freq,within_net_pen_transmission_min,within_net_pen_transmission_mode,within_net_pen_transmission_max,rel_susceptibility
+1,Fish1,"c(0.000001,0.000001,0.0001,0.01,0.1,0.25,0.339898,0.3)","c(0.249995,0.50,0.25,0.000001,0.000001,0.000001,0.000001,0.000001)","c(0.125,0.125,0.125,0.125,0.125,0.125,0.125,0.125)",0.4,0.4,0.4,1

@@ -5,15 +5,15 @@
 #' @param output_file_name name of file to be written to
 #'
 #' @return NA
-#' @export
 #'
-he_write_output_cols <- function(output_col_names,
-                                    output_dir,
-                                    output_file_name) {
+he_write_output_cols <- function(
+  output_col_names,
+  output_dir,
+  output_file_name
+) {
   write.table(
     t(output_col_names),
-    file.path(output_dir,
-              output_file_name),
+    file.path(output_dir, output_file_name),
     # ensures that the file will be overwritten on a subsequent simulation
     append = FALSE,
     sep = ",",

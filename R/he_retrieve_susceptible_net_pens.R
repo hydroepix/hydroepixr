@@ -1,0 +1,35 @@
+#' Simulate a day of infection transmission dynamics
+#'
+#' @param farm_id id of farm within which between-net-pen infection is to be simulated
+#' @param net_pen_info data frame of information on net pens
+#' @param infected_net_pen_info data frame of information on infected net pens
+#'
+#' @return number of net pens which are susceptible to infection in the specified farm
+#'
+#' @importFrom dplyr select
+#' @importFrom dplyr filter
+#' @importFrom dplyr setdiff
+#' @importFrom dplyr join_by
+#'
+he_retrieve_susceptible_net_pens <- function(
+  farm_id,
+  net_pen_info,
+  infected_net_pen_info
+) {
+  # Currently calculated as all net pen IDs minus those in the infected net pen data frame
+  # Is there a more efficient way to do this?
+  # Option: include status in net pen info (however, this would require modifying another data frame
+  # throughout the simulation, which would complicate things)
+  all_net_pen_ids <- net_pen_info |>
+    dplyr::select(farm_id, net_pen_id) |>
+    dplyr::filter(farm_id == !!farm_id)
+  infected_net_pen_ids <- infected_net_pen_info |>
+    dplyr::select(farm_id, net_pen_id) |>
+    dplyr::filter(farm_id == !!farm_id)
+  susceptible_net_pens <- all_net_pen_ids |>
+    dplyr::setdiff(
+      infected_net_pen_ids
+    ) |>
+    dplyr::left_join(net_pen_info, by = dplyr::join_by(farm_id, net_pen_id))
+  return(susceptible_net_pens)
+}

@@ -2,7 +2,7 @@
 % Please edit documentation in R/he_rpoly2.R
 \name{he_rpoly2}
 \alias{he_rpoly2}
-\title{RPoly2 ?}
+\title{Polynomial distribution sampling function}
 \usage{
 he_rpoly2(sample_n, probability)
 }
@@ -15,5 +15,5 @@ he_rpoly2(sample_n, probability)
 number of samples distributed into each bin by probability
 }
 \description{
-RPoly2 ?
+Polynomial distribution sampling function
 }

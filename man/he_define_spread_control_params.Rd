@@ -9,19 +9,17 @@ he_define_spread_control_params(
   n_index_infected_min = 1,
   n_index_infected_mode = 10,
   n_index_infected_max = 100,
-  index_netpen_ids = NULL,
+  index_net_pen_ids = NULL,
   index_farm_id = NULL,
   index_infection_stage = "subclinical-clinical split",
   clinically_infected_prop = 0.89,
-  days_dead_infectious = 2,
-  farm_to_farm = 0.42,
-  netpen_to_netpen = 0.052,
+  net_pen_to_net_pen = 0.052,
   vaccine_efficacy = 0
 )
 }
 \arguments{
 \item{model_env}{environment in which simulation variables are stored and
-managed}
+managed, this will be modified by the function}
 
 \item{n_index_infected_min}{minimum number of fish initially infected,
 to be calculated from a PERT distribution}
@@ -32,7 +30,7 @@ calculated from a PERT distribution}
 \item{n_index_infected_max}{maximum number of fish initially infected, to
 be calculated from a PERT distribution}
 
-\item{index_netpen_ids}{identifiers of the index netpens}
+\item{index_net_pen_ids}{identifiers of the index net pens}
 
 \item{index_farm_id}{identifier of the index farm}
 
@@ -45,12 +43,7 @@ the clinical stage upon infection, which is the same as 1 minus the
 proportion of animals which will enter the subclinical stage upon
 infection}
 
-\item{days_dead_infectious}{number of days dead animals remain infectious}
-
-\item{farm_to_farm}{scaling parameter for between-farm infection transmission}
-
-\item{netpen_to_netpen}{daily probability for between-netpen infection
-transmission within a farm}
+\item{net_pen_to_net_pen}{daily probability of infection transmission between net pens within a farm}
 
 \item{vaccine_efficacy}{product of the manufacturer-reported vaccine efficacy
 and the population coverage of the vaccine}

@@ -1,21 +1,22 @@
 #' Calculate net change in number of animals in each disease stage
 #'
 #' @param disease_stage_duration_matrices list of matrices containing the
-#'    disease stage duration for each netpen
+#'    disease stage duration for each net pen
 #' @param n_newly_infected the number of newly infected animals for each
-#'    netpen
+#'    net pen
 #' @param clinically_infected_prop the proportion of animals which will enter
 #'    the clinical stage upon infection, which is the same as 1 minus the
 #'    proportion of animals which will enter the subclinical stage upon
 #'    infection
 #'
 #' @return net change in the number of animals in each disease stage
-#' @export
 #'
 he_calculate_net_change_in_disease_stage_count <-
-  function(disease_stage_duration_matrices,
-           n_newly_infected,
-           clinically_infected_prop) {
+  function(
+    disease_stage_duration_matrices,
+    n_newly_infected,
+    clinically_infected_prop
+  ) {
     # First column of the matrix represents number of fish that will transition
     # today
     changes_in_disease_stage_duration <-
@@ -34,11 +35,11 @@ he_calculate_net_change_in_disease_stage_count <-
     subclinical_clinical_split <-
       he_calculate_subclinical_clinical_infection_split(
         as.matrix(changes_in_disease_stage_duration[, 1]),
-        clinically_infected_prop)
+        clinically_infected_prop
+      )
 
     # Necessary to force into column-wise matrix for cbind
-    subclinical_clinical_split <- matrix(subclinical_clinical_split,
-                                         ncol = 2)
+    subclinical_clinical_split <- matrix(subclinical_clinical_split, ncol = 2)
 
     animals_in_by_stage <-
       cbind(
@@ -71,5 +72,5 @@ he_calculate_net_change_in_disease_stage_count <-
         0,
         deparse.level = 0
       )
-    animals_in_by_stage - animals_out_by_stage
+    return(animals_in_by_stage - animals_out_by_stage)
   }
