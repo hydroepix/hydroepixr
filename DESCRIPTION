@@ -25,6 +25,7 @@ Imports:
     foreach,
     ggplot2,
     purrr,
+    readr,
     rlang,
     stats,
     tidyr,
