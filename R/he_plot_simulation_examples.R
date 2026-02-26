@@ -1,3 +1,12 @@
+#' Plot the infection stages of each net pen over up to 5 example simulations
+#'
+#' @param sim_dat simulation data, expected in the format from using the he_read_simulation_output_data function
+#' @param simulation_nums simulation number(s) of the simulation to plot
+#' @param infection_stages stage(s) of infection to plot. Options are "susceptible", "latent", "subclinical", "clinical", "dead", and "recovered"
+#'
+#' @returns ggplot object with multiple faceted plots
+#'
+#' @export
 he_plot_simulation_examples <- function(
   sim_dat,
   simulation_nums = NULL,
@@ -5,7 +14,7 @@ he_plot_simulation_examples <- function(
 ) {
   if (length(simulation_nums) > 5) {
     warning(
-      "Warning: Plotting more than 5 simulations will generate a very large number of plots, since a plot is generated for each infection stage and each simulation number. This is not recommended as the plots become very small and may take a long time to generate."
+      "Warning: Plotting more than 5 simulations can generate a very large number of plots, since a plot can be generated for each infection stage and each simulation number. This is not recommended as the plots may become very small and take a long time to generate."
     )
   }
 

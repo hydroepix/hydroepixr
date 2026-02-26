@@ -1,3 +1,13 @@
+#' Read infected net pen output files
+#'
+#' @param infected_net_pen_output_file_name name of the infected net pen output files, should be the same as the one defined by the user in the he_define_output_params function
+#' @param output_dir directory containing the specified infected net pen output files, likely the same as the one defined by the user in the he_define_output_params function
+#'
+#' @returns data.frame of up to 5 infected net pen output simulation files stacked together
+#'
+#' @importFrom readr read_csv
+#'
+#' @export
 he_read_infected_net_pen_output_data <- function(
   infected_net_pen_output_file_name,
   output_dir

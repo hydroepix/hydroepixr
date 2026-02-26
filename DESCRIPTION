@@ -25,7 +25,7 @@ Imports:
     foreach,
     ggplot2,
     purrr,
-    RColorBrewer,
+    readr,
     rlang,
     stats,
     tidyr,
