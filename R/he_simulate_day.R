@@ -78,31 +78,31 @@ he_simulate_day <- function(
         infection_origin = "between-net pen",
         simulation_day
       )
-      # Add new disease stage durations for newly infected net pens
-      disease_stage_distributions <-
+      # Add new infection stage durations for newly infected net pens
+      infection_stage_distributions <-
         species_info[c(
           "latent_dur_freq",
           "subclinical_dur_freq",
           "clinical_dur_freq"
         )]
       for (i in 1:nrow(n_infected_animals_by_stage)) {
-        simulation_env$disease_stage_duration_matrices$latent_duration <-
-          he_add_disease_stage_duration(
-            simulation_env$disease_stage_duration_matrices$latent_duration,
+        simulation_env$infection_stage_duration_matrices$latent_duration <-
+          he_add_infection_stage_duration(
+            simulation_env$infection_stage_duration_matrices$latent_duration,
             species_info$latent_dur_freq[[1]],
             n_animals_to_distribute = n_infected_animals_by_stage[i, ]$n_latent
           )
-        simulation_env$disease_stage_duration_matrices$subclinical_duration <-
-          he_add_disease_stage_duration(
-            simulation_env$disease_stage_duration_matrices$subclinical_duration,
+        simulation_env$infection_stage_duration_matrices$subclinical_duration <-
+          he_add_infection_stage_duration(
+            simulation_env$infection_stage_duration_matrices$subclinical_duration,
             species_info$subclinical_dur_freq[[1]],
             n_animals_to_distribute = n_infected_animals_by_stage[
               i,
             ]$n_subclinical
           )
-        simulation_env$disease_stage_duration_matrices$clinical_duration <-
-          he_add_disease_stage_duration(
-            simulation_env$disease_stage_duration_matrices$clinical_duration,
+        simulation_env$infection_stage_duration_matrices$clinical_duration <-
+          he_add_infection_stage_duration(
+            simulation_env$infection_stage_duration_matrices$clinical_duration,
             species_info$clinical_dur_freq[[1]],
             n_animals_to_distribute = n_infected_animals_by_stage[
               i,
@@ -134,10 +134,10 @@ he_simulate_day <- function(
     # Update the day represented by the current stage of the infected net pen info
     infected_net_pen_info["simulation_day"] <- simulation_day
 
-    # Add and remove fish from different disease stages according to new
+    # Add and remove fish from different infection stages according to new
     # infections and the number of fish which have reached their duration in
-    # their current disease stage
-    disease_stage_counts <-
+    # their current infection stage
+    infection_stage_counts <-
       infected_net_pen_info[c(
         "n_susceptible",
         "n_latent",
@@ -154,15 +154,15 @@ he_simulate_day <- function(
       "n_recovered",
       "n_dead"
     )] <-
-      he_update_disease_stage_counts(
-        disease_stage_counts,
-        simulation_env$disease_stage_duration_matrices,
+      he_update_infection_stage_counts(
+        infection_stage_counts,
+        simulation_env$infection_stage_duration_matrices,
         n_newly_infected,
         simulation_env$clinically_infected_prop
       )
 
-    # Update disease stage duration matrices for animals entering a new stage
-    n_latent_out <- simulation_env$disease_stage_duration_matrices$latent_duration[,
+    # Update infection stage duration matrices for animals entering a new stage
+    n_latent_out <- simulation_env$infection_stage_duration_matrices$latent_duration[,
       1,
       drop = FALSE
     ]
@@ -179,17 +179,17 @@ he_simulate_day <- function(
         n_clinical_in = subclinical_clinical_split[, 2]
       )
 
-    disease_stage_distributions <-
+    infection_stage_distributions <-
       species_info[c(
         "latent_dur_freq",
         "subclinical_dur_freq",
         "clinical_dur_freq"
       )]
 
-    simulation_env$disease_stage_duration_matrices <-
-      he_update_disease_stage_duration_matrix(
-        simulation_env$disease_stage_duration_matrices,
-        disease_stage_distribution = disease_stage_distributions,
+    simulation_env$infection_stage_duration_matrices <-
+      he_update_infection_stage_duration_matrix(
+        simulation_env$infection_stage_duration_matrices,
+        infection_stage_distribution = infection_stage_distributions,
         n_animals_to_distribute = n_animals_transitioning_by_stage
       )
 

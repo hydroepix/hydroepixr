@@ -111,8 +111,8 @@ test_that("day is simulated correctly for a single infected net pen", {
     day_1_infected_net_pen_info,
     expected_day_1_infected_net_pen_info
   )
-  # Check disease stage duration matrices
-  expected_day_1_disease_stage_duration_matrices <-
+  # Check infection stage duration matrices
+  expected_day_1_infection_stage_duration_matrices <-
     list(
       latent_duration = matrix(
         c(0, 0, 0, 0, 1, 5, 9, 4),
@@ -131,8 +131,8 @@ test_that("day is simulated correctly for a single infected net pen", {
       )
     )
   expect_equal(
-    test_simulation_env$disease_stage_duration_matrices,
-    expected_day_1_disease_stage_duration_matrices
+    test_simulation_env$infection_stage_duration_matrices,
+    expected_day_1_infection_stage_duration_matrices
   )
 
   # Day 2 ---
@@ -163,8 +163,8 @@ test_that("day is simulated correctly for a single infected net pen", {
     day_2_infected_net_pen_info,
     expected_day_2_infected_net_pen_info
   )
-  # Check disease stage duration matrices
-  expected_day_2_disease_stage_duration_matrices <-
+  # Check infection stage duration matrices
+  expected_day_2_infection_stage_duration_matrices <-
     list(
       latent_duration = matrix(
         c(0, 0, 0, 1, 7, 13, 7, 4),
@@ -183,8 +183,8 @@ test_that("day is simulated correctly for a single infected net pen", {
       )
     )
   expect_equal(
-    test_simulation_env$disease_stage_duration_matrices,
-    expected_day_2_disease_stage_duration_matrices
+    test_simulation_env$infection_stage_duration_matrices,
+    expected_day_2_infection_stage_duration_matrices
   )
 
   # Day 3 ---
@@ -215,8 +215,8 @@ test_that("day is simulated correctly for a single infected net pen", {
     day_3_infected_net_pen_info,
     expected_day_3_infected_net_pen_info
   )
-  # Check disease stage duration matrices
-  expected_day_3_disease_stage_duration_matrices <-
+  # Check infection stage duration matrices
+  expected_day_3_infection_stage_duration_matrices <-
     list(
       latent_duration = matrix(
         c(0, 0, 1, 7, 15, 10, 8, 1),
@@ -235,8 +235,8 @@ test_that("day is simulated correctly for a single infected net pen", {
       )
     )
   expect_equal(
-    test_simulation_env$disease_stage_duration_matrices,
-    expected_day_3_disease_stage_duration_matrices
+    test_simulation_env$infection_stage_duration_matrices,
+    expected_day_3_infection_stage_duration_matrices
   )
 
   # Day 4 ---
@@ -267,8 +267,8 @@ test_that("day is simulated correctly for a single infected net pen", {
     day_4_infected_net_pen_info,
     expected_day_4_infected_net_pen_info
   )
-  # Check disease stage duration matrices
-  expected_day_4_disease_stage_duration_matrices <-
+  # Check infection stage duration matrices
+  expected_day_4_infection_stage_duration_matrices <-
     list(
       latent_duration = matrix(
         c(0, 1, 7, 15, 10, 9, 1, 2),
@@ -287,8 +287,8 @@ test_that("day is simulated correctly for a single infected net pen", {
       )
     )
   expect_equal(
-    test_simulation_env$disease_stage_duration_matrices,
-    expected_day_4_disease_stage_duration_matrices
+    test_simulation_env$infection_stage_duration_matrices,
+    expected_day_4_infection_stage_duration_matrices
   )
 
   # Day 5 ---
@@ -319,8 +319,8 @@ test_that("day is simulated correctly for a single infected net pen", {
     day_5_infected_net_pen_info,
     expected_day_5_infected_net_pen_info
   )
-  # Check disease stage duration matrices
-  expected_day_5_disease_stage_duration_matrices <-
+  # Check infection stage duration matrices
+  expected_day_5_infection_stage_duration_matrices <-
     list(
       latent_duration = matrix(
         c(1, 7, 15, 10, 9, 2, 6, 2),
@@ -339,8 +339,8 @@ test_that("day is simulated correctly for a single infected net pen", {
       )
     )
   expect_equal(
-    test_simulation_env$disease_stage_duration_matrices,
-    expected_day_5_disease_stage_duration_matrices
+    test_simulation_env$infection_stage_duration_matrices,
+    expected_day_5_infection_stage_duration_matrices
   )
 
   # Day 6 ---
@@ -371,8 +371,8 @@ test_that("day is simulated correctly for a single infected net pen", {
     day_6_infected_net_pen_info,
     expected_day_6_infected_net_pen_info
   )
-  # Check disease stage duration matrices
-  expected_day_6_disease_stage_duration_matrices <-
+  # Check infection stage duration matrices
+  expected_day_6_infection_stage_duration_matrices <-
     list(
       latent_duration = matrix(
         c(7, 15, 10, 9, 2, 7, 3, 0),
@@ -391,8 +391,8 @@ test_that("day is simulated correctly for a single infected net pen", {
       )
     )
   expect_equal(
-    test_simulation_env$disease_stage_duration_matrices,
-    expected_day_6_disease_stage_duration_matrices
+    test_simulation_env$infection_stage_duration_matrices,
+    expected_day_6_infection_stage_duration_matrices
   )
 
   # Day 7 ---
@@ -423,8 +423,8 @@ test_that("day is simulated correctly for a single infected net pen", {
     day_7_infected_net_pen_info,
     expected_day_7_infected_net_pen_info
   )
-  # Check disease stage duration matrices
-  expected_day_7_disease_stage_duration_matrices <-
+  # Check infection stage duration matrices
+  expected_day_7_infection_stage_duration_matrices <-
     list(
       latent_duration = matrix(
         c(15, 10, 9, 2, 7, 4, 1, 0),
@@ -443,8 +443,8 @@ test_that("day is simulated correctly for a single infected net pen", {
       )
     )
   expect_equal(
-    test_simulation_env$disease_stage_duration_matrices,
-    expected_day_7_disease_stage_duration_matrices
+    test_simulation_env$infection_stage_duration_matrices,
+    expected_day_7_infection_stage_duration_matrices
   )
 
   # Day 8 ---
@@ -475,8 +475,8 @@ test_that("day is simulated correctly for a single infected net pen", {
     day_8_infected_net_pen_info,
     expected_day_8_infected_net_pen_info
   )
-  # Check disease stage duration matrices
-  expected_day_8_disease_stage_duration_matrices <-
+  # Check infection stage duration matrices
+  expected_day_8_infection_stage_duration_matrices <-
     list(
       latent_duration = matrix(
         c(10, 9, 2, 7, 4, 6, 5, 0),
@@ -495,8 +495,8 @@ test_that("day is simulated correctly for a single infected net pen", {
       )
     )
   expect_equal(
-    test_simulation_env$disease_stage_duration_matrices,
-    expected_day_8_disease_stage_duration_matrices
+    test_simulation_env$infection_stage_duration_matrices,
+    expected_day_8_infection_stage_duration_matrices
   )
 
   # Day 9 ---
@@ -527,8 +527,8 @@ test_that("day is simulated correctly for a single infected net pen", {
     day_9_infected_net_pen_info,
     expected_day_9_infected_net_pen_info
   )
-  # Check disease stage duration matrices
-  expected_day_9_disease_stage_duration_matrices <-
+  # Check infection stage duration matrices
+  expected_day_9_infection_stage_duration_matrices <-
     list(
       latent_duration = matrix(
         c(9, 2, 7, 4, 9, 12, 6, 5),
@@ -547,8 +547,8 @@ test_that("day is simulated correctly for a single infected net pen", {
       )
     )
   expect_equal(
-    test_simulation_env$disease_stage_duration_matrices,
-    expected_day_9_disease_stage_duration_matrices
+    test_simulation_env$infection_stage_duration_matrices,
+    expected_day_9_infection_stage_duration_matrices
   )
 
   # Day 10 ---
@@ -579,8 +579,8 @@ test_that("day is simulated correctly for a single infected net pen", {
     day_10_infected_net_pen_info,
     expected_day_10_infected_net_pen_info
   )
-  # Check disease stage duration matrices
-  expected_day_10_disease_stage_duration_matrices <-
+  # Check infection stage duration matrices
+  expected_day_10_infection_stage_duration_matrices <-
     list(
       latent_duration = matrix(
         c(2, 7, 4, 9, 14, 10, 13, 8),
@@ -599,8 +599,8 @@ test_that("day is simulated correctly for a single infected net pen", {
       )
     )
   expect_equal(
-    test_simulation_env$disease_stage_duration_matrices,
-    expected_day_10_disease_stage_duration_matrices
+    test_simulation_env$infection_stage_duration_matrices,
+    expected_day_10_infection_stage_duration_matrices
   )
 })
 
@@ -683,8 +683,8 @@ test_that("day is simulated correctly for a single index net pen with aggressive
     day_1_infected_net_pen_info,
     expected_day_1_infected_net_pen_info
   )
-  # Check disease stage duration matrices
-  expected_day_1_disease_stage_duration_matrices <-
+  # Check infection stage duration matrices
+  expected_day_1_infection_stage_duration_matrices <-
     list(
       latent_duration = matrix(
         c(
@@ -724,8 +724,8 @@ test_that("day is simulated correctly for a single index net pen with aggressive
       )
     )
   expect_equal(
-    test_simulation_env$disease_stage_duration_matrices,
-    expected_day_1_disease_stage_duration_matrices
+    test_simulation_env$infection_stage_duration_matrices,
+    expected_day_1_infection_stage_duration_matrices
   )
 
   # Day 2 ---
@@ -756,8 +756,8 @@ test_that("day is simulated correctly for a single index net pen with aggressive
     day_2_infected_net_pen_info,
     expected_day_2_infected_net_pen_info
   )
-  # Check disease stage duration matrices
-  expected_day_2_disease_stage_duration_matrices <-
+  # Check infection stage duration matrices
+  expected_day_2_infection_stage_duration_matrices <-
     list(
       latent_duration = matrix(
         c(
@@ -800,8 +800,8 @@ test_that("day is simulated correctly for a single index net pen with aggressive
       )
     )
   expect_equal(
-    test_simulation_env$disease_stage_duration_matrices,
-    expected_day_2_disease_stage_duration_matrices
+    test_simulation_env$infection_stage_duration_matrices,
+    expected_day_2_infection_stage_duration_matrices
   )
 
   # Day 3 ---
@@ -832,8 +832,8 @@ test_that("day is simulated correctly for a single index net pen with aggressive
     day_3_infected_net_pen_info,
     expected_day_3_infected_net_pen_info
   )
-  # Check disease stage duration matrices
-  expected_day_3_disease_stage_duration_matrices <-
+  # Check infection stage duration matrices
+  expected_day_3_infection_stage_duration_matrices <-
     list(
       latent_duration = matrix(
         c(
@@ -879,8 +879,8 @@ test_that("day is simulated correctly for a single index net pen with aggressive
       )
     )
   expect_equal(
-    test_simulation_env$disease_stage_duration_matrices,
-    expected_day_3_disease_stage_duration_matrices
+    test_simulation_env$infection_stage_duration_matrices,
+    expected_day_3_infection_stage_duration_matrices
   )
 
   # Day 4 ---
@@ -911,8 +911,8 @@ test_that("day is simulated correctly for a single index net pen with aggressive
     day_4_infected_net_pen_info,
     expected_day_4_infected_net_pen_info
   )
-  # Check disease stage duration matrices
-  expected_day_4_disease_stage_duration_matrices <-
+  # Check infection stage duration matrices
+  expected_day_4_infection_stage_duration_matrices <-
     list(
       latent_duration = matrix(
         c(
@@ -961,8 +961,8 @@ test_that("day is simulated correctly for a single index net pen with aggressive
       )
     )
   expect_equal(
-    test_simulation_env$disease_stage_duration_matrices,
-    expected_day_4_disease_stage_duration_matrices
+    test_simulation_env$infection_stage_duration_matrices,
+    expected_day_4_infection_stage_duration_matrices
   )
 
   # Day 5 ---
@@ -1003,8 +1003,8 @@ test_that("day is simulated correctly for a single index net pen with aggressive
     day_5_infected_net_pen_info,
     expected_day_5_infected_net_pen_info
   )
-  # Check disease stage duration matrices
-  expected_day_5_disease_stage_duration_matrices <-
+  # Check infection stage duration matrices
+  expected_day_5_infection_stage_duration_matrices <-
     list(
       latent_duration = matrix(
         c(
@@ -1053,7 +1053,7 @@ test_that("day is simulated correctly for a single index net pen with aggressive
       )
     )
   expect_equal(
-    test_simulation_env$disease_stage_duration_matrices,
-    expected_day_5_disease_stage_duration_matrices
+    test_simulation_env$infection_stage_duration_matrices,
+    expected_day_5_infection_stage_duration_matrices
   )
 })

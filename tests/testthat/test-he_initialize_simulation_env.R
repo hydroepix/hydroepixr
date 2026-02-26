@@ -60,18 +60,18 @@ test_that("simulation environment variables are correctly initialized", {
   test_output_file_data <- read.csv(expected_filepath)
   expect_equal(names(test_output_file_data), names(infected_net_pen_info_cols))
 
-  expect_true(exists("disease_stage_duration_matrices", test_simulation_env))
+  expect_true(exists("infection_stage_duration_matrices", test_simulation_env))
 
   expect_equal(
-    test_simulation_env$disease_stage_duration_matrices$latent_duration,
+    test_simulation_env$infection_stage_duration_matrices$latent_duration,
     matrix(numeric(0), ncol = 8)
   )
   expect_equal(
-    test_simulation_env$disease_stage_duration_matrices$subclinical_duration,
+    test_simulation_env$infection_stage_duration_matrices$subclinical_duration,
     matrix(numeric(0), ncol = 8)
   )
   expect_equal(
-    test_simulation_env$disease_stage_duration_matrices$clinical_duration,
+    test_simulation_env$infection_stage_duration_matrices$clinical_duration,
     matrix(numeric(0), ncol = 8)
   )
 })

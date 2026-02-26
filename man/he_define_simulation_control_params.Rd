@@ -9,7 +9,7 @@ he_define_simulation_control_params(
   n_simulations = 10,
   max_outbreak_length = 365,
   random_seed = -10,
-  ignore_disease_status_input = TRUE,
+  ignore_infection_status_input = TRUE,
   verbose = FALSE
 )
 }
@@ -19,12 +19,12 @@ managed, this will be modified by the function}
 
 \item{n_simulations}{number of simulations (i.e., individual simulated epidemics) to be run}
 
-\item{max_outbreak_length}{maximum length of a disease outbreak}
+\item{max_outbreak_length}{maximum length of a infection outbreak}
 
 \item{random_seed}{random seed to use for the simulation}
 
-\item{ignore_disease_status_input}{boolean indicating whether or not to
-ignore disease status input?}
+\item{ignore_infection_status_input}{boolean indicating whether or not to
+ignore infection status input?}
 
 \item{verbose}{boolean indicating whether verbose output should be generated}
 }

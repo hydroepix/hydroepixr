@@ -1,4 +1,4 @@
-test_that("invalid index disease stage produces error", {
+test_that("invalid index infection stage produces error", {
   test_infected_net_pen_info <-
     readRDS(paste0(
       test_data_filepath,
@@ -28,7 +28,7 @@ test_that("invalid index disease stage produces error", {
   test_net_pen_info <-
     readRDS(paste0(test_data_filepath, "/initialized_net_pen_info_bay_x.rds"))
   test_index_net_pen_ids <- 1
-  test_index_infection_stage <- "invalid_disease_stage"
+  test_index_infection_stage <- "invalid_infection_stage"
   expect_error(
     he_initialize_infection(
       test_infected_net_pen_info,
@@ -42,7 +42,7 @@ test_that("invalid index disease stage produces error", {
       test_index_infection_stage,
       test_clinically_infected_prop
     ),
-    regex = "Invalid disease stage for index infection."
+    regex = "Invalid infection stage for index infection."
   )
 })
 
@@ -95,7 +95,7 @@ test_that("lack of clinically_infected_prop argument in subclinical-clinical
   )
 })
 
-test_that("subclinical-clinical split disease stage for index infection initializes correctly", {
+test_that("subclinical-clinical split infection stage for index infection initializes correctly", {
   withr::local_seed(100)
   test_infected_net_pen_info <-
     readRDS(paste0(
@@ -161,28 +161,28 @@ test_that("subclinical-clinical split disease stage for index infection initiali
     )
   )
 
-  # Check disease stage durations have correct number of infected animals
+  # Check infection stage durations have correct number of infected animals
   expect_equal(
     rowSums(
-      test_simulation_env$disease_stage_duration_matrices$latent_duration
+      test_simulation_env$infection_stage_duration_matrices$latent_duration
     ),
     0
   )
   expect_equal(
     rowSums(
-      test_simulation_env$disease_stage_duration_matrices$subclinical_duration
+      test_simulation_env$infection_stage_duration_matrices$subclinical_duration
     ),
     1
   )
   expect_equal(
     rowSums(
-      test_simulation_env$disease_stage_duration_matrices$clinical_duration
+      test_simulation_env$infection_stage_duration_matrices$clinical_duration
     ),
     2
   )
 })
 
-test_that("latent disease stage for index infection initializes correctly", {
+test_that("latent infection stage for index infection initializes correctly", {
   withr::local_seed(100)
   test_infected_net_pen_info <-
     readRDS(paste0(
@@ -247,22 +247,22 @@ test_that("latent disease stage for index infection initializes correctly", {
     )
   )
 
-  # Check disease stage durations have correct number of infected animals
+  # Check infection stage durations have correct number of infected animals
   expect_equal(
     rowSums(
-      test_simulation_env$disease_stage_duration_matrices$latent_duration
+      test_simulation_env$infection_stage_duration_matrices$latent_duration
     ),
     3
   )
   expect_equal(
     rowSums(
-      test_simulation_env$disease_stage_duration_matrices$subclinical_duration
+      test_simulation_env$infection_stage_duration_matrices$subclinical_duration
     ),
     0
   )
   expect_equal(
     rowSums(
-      test_simulation_env$disease_stage_duration_matrices$clinical_duration
+      test_simulation_env$infection_stage_duration_matrices$clinical_duration
     ),
     0
   )

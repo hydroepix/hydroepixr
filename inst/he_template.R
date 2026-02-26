@@ -5,7 +5,7 @@ he_define_simulation_control_params(
   n_simulations = 5,
   max_outbreak_length = 365,
   random_seed = -10,
-  ignore_disease_status_input = TRUE,
+  ignore_infection_status_input = TRUE,
   verbose = FALSE
 )
 he_define_spread_control_params(
@@ -30,8 +30,14 @@ he_define_output_params(
 # Set up model environment based on data files and parameters
 he_initialize_model_env(
   model_env,
-  net_pen_info_filepath = paste0(system.file("testdata", package = "hydroepixr"), "/net_pen_file_bay_x.csv"),
-  species_info_filepath = paste0(system.file("testdata", package = "hydroepixr"), "/species_info_file_bay_x_mid-within-net-pen-transmission.csv")
+  net_pen_info_filepath = paste0(
+    system.file("testdata", package = "hydroepixr"),
+    "/net_pen_file_bay_x.csv"
+  ),
+  species_info_filepath = paste0(
+    system.file("testdata", package = "hydroepixr"),
+    "/species_info_file_bay_x_mid-within-net-pen-transmission.csv"
+  )
   #connectivity_matrix_filepath = "../../../../testdata/dist_mat_bay_x.csv"
 )
 

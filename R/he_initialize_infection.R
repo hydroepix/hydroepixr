@@ -64,20 +64,20 @@ he_initialize_infection <- function(
       infection_origin = "index",
       simulation_day = 0
     )
-    simulation_env$disease_stage_duration_matrices$latent_duration <-
-      he_add_disease_stage_duration(
+    simulation_env$infection_stage_duration_matrices$latent_duration <-
+      he_add_infection_stage_duration(
         simulation_env$latent_duration,
         species_info$latent_dur_freq[[1]],
         n_animals_to_distribute = 0
       )
-    simulation_env$disease_stage_duration_matrices$subclinical_duration <-
-      he_add_disease_stage_duration(
+    simulation_env$infection_stage_duration_matrices$subclinical_duration <-
+      he_add_infection_stage_duration(
         simulation_env$subclinical_duration,
         species_info$subclinical_dur_freq[[1]],
         n_animals_to_distribute = subclinical_clinical_split[1]
       )
-    simulation_env$disease_stage_duration_matrices$clinical_duration <-
-      he_add_disease_stage_duration(
+    simulation_env$infection_stage_duration_matrices$clinical_duration <-
+      he_add_infection_stage_duration(
         simulation_env$clinical_duration,
         species_info$clinical_dur_freq[[1]],
         n_animals_to_distribute = subclinical_clinical_split[2]
@@ -95,27 +95,27 @@ he_initialize_infection <- function(
       infection_origin = "index",
       simulation_day = 0
     )
-    simulation_env$disease_stage_duration_matrices$latent_duration <-
-      he_add_disease_stage_duration(
+    simulation_env$infection_stage_duration_matrices$latent_duration <-
+      he_add_infection_stage_duration(
         simulation_env$latent_duration,
         species_info$latent_dur_freq[[1]],
         n_animals_to_distribute = n_animals_infected
       )
-    simulation_env$disease_stage_duration_matrices$subclinical_duration <-
-      he_add_disease_stage_duration(
+    simulation_env$infection_stage_duration_matrices$subclinical_duration <-
+      he_add_infection_stage_duration(
         simulation_env$subclinical_duration,
         species_info$subclinical_dur_freq[[1]],
         n_animals_to_distribute = 0
       )
-    simulation_env$disease_stage_duration_matrices$clinical_duration <-
-      he_add_disease_stage_duration(
+    simulation_env$infection_stage_duration_matrices$clinical_duration <-
+      he_add_infection_stage_duration(
         simulation_env$clinical_duration,
         species_info$clinical_dur_freq[[1]],
         n_animals_to_distribute = 0
       )
   } else {
     stop(
-      "Invalid disease stage for index infection. Valid options are: 'latent' and 'subclinical-clinical split'"
+      "Invalid infection stage for index infection. Valid options are: 'latent' and 'subclinical-clinical split'"
     )
   }
   # Output initial infection state to output file

@@ -37,6 +37,6 @@ he_read_species_info_file <- function(filepath) {
   }
   # Parsing R-code style vectors in input file
   # Note that this assumes a single row of species info data
-  species_info <- he_parse_disease_stage_distributions(species_info)
+  species_info <- he_parse_infection_stage_distributions(species_info)
   return(species_info)
 }

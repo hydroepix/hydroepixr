@@ -2,7 +2,7 @@
 % Please edit documentation in R/he_calculate_prevalence.R
 \name{he_calculate_prevalence}
 \alias{he_calculate_prevalence}
-\title{Calculate the prevalence of disease}
+\title{Calculate the prevalence of infection}
 \usage{
 he_calculate_prevalence(n_infectious, n_not_immune)
 }
@@ -15,5 +15,5 @@ he_calculate_prevalence(n_infectious, n_not_immune)
 prevalence of infected animals within a net pen or a farm
 }
 \description{
-Calculate the prevalence of disease
+Calculate the prevalence of infection
 }
