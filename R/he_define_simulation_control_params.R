@@ -3,10 +3,10 @@
 #' @param model_env environment in which simulation variables are stored and
 #'   managed, this will be modified by the function
 #' @param n_simulations number of simulations (i.e., individual simulated epidemics) to be run
-#' @param max_outbreak_length maximum length of a disease outbreak
+#' @param max_outbreak_length maximum length of a infection outbreak
 #' @param random_seed random seed to use for the simulation
-#' @param ignore_disease_status_input boolean indicating whether or not to
-#'   ignore disease status input?
+#' @param ignore_infection_status_input boolean indicating whether or not to
+#'   ignore infection status input?
 #' @param verbose boolean indicating whether verbose output should be generated
 #'
 #' @return NA
@@ -19,7 +19,7 @@ he_define_simulation_control_params <-
     n_simulations = 10,
     max_outbreak_length = 365,
     random_seed = -10,
-    ignore_disease_status_input = TRUE,
+    ignore_infection_status_input = TRUE,
     verbose = FALSE
   ) {
     # Input checks
@@ -50,13 +50,13 @@ he_define_simulation_control_params <-
     if (!is.numeric(random_seed)) {
       stop("Error: Random seed must be a numeric value")
     }
-    # ignore_disease_status_input
+    # ignore_infection_status_input
     if (
-      !isTRUE(ignore_disease_status_input) &
-        !isFALSE(ignore_disease_status_input)
+      !isTRUE(ignore_infection_status_input) &
+        !isFALSE(ignore_infection_status_input)
     ) {
       stop(
-        "Error: ignore_disease_status should be a boolean value of either TRUE or FALSE"
+        "Error: ignore_infection_status should be a boolean value of either TRUE or FALSE"
       )
     }
     # verbose
@@ -67,7 +67,7 @@ he_define_simulation_control_params <-
     model_env$n_simulations <- n_simulations
     model_env$max_outbreak_length <- max_outbreak_length
     model_env$random_seed <- random_seed
-    model_env$ignore_disease_status_input <-
-      ignore_disease_status_input
+    model_env$ignore_infection_status_input <-
+      ignore_infection_status_input
     model_env$verbose <- verbose
   }

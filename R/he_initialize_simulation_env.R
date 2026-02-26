@@ -62,10 +62,10 @@ he_initialize_simulation_env <-
     #net_pen_info$infectiousness <- rep(0, n_net_pens)
     #net_pen_info$infection_mode <- rep(0, n_net_pens)
 
-    # Initialize matrices to store disease stage durations
+    # Initialize matrices to store infection stage durations
     # TODO: This will need to be updated to accommodate and label different
-    # diseases
-    simulation_env$disease_stage_duration_matrices <- list(
+    # infections
+    simulation_env$infection_stage_duration_matrices <- list(
       latent_duration = matrix(
         numeric(0),
         ncol = length(species_info$latent_dur_freq[[1]])

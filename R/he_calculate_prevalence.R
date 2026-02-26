@@ -1,4 +1,4 @@
-#' Calculate the prevalence of disease
+#' Calculate the prevalence of infection
 #'
 #' @param n_infectious number of animals which are infectious
 #' @param n_not_immune number of animals which cannot be infected

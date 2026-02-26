@@ -1,5 +1,5 @@
 test_that("net change values are calculated correctly for a single net pen", {
-  test_disease_stage_duration_matrices <- list(
+  test_infection_stage_duration_matrices <- list(
     matrix(c(50, 0, 0, 0, 0, 0, 0, 0), ncol = 8, byrow = TRUE), # latent
     matrix(c(10, 0, 0, 0, 0, 0, 0, 0), ncol = 8, byrow = TRUE), # subclinical
     matrix(c(5, 0, 0, 0, 0, 0, 0, 0), ncol = 8, byrow = TRUE) # clinical
@@ -7,8 +7,8 @@ test_that("net change values are calculated correctly for a single net pen", {
   test_n_newly_infected <- 1000
   test_clinically_infected_prop <- 0.5
   test_net_change <-
-    he_calculate_net_change_in_disease_stage_count(
-      test_disease_stage_duration_matrices,
+    he_calculate_net_change_in_infection_stage_count(
+      test_infection_stage_duration_matrices,
       test_n_newly_infected,
       test_clinically_infected_prop
     )
@@ -25,7 +25,7 @@ test_that("net change values are calculated correctly for a single net pen", {
 
 test_that("net change values are calculated correctly for a single net pen with
           unequal subclinical-clinical split", {
-  test_disease_stage_duration_matrices <- list(
+  test_infection_stage_duration_matrices <- list(
     matrix(c(50, 0, 0, 0, 0, 0, 0, 0), ncol = 8, byrow = TRUE), # latent
     matrix(c(10, 0, 0, 0, 0, 0, 0, 0), ncol = 8, byrow = TRUE), # subclinical
     matrix(c(5, 0, 0, 0, 0, 0, 0, 0), ncol = 8, byrow = TRUE) # clinical
@@ -33,8 +33,8 @@ test_that("net change values are calculated correctly for a single net pen with
   test_n_newly_infected <- 1000
   test_clinically_infected_prop <- 0.77
   test_net_change <-
-    he_calculate_net_change_in_disease_stage_count(
-      test_disease_stage_duration_matrices,
+    he_calculate_net_change_in_infection_stage_count(
+      test_infection_stage_duration_matrices,
       test_n_newly_infected,
       test_clinically_infected_prop
     )
@@ -50,7 +50,7 @@ test_that("net change values are calculated correctly for a single net pen with
 })
 
 test_that("net change values are calculated correctly for multiple net pens", {
-  test_disease_stage_duration_matrices <- list(
+  test_infection_stage_duration_matrices <- list(
     # latent
     matrix(
       c(100, 0, 0, 0, 0, 0, 0, 0, 50, 0, 0, 0, 0, 0, 0, 0),
@@ -73,8 +73,8 @@ test_that("net change values are calculated correctly for multiple net pens", {
   test_n_newly_infected <- c(2000, 1000)
   test_clinically_infected_prop <- 0.5
   test_net_change <-
-    he_calculate_net_change_in_disease_stage_count(
-      test_disease_stage_duration_matrices,
+    he_calculate_net_change_in_infection_stage_count(
+      test_infection_stage_duration_matrices,
       test_n_newly_infected,
       test_clinically_infected_prop
     )

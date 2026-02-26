@@ -85,12 +85,12 @@ test_that("a non-numeric random_seed value generates an error", {
   )
 })
 
-test_that("non boolean value for ignore_disease_status_input generates error", {
+test_that("non boolean value for ignore_infection_status_input generates error", {
   test_environment <- rlang::new_environment()
   expect_error(
     he_define_simulation_control_params(
       test_environment,
-      ignore_disease_status_input = "false"
+      ignore_infection_status_input = "false"
     )
   )
 })
@@ -113,7 +113,7 @@ test_that("default simulation control parameters are stored in the environment",
   expect_equal(test_environment$n_simulations, 10)
   expect_equal(test_environment$max_outbreak_length, 365)
   expect_equal(test_environment$random_seed, -10)
-  expect_equal(test_environment$ignore_disease_status_input, TRUE)
+  expect_equal(test_environment$ignore_infection_status_input, TRUE)
   expect_equal(test_environment$verbose, FALSE)
 })
 
@@ -121,7 +121,7 @@ test_that("user-defined simulation control parameters stored in the environment"
   test_n_simulations <- 100
   test_max_outbreak_length <- 720
   test_random_seed <- 123987234
-  test_ignore_disease_status_input <- FALSE
+  test_ignore_infection_status_input <- FALSE
   test_verbose <- TRUE
 
   test_environment <- rlang::new_environment()
@@ -130,7 +130,7 @@ test_that("user-defined simulation control parameters stored in the environment"
     test_n_simulations,
     test_max_outbreak_length,
     test_random_seed,
-    test_ignore_disease_status_input,
+    test_ignore_infection_status_input,
     test_verbose
   )
 
@@ -138,8 +138,8 @@ test_that("user-defined simulation control parameters stored in the environment"
   expect_equal(test_environment$max_outbreak_length, test_max_outbreak_length)
   expect_equal(test_environment$random_seed, test_random_seed)
   expect_equal(
-    test_environment$ignore_disease_status_input,
-    test_ignore_disease_status_input
+    test_environment$ignore_infection_status_input,
+    test_ignore_infection_status_input
   )
   expect_equal(test_environment$verbose, test_verbose)
 })
