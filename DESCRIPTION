@@ -2,13 +2,12 @@ Package: hydroepixr
 Title: Modeling The Spread of Fish Pathogens in Marine Sites
 Version: 0.0.0.9000
 Authors@R: c(
-    person("João", "Romero", role = "aut", comment = c(ORCID = "YOUR-ORCID-ID")),
-    person("Ian", "Gardner", role = "aut", comment = c(ORCID = "YOUR-ORCID-ID")),
-    person("Derek", "Price", role = "aut", comment = c(ORCID = "YOUR-ORCID-ID")),
+    person("João", "Romero", role = "aut"),
+    person("Ian", "Gardner", role = "aut"),
+    person("Derek", "Price", role = "aut"),
     person("Rachel", "Woodside", 
       email ="rwoodside@perennia.ca", 
-      role = c("aut", "cre"),
-      comment = c(ORCID = "YOUR-ORCID-ID")))
+      role = c("aut", "cre")))
 URL: https://github.com/hydroepix/hydroepixr
 BugReports: https://github.com/hydroepix/hydroepixr/issues
 Description: The primary purpose of Hydroepix (HE) is to model the spread of 
