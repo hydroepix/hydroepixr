@@ -8,7 +8,8 @@
 #' @return NA
 #'
 #'
-# References createHEvars in HEinitialize.R in hydroepix-model
+#' @export
+
 he_initialize_model_env <-
   function(
     model_env,
