@@ -14,8 +14,8 @@ he_read_infected_net_pen_output_data <- function(
 ) {
   output_file_list <- list.files(output_dir)
   output_file_list <- output_file_list[grepl(
-    infected_net_pen_output_file_name,
-    output_file_list
+    pattern = paste0(infected_net_pen_output_file_name, ".*\\.csv"),
+    x = output_file_list
   )]
   sim_dat <- data.frame()
   for (simulation_file_num in 1:length(output_file_list)) {
