@@ -6,6 +6,20 @@
 #'
 #' @returns ggplot object with multiple faceted plots
 #'
+#' @importFrom ggplot2 theme_set
+#' @importFrom ggplot2 theme_light
+#' @importFrom ggplot2 ggplot
+#' @importFrom ggplot2 aes
+#' @importFrom ggplot2 geom_line
+#' @importFrom ggplot2 scale_color_viridis_d
+#' @importFrom ggplot2 scale_y_continuous
+#' @importFrom ggplot2 scale_x_continuous
+#' @importFrom ggplot2 facet_grid
+#' @importFrom dplyr select
+#' @importFrom dplyr mutate
+#' @importFrom dplyr vars
+#' @importFrom tidyr pivot_longer
+#'
 #' @export
 he_plot_simulation_examples <- function(
   sim_dat,

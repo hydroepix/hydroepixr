@@ -6,6 +6,7 @@
 #' @returns data.frame of up to 5 infected net pen output simulation files stacked together
 #'
 #' @importFrom readr read_csv
+#' @importFrom dplyr mutate
 #'
 #' @export
 he_read_infected_net_pen_output_data <- function(
