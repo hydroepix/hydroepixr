@@ -1,0 +1,106 @@
+---
+title: "hydroepixr-basics"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{hydroepixr-basics}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(hydroepixr)
+```
+
+
+
+# A Basic Within-Farm Model Run
+
+## Naming conventions and model structure
+For clarity, there are some key terms to know moving forward. The **model** refers to the running of all of `hydroepixr`, through the `he_run_model` function. Each model run can then include multiple **simulations**. Each of these simulations uses the same input parameters, but the stochastic elements may be different and so each simulation may have different results. This models the randomness observed in the real world. Each simulation runs over multiple days, with the infection status of animals and net pens being updated each day.
+
+## Defining the model inputs
+First we create an environment to store all of the model inputs. Since the model has the same inputs that for each simulation, these need to be stored separately from the variables that change in each simulation, such that they can be passed down to each simulation environment. 
+```{r eval = FALSE}
+model_env <- he_create_model_env()
+```
+
+Next we define the different parameters we want to set. These can be divided into different groups. The first are the simulation control parameters, which define how the simulations are run, such as the number of simulations, the maximum outbreak length, and the random seed used. 
+
+```{r eval = FALSE}
+he_define_simulation_control_params(
+  model_env,
+  n_simulations = 5
+)
+```
+
+Spread control parameters determine the beginning state of the infection and how it progresses, such as the range of initially infected animals, in which infection stage initially infected animals begin, the proportion of latently infected animals which become clinically infected as opposed to subclinically infected, the scaling parameter for infection between net pens, and vaccine efficacy. 
+
+```{r eval = FALSE}
+
+he_define_spread_control_params(
+  model_env,
+  n_index_infected_min = 10,
+  n_index_infected_mode = 50,
+  n_index_infected_max = 100,
+  index_net_pen_ids = 1,
+  index_infection_stage = "subclinical-clinical split",
+)
+```
+
+Lastly are the output parameters, which define how the output files for the model and each individual simulation are named.
+
+```{r eval = FALSE}
+
+he_define_output_params(
+  model_env,
+  model_run_id = "basic-test-run",
+  infected_net_pen_output_file_name = "infected_net_pens.csv"
+)
+```
+
+Notice that the model environment is passed to each `he_define` function. This is so that the input parameter values are stored in the model environment, which will retain them and pass them down to each simulation run by the model.
+
+In addition to the parameters that are set, some inputs are designated to be read from files, since they are in tabular format. These are the net pen info and the species info. Example formats are provided in `testdata/net_pen_file_bay_x.csv` and `testdata/species_info_file_bay_x.csv`. They can be read in using the `he_initialize_model_env` function as below.
+
+```{r eval = FALSE}
+# Set up model environment based on data files and parameters
+he_initialize_model_env(
+  model_env,
+  net_pen_info_filepath = here::here("input/net_pen_file_bay_x.csv"),
+  species_info_filepath = here::here("input/species_info_file_bay_x.csv")
+)
+```
+
+
+## Running the model
+This is as simple as calling one function, passing the `model_env` where we set all of our variables previously.
+```{r eval = FALSE}
+he_run_model(model_env)
+```
+
+We do get a warning, but this is expected, since we are running a small number of simulations for the purposes of testing. The model should take less than a minute to run with this small number of simulations, but may depend on your computer.
+
+## Working with model outputs
+The model outputs a file for each simulation. Each row in the file represents an infected net pen on a given day, as well as the number of animals in each infection stage for that net pen. The `hydroepixr` package comes with some functions to assist in analysing these files.
+
+First, to read in the files, we can call the `he_read_infected_net_pen_output_data` function:
+```{r eval = FALSE}
+# Read in output files
+data <- he_read_infected_net_pen_output_data("hydroepixr_basics", here::here("output/"))
+```
+
+Then we can use the `he_plot_simulation_examples` function to visualize the progression of infection for simulations:
+```{r eval = FALSE}
+he_plot_simulation_examples(data)
+
+# ggplot2 can be used to save the plots for future comparison
+ggplot2::ggsave(here::here("output/alpha_test_plot.png"))
+
+```

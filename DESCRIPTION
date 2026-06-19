@@ -31,6 +31,9 @@ Imports:
     tidyr,
     utils
 Suggests: 
+    knitr,
+    rmarkdown,
     testthat (>= 3.0.0),
     withr
 Config/testthat/edition: 3
+VignetteBuilder: knitr

@@ -1,3 +1,4 @@
+devtools::load_all()
 model_env <- he_create_model_env()
 
 he_define_simulation_control_params(
@@ -23,7 +24,7 @@ he_define_spread_control_params(
 he_define_output_params(
   model_env,
   output_dir = "output",
-  model_run_id = "plot_demo",
+  model_run_id = "2026-05-29_demo",
   infected_net_pen_output_file_name = "infected_net_pens.csv"
 )
 
@@ -42,3 +43,14 @@ he_initialize_model_env(
 )
 
 he_run_model(model_env)
+
+# Plotting
+# Read in output files
+data <- he_read_infected_net_pen_output_data(
+  "2026-05-29_demo",
+  here::here("output/")
+)
+he_plot_simulation_examples(data)
+
+# Save the plots for future comparison
+ggplot2::ggsave(here::here("output/alpha_test_plot.png"))
