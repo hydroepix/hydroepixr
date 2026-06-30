@@ -3,11 +3,11 @@
 #' @param model_env environment in which simulation variables are stored and
 #'   managed, this will be modified by the function
 #' @param n_simulations number of simulations (i.e., individual simulated epidemics) to be run
-#' @param max_outbreak_length maximum length of a infection outbreak
+#' @param max_outbreak_length maximum length of a infection outbreak in days
 #' @param random_seed random seed to use for the simulation
 #' @param ignore_infection_status_input boolean indicating whether or not to
-#'   ignore infection status input?
-#' @param verbose boolean indicating whether verbose output should be generated
+#'   ignore infection status input
+#' @param verbose boolean indicating whether to generate additional output messages for debugging
 #'
 #' @return NA
 #'

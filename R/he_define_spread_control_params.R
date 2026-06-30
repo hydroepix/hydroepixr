@@ -8,8 +8,8 @@
 #'    calculated from a PERT distribution
 #' @param n_index_infected_max maximum number of fish initially infected, to
 #'    be calculated from a PERT distribution
-#' @param index_net_pen_ids identifiers of the index net pens
-#' @param index_farm_id identifier of the index farm
+#' @param index_net_pen_ids identifiers net pens to be initially infected
+#' @param index_farm_id identifier of the farm to be initially infected
 #' @param index_infection_stage indication of the infection stage in which the
 #'    index infection will begin, valid options are "latent" and
 #'    "subclinical-clinical split"
