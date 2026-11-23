@@ -2,3 +2,9 @@
 ^\.Rproj\.user$
 ^LICENSE\.md$
 ^\.github$
+
+^rproj\.toml$
+^rproj\.lock$
+^\.rvenv$
+^\.rvenvlib$
+^\.Renviron$
